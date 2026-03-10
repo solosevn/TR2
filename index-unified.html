@@ -890,12 +890,13 @@ function renderTable(){
   const estimatedModels = models.filter(m => (m.tier === 'estimated' || getCoverage(m) < 5) && getCoverage(m) >= 3);
   const minimalModels = models.filter(m => getCoverage(m) < 3 && m.tier !== 'verified');
 
-  // Build rows for a group of models
-  function buildRows(group, isLowerTier){
+  // Build rows for a group of models — tierLevel: 'verified', 'estimated', or 'minimal'
+  function buildRows(group, tierLevel){
     const cfgPillars = DDP_CONFIG[currentDDP].pillars;
     const totalP = DDP_CONFIG[currentDDP].totalPillars;
+    const showMedals = (tierLevel === 'verified');
     return group.map((m, i) => {
-      const rank = globalRankMap.get(m.name) || (i + 1);
+      const tierRank = i + 1;  // Each tier starts at 1
       const score = getLatestScore(m);
       const chg = getChange(m);
       const pts7 = getLast7(m);
@@ -905,13 +906,13 @@ function renderTable(){
       const coverageBadge = covered >= 0
         ? `<span style="font-size:9px;color:rgba(0,229,255,0.45);margin-right:6px;font-weight:400">${covered}/${totalP}</span>`
         : '';
-      const dimStyle = isLowerTier ? 'opacity:0.7;' : '';
+      const dimStyle = (tierLevel !== 'verified') ? 'opacity:0.7;' : '';
 
     let rankHTML;
-    if(rank===1) rankHTML = `<div class="rank-cell"><span class="medal medal-gold">🥇</span></div>`;
-    else if(rank===2) rankHTML = `<div class="rank-cell"><span class="medal medal-silver">🥈</span></div>`;
-    else if(rank===3) rankHTML = `<div class="rank-cell"><span class="medal medal-bronze">🥉</span></div>`;
-    else rankHTML = `<div class="rank-cell">${rank}</div>`;
+    if(showMedals && tierRank===1) rankHTML = `<div class="rank-cell"><span class="medal medal-gold">🥇</span></div>`;
+    else if(showMedals && tierRank===2) rankHTML = `<div class="rank-cell"><span class="medal medal-silver">🥈</span></div>`;
+    else if(showMedals && tierRank===3) rankHTML = `<div class="rank-cell"><span class="medal medal-bronze">🥉</span></div>`;
+    else rankHTML = `<div class="rank-cell">${tierRank}</div>`;
 
     let chgHTML;
     if(Math.abs(chg) < 0.005) chgHTML = `<span class="chg nc">+0.00</span>`;
@@ -919,9 +920,9 @@ function renderTable(){
     else chgHTML = `<span class="chg dn">↓ ${Math.abs(chg).toFixed(2)}</span>`;
 
     let rowClass = '';
-    if(rank===1) rowClass = 'row-1';
-    else if(rank===2) rowClass = 'row-2';
-    else if(rank===3) rowClass = 'row-3';
+    if(showMedals && tierRank===1) rowClass = 'row-1';
+    else if(showMedals && tierRank===2) rowClass = 'row-2';
+    else if(showMedals && tierRank===3) rowClass = 'row-3';
 
     const coClass = {
       'Anthropic':'co-anthropic','Google':'co-google','OpenAI':'co-openai',
@@ -958,11 +959,11 @@ function renderTable(){
       <span style="font-size:10px;color:rgba(255,255,255,0.35);margin-left:12px">1–2 pillars · Incomplete coverage</span>
     </td></tr>` : '';
 
-  tbody.innerHTML = buildRows(verifiedModels, false)
+  tbody.innerHTML = buildRows(verifiedModels, 'verified')
     + estimatedDivider
-    + buildRows(estimatedModels, true)
+    + buildRows(estimatedModels, 'estimated')
     + minimalDivider
-    + buildRows(minimalModels, true);
+    + buildRows(minimalModels, 'minimal');
 }
 
 // ══ BUILD TICKER ═════════════════════════════════════
