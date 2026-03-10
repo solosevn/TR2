@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRSbench — Unified Leaderboard | Training Run</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+body { background:#050510; color:#e8e8ec; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; margin:0; }
+.lb-wrap { max-width:1260px; margin:0 auto; padding:20px 24px 80px; }
+
+/* Section headers */
+.section-header {
+  display:flex; align-items:center; gap:14px; margin:48px 0 18px; padding-bottom:12px;
+  border-bottom:1px solid rgba(0,229,255,0.15);
+}
+.section-header:first-child { margin-top:12px; }
+.section-icon {
+  width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+  font-size:18px; font-weight:800; flex-shrink:0;
+}
+.section-title { font-size:22px; font-weight:700; letter-spacing:-0.3px; }
+.section-sub { font-size:12px; color:rgba(255,255,255,0.35); margin-top:2px; }
+.section-count {
+  margin-left:auto; font-size:11px; font-weight:600; color:rgba(0,229,255,0.6);
+  background:rgba(0,229,255,0.08); border:1px solid rgba(0,229,255,0.15);
+  border-radius:20px; padding:4px 14px; white-space:nowrap;
+}
+
+/* Tier labels */
+.tier-label {
+  display:flex; align-items:center; gap:8px; margin:20px 0 8px; padding:6px 12px;
+  background:rgba(255,255,255,0.03); border-radius:8px; border-left:3px solid;
+}
+.tier-label.verified { border-left-color:#22d3a3; }
+.tier-label.estimated { border-left-color:#f59e0b; }
+.tier-text { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; }
+.tier-label.verified .tier-text { color:#22d3a3; }
+.tier-label.estimated .tier-text { color:#f59e0b; }
+.tier-count { font-size:10px; color:rgba(255,255,255,0.3); }
+
+/* Table styles */
+.lb-table { width:100%; border-collapse:collapse; margin-bottom:6px; }
+.lb-table th {
+  font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px;
+  color:rgba(255,255,255,0.3); padding:8px 6px; text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.06); position:sticky; top:129px;
+  background:#050510; z-index:10;
+}
+.lb-table th:nth-child(1) { width:36px; text-align:center; }
+.lb-table th:nth-child(2) { text-align:left; min-width:200px; }
+.lb-table th:nth-child(3) { width:70px; }
+
+.lb-table td {
+  padding:7px 6px; font-size:12px; text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.lb-table tr:hover { background:rgba(255,255,255,0.02); }
+
+/* Rank column */
+.rank-num { font-size:13px; font-weight:700; text-align:center; }
+.rank-top3 { color:#00e5ff; }
+
+/* Model cell */
+.model-cell { display:flex; align-items:center; gap:10px; text-align:left; }
+.model-logo {
+  width:28px; height:28px; border-radius:7px; display:flex; align-items:center; justify-content:center;
+  font-size:11px; font-weight:700; flex-shrink:0; overflow:hidden;
+}
+.model-logo img { width:28px; height:28px; border-radius:7px; object-fit:contain; background:rgba(255,255,255,0.06); padding:2px; }
+.model-name { font-size:13px; font-weight:600; color:#e8e8ec; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.model-company { font-size:10px; color:rgba(255,255,255,0.3); }
+
+/* Score cell */
+.score-main { font-size:15px; font-weight:700; }
+.score-cell { font-size:12px; font-weight:600; }
+.score-null { color:rgba(255,255,255,0.12); }
+
+/* Pillar coverage badges */
+.pillar-badge {
+  display:inline-flex; align-items:center; gap:3px; font-size:10px; font-weight:600;
+  padding:2px 7px; border-radius:10px;
+}
+.pillar-badge.full { background:rgba(34,211,163,0.12); color:#22d3a3; }
+.pillar-badge.high { background:rgba(0,229,255,0.1); color:#00e5ff; }
+.pillar-badge.mid { background:rgba(245,158,11,0.1); color:#f59e0b; }
+.pillar-badge.low { background:rgba(248,113,113,0.1); color:#f87171; }
+
+/* Separator between sections */
+.section-sep {
+  height:1px; margin:40px 0;
+  background:linear-gradient(90deg,transparent,rgba(0,229,255,0.2) 20%,rgba(0,229,255,0.4) 50%,rgba(0,229,255,0.2) 80%,transparent);
+}
+
+/* Weights sidebar (floating) */
+.weights-card {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px; padding:16px 18px; margin-bottom:16px;
+}
+.weights-title { font-size:13px; font-weight:600; margin-bottom:10px; }
+.weight-row { display:flex; align-items:center; gap:8px; margin-bottom:5px; }
+.weight-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.weight-name { font-size:11px; color:rgba(255,255,255,0.45); flex:1; }
+.weight-pct { font-size:11px; font-weight:600; color:#e8e8ec; }
+
+/* Formula info */
+.formula-tag {
+  display:inline-flex; align-items:center; gap:6px; font-size:10px;
+  color:rgba(255,255,255,0.25); background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06); border-radius:6px; padding:3px 10px;
+}
+
+/* Sub-benchmark table (simpler) */
+.sub-table { width:100%; border-collapse:collapse; }
+.sub-table th {
+  font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px;
+  color:rgba(255,255,255,0.25); padding:6px; text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.05); position:sticky; top:129px;
+  background:#050510; z-index:10;
+}
+.sub-table th:nth-child(1) { width:32px; }
+.sub-table th:nth-child(2) { text-align:left; min-width:180px; }
+.sub-table td {
+  padding:5px 6px; font-size:11.5px; text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.025);
+}
+.sub-table tr:hover { background:rgba(255,255,255,0.02); }
+</style>
+</head>
+<body>
+<script src="nav-v2.js"></script>
+
+<div class="lb-wrap" id="app-root">
+  <div style="text-align:center;padding:80px 0;color:rgba(255,255,255,0.3)">Loading leaderboard data…</div>
+</div>
+
+<script>
+// ── Company colors (from existing site) ──
+const CC = {
+  Google:"#4285F4", OpenAI:"#10a37f", Anthropic:"#d4a574", xAI:"#e8e8e8",
+  DeepSeek:"#6e56cf", Meta:"#0668E1", Alibaba:"#FF6A00", "Zhipu AI":"#1a73e8",
+  "Moonshot AI":"#FF4500", MiniMax:"#00C9A7", Mistral:"#F97316", Cohere:"#6366f1",
+  Amazon:"#FF9900", Databricks:"#FF3621", Microsoft:"#00a4ef", Unknown:"#888"
+};
+
+// ── Company logos (favicon approach from nav-v2) ──
+const LOGOS = {
+  'Anthropic':'https://www.google.com/s2/favicons?domain=anthropic.com&sz=64',
+  'Google':'https://www.google.com/s2/favicons?domain=google.com&sz=64',
+  'OpenAI':'https://www.google.com/s2/favicons?domain=openai.com&sz=64',
+  'xAI':'https://www.google.com/s2/favicons?domain=x.ai&sz=64',
+  'Mistral':'https://www.google.com/s2/favicons?domain=mistral.ai&sz=64',
+  'DeepSeek':'https://www.google.com/s2/favicons?domain=deepseek.com&sz=64',
+  'Meta':'https://www.google.com/s2/favicons?domain=meta.com&sz=64',
+  'Alibaba':'https://www.google.com/s2/favicons?domain=qwenlm.github.io&sz=64',
+  'Zhipu AI':'https://www.google.com/s2/favicons?domain=zhipuai.cn&sz=64',
+  'MiniMax':'https://www.google.com/s2/favicons?domain=minimax.com&sz=64',
+  'Cohere':'https://www.google.com/s2/favicons?domain=cohere.com&sz=64',
+  'Moonshot AI':'https://www.google.com/s2/favicons?domain=moonshot.cn&sz=64',
+  'Amazon':'https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=64',
+  'Microsoft':'https://www.google.com/s2/favicons?domain=microsoft.com&sz=64',
+  'Databricks':'https://www.google.com/s2/favicons?domain=databricks.com&sz=64',
+};
+
+function logoHTML(company) {
+  const url = LOGOS[company];
+  const color = CC[company] || '#888';
+  if (url) {
+    return `<div class="model-logo" style="background:${color}18;border:1px solid ${color}33"><img src="${url}" onerror="this.parentElement.innerHTML='<span>${(company||'?')[0]}</span>';this.parentElement.style.color='${color}'"></div>`;
+  }
+  return `<div class="model-logo" style="background:${color}18;border:1px solid ${color}33;color:${color}">${(company||'?')[0]}</div>`;
+}
+
+function scoreCell(val, isMain) {
+  if (val === null || val === undefined) return `<span class="score-null">—</span>`;
+  const v = typeof val === 'number' ? val : parseFloat(val);
+  if (isNaN(v)) return `<span class="score-null">—</span>`;
+  // Color gradient: green for high, yellow mid, red low
+  let color;
+  if (v >= 80) color = '#22d3a3';
+  else if (v >= 60) color = '#00e5ff';
+  else if (v >= 40) color = '#e8e8ec';
+  else if (v >= 20) color = '#f59e0b';
+  else color = '#f87171';
+  if (isMain) return `<span class="score-main" style="color:${color}">${v.toFixed(1)}</span>`;
+  return `<span class="score-cell" style="color:${color}">${v.toFixed(1)}</span>`;
+}
+
+function pillarBadge(count) {
+  let cls = 'low', label = count + '/10';
+  if (count === 10) { cls = 'full'; label = '10/10 ✦'; }
+  else if (count >= 7) cls = 'high';
+  else if (count >= 5) cls = 'mid';
+  return `<span class="pillar-badge ${cls}">${label}</span>`;
+}
+
+// ── Pillar display names (short) ──
+const PILLAR_SHORT = {
+  safety:'Safety', reasoning:'Reason', truth_confabulation:'Truth',
+  human_preference:'Human', coding:'Code', agent_capability:'Agents',
+  knowledge:'Know', forecasting_finance:'Forecast', efficiency:'Effic', usage_adoption:'Usage'
+};
+const PILLAR_ORDER = ['safety','reasoning','truth_confabulation','human_preference','coding',
+  'agent_capability','knowledge','forecasting_finance','efficiency','usage_adoption'];
+
+const WEIGHT_COLORS = {
+  safety:'#22d3a3', reasoning:'#00e5ff', truth_confabulation:'#a78bfa',
+  human_preference:'#4285F4', coding:'#f0883e', agent_capability:'#10a37f',
+  knowledge:'#bc8cff', forecasting_finance:'#f59e0b', efficiency:'#6e56cf', usage_adoption:'#f778ba'
+};
+
+// ── Build the unified section ──
+function buildUnifiedSection(data) {
+  const w = data.weights;
+  let html = '';
+
+  // Section header
+  html += `<div class="section-header" style="margin-top:12px">
+    <div class="section-icon" style="background:linear-gradient(135deg,rgba(0,229,255,0.2),rgba(139,92,246,0.2));border:1px solid rgba(0,229,255,0.3);color:#00e5ff">T</div>
+    <div>
+      <div class="section-title">TRSbench <span style="color:rgba(0,229,255,0.5);font-size:14px">Unified</span></div>
+      <div class="section-sub">Composite score across 10 pillars · Formula ${data.formula_version} · Coverage bonus: ${data.coverage_bonus}</div>
+    </div>
+    <div class="section-count">${data.stats.verified + data.stats.estimated} Models Ranked</div>
+  </div>`;
+
+  // Weights card
+  html += `<div style="display:flex;gap:16px;margin-bottom:6px;flex-wrap:wrap">`;
+  html += `<div class="weights-card" style="flex:1;min-width:300px"><div class="weights-title">Pillar Weights</div>`;
+  html += `<div style="display:flex;flex-wrap:wrap;gap:4px 16px">`;
+  PILLAR_ORDER.forEach(p => {
+    const pct = Math.round(w[p] * 100);
+    html += `<div class="weight-row" style="width:calc(50% - 8px)">
+      <div class="weight-dot" style="background:${WEIGHT_COLORS[p]}"></div>
+      <span class="weight-name">${data.pillar_names[p]}</span>
+      <span class="weight-pct">${pct}%</span>
+    </div>`;
+  });
+  html += `</div></div>`;
+  html += `<div class="weights-card" style="min-width:200px">
+    <div class="weights-title">Scoring</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6">
+      <div><span style="color:#22d3a3;font-weight:600">Verified</span> — 5+ pillars scored</div>
+      <div><span style="color:#f59e0b;font-weight:600">Estimated</span> — 3–4 pillars scored</div>
+      <div style="margin-top:6px">Coverage bonus: +3% per pillar above 5</div>
+      <div>Perfect 10/10: additional +5%</div>
+    </div>
+  </div>`;
+  html += `</div>`;
+
+  // Table header
+  function tableHeader() {
+    let h = `<table class="lb-table"><thead><tr>
+      <th>#</th><th style="text-align:left">Model</th><th>Score</th><th>Pillars</th>`;
+    PILLAR_ORDER.forEach(p => {
+      h += `<th><span style="color:${WEIGHT_COLORS[p]}">${PILLAR_SHORT[p]}</span></th>`;
+    });
+    h += `</tr></thead><tbody>`;
+    return h;
+  }
+
+  function modelRow(m) {
+    const color = CC[m.company] || '#888';
+    let row = `<tr>
+      <td><span class="rank-num ${m.display_rank<=3?'rank-top3':''}" style="${m.display_rank<=3?'color:'+color:''}">${m.display_rank}</span></td>
+      <td><div class="model-cell">${logoHTML(m.company)}<div><div class="model-name">${m.name}</div><div class="model-company">${m.company}</div></div></div></td>
+      <td>${scoreCell(m.composite, true)}</td>
+      <td>${pillarBadge(m.pillar_count)}</td>`;
+    PILLAR_ORDER.forEach(p => {
+      row += `<td>${scoreCell(m.pillars[p], false)}</td>`;
+    });
+    row += `</tr>`;
+    return row;
+  }
+
+  // Verified tier
+  html += `<div class="tier-label verified"><span class="tier-text">Verified</span><span class="tier-count">${data.verified.length} models · 5+ pillars</span></div>`;
+  html += tableHeader();
+  data.verified.forEach(m => { html += modelRow(m); });
+  html += `</tbody></table>`;
+
+  // Estimated tier
+  html += `<div class="tier-label estimated"><span class="tier-text">Estimated</span><span class="tier-count">${data.estimated.length} models · 3–4 pillars</span></div>`;
+  html += tableHeader();
+  data.estimated.forEach(m => { html += modelRow(m); });
+  html += `</tbody></table>`;
+
+  return html;
+}
+
+// ── Build a sub-benchmark section ──
+function buildSubSection(title, subtitle, icon, iconBg, iconBorder, models, pillars, pillarColors) {
+  let html = `<div class="section-sep"></div>`;
+  html += `<div class="section-header">
+    <div class="section-icon" style="background:${iconBg};border:1px solid ${iconBorder};color:${pillars[0]?pillarColors[0]:'#00e5ff'}">${icon}</div>
+    <div>
+      <div class="section-title">${title}</div>
+      <div class="section-sub">${subtitle}</div>
+    </div>
+    <div class="section-count">${models.length} Models</div>
+  </div>`;
+
+  html += `<table class="sub-table"><thead><tr>
+    <th>#</th><th style="text-align:left">Model</th><th>Score</th>`;
+  pillars.forEach((p, i) => {
+    html += `<th><span style="color:${pillarColors[i]||'#00e5ff'}">${p}</span></th>`;
+  });
+  html += `</tr></thead><tbody>`;
+
+  models.forEach((m, i) => {
+    const color = CC[m.company] || '#888';
+    html += `<tr>
+      <td><span class="rank-num ${i<3?'rank-top3':''}" style="${i<3?'color:'+color:''}">${i+1}</span></td>
+      <td><div class="model-cell">${logoHTML(m.company)}<div><div class="model-name">${m.name}</div><div class="model-company">${m.company}</div></div></div></td>
+      <td>${scoreCell(m.latest_score, true)}</td>`;
+    pillars.forEach((p, pi) => {
+      const val = m.pillar_scores ? m.pillar_scores[p] : null;
+      html += `<td>${scoreCell(val, false)}</td>`;
+    });
+    html += `</tr>`;
+  });
+
+  html += `</tbody></table>`;
+  return html;
+}
+
+// ── Load all data and render ──
+async function loadAndRender() {
+  try {
+    const [unified, tru, trsc, trf, tra] = await Promise.all([
+      fetch('trsbench-unified.json?v='+Date.now()).then(r=>r.json()),
+      fetch('truscore-data.json?v='+Date.now()).then(r=>r.json()),
+      fetch('trscode-data.json?v='+Date.now()).then(r=>r.json()),
+      fetch('trf-data.json?v='+Date.now()).then(r=>r.json()),
+      fetch('tragent-data.json?v='+Date.now()).then(r=>r.json()),
+    ]);
+
+    let html = buildUnifiedSection(unified);
+
+    // Helper: get latest score & sort
+    function getLatest(m) { const s=m.scores.filter(v=>v!==null&&v>0); return s.length?s[s.length-1]:null; }
+    function sortModels(models) {
+      return [...models].filter(m=>getLatest(m)!==null).sort((a,b)=>(getLatest(b)||0)-(getLatest(a)||0))
+        .map(m=>({...m, latest_score: getLatest(m)}));
+    }
+
+    // TRUscore — Truth & Confabulation
+    const truModels = sortModels(tru.models);
+    const truPillars = tru.pillars || Object.keys(tru.models[0]?.pillar_scores||{});
+    html += buildSubSection(
+      'TRUscore <span style="color:rgba(167,139,250,0.5);font-size:14px">Truth & Confabulation</span>',
+      `${truModels.length} models · Truthfulness, Hallucination, Neutrality, Response Quality`,
+      'U', 'linear-gradient(135deg,rgba(167,139,250,0.2),rgba(167,139,250,0.05))',
+      'rgba(167,139,250,0.3)', truModels, truPillars,
+      truPillars.map(()=>'#a78bfa')
+    );
+
+    // TRScode — Coding
+    const trscModels = sortModels(trsc.models);
+    const trscPillars = trsc.pillars || Object.keys(trsc.models[0]?.pillar_scores||{});
+    html += buildSubSection(
+      'TRScode <span style="color:rgba(240,136,62,0.5);font-size:14px">Coding</span>',
+      `${trscModels.length} models · SWE-bench, LiveCodeBench, BigCodeBench, Terminal-Bench`,
+      'C', 'linear-gradient(135deg,rgba(240,136,62,0.2),rgba(240,136,62,0.05))',
+      'rgba(240,136,62,0.3)', trscModels, trscPillars,
+      trscPillars.map(()=>'#f0883e')
+    );
+
+    // TRFcast — Forecasting & Finance
+    const trfModels = sortModels(trf.models);
+    const trfPillars = trf.pillars || Object.keys(trf.models[0]?.pillar_scores||{});
+    html += buildSubSection(
+      'TRFcast <span style="color:rgba(245,158,11,0.5);font-size:14px">Forecasting & Finance</span>',
+      `${trfModels.length} models · ForecastBench, Rallies.ai, Alpha Arena, FinanceArena`,
+      'F', 'linear-gradient(135deg,rgba(245,158,11,0.2),rgba(245,158,11,0.05))',
+      'rgba(245,158,11,0.3)', trfModels, trfPillars,
+      trfPillars.map(()=>'#f59e0b')
+    );
+
+    // TRAgents — Agent Capability
+    const traModels = sortModels(tra.models);
+    const traPillars = tra.pillars || Object.keys(tra.models[0]?.pillar_scores||{});
+    html += buildSubSection(
+      'TRAgents <span style="color:rgba(16,163,127,0.5);font-size:14px">Agents</span>',
+      `${traModels.length} models · GAIA, OSWorld, tau-bench, MCP Atlas, Galileo`,
+      'A', 'linear-gradient(135deg,rgba(16,163,127,0.2),rgba(16,163,127,0.05))',
+      'rgba(16,163,127,0.3)', traModels, traPillars,
+      traPillars.map(()=>'#10a37f')
+    );
+
+    // Footer
+    html += `<div style="text-align:center;padding:40px 0 20px;color:rgba(255,255,255,0.15);font-size:11px">
+      TrainingRun.AI · TRSbench ${unified.formula_version} · Updated ${new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}
+    </div>`;
+
+    document.getElementById('app-root').innerHTML = html;
+  } catch(err) {
+    document.getElementById('app-root').innerHTML = `<div style="text-align:center;padding:80px 0;color:#f87171">
+      Failed to load data: ${err.message}<br><span style="font-size:11px;color:rgba(255,255,255,0.3)">Ensure JSON files are in the same directory.</span>
+    </div>`;
+  }
+}
+
+loadAndRender();
+</script>
+</body>
+</html>
