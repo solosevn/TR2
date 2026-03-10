@@ -626,16 +626,16 @@ const DDP_CONFIG = {
     file: 'trs-data-unified.json', totalPillars: 10, sourceCount: 5,
     methLink: 'trsmethodology.html',
     pillars: [
-      { key:'safety',               label:'Safety',       icon:'🛡️', pct:'16%', compact:false },
-      { key:'reasoning',            label:'Reasoning',    icon:'🧠', pct:'13%', compact:false },
-      { key:'truth_confabulation',  label:'Truth',        icon:'🔍', pct:'14%', compact:false },
-      { key:'human_preference',     label:'Human Pref',   icon:'📋', pct:'11%', compact:false },
-      { key:'coding',               label:'Coding',       icon:'💻', pct:'11%', compact:false },
-      { key:'agent_capability',     label:'Agents',       icon:'🤖', pct:'10%', compact:true  },
-      { key:'knowledge',            label:'Knowledge',    icon:'📚', pct:'8%',  compact:true  },
-      { key:'forecasting_finance',  label:'Forecast',     icon:'📈', pct:'7%',  compact:true  },
-      { key:'efficiency',           label:'Efficiency',   icon:'⚡', pct:'5%',  compact:true  },
-      { key:'usage_adoption',       label:'Usage',        icon:'📊', pct:'5%',  compact:true  },
+      { key:'safety',              label:'Safe',     icon:'🛡️', pct:'16%', compact:false },
+      { key:'truth_confabulation', label:'Truth',    icon:'🔍', pct:'14%', compact:false },
+      { key:'reasoning',           label:'Reason',   icon:'🧠', pct:'13%', compact:false },
+      { key:'human_preference',    label:'Pref',     icon:'📋', pct:'11%', compact:false },
+      { key:'coding',              label:'Code',     icon:'💻', pct:'11%', compact:false },
+      { key:'agent_capability',    label:'Agent',    icon:'🤖', pct:'10%', compact:true  },
+      { key:'knowledge',           label:'Know',     icon:'📚', pct:'8%',  compact:true  },
+      { key:'forecasting_finance', label:'Fcast',    icon:'📈', pct:'7%',  compact:true  },
+      { key:'efficiency',          label:'Effic',    icon:'⚡', pct:'5%',  compact:true  },
+      { key:'usage_adoption',      label:'Usage',    icon:'📊', pct:'5%',  compact:true  },
     ],
   },
   truscore: {
@@ -767,7 +767,7 @@ function sparkColor(pts){
 function renderThead(){
   const pillars = DDP_CONFIG[currentDDP].pillars;
   const ths = pillars.map(p =>
-    `<th${p.compact?' class="hide-compact"':''}>${p.label} <span style="font-size:8px;color:rgba(255,255,255,0.2)">${p.pct}</span></th>`
+    `<th${p.compact?' class="hide-compact"':''} style="font-size:11px;padding:6px 4px;white-space:nowrap">${p.label}</th>`
   ).join('');
   document.getElementById('theadRow').innerHTML =
     `<th style="width:52px;text-align:center">#</th><th>Model</th><th style="min-width:130px">Score <span class="sort-icon">↓</span></th>${ths}`;
@@ -885,16 +885,17 @@ function renderTable(){
 
   document.getElementById('metaCount').textContent = models.length + ' models ranked';
 
-  // Split fresh (scored today) vs stale (carry-forward from previous day)
-  const freshModels = models.filter(m => isFreshToday(m));
-  const staleModels = models.filter(m => !isFreshToday(m));
+  // Split by tier: verified (5+ pillars), estimated (3-4), and minimal (1-2)
+  const verifiedModels = models.filter(m => (m.tier === 'verified') || (getCoverage(m) >= 5));
+  const estimatedModels = models.filter(m => (m.tier === 'estimated' || getCoverage(m) < 5) && getCoverage(m) >= 3);
+  const minimalModels = models.filter(m => getCoverage(m) < 3 && m.tier !== 'verified');
 
   // Build rows for a group of models
-  function buildRows(group, rankOffset, isStale){
+  function buildRows(group, isLowerTier){
     const cfgPillars = DDP_CONFIG[currentDDP].pillars;
     const totalP = DDP_CONFIG[currentDDP].totalPillars;
     return group.map((m, i) => {
-      const rank = globalRankMap.get(m.name) || (i + 1 + rankOffset);
+      const rank = globalRankMap.get(m.name) || (i + 1);
       const score = getLatestScore(m);
       const chg = getChange(m);
       const pts7 = getLast7(m);
@@ -904,10 +905,7 @@ function renderTable(){
       const coverageBadge = covered >= 0
         ? `<span style="font-size:9px;color:rgba(0,229,255,0.45);margin-right:6px;font-weight:400">${covered}/${totalP}</span>`
         : '';
-      const staleRowStyle = isStale ? 'opacity:0.62;' : '';
-      const staleScoreNote = isStale
-        ? `<span style="font-size:8px;color:rgba(255,200,0,0.55);margin-left:4px">${fmtDate(data.dates[data.dates.length-2]||'')}</span>`
-        : '';
+      const dimStyle = isLowerTier ? 'opacity:0.7;' : '';
 
     let rankHTML;
     if(rank===1) rankHTML = `<div class="rank-cell"><span class="medal medal-gold">🥇</span></div>`;
@@ -935,27 +933,36 @@ function renderTable(){
       `<td${p.compact?' class="hide-compact"':''}>${pCol(m, p.key)}</td>`
     ).join('');
 
-    return `<tr class="${rowClass} ${coClass}" style="${staleRowStyle}" data-model="${m.name.replace(/"/g,'&quot;')}" onclick="openV2Modal(this.dataset.model,'${currentDDP}')">
+    return `<tr class="${rowClass} ${coClass}" style="${dimStyle}" data-model="${m.name.replace(/"/g,'&quot;')}" onclick="openV2Modal(this.dataset.model,'${currentDDP}')">
       <td>${rankHTML}</td>
       <td><div class="m-cell">
         ${logoImg(m.company, 28)}
         <div><div class="m-name">${m.name}</div><div class="m-lab">${m.company}</div></div>
       </div></td>
-      <td>${coverageBadge}<span class="score-val">${score.toFixed(2)}</span><span style="margin-left:9px">${chgHTML}</span>${staleScoreNote}</td>
+      <td>${coverageBadge}<span class="score-val">${score.toFixed(2)}</span><span style="margin-left:9px">${chgHTML}</span></td>
       ${pillarCells}
     </tr>`;
   }).join('');
   }
 
-  // Stale divider row
-  const staleDivider = staleModels.length ? `
-    <tr><td colspan="${getColspan()}" style="padding:6px 16px;background:rgba(255,200,0,0.04);border-top:1px solid rgba(255,200,0,0.12);border-bottom:1px solid rgba(255,200,0,0.08);">
-      <span style="font-size:10px;color:rgba(255,200,0,0.45);letter-spacing:0.08em">&#9203; NOT SCORED TODAY &middot; Last known scores shown &middot; Updates on next scrape</span>
+  // Tier divider bars
+  const estimatedDivider = estimatedModels.length ? `
+    <tr><td colspan="${getColspan()}" style="padding:8px 16px;background:rgba(0,229,255,0.04);border-top:2px solid rgba(0,229,255,0.25);border-bottom:1px solid rgba(0,229,255,0.1);">
+      <span style="font-size:11px;font-weight:700;color:rgba(0,229,255,0.7);letter-spacing:0.1em">ESTIMATED</span>
+      <span style="font-size:10px;color:rgba(255,255,255,0.35);margin-left:12px">3–4 pillars covered · Scores may shift as more data comes in</span>
     </td></tr>` : '';
 
-  tbody.innerHTML = buildRows(freshModels, 0, false)
-    + staleDivider
-    + buildRows(staleModels, freshModels.length, true);
+  const minimalDivider = minimalModels.length ? `
+    <tr><td colspan="${getColspan()}" style="padding:8px 16px;background:rgba(255,200,0,0.03);border-top:2px solid rgba(255,200,0,0.2);border-bottom:1px solid rgba(255,200,0,0.08);">
+      <span style="font-size:11px;font-weight:700;color:rgba(255,200,0,0.6);letter-spacing:0.1em">MINIMAL DATA</span>
+      <span style="font-size:10px;color:rgba(255,255,255,0.35);margin-left:12px">1–2 pillars · Incomplete coverage</span>
+    </td></tr>` : '';
+
+  tbody.innerHTML = buildRows(verifiedModels, false)
+    + estimatedDivider
+    + buildRows(estimatedModels, true)
+    + minimalDivider
+    + buildRows(minimalModels, true);
 }
 
 // ══ BUILD TICKER ═════════════════════════════════════
