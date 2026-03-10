@@ -1,0 +1,1560 @@
+{
+  "formula_version": "TR2-unified-v1.3",
+  "weights": {
+    "safety": 0.16,
+    "reasoning": 0.13,
+    "truth_confabulation": 0.14,
+    "human_preference": 0.11,
+    "coding": 0.11,
+    "agent_capability": 0.1,
+    "knowledge": 0.08,
+    "forecasting_finance": 0.07,
+    "efficiency": 0.05,
+    "usage_adoption": 0.05
+  },
+  "pillar_order": [
+    "safety",
+    "reasoning",
+    "truth_confabulation",
+    "human_preference",
+    "coding",
+    "agent_capability",
+    "knowledge",
+    "forecasting_finance",
+    "efficiency",
+    "usage_adoption"
+  ],
+  "pillar_names": {
+    "safety": "Safety",
+    "reasoning": "Reasoning",
+    "truth_confabulation": "Truth & Confabulation",
+    "human_preference": "Human Preference",
+    "coding": "Coding",
+    "agent_capability": "Agent Capability",
+    "knowledge": "Knowledge",
+    "forecasting_finance": "Forecasting & Finance",
+    "efficiency": "Efficiency",
+    "usage_adoption": "Usage / Adoption"
+  },
+  "coverage_bonus": "3% per pillar above 5, plus 5% extra for 10/10",
+  "stats": {
+    "verified": 25,
+    "estimated": 36
+  },
+  "verified": [
+    {
+      "name": "Gemini 3 Flash",
+      "company": "Google",
+      "pillar_count": 7,
+      "tier": "verified",
+      "composite": 77.87,
+      "pillars": {
+        "safety": null,
+        "reasoning": 90.2,
+        "truth_confabulation": 79.95,
+        "human_preference": 47.6,
+        "coding": null,
+        "agent_capability": 69.95,
+        "knowledge": 71.95,
+        "forecasting_finance": null,
+        "efficiency": 53.5,
+        "usage_adoption": 98.0
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRA"
+      ],
+      "display_rank": 1
+    },
+    {
+      "name": "GPT-5.2",
+      "company": "OpenAI",
+      "pillar_count": 8,
+      "tier": "verified",
+      "composite": 77.82,
+      "pillars": {
+        "safety": null,
+        "reasoning": 76.7,
+        "truth_confabulation": 92.5,
+        "human_preference": 81.7,
+        "coding": 73.19,
+        "agent_capability": 63.31,
+        "knowledge": 99.3,
+        "forecasting_finance": 5.65,
+        "efficiency": 35.4,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 2
+    },
+    {
+      "name": "gpt-oss-120b",
+      "company": "OpenAI",
+      "pillar_count": 5,
+      "tier": "verified",
+      "composite": 77.69,
+      "pillars": {
+        "safety": 100.0,
+        "reasoning": 75.7,
+        "truth_confabulation": null,
+        "human_preference": 75.75,
+        "coding": 39.41,
+        "agent_capability": null,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": 100.0,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc"
+      ],
+      "display_rank": 3
+    },
+    {
+      "name": "Gemini 3 Pro",
+      "company": "Google",
+      "pillar_count": 9,
+      "tier": "verified",
+      "composite": 77.16,
+      "pillars": {
+        "safety": 72.45,
+        "reasoning": 77.4,
+        "truth_confabulation": 91.73,
+        "human_preference": 33.3,
+        "coding": 63.77,
+        "agent_capability": 64.15,
+        "knowledge": 75.95,
+        "forecasting_finance": 50.7,
+        "efficiency": 84.6,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 4
+    },
+    {
+      "name": "GPT-5 mini",
+      "company": "OpenAI",
+      "pillar_count": 7,
+      "tier": "verified",
+      "composite": 73.51,
+      "pillars": {
+        "safety": 98.7,
+        "reasoning": 84.3,
+        "truth_confabulation": 77.75,
+        "human_preference": 59.5,
+        "coding": 18.37,
+        "agent_capability": null,
+        "knowledge": 73.9,
+        "forecasting_finance": null,
+        "efficiency": 39.6,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc"
+      ],
+      "display_rank": 5
+    },
+    {
+      "name": "GPT-5.1",
+      "company": "OpenAI",
+      "pillar_count": 6,
+      "tier": "verified",
+      "composite": 71.7,
+      "pillars": {
+        "safety": 98.3,
+        "reasoning": 50.95,
+        "truth_confabulation": 79.5,
+        "human_preference": null,
+        "coding": 29.88,
+        "agent_capability": null,
+        "knowledge": 88.7,
+        "forecasting_finance": 59.55,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF"
+      ],
+      "display_rank": 6
+    },
+    {
+      "name": "Claude Opus 4.6",
+      "company": "Anthropic",
+      "pillar_count": 10,
+      "tier": "verified",
+      "composite": 70.04,
+      "pillars": {
+        "safety": 25.0,
+        "reasoning": 68.5,
+        "truth_confabulation": 86.05,
+        "human_preference": 40.5,
+        "coding": 86.44,
+        "agent_capability": 60.56,
+        "knowledge": 74.9,
+        "forecasting_finance": 7.33,
+        "efficiency": 44.96,
+        "usage_adoption": 92.9
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 7
+    },
+    {
+      "name": "GPT-4",
+      "company": "OpenAI",
+      "pillar_count": 5,
+      "tier": "verified",
+      "composite": 68.59,
+      "pillars": {
+        "safety": 71.0,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": 71.0,
+        "coding": 51.65,
+        "agent_capability": null,
+        "knowledge": 97.5,
+        "forecasting_finance": 52.88,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRSc",
+        "TRF"
+      ],
+      "display_rank": 8
+    },
+    {
+      "name": "GPT-4.1",
+      "company": "OpenAI",
+      "pillar_count": 5,
+      "tier": "verified",
+      "composite": 67.98,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 81.3,
+        "human_preference": 100.0,
+        "coding": null,
+        "agent_capability": 37.42,
+        "knowledge": 81.3,
+        "forecasting_finance": null,
+        "efficiency": 0.0,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU",
+        "TRA"
+      ],
+      "display_rank": 9
+    },
+    {
+      "name": "DeepSeek R1",
+      "company": "DeepSeek",
+      "pillar_count": 9,
+      "tier": "verified",
+      "composite": 67.37,
+      "pillars": {
+        "safety": 74.7,
+        "reasoning": 33.6,
+        "truth_confabulation": 95.1,
+        "human_preference": 45.2,
+        "coding": 36.5,
+        "agent_capability": 49.18,
+        "knowledge": 95.1,
+        "forecasting_finance": 51.75,
+        "efficiency": 47.37,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 10
+    },
+    {
+      "name": "Claude Sonnet 4.5",
+      "company": "Anthropic",
+      "pillar_count": 9,
+      "tier": "verified",
+      "composite": 66.72,
+      "pillars": {
+        "safety": 25.0,
+        "reasoning": 44.7,
+        "truth_confabulation": 86.73,
+        "human_preference": 97.4,
+        "coding": 77.31,
+        "agent_capability": 48.31,
+        "knowledge": 68.9,
+        "forecasting_finance": 62.81,
+        "efficiency": 13.6,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 11
+    },
+    {
+      "name": "Grok 4.20",
+      "company": "xAI",
+      "pillar_count": 6,
+      "tier": "verified",
+      "composite": 59.83,
+      "pillars": {
+        "safety": null,
+        "reasoning": 87.0,
+        "truth_confabulation": 89.17,
+        "human_preference": null,
+        "coding": 32.03,
+        "agent_capability": 13.07,
+        "knowledge": 86.3,
+        "forecasting_finance": 15.3,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 12
+    },
+    {
+      "name": "DeepSeek V3.2",
+      "company": "DeepSeek",
+      "pillar_count": 8,
+      "tier": "verified",
+      "composite": 59.73,
+      "pillars": {
+        "safety": null,
+        "reasoning": 56.0,
+        "truth_confabulation": 67.0,
+        "human_preference": 15.0,
+        "coding": 42.4,
+        "agent_capability": 58.31,
+        "knowledge": 100.0,
+        "forecasting_finance": null,
+        "efficiency": 9.75,
+        "usage_adoption": 98.0
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 13
+    },
+    {
+      "name": "GLM-5",
+      "company": "Zhipu AI",
+      "pillar_count": 6,
+      "tier": "verified",
+      "composite": 56.44,
+      "pillars": {
+        "safety": null,
+        "reasoning": 45.35,
+        "truth_confabulation": null,
+        "human_preference": 28.6,
+        "coding": 62.09,
+        "agent_capability": 65.24,
+        "knowledge": 97.5,
+        "forecasting_finance": null,
+        "efficiency": 31.81,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 14
+    },
+    {
+      "name": "Kimi K2 Instruct",
+      "company": "Moonshot AI",
+      "pillar_count": 5,
+      "tier": "verified",
+      "composite": 56.16,
+      "pillars": {
+        "safety": 92.2,
+        "reasoning": 70.7,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": 19.25,
+        "agent_capability": 38.72,
+        "knowledge": 33.0,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 15
+    },
+    {
+      "name": "Gemini Flash 3",
+      "company": "Google",
+      "pillar_count": 9,
+      "tier": "verified",
+      "composite": 51.89,
+      "pillars": {
+        "safety": 45.0,
+        "reasoning": 50.3,
+        "truth_confabulation": 49.6,
+        "human_preference": 66.0,
+        "coding": 13.88,
+        "agent_capability": 41.78,
+        "knowledge": 44.7,
+        "forecasting_finance": null,
+        "efficiency": 33.33,
+        "usage_adoption": 84.0
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 16
+    },
+    {
+      "name": "Mistral Large",
+      "company": "Mistral",
+      "pillar_count": 9,
+      "tier": "verified",
+      "composite": 45.91,
+      "pillars": {
+        "safety": 46.0,
+        "reasoning": 73.0,
+        "truth_confabulation": 32.25,
+        "human_preference": 42.35,
+        "coding": 41.66,
+        "agent_capability": 37.56,
+        "knowledge": 52.95,
+        "forecasting_finance": 4.93,
+        "efficiency": 0.0,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 17
+    },
+    {
+      "name": "o3-mini",
+      "company": "OpenAI",
+      "pillar_count": 6,
+      "tier": "verified",
+      "composite": 44.98,
+      "pillars": {
+        "safety": 91.8,
+        "reasoning": 3.0,
+        "truth_confabulation": 15.4,
+        "human_preference": 96.3,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 15.7,
+        "forecasting_finance": null,
+        "efficiency": 3.5,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU"
+      ],
+      "display_rank": 18
+    },
+    {
+      "name": "Kimi K2.5",
+      "company": "Moonshot AI",
+      "pillar_count": 8,
+      "tier": "verified",
+      "composite": 44.44,
+      "pillars": {
+        "safety": 30.0,
+        "reasoning": 44.25,
+        "truth_confabulation": null,
+        "human_preference": 31.0,
+        "coding": 46.7,
+        "agent_capability": 60.84,
+        "knowledge": null,
+        "forecasting_finance": 5.26,
+        "efficiency": 32.02,
+        "usage_adoption": 92.95
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 19
+    },
+    {
+      "name": "Llama 3.3 70B",
+      "company": "Meta",
+      "pillar_count": 5,
+      "tier": "verified",
+      "composite": 35.29,
+      "pillars": {
+        "safety": 40.0,
+        "reasoning": null,
+        "truth_confabulation": 43.9,
+        "human_preference": 29.8,
+        "coding": null,
+        "agent_capability": 27.11,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": 24.56,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU",
+        "TRA"
+      ],
+      "display_rank": 20
+    },
+    {
+      "name": "Devstral 2",
+      "company": "Mistral",
+      "pillar_count": 5,
+      "tier": "verified",
+      "composite": 34.24,
+      "pillars": {
+        "safety": null,
+        "reasoning": 41.35,
+        "truth_confabulation": null,
+        "human_preference": 26.2,
+        "coding": 12.07,
+        "agent_capability": 54.76,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": 41.2,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 21
+    },
+    {
+      "name": "DeepSeek-V3",
+      "company": "DeepSeek",
+      "pillar_count": 5,
+      "tier": "verified",
+      "composite": 33.94,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 25.6,
+        "human_preference": 28.6,
+        "coding": 44.57,
+        "agent_capability": 46.09,
+        "knowledge": 26.05,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 22
+    },
+    {
+      "name": "GPT-4o",
+      "company": "OpenAI",
+      "pillar_count": 6,
+      "tier": "verified",
+      "composite": 31.46,
+      "pillars": {
+        "safety": null,
+        "reasoning": 10.7,
+        "truth_confabulation": 39.3,
+        "human_preference": 77.9,
+        "coding": 7.29,
+        "agent_capability": 10.53,
+        "knowledge": 39.3,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 23
+    },
+    {
+      "name": "Qwen3",
+      "company": "Alibaba",
+      "pillar_count": 7,
+      "tier": "verified",
+      "composite": 26.12,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 31.05,
+        "human_preference": 16.0,
+        "coding": 11.66,
+        "agent_capability": 49.21,
+        "knowledge": 24.6,
+        "forecasting_finance": 20.78,
+        "efficiency": 10.53,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 24
+    },
+    {
+      "name": "Llama 4 Maverick",
+      "company": "Meta",
+      "pillar_count": 5,
+      "tier": "verified",
+      "composite": 17.96,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": 23.8,
+        "coding": 2.95,
+        "agent_capability": 11.85,
+        "knowledge": null,
+        "forecasting_finance": 6.86,
+        "efficiency": 65.9,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 25
+    }
+  ],
+  "estimated": [
+    {
+      "name": "Llama 3.1 Instruct Turbo",
+      "company": "Meta",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 83.35,
+      "pillars": {
+        "safety": 81.4,
+        "reasoning": 75.5,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 100.0,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS"
+      ],
+      "display_rank": 1
+    },
+    {
+      "name": "Palmyra-X-004",
+      "company": "Google",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 78.64,
+      "pillars": {
+        "safety": 73.3,
+        "reasoning": 74.4,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 96.2,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS"
+      ],
+      "display_rank": 2
+    },
+    {
+      "name": "o3-2025-04-16",
+      "company": "OpenAI",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 75.23,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 83.7,
+        "human_preference": 58.3,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 83.7,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 3
+    },
+    {
+      "name": "Grok 3 Beta",
+      "company": "xAI",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 75.2,
+      "pillars": {
+        "safety": 73.1,
+        "reasoning": 88.8,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": null,
+        "forecasting_finance": 54.76,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 4
+    },
+    {
+      "name": "Grok 4 Fast",
+      "company": "xAI",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 70.34,
+      "pillars": {
+        "safety": null,
+        "reasoning": 56.2,
+        "truth_confabulation": 78.7,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 78.7,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 5
+    },
+    {
+      "name": "Claude 4.5 Haiku",
+      "company": "Anthropic",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 67.16,
+      "pillars": {
+        "safety": null,
+        "reasoning": 56.5,
+        "truth_confabulation": 77.8,
+        "human_preference": 66.2,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 6
+    },
+    {
+      "name": "Palmyra X5",
+      "company": "Google",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 66.86,
+      "pillars": {
+        "safety": 91.7,
+        "reasoning": 85.0,
+        "truth_confabulation": null,
+        "human_preference": 9.3,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU"
+      ],
+      "display_rank": 7
+    },
+    {
+      "name": "Command R+",
+      "company": "Cohere",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 65.13,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 84.5,
+        "human_preference": 26.4,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 84.5,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 8
+    },
+    {
+      "name": "o4-mini",
+      "company": "OpenAI",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 65.0,
+      "pillars": {
+        "safety": 94.3,
+        "reasoning": 52.6,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": 3.5,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRA"
+      ],
+      "display_rank": 9
+    },
+    {
+      "name": "Claude 3 Haiku",
+      "company": "Anthropic",
+      "pillar_count": 4,
+      "tier": "estimated",
+      "composite": 64.53,
+      "pillars": {
+        "safety": 91.7,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": 20.82,
+        "agent_capability": null,
+        "knowledge": 87.3,
+        "forecasting_finance": 45.07,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 10
+    },
+    {
+      "name": "GPT-4.5",
+      "company": "OpenAI",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 60.23,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 64.4,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 64.4,
+        "forecasting_finance": 47.12,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU",
+        "TRF"
+      ],
+      "display_rank": 11
+    },
+    {
+      "name": "Qwen2.5-32B",
+      "company": "Alibaba",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 58.1,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 68.1,
+        "human_preference": 38.1,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 68.1,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 12
+    },
+    {
+      "name": "MiniMax M2",
+      "company": "MiniMax",
+      "pillar_count": 4,
+      "tier": "estimated",
+      "composite": 57.43,
+      "pillars": {
+        "safety": null,
+        "reasoning": 74.9,
+        "truth_confabulation": null,
+        "human_preference": 50.0,
+        "coding": 30.35,
+        "agent_capability": 72.7,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 13
+    },
+    {
+      "name": "o4 mini",
+      "company": "Unknown",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 57.07,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 60.5,
+        "human_preference": 50.2,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 60.5,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 14
+    },
+    {
+      "name": "DBRX Instruct",
+      "company": "Databricks",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 56.35,
+      "pillars": {
+        "safety": 46.9,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": 47.3,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 87.7,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS"
+      ],
+      "display_rank": 15
+    },
+    {
+      "name": "Mistral Instruct v0.3",
+      "company": "Mistral",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 55.76,
+      "pillars": {
+        "safety": 56.2,
+        "reasoning": 45.9,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 70.9,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS"
+      ],
+      "display_rank": 16
+    },
+    {
+      "name": "Amazon Nova Lite",
+      "company": "Amazon",
+      "pillar_count": 4,
+      "tier": "estimated",
+      "composite": 55.63,
+      "pillars": {
+        "safety": null,
+        "reasoning": 67.3,
+        "truth_confabulation": 35.3,
+        "human_preference": 41.9,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 91.1,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU"
+      ],
+      "display_rank": 17
+    },
+    {
+      "name": "o1-preview",
+      "company": "OpenAI",
+      "pillar_count": 4,
+      "tier": "estimated",
+      "composite": 53.65,
+      "pillars": {
+        "safety": null,
+        "reasoning": 31.6,
+        "truth_confabulation": 43.7,
+        "human_preference": 99.1,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 44.4,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU"
+      ],
+      "display_rank": 18
+    },
+    {
+      "name": "MiniMax M2.5",
+      "company": "MiniMax",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 53.44,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": 54.42,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": 4.9,
+        "usage_adoption": 100.0
+      },
+      "benchmarks": [
+        "TRA"
+      ],
+      "display_rank": 19
+    },
+    {
+      "name": "qwq-32b",
+      "company": "Alibaba",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 53.29,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": 95.4,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": null,
+        "forecasting_finance": 6.6,
+        "efficiency": 26.0,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRF"
+      ],
+      "display_rank": 20
+    },
+    {
+      "name": "Grok 4.1",
+      "company": "xAI",
+      "pillar_count": 4,
+      "tier": "estimated",
+      "composite": 51.07,
+      "pillars": {
+        "safety": null,
+        "reasoning": 41.7,
+        "truth_confabulation": null,
+        "human_preference": 33.3,
+        "coding": 44.53,
+        "agent_capability": 90,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 21
+    },
+    {
+      "name": "Claude Opus 4.5",
+      "company": "Anthropic",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 48.43,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": 82.8,
+        "agent_capability": 38.24,
+        "knowledge": null,
+        "forecasting_finance": 8.99,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 22
+    },
+    {
+      "name": "o1-mini",
+      "company": "OpenAI",
+      "pillar_count": 4,
+      "tier": "estimated",
+      "composite": 44.86,
+      "pillars": {
+        "safety": 75.0,
+        "reasoning": 0.8,
+        "truth_confabulation": null,
+        "human_preference": 95.5,
+        "coding": 2.45,
+        "agent_capability": null,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 23
+    },
+    {
+      "name": "Command R Plus",
+      "company": "Cohere",
+      "pillar_count": 4,
+      "tier": "estimated",
+      "composite": 43.16,
+      "pillars": {
+        "safety": 61.2,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": 13.3,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 82.1,
+        "forecasting_finance": 4.36,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 24
+    },
+    {
+      "name": "Kimi K2 Base",
+      "company": "Moonshot AI",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 42.3,
+      "pillars": {
+        "safety": null,
+        "reasoning": 59.9,
+        "truth_confabulation": 31.9,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 31.9,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 25
+    },
+    {
+      "name": "Magistral Medium",
+      "company": "Mistral",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 35.86,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": 51.75,
+        "knowledge": null,
+        "forecasting_finance": 4.93,
+        "efficiency": 47.37,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 26
+    },
+    {
+      "name": "Phi 4",
+      "company": "Unknown",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 29.47,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 36.65,
+        "human_preference": 23.8,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 24.7,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 27
+    },
+    {
+      "name": "Llama 4.05B",
+      "company": "Meta",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 27.2,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 68.0,
+        "human_preference": null,
+        "coding": 0.0,
+        "agent_capability": 0,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRA"
+      ],
+      "display_rank": 28
+    },
+    {
+      "name": "GPT-5",
+      "company": "OpenAI",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 24.38,
+      "pillars": {
+        "safety": 20.0,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": 38.63,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": 9.9,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRA"
+      ],
+      "display_rank": 29
+    },
+    {
+      "name": "gpt-oss",
+      "company": "OpenAI",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 24.36,
+      "pillars": {
+        "safety": 7.0,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": null,
+        "agent_capability": 43.27,
+        "knowledge": null,
+        "forecasting_finance": null,
+        "efficiency": 42.11,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRA"
+      ],
+      "display_rank": 30
+    },
+    {
+      "name": "Mistral Small 3.2",
+      "company": "Mistral",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 22.2,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 23.9,
+        "human_preference": 27.1,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 12.5,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 31
+    },
+    {
+      "name": "Gemma 3 12B",
+      "company": "Google",
+      "pillar_count": 4,
+      "tier": "estimated",
+      "composite": 20.07,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 21.6,
+        "human_preference": 29.8,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 4.5,
+        "forecasting_finance": null,
+        "efficiency": 19.3,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRA"
+      ],
+      "display_rank": 32
+    },
+    {
+      "name": "Mistral Medium 3.1",
+      "company": "Mistral",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 11.57,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 10.7,
+        "human_preference": 13.3,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 10.7,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 33
+    },
+    {
+      "name": "MiniMax M1",
+      "company": "MiniMax",
+      "pillar_count": 4,
+      "tier": "estimated",
+      "composite": 10.12,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 18.4,
+        "human_preference": null,
+        "coding": 0.0,
+        "agent_capability": null,
+        "knowledge": 18.4,
+        "forecasting_finance": 0.0,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRU",
+        "TRSc",
+        "TRF"
+      ],
+      "display_rank": 34
+    },
+    {
+      "name": "ERNIE 4.5",
+      "company": "Unknown",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 7.37,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": 1.9,
+        "human_preference": 18.3,
+        "coding": null,
+        "agent_capability": null,
+        "knowledge": 1.9,
+        "forecasting_finance": null,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRU"
+      ],
+      "display_rank": 35
+    },
+    {
+      "name": "Cohere Command R+",
+      "company": "Cohere",
+      "pillar_count": 3,
+      "tier": "estimated",
+      "composite": 0.0,
+      "pillars": {
+        "safety": null,
+        "reasoning": null,
+        "truth_confabulation": null,
+        "human_preference": null,
+        "coding": 0.0,
+        "agent_capability": 0,
+        "knowledge": null,
+        "forecasting_finance": 0.0,
+        "efficiency": null,
+        "usage_adoption": null
+      },
+      "benchmarks": [
+        "TRS",
+        "TRSc",
+        "TRF",
+        "TRA"
+      ],
+      "display_rank": 36
+    }
+  ]
+}
