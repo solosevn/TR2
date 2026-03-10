@@ -521,10 +521,9 @@ body.compact .lb-table tbody tr { height:40px; }
     <!-- TOOLBAR -->
     <div class="toolbar">
       <div class="t-left">
-        <div class="btn-sm">⚙ Filters</div>
-        <div class="f-pill" id="activePillarPill">Overall ✓</div>
-        <div class="f-pill-plain" id="activeLabPill">All Labs</div>
-        <div class="f-pill-plain">All Licenses</div>
+        <!-- filter pills removed for now -->
+        <div class="f-pill" id="activePillarPill" style="display:none">Overall ✓</div>
+        <div class="f-pill-plain" id="activeLabPill" style="display:none">All Labs</div>
       </div>
       <div class="t-right">
         <div class="search-box">
@@ -779,8 +778,11 @@ function buildPillarSidebar(){
     `Pillars (${cfg.totalPillars}) <span class="sb-chevron">▾</span>`;
   document.getElementById('pillarList').innerHTML =
     `<div class="pillar-item active" onclick="setPillar('overall',this)"><span class="p-icon">🏆</span> Overall <span class="p-check">✓</span></div>` +
+    `<div style="height:1px;background:rgba(0,229,255,0.2);margin:6px 0;"></div>` +
+    `<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:0.1em;padding:4px 12px;text-transform:uppercase;">Category</div>` +
+    `<div style="height:1px;background:rgba(255,255,255,0.08);margin:2px 0 4px;"></div>` +
     cfg.pillars.map(p =>
-      `<div class="pillar-item" onclick="setPillar('${p.key}',this)"><span class="p-icon">${p.icon}</span> ${p.label}</div>`
+      `<div class="pillar-item" onclick="setPillar('${p.key}',this)" style="padding-left:24px"><span class="p-icon">${p.icon}</span> ${p.label}</div>`
     ).join('');
   document.getElementById('activePillarPill').textContent = 'Overall ✓';
 }
@@ -859,13 +861,15 @@ function renderTable(){
   const tbody = document.getElementById('tableBody');
   const query = (document.getElementById('searchInput').value||'').toLowerCase();
 
-  // Build global rank map using FRESH-FIRST ordering (same as table display)
-  const _minSrc = DDP_CONFIG[currentDDP].minSources || 0;
-  const _allScored = data.models.filter(m => getLatestScore(m) !== null).filter(m => !_minSrc || (m.source_count || 0) >= _minSrc);
-  const _gFresh = _allScored.filter(m => isFreshToday(m)).sort((a,b) => (getLatestScore(b)||0)-(getLatestScore(a)||0));
-  const _gStale = _allScored.filter(m => !isFreshToday(m)).sort((a,b) => (getLatestScore(b)||0)-(getLatestScore(a)||0));
-  const globalRankMap = new Map();
-  [..._gFresh, ..._gStale].forEach((m, i) => globalRankMap.set(m.name, i + 1));
+  // Build per-tier rank maps from FULL unfiltered list (ranks stay locked when filtering)
+  const _allScored = data.models.filter(m => getLatestScore(m) !== null);
+  const _allVerified = _allScored.filter(m => (m.tier === 'verified') || (getCoverage(m) >= 5)).sort((a,b) => (getLatestScore(b)||0)-(getLatestScore(a)||0));
+  const _allEstimated = _allScored.filter(m => (m.tier === 'estimated' || getCoverage(m) < 5) && getCoverage(m) >= 3).sort((a,b) => (getLatestScore(b)||0)-(getLatestScore(a)||0));
+  const _allMinimal = _allScored.filter(m => getCoverage(m) < 3 && m.tier !== 'verified').sort((a,b) => (getLatestScore(b)||0)-(getLatestScore(a)||0));
+  const tierRankMap = new Map();
+  _allVerified.forEach((m, i) => tierRankMap.set(m.name, { rank: i+1, tier: 'verified' }));
+  _allEstimated.forEach((m, i) => tierRankMap.set(m.name, { rank: i+1, tier: 'estimated' }));
+  _allMinimal.forEach((m, i) => tierRankMap.set(m.name, { rank: i+1, tier: 'minimal' }));
 
   // Filter + sort models
   let models = data.models
@@ -896,7 +900,8 @@ function renderTable(){
     const totalP = DDP_CONFIG[currentDDP].totalPillars;
     const showMedals = (tierLevel === 'verified');
     return group.map((m, i) => {
-      const tierRank = i + 1;  // Each tier starts at 1
+      const tierInfo = tierRankMap.get(m.name);
+      const tierRank = tierInfo ? tierInfo.rank : (i + 1);  // Locked rank from full list
       const score = getLatestScore(m);
       const chg = getChange(m);
       const pts7 = getLast7(m);
