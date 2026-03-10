@@ -505,12 +505,12 @@ body.compact .lb-table tbody tr { height:40px; }
 
     <div class="content-head">
       <div class="content-title"><span class="hl">TRS</span>bench — Overall Rankings</div>
-      <div class="content-sub">Weighted composite · 7 pillars · 18 verified benchmark sources · Independent &amp; transparent</div>
+      <div class="content-sub">Weighted composite · 10 pillars · 25 verified cited sources · Independent &amp; transparent</div>
       <div class="content-meta">
         <div class="meta-dot"></div>
         <span id="metaUpdate">Loading…</span>
         <span style="color:rgba(255,255,255,0.1)">|</span>
-        <span id="metaSources">18/18 sources fired</span>
+        <span id="metaSources">25/25 sources fired</span>
         <span style="color:rgba(255,255,255,0.1)">|</span>
         <span id="metaCount">— models ranked</span>
         <span style="color:rgba(255,255,255,0.1)">|</span>
@@ -622,7 +622,7 @@ const DDP_CONFIG = {
   trsbench: {
     title: '<span class="hl">TRS</span>bench — Unified Rankings',
     sub: 'Weighted composite · 10 pillars · Formula TR2-unified-v1.3 · Coverage bonus: +3% per pillar above 5, +5% for 10/10',
-    file: 'trs-data-unified.json', totalPillars: 10, sourceCount: 5,
+    file: 'trs-data-unified.json', totalPillars: 10, sourceCount: 25,
     methLink: 'trsmethodology.html',
     pillars: [
       { key:'safety',              label:'Safe',     icon:'🛡️', pct:'16%', compact:false },
@@ -1608,7 +1608,7 @@ fetch('trs-data.json?v=' + Date.now())
 
     const lastDate = (data.dates||[]).slice(-1)[0] || null;
     if(lastDate) document.getElementById('metaUpdate').textContent = '↻ Updated ' + fmtDate(lastDate) + (data.run_at ? ' · ' + data.run_at : '');
-    document.getElementById('metaSources').textContent = '18/18 sources fired';
+    document.getElementById('metaSources').textContent = '25/25 sources fired';
 
     const rankedCount = data.models.filter(m => getLatestScore(m) !== null).length;
     document.getElementById('metaCount').textContent = rankedCount + ' models ranked';
