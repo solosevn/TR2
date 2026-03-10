@@ -879,7 +879,7 @@ function renderTable(){
     .filter(m => !query || m.name.toLowerCase().includes(query) || (m.company||'').toLowerCase().includes(query))
     .sort((a,b) => (getLatestScore(b)||0) - (getLatestScore(a)||0));
 
-  const maxScore = _gFresh.length ? getLatestScore(_gFresh[0]) : 100;
+  const maxScore = models.length ? getLatestScore(models[0]) : 100;
 
   if(!models.length){
     tbody.innerHTML = `<tr><td colspan="${getColspan()}" style="text-align:center;padding:40px;color:rgba(255,255,255,0.3);font-size:13px;">No models match your filters.</td></tr>`;
