@@ -1,0 +1,43 @@
+{
+  "last_updated": "2026-03-11T09:49:33.888961",
+  "tr2_unified": {
+    "name": "TR2 Unified DDP",
+    "enabled": true,
+    "last_run": "2026-03-11T09:49:33.888961",
+    "last_run_date": "2026-03-11",
+    "status": "success",
+    "duration_seconds": 1082.7,
+    "sources_total": 40,
+    "sources_hit": 37,
+    "models_qualified": 1333,
+    "top_model": "Grok Code Fast",
+    "top_score": 99.73,
+    "top5": [
+      {
+        "rank": 1,
+        "name": "Grok Code Fast",
+        "score": 99.73
+      },
+      {
+        "rank": 2,
+        "name": "Gemini 2.0 Flash",
+        "score": 97.64
+      },
+      {
+        "rank": 3,
+        "name": "Gemini 1.5 Flash",
+        "score": 97.64
+      },
+      {
+        "rank": 4,
+        "name": "Gemini 1.5 Flash 002",
+        "score": 97.64
+      },
+      {
+        "rank": 5,
+        "name": "Gemini 2.0 Flash Lite",
+        "score": 97.64
+      }
+    ]
+  }
+}
