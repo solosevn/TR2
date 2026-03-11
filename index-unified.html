@@ -987,7 +987,7 @@ function buildTicker(datasets){
 }
 // Load TRSbench feed for ticker (independent of main table fetch)
 Promise.all([
-  fetch('trs-data.json?v='+Date.now()).then(r=>r.json()),
+  fetch('trs-data-unified.json?v='+Date.now()).then(r=>r.json()),
 ]).then(function(datasets){
   // Cache all DDP data so About card works cross-benchmark without extra fetches
   ['trsbench'].forEach(function(k,i){
@@ -1524,7 +1524,7 @@ function _buildV2TrendChart(modelName, ddp){
 renderThead();
 buildPillarSidebar();
 
-fetch('trs-data.json?v=' + Date.now())
+fetch('trs-data-unified.json?v=' + Date.now())
   .then(r => { if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
   .then(data => {
     _ddpData.trsbench = data;
