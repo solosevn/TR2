@@ -13,7 +13,7 @@ import os, sys, json, hashlib, subprocess, asyncio, logging, re
 from datetime import date
 from pathlib import Path
 
-# ââ dependency guard ââââââââââââââââââââââââââââââââââââââââââââââ
+# ── dependency guard ──────────────────────────────────────────────
 for pkg, hint in [
     ("playwright", "pip3 install playwright && python3 -m playwright install chromium"),
     ("bs4",        "pip3 install beautifulsoup4"),
@@ -31,13 +31,13 @@ from bs4 import BeautifulSoup
 from telegram import Bot
 from model_names import match_name, canonicalize
 
-# ââ logging âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+# ── logging ───────────────────────────────────────────────────────
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s  %(levelname)-7s  %(message)s",
                     datefmt="%H:%M:%S")
 log = logging.getLogger("trsbench")
 
-# ââ CONFIG ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+# ══ CONFIG ════════════════════════════════════════════════════════
 TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 REPO_PATH        = Path(os.environ.get("REPO_PATH",
@@ -47,7 +47,7 @@ TODAY            = date.today().isoformat()
 DRY_RUN          = "--dry-run"       in sys.argv
 TEST_TELEGRAM    = "--test-telegram" in sys.argv
 
-# ââ TRSbench Bible V2.5 weights âââââââââââââââââââââââââââââââââââ
+# ── TRSbench Bible V2.5 weights ───────────────────────────────────
 
 # ══════════════════════════════════════════════════════════════════
 #  WEIGHTS — TR2-unified-v1.3
@@ -96,7 +96,7 @@ def notify(text: str) -> None:
         log.warning(f"Telegram non-fatal: {e}")
 
 
-# ââ PLAYWRIGHT HELPERS ââââââââââââââââââââââââââââââââââââââââââââ
+# ══ PLAYWRIGHT HELPERS ════════════════════════════════════════════
 def playwright_get(url: str, wait_ms: int = 5000) -> str:
 
 # ── Playwright helpers ───────────────────────────────────────────
@@ -206,13 +206,13 @@ def _parse_helm_leaderboard(url: str, source_name: str, wait_ms: int = 10000) ->
                     pass
             if scores:
                 break
-        log.info(f"  â {source_name}: {len(scores)} models")
+        log.info(f"  ✅ {source_name}: {len(scores)} models")
     except Exception as e:
-        log.warning(f"  â ï¸ {source_name} not available: {e}")
+        log.warning(f"  ⚠️ {source_name} not available: {e}")
     return scores
 
 
-# ââ SCRAPERS â SAFETY (21%) âââââââââââââââââââââââââââââââââââââââ
+# ══ SCRAPERS — SAFETY (21%) ═══════════════════════════════════════
 
 
 # ═══ PILLAR 1: SAFETY (16%) ═════════════════════════════════════
@@ -229,7 +229,7 @@ def scrape_helm_safety() -> dict[str, float]:
 
 
 def scrape_airbench() -> dict[str, float]:
-    """AIR-Bench (Stanford CRFM) â refusal-rate safety leaderboard.
+    """AIR-Bench (Stanford CRFM) — refusal-rate safety leaderboard.
     Source: https://crfm.stanford.edu/helm/air-bench/latest/#/leaderboard
     87 models. Measures compliance with AI safety regulations (refusal rate).
     Returns {model: 0-100}."""
@@ -240,7 +240,7 @@ def scrape_airbench() -> dict[str, float]:
     )
 
 
-# ââ SCRAPERS â REASONING (20%) ââââââââââââââââââââââââââââââââââââ
+# ══ SCRAPERS — REASONING (20%) ════════════════════════════════════
 
 
 # ═══ PILLAR 2: TRUTH & CONFABULATION (14%) ══════════════════════
@@ -655,7 +655,7 @@ def scrape_hle() -> dict:
 
 # ═══ PILLAR 3: REASONING (13%) ══════════════════════════════════
 def scrape_arc_agi2() -> dict[str, float]:
-    """arcprize.org/leaderboard â ARC-AGI-2 column. Returns {model: score_pct}."""
+    """arcprize.org/leaderboard — ARC-AGI-2 column. Returns {model: score_pct}."""
     scores: dict[str, float] = {}
     try:
         log.info("Scraping ARC-AGI-2 (reasoning)...")
@@ -670,7 +670,7 @@ def scrape_arc_agi2() -> dict[str, float]:
             if not raw_name:
                 continue
             name = re.sub(r'\s*\([^)]*\)', '', raw_name).strip()
-            name = re.sub(r'\s*[Â²Â³Â¹â´âµ]\s*$', '', name).strip()
+            name = re.sub(r'\s*[²³¹⁴⁵]\s*$', '', name).strip()
             arc2_raw = row.get("ARC-AGI-2", "")
             if not arc2_raw:
                 continue
@@ -682,14 +682,14 @@ def scrape_arc_agi2() -> dict[str, float]:
                         scores[name] = pct
             except ValueError:
                 pass
-        log.info(f"  â ARC-AGI-2: {len(scores)} models")
+        log.info(f"  ✅ ARC-AGI-2: {len(scores)} models")
     except Exception as e:
-        log.error(f"  â ARC-AGI-2: {e}")
+        log.error(f"  ❌ ARC-AGI-2: {e}")
     return scores
 
 
 def scrape_livebench_reasoning() -> dict[str, float]:
-    """LiveBench â contamination-free reasoning subcategory.
+    """LiveBench — contamination-free reasoning subcategory.
     Source: https://livebench.ai
     55+ models. Uses 'Reasoning Average' column (0-100). Returns {model: score}."""
     scores: dict[str, float] = {}
@@ -730,9 +730,9 @@ def scrape_livebench_reasoning() -> dict[str, float]:
                     pass
             if scores:
                 break
-        log.info(f"  â LiveBench Reasoning: {len(scores)} models")
+        log.info(f"  ✅ LiveBench Reasoning: {len(scores)} models")
     except Exception as e:
-        log.warning(f"  â ï¸ LiveBench Reasoning not available: {e}")
+        log.warning(f"  ⚠️ LiveBench Reasoning not available: {e}")
     return scores
 
 
@@ -747,7 +747,7 @@ def scrape_helm_capabilities() -> dict[str, float]:
     )
 
 
-# ââ SCRAPERS â CODING (20%) âââââââââââââââââââââââââââââââââââââââ
+# ══ SCRAPERS — CODING (20%) ═══════════════════════════════════════
 
 
 def scrape_hle() -> dict:
@@ -873,7 +873,7 @@ def scrape_livebench() -> dict:
 
 # ═══ PILLAR 4: HUMAN PREFERENCE (11%) ═══════════════════════════
 def scrape_arena_overall() -> dict[str, float]:
-    """arena.ai main leaderboard â overall ELO across all task categories.
+    """arena.ai main leaderboard — overall ELO across all task categories.
     Source: https://arena.ai/leaderboard  Returns {model: elo_float}."""
     scores: dict[str, float] = {}
     try:
@@ -921,14 +921,14 @@ def scrape_arena_overall() -> dict[str, float]:
                         pass
             if scores:
                 break
-        log.info(f"  â Arena Overall: {len(scores)} models")
+        log.info(f"  ✅ Arena Overall: {len(scores)} models")
     except Exception as e:
-        log.error(f"  â Arena Overall: {e}")
+        log.error(f"  ❌ Arena Overall: {e}")
     return scores
 
 
 def scrape_arena_text() -> dict[str, float]:
-    """Arena text-specific leaderboard â ELO for text/chat tasks only.
+    """Arena text-specific leaderboard — ELO for text/chat tasks only.
     Source: https://arena.ai/leaderboard/text  (313 models, text-specific ELO)
     Distinct from the overall multi-category ELO. Returns {model: elo_float}."""
     scores: dict[str, float] = {}
@@ -964,14 +964,14 @@ def scrape_arena_text() -> dict[str, float]:
                         pass
             if scores:
                 break
-        log.info(f"  â Arena Text: {len(scores)} models")
+        log.info(f"  ✅ Arena Text: {len(scores)} models")
     except Exception as e:
-        log.warning(f"  â ï¸ Arena Text not available: {e}")
+        log.warning(f"  ⚠️ Arena Text not available: {e}")
     return scores
 
 
 def scrape_alpacaeval() -> dict[str, float]:
-    """AlpacaEval 2.0 â LC (length-controlled) win rate leaderboard.
+    """AlpacaEval 2.0 — LC (length-controlled) win rate leaderboard.
     Source: https://tatsu-lab.github.io/alpaca_eval/
     68 models. LC win rate % vs GPT-4 baseline. Returns {model: pct}."""
     scores: dict[str, float] = {}
@@ -995,7 +995,7 @@ def scrape_alpacaeval() -> dict[str, float]:
                 if len(cells) <= max(model_col, score_col):
                     continue
                 name = cells[model_col].get_text(separator='\n', strip=True).split('\n')[0].strip()
-                name = re.sub(r'\s*ð.*$', '', name).strip()
+                name = re.sub(r'\s*📄.*$', '', name).strip()
                 name = re.sub(r'\s*\([^)]*\)', '', name).strip()
                 if not name or len(name) < 2:
                     continue
@@ -1009,18 +1009,18 @@ def scrape_alpacaeval() -> dict[str, float]:
                     pass
             if scores:
                 break
-        log.info(f"  â AlpacaEval: {len(scores)} models")
+        log.info(f"  ✅ AlpacaEval: {len(scores)} models")
     except Exception as e:
-        log.warning(f"  â ï¸ AlpacaEval not available: {e}")
+        log.warning(f"  ⚠️ AlpacaEval not available: {e}")
     return scores
 
 
-# ââ SCRAPERS â KNOWLEDGE (8%) âââââââââââââââââââââââââââââââââââââ
+# ══ SCRAPERS — KNOWLEDGE (8%) ═════════════════════════════════════
 
 
 # ═══ PILLAR 5: CODING (11%) ═════════════════════════════════════
 def scrape_swebench_verified() -> dict[str, float]:
-    """swebench.com â verified split leaderboard. Returns {model: pct_resolved}."""
+    """swebench.com — verified split leaderboard. Returns {model: pct_resolved}."""
     scores: dict[str, float] = {}
     try:
         log.info("Scraping SWE-bench Verified (coding)...")
@@ -1051,14 +1051,14 @@ def scrape_swebench_verified() -> dict[str, float]:
                     pass
             if scores:
                 break
-        log.info(f"  â SWE-bench Verified: {len(scores)} models")
+        log.info(f"  ✅ SWE-bench Verified: {len(scores)} models")
     except Exception as e:
-        log.error(f"  â SWE-bench: {e}")
+        log.error(f"  ❌ SWE-bench: {e}")
     return scores
 
 
 def scrape_evalplus() -> dict[str, float]:
-    """EvalPlus â HumanEval+ coding leaderboard.
+    """EvalPlus — HumanEval+ coding leaderboard.
     Source: https://evalplus.github.io/leaderboard.html
     250+ models. HumanEval+ pass@1 percentage. Returns {model: 0-100}."""
     scores: dict[str, float] = {}
@@ -1083,7 +1083,7 @@ def scrape_evalplus() -> dict[str, float]:
                 if len(cells) <= max(model_col, score_col):
                     continue
                 name = cells[model_col].get_text(separator='\n', strip=True).split('\n')[0].strip()
-                name = re.sub(r'[â¨ð¥ð¥ð¥ââ]', '', name).strip()
+                name = re.sub(r'[✨🥇🥈🥉★☆]', '', name).strip()
                 name = re.sub(r'\s*\([^)]*\)', '', name).strip()
                 if not name or len(name) < 2:
                     continue
@@ -1097,14 +1097,14 @@ def scrape_evalplus() -> dict[str, float]:
                     pass
             if scores:
                 break
-        log.info(f"  â EvalPlus: {len(scores)} models")
+        log.info(f"  ✅ EvalPlus: {len(scores)} models")
     except Exception as e:
-        log.warning(f"  â ï¸ EvalPlus not available: {e}")
+        log.warning(f"  ⚠️ EvalPlus not available: {e}")
     return scores
 
 
 def scrape_livecodebench() -> dict[str, float]:
-    """LiveCodeBench â contamination-free coding leaderboard.
+    """LiveCodeBench — contamination-free coding leaderboard.
     Source: https://livecodebench.github.io/leaderboard.html
     28+ models. PASS@1 percentage. Returns {model: 0-100}."""
     scores: dict[str, float] = {}
@@ -1141,14 +1141,14 @@ def scrape_livecodebench() -> dict[str, float]:
                     pass
             if scores:
                 break
-        log.info(f"  â LiveCodeBench: {len(scores)} models")
+        log.info(f"  ✅ LiveCodeBench: {len(scores)} models")
     except Exception as e:
-        log.warning(f"  â ï¸ LiveCodeBench not available: {e}")
+        log.warning(f"  ⚠️ LiveCodeBench not available: {e}")
     return scores
 
 
 def scrape_swe_rebench() -> dict[str, float]:
-    """SWE-rebench â continuously decontaminated SWE benchmark.
+    """SWE-rebench — continuously decontaminated SWE benchmark.
     Source: https://swe-rebench.com/leaderboard
     84 models. Resolved rate percentage. Returns {model: 0-100}."""
     scores: dict[str, float] = {}
@@ -1185,13 +1185,13 @@ def scrape_swe_rebench() -> dict[str, float]:
                     pass
             if scores:
                 break
-        log.info(f"  â SWE-rebench: {len(scores)} models")
+        log.info(f"  ✅ SWE-rebench: {len(scores)} models")
     except Exception as e:
-        log.warning(f"  â ï¸ SWE-rebench not available: {e}")
+        log.warning(f"  ⚠️ SWE-rebench not available: {e}")
     return scores
 
 
-# ââ SCRAPERS â HUMAN PREFERENCE (18%) ââââââââââââââââââââââââââââ
+# ══ SCRAPERS — HUMAN PREFERENCE (18%) ════════════════════════════
 
 
 def scrape_bigcodebench() -> dict[str, float]:
@@ -1733,7 +1733,7 @@ def scrape_multi_model() -> dict[str, float]:
 
 # ═══ PILLAR 7: KNOWLEDGE (8%) ═══════════════════════════════════
 def scrape_mmlu_pro() -> dict[str, float]:
-    """huggingface.co/spaces/TIGER-Lab/MMLU-Pro â knowledge leaderboard (via iframe)."""
+    """huggingface.co/spaces/TIGER-Lab/MMLU-Pro — knowledge leaderboard (via iframe)."""
     scores: dict[str, float] = {}
     try:
         log.info("Scraping MMLU-Pro (knowledge)...")
@@ -1759,9 +1759,9 @@ def scrape_mmlu_pro() -> dict[str, float]:
                     scores[name] = val
             except ValueError:
                 pass
-        log.info(f"  â MMLU-Pro: {len(scores)} models")
+        log.info(f"  ✅ MMLU-Pro: {len(scores)} models")
     except Exception as e:
-        log.error(f"  â MMLU-Pro: {e}")
+        log.error(f"  ❌ MMLU-Pro: {e}")
     return scores
 
 
@@ -1816,13 +1816,13 @@ def scrape_simpleqa() -> dict[str, float]:
                     pass
             if scores:
                 break
-        log.info(f"  â SimpleQA: {len(scores)} models")
+        log.info(f"  ✅ SimpleQA: {len(scores)} models")
     except Exception as e:
-        log.warning(f"  â ï¸ SimpleQA not available: {e}")
+        log.warning(f"  ⚠️ SimpleQA not available: {e}")
     return scores
 
 
-# ââ SCRAPERS â EFFICIENCY (7%) ââââââââââââââââââââââââââââââââââââ
+# ══ SCRAPERS — EFFICIENCY (7%) ════════════════════════════════════
 
 
 # ═══ PILLAR 8: FORECASTING & FINANCE (7%) ═══════════════════════
@@ -2084,14 +2084,14 @@ def scrape_artificial_analysis() -> dict[str, float]:
                     scores[name] = val
             except ValueError:
                 pass
-        log.info(f"  â Artificial Analysis: {len(scores)} models")
+        log.info(f"  ✅ Artificial Analysis: {len(scores)} models")
     except Exception as e:
-        log.error(f"  â Artificial Analysis: {e}")
+        log.error(f"  ❌ Artificial Analysis: {e}")
     return scores
 
 
 def scrape_pricepertoken() -> dict[str, float]:
-    """PricePerToken â $/M input tokens leaderboard.
+    """PricePerToken — $/M input tokens leaderboard.
     Source: https://pricepertoken.com
     298 models. Lower price = better efficiency. Score inverted: cheapest = 100.
     Returns {model: inverted_score_0_to_100}."""
@@ -2142,18 +2142,18 @@ def scrape_pricepertoken() -> dict[str, float]:
                     inv_score = round(100.0 * min_price / effective, 4)
                     scores[name] = min(inv_score, 100.0)
                 break
-        log.info(f"  â PricePerToken: {len(scores)} models")
+        log.info(f"  ✅ PricePerToken: {len(scores)} models")
     except Exception as e:
-        log.warning(f"  â ï¸ PricePerToken not available: {e}")
+        log.warning(f"  ⚠️ PricePerToken not available: {e}")
     return scores
 
 
-# ââ SCRAPERS â USAGE ADOPTION (6%) ââââââââââââââââââââââââââââââââ
+# ══ SCRAPERS — USAGE ADOPTION (6%) ════════════════════════════════
 
 
 # ═══ PILLAR 10: USAGE / ADOPTION (5%) ═══════════════════════════
 def scrape_openrouter_usage() -> dict[str, float]:
-    """openrouter.ai/rankings â usage adoption scores (innerText parse, no <table>)."""
+    """openrouter.ai/rankings — usage adoption scores (innerText parse, no <table>)."""
     scores: dict[str, float] = {}
     try:
         log.info("Scraping OpenRouter Rankings (usage adoption)...")
@@ -2170,13 +2170,13 @@ def scrape_openrouter_usage() -> dict[str, float]:
                         rank_score = max(0, 100 - ((rank_num - 1) * 2))
                         if rank_score > 0:
                             scores[name] = rank_score
-        log.info(f"  â OpenRouter Rankings: {len(scores)} models")
+        log.info(f"  ✅ OpenRouter Rankings: {len(scores)} models")
     except Exception as e:
-        log.error(f"  â OpenRouter Rankings: {e}")
+        log.error(f"  ❌ OpenRouter Rankings: {e}")
     return scores
 
 
-# ââ SCORING ENGINE ââââââââââââââââââââââââââââââââââââââââââââââââ
+# ══ SCORING ENGINE ════════════════════════════════════════════════
 
 
 
