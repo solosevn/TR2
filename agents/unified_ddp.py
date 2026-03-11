@@ -2747,7 +2747,7 @@ def write_status(status: str, ranked: list, source_summary: list,
         except Exception:
             pass
 
-    now_iso = NOW.isoformat()
+    now_iso = datetime.now().isoformat()
     top5 = []
     for m in ranked[:5]:
         sc = m["scores"][-1] if m["scores"] else None
@@ -2917,7 +2917,7 @@ def main():
 
     data["models"] = ranked + disqualified
     data["dates"]  = dates
-    data["run_at"] = NOW.strftime("%-I:%M %p") + " CST"
+    data["run_at"] = datetime.now().strftime("%-I:%M %p") + " CST"
 
     with open(DATA_FILE, "w") as f:
         json.dump(data, f, indent=2)
