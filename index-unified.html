@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1440">
-<title>Training Run — AI Leaderboard & Daily Benchmark Rankings</title>
-<meta name="description" content="Training Run: Independent daily AI benchmark rankings. Live scores for TRSbench, TRUscore, TRScode, TRFcast, and TRAgents — updated every morning at 7AM CST.">
+<title>Training Run â AI Leaderboard & Daily Benchmark Rankings</title>
+<meta name="description" content="Training Run: Independent daily AI benchmark rankings. Live scores for TRSbench unified leaderboard and TS Arena â updated every morning at 7AM CST.">
 <meta name="keywords" content="AI leaderboard, AI benchmark, daily AI rankings, LLM leaderboard, GPT benchmark, Claude benchmark, Gemini benchmark, AI conditioning, TRSbench">
-<meta property="og:title" content="Training Run — Daily AI Benchmark Rankings">
-<meta property="og:description" content="Independent daily AI leaderboard. Live scores updated every morning. TRSbench, TRUscore, TRScode, TRFcast, TRAgents.">
+<meta property="og:title" content="Training Run â Daily AI Benchmark Rankings">
+<meta property="og:description" content="Independent daily AI leaderboard. Live scores updated every morning. TRSbench unified leaderboard and TS Arena.">
 <meta property="og:url" content="https://trainingrun.ai/">
 <meta name="twitter:card" content="summary_large_image">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -24,21 +24,21 @@ body {
   overflow: hidden;
 }
 
-/* ─── CYAN GLOW LINE ─── */
+/* âââ CYAN GLOW LINE âââ */
 .glow-line {
   height: 1px; flex-shrink: 0;
   background: linear-gradient(90deg, transparent 0%, rgba(0,229,255,0.1) 10%, #00e5ff 40%, #00e5ff 60%, rgba(0,229,255,0.1) 90%, transparent 100%);
   box-shadow: 0 0 6px rgba(0,229,255,0.45), 0 0 18px rgba(0,229,255,0.1);
 }
 
-/* ─── WHITE GLOW LINE (ticker borders) ─── */
+/* âââ WHITE GLOW LINE (ticker borders) âââ */
 .glow-line-white {
   height: 1px; flex-shrink: 0;
   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 8%, rgba(255,255,255,0.65) 35%, rgba(255,255,255,0.65) 65%, rgba(255,255,255,0.08) 92%, transparent 100%);
   box-shadow: 0 0 6px rgba(255,255,255,0.35), 0 0 16px rgba(255,255,255,0.08);
 }
 
-/* ─── TOP BAR ─── */
+/* âââ TOP BAR âââ */
 .top-bar {
   flex-shrink: 0; background: #0a0a20; height: 50px;
   display: flex; align-items: center; padding: 0 24px; position: relative;
@@ -54,7 +54,7 @@ body {
 .watch-pill:hover { border-color:rgba(139,92,246,0.6); }
 .play { font-size:9px; color:#a78bfa; }
 
-/* ─── TICKER ─── */
+/* âââ TICKER âââ */
 .ticker { flex-shrink:0; background:#000; height:46px; overflow:hidden; display:flex; align-items:center; border-bottom:1px solid rgba(0,212,255,0.18); }
 .ticker-track { display:flex; align-items:center; width:max-content; white-space:nowrap; }
 .ticker-track.animating { animation:tick 56s linear infinite; }
@@ -77,7 +77,7 @@ body {
 .tup { color:#22d3a3; font-size:10.5px; font-weight:700; }
 .tdn { color:#f87171; font-size:10.5px; font-weight:700; }
 
-/* ─── HORIZONTAL NAV ─── */
+/* âââ HORIZONTAL NAV âââ */
 .h-nav {
   flex-shrink:0; background:#0a0a20; height:42px;
   display:flex; align-items:stretch; padding:0 24px; justify-content:space-between;
@@ -118,13 +118,13 @@ body {
 .hnav-right a:hover { color:rgba(255,255,255,0.6); }
 .hnav-pipe { color:rgba(255,255,255,0.08); }
 
-/* ─── BODY LAYOUT ─── */
+/* âââ BODY LAYOUT âââ */
 .body-row { flex:1; display:flex; overflow:hidden; min-height:0; }
 
-/* ─── SIDEBAR WRAPPER ─── */
+/* âââ SIDEBAR WRAPPER âââ */
 .sb-wrap { position:relative; flex-shrink:0; display:flex; }
 
-/* ─── LEFT SIDEBAR ─── */
+/* âââ LEFT SIDEBAR âââ */
 .l-sidebar {
   width:228px; flex-shrink:0; background:#08081c;
   border-right:1px solid rgba(255,255,255,0.06);
@@ -176,7 +176,7 @@ body {
 .range-fill { position:absolute; left:0; right:18%; height:100%; background:linear-gradient(90deg,#0099bb,#00e5ff); border-radius:2px; box-shadow:0 0 6px rgba(0,229,255,0.35); }
 .range-nums { display:flex; justify-content:space-between; font-size:9px; color:rgba(255,255,255,0.28); }
 
-/* ─── COLLAPSE TAB ─── */
+/* âââ COLLAPSE TAB âââ */
 .collapse-tab {
   position:absolute; top:50%; right:-28px; transform:translateY(-50%);
   width:28px; height:56px; background:#0d0d26;
@@ -193,7 +193,7 @@ body {
 .collapse-tab .ct-line { width:10px; height:1.5px; background:rgba(0,229,255,0.3); border-radius:1px; }
 .sb-wrap.is-collapsed .ct-arrow { transform:scaleX(-1); display:inline-block; }
 
-/* ─── MAIN CONTENT ─── */
+/* âââ MAIN CONTENT âââ */
 .main-content { flex:1; display:flex; flex-direction:column; overflow:hidden; min-width:0; }
 .content-head { padding:16px 22px 11px; border-bottom:1px solid rgba(255,255,255,0.055); flex-shrink:0; }
 .content-title { font-size:19px; font-weight:400; letter-spacing:-.4px; margin-bottom:3px; }
@@ -205,7 +205,7 @@ body {
 .meta-link { color:rgba(0,229,255,0.48); cursor:pointer; }
 .meta-link:hover { color:rgba(0,229,255,0.8); }
 
-/* ─── TOOLBAR ─── */
+/* âââ TOOLBAR âââ */
 .toolbar {
   display:flex; align-items:center; justify-content:space-between;
   padding:8px 22px; border-bottom:1px solid rgba(255,255,255,0.045); flex-shrink:0;
@@ -234,7 +234,7 @@ body {
 }
 .vt-btn.active { background:rgba(0,229,255,0.1); color:#00e5ff; box-shadow:0 0 8px rgba(0,229,255,0.12); }
 
-/* ─── TABLE ─── */
+/* âââ TABLE âââ */
 .lb-wrap { flex:1; overflow-y:auto; scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.07) transparent; }
 .lb-table { width:100%; border-collapse:collapse; }
 .lb-table thead tr { background:#09091e; border-bottom:1px solid rgba(255,255,255,0.06); position:sticky; top:0; z-index:2; }
@@ -249,7 +249,7 @@ body {
 .lb-table tbody tr { height:52px; cursor:pointer; transition:background .13s; }
 .lb-table tbody tr:hover { background:rgba(0,229,255,0.025) !important; }
 
-/* Top 3 highlights — full-row glowing borders */
+/* Top 3 highlights â full-row glowing borders */
 .row-1 { background:linear-gradient(90deg, rgba(255,215,0,0.07) 0%, rgba(255,215,0,0.02) 50%, transparent 100%); }
 .row-1 td { border-top:1px solid rgba(255,215,0,0.38) !important; border-bottom:1px solid rgba(255,215,0,0.38) !important; box-shadow:0 0 8px rgba(255,215,0,0.06) inset; }
 .row-1:hover { background:linear-gradient(90deg, rgba(255,215,0,0.11) 0%, rgba(255,215,0,0.04) 50%, transparent 100%) !important; }
@@ -304,7 +304,7 @@ body.compact .lb-table tbody tr { height:40px; }
 .spinner { width:18px; height:18px; border:2px solid rgba(0,229,255,0.15); border-top-color:#00e5ff; border-radius:50%; animation:spin .7s linear infinite; }
 @keyframes spin { to { transform:rotate(360deg); } }
 
-/* ─── MODEL MODAL ─── */
+/* âââ MODEL MODAL âââ */
 #v2-modal-backdrop {
   display:none; position:fixed; inset:0; z-index:9999;
   background:rgba(0,0,0,0.82); backdrop-filter:blur(6px);
@@ -347,7 +347,7 @@ body.compact .lb-table tbody tr { height:40px; }
 .v2-panel { flex:1; overflow-y:auto; padding:18px;
   scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.07) transparent; }
 #v2-panel-about { padding:0; overflow:hidden; }
-/* ── mm-* card classes (ported from main card) ── */
+/* ââ mm-* card classes (ported from main card) ââ */
 .mm-scroll { position:relative;z-index:1;overflow-y:auto;padding:18px 16px 16px;display:flex;flex-direction:column;gap:14px;height:100%;box-sizing:border-box;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.07) transparent; }
 .mm-watermark { position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:95%;opacity:0.12;pointer-events:none;z-index:0;filter:grayscale(100%) brightness(2);-webkit-mask-image:radial-gradient(ellipse 70% 75% at 50% 65%, black 20%, transparent 75%);mask-image:radial-gradient(ellipse 70% 75% at 50% 65%, black 20%, transparent 75%); }
 .mm-header { display:flex;flex-direction:row;align-items:center;gap:14px; }
@@ -377,7 +377,7 @@ body.compact .lb-table tbody tr { height:40px; }
 .mm-tier-pill.active { background:rgba(255,255,255,0.1);color:#ffffff;border:1px solid rgba(255,255,255,0.35);text-shadow:0 0 6px rgba(255,255,255,0.4); }
 .mm-bio { font-size:15px;line-height:1.6;color:rgba(255,255,255,0.6);min-height:0; }
 .mm-released { text-align:center;font-size:15px;font-weight:700;color:rgba(255,255,255,0.75);letter-spacing:0.5px;margin-top:auto;padding-top:2px;text-shadow:0 0 8px rgba(255,255,255,0.3); }
-/* ── Trend panel ── */
+/* ââ Trend panel ââ */
 #v2-panel-trend { padding:14px 16px 16px; overflow:hidden; }
 #v2-trend-hero { display:flex; flex-direction:column; gap:3px; padding:2px 0 6px; }
 #v2-trend-hero-score { font-size:32px; font-weight:800; color:#ffffff; line-height:1; text-shadow:0 0 18px rgba(255,255,255,0.55),0 0 36px rgba(255,255,255,0.2); letter-spacing:-0.5px; }
@@ -395,7 +395,7 @@ body.compact .lb-table tbody tr { height:40px; }
 </head>
 <body id="mainbody">
 
-<!-- ══ TOP BAR ══════════════════════════════════ -->
+<!-- ââ TOP BAR ââââââââââââââââââââââââââââââââââ -->
 <div class="top-bar">
   <div class="logo-block">
     <span class="logo-text">Training Run</span>
@@ -404,17 +404,17 @@ body.compact .lb-table tbody tr { height:40px; }
   <div class="top-center" id="todayDate"></div>
   <div class="top-right">
     <div class="watch-pill" onclick="window.location.href='news.html'" style="margin-right:10px;">
-      <span class="play">🗞️</span> Daily News
+      <span class="play">ðï¸</span> Daily News
     </div>
     <div class="watch-pill" onclick="window.open('https://www.youtube.com/watch?v=7rZEPc6vXZo','_blank')">
-      <span class="play">▶</span> Watch Latest Episode
+      <span class="play">â¶</span> Watch Latest Episode
     </div>
   </div>
 </div>
 
 <div class="glow-line"></div>
 
-<!-- ══ TICKER ═══════════════════════════════════ -->
+<!-- ââ TICKER âââââââââââââââââââââââââââââââââââ -->
 <div class="glow-line-white"></div>
 <div class="ticker">
   <div class="ticker-track" id="tickerTrack">
@@ -423,14 +423,10 @@ body.compact .lb-table tbody tr { height:40px; }
 </div>
 <div class="glow-line-white"></div>
 
-<!-- ══ MAIN NAV TABS ═════════════════════════════ -->
+<!-- ââ MAIN NAV TABS âââââââââââââââââââââââââââââ -->
 <div class="h-nav">
   <div class="htabs">
         <div class="htab active" data-ddp="trsbench" onclick="setDDP('trsbench')"><span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TRS</span>bench</span> <span class="tpill">(Overall)</span></div>
-    <div class="htab" data-ddp="truscore" onclick="setDDP('truscore')"><span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TRU</span>score</span> <span class="tpill">(Truth)</span></div>
-    <div class="htab" data-ddp="trscode" onclick="setDDP('trscode')"><span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TRS</span>code</span> <span class="tpill">(Coding)</span></div>
-    <div class="htab" data-ddp="trfcast" onclick="setDDP('trfcast')"><span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TRF</span>cast</span> <span class="tpill">(Prediction)</span></div>
-    <div class="htab" data-ddp="tragents" onclick="setDDP('tragents')"><span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TR</span><span style="color:#f87171">Agents</span></span> <span class="tpill">(Agents)</span></div>
       <a href="https://tsarena.ai" target="_blank" class="htab arena-hl">
         <span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TS</span> Arena</span> <span class="tpill" style="background:rgba(0,229,255,0.12);color:#00e5ff;border:1px solid rgba(0,229,255,0.3)">AI &amp; Safety</span>
       </a>
@@ -443,7 +439,7 @@ body.compact .lb-table tbody tr { height:40px; }
 </div>
 <div class="glow-line"></div>
 
-<!-- ══ BODY ══════════════════════════════════════ -->
+<!-- ââ BODY ââââââââââââââââââââââââââââââââââââââ -->
 <div class="body-row">
 
   <!-- SIDEBAR WRAPPER -->
@@ -451,7 +447,7 @@ body.compact .lb-table tbody tr { height:40px; }
     <div class="l-sidebar" id="sidebar">
 
       <div class="sb-section">
-        <div class="sb-section-header">Rank by <span class="sb-chevron">▾</span></div>
+        <div class="sb-section-header">Rank by <span class="sb-chevron">â¾</span></div>
         <div class="rank-toggle">
           <div class="rtab active" onclick="setRankBy('models',this)">Models</div>
           <div class="rtab" onclick="setRankBy('labs',this)">Labs</div>
@@ -459,21 +455,21 @@ body.compact .lb-table tbody tr { height:40px; }
       </div>
 
       <div class="sb-section" id="pillarSection">
-        <div class="sb-section-header prominent" id="pillarHeader">Pillars <span class="sb-chevron">▾</span></div>
+        <div class="sb-section-header prominent" id="pillarHeader">Pillars <span class="sb-chevron">â¾</span></div>
         <div class="pillar-list" id="pillarList">
           <!-- populated dynamically by buildPillarSidebar() -->
         </div>
       </div>
 
       <div class="sb-section">
-        <div class="sb-section-header prominent">Filter by Lab <span class="sb-chevron">▾</span></div>
+        <div class="sb-section-header prominent">Filter by Lab <span class="sb-chevron">â¾</span></div>
         <div class="lab-list" id="labList">
           <!-- populated by JS -->
         </div>
       </div>
 
       <div class="sb-section">
-        <div class="sb-section-header">License <span class="sb-chevron">▾</span></div>
+        <div class="sb-section-header">License <span class="sb-chevron">â¾</span></div>
         <div class="lic-list">
           <div class="lic-item" onclick="setLicense('all',this)"><div class="radio on"></div> All</div>
           <div class="lic-item" onclick="setLicense('proprietary',this)"><div class="radio"></div> Proprietary</div>
@@ -482,7 +478,7 @@ body.compact .lb-table tbody tr { height:40px; }
       </div>
 
       <div class="sb-section">
-        <div class="sb-section-header">Score Range <span class="sb-chevron">▾</span></div>
+        <div class="sb-section-header">Score Range <span class="sb-chevron">â¾</span></div>
         <div class="range-bar"><div class="range-fill"></div></div>
         <div class="range-nums"><span>0</span><span>100</span></div>
       </div>
@@ -491,7 +487,7 @@ body.compact .lb-table tbody tr { height:40px; }
 
     <!-- COLLAPSE TAB -->
     <div class="collapse-tab" id="collapseBtn" onclick="toggleSidebar()" title="Collapse / expand filters">
-      <div class="ct-arrow">‹</div>
+      <div class="ct-arrow">â¹</div>
       <div class="ct-lines">
         <div class="ct-line"></div>
         <div class="ct-line"></div>
@@ -504,17 +500,17 @@ body.compact .lb-table tbody tr { height:40px; }
   <div class="main-content">
 
     <div class="content-head">
-      <div class="content-title"><span class="hl">TRS</span>bench — Overall Rankings</div>
-      <div class="content-sub">Weighted composite · 10 pillars · 25 verified cited sources · Independent &amp; transparent</div>
+      <div class="content-title"><span class="hl">TRS</span>bench â Overall Rankings</div>
+      <div class="content-sub">Weighted composite Â· 10 pillars Â· 25 verified cited sources Â· Independent &amp; transparent</div>
       <div class="content-meta">
         <div class="meta-dot"></div>
-        <span id="metaUpdate">Loading…</span>
+        <span id="metaUpdate">Loadingâ¦</span>
         <span style="color:rgba(255,255,255,0.1)">|</span>
         <span id="metaSources">25/25 sources fired</span>
         <span style="color:rgba(255,255,255,0.1)">|</span>
-        <span id="metaCount">— models ranked</span>
+        <span id="metaCount">â models ranked</span>
         <span style="color:rgba(255,255,255,0.1)">|</span>
-        <a href="trsmethodology.html" class="meta-link">View Methodology →</a>
+        <a href="trsmethodology.html" class="meta-link">View Methodology â</a>
       </div>
     </div>
 
@@ -522,13 +518,13 @@ body.compact .lb-table tbody tr { height:40px; }
     <div class="toolbar">
       <div class="t-left">
         <!-- filter pills removed for now -->
-        <div class="f-pill" id="activePillarPill" style="display:none">Overall ✓</div>
+        <div class="f-pill" id="activePillarPill" style="display:none">Overall â</div>
         <div class="f-pill-plain" id="activeLabPill" style="display:none">All Labs</div>
       </div>
       <div class="t-right">
         <div class="search-box">
-          <span>🔍</span>
-          <input id="searchInput" type="text" placeholder="Search models…"
+          <span>ð</span>
+          <input id="searchInput" type="text" placeholder="Search modelsâ¦"
             style="background:none;border:none;outline:none;color:rgba(255,255,255,0.7);font-size:11px;width:120px;"
             oninput="renderTable()">
         </div>
@@ -546,7 +542,7 @@ body.compact .lb-table tbody tr { height:40px; }
           <tr id="theadRow">
             <th style="width:52px;text-align:center">#</th>
             <th>Model</th>
-            <th style="min-width:130px">Score <span class="sort-icon">↓</span></th>
+            <th style="min-width:130px">Score <span class="sort-icon">â</span></th>
             <th>Safety <span style="font-size:8px;color:rgba(255,255,255,0.2)">21%</span></th>
             <th>Reasoning <span style="font-size:8px;color:rgba(255,255,255,0.2)">20%</span></th>
             <th>Coding <span style="font-size:8px;color:rgba(255,255,255,0.2)">20%</span></th>
@@ -557,7 +553,7 @@ body.compact .lb-table tbody tr { height:40px; }
           </tr>
         </thead>
         <tbody id="tableBody">
-          <tr><td colspan="12"><div class="loading-state"><div class="spinner"></div> Loading live scores…</div></td></tr>
+          <tr><td colspan="12"><div class="loading-state"><div class="spinner"></div> Loading live scoresâ¦</div></td></tr>
         </tbody>
       </table>
     </div>
@@ -566,7 +562,7 @@ body.compact .lb-table tbody tr { height:40px; }
 </div><!-- /body-row -->
 
 <script>
-// ══ CONFIG ══════════════════════════════════════════
+// ââ CONFIG ââââââââââââââââââââââââââââââââââââââââââ
 const LAB_COLORS = {
   'Anthropic':  { bg:'rgba(204,93,57,0.22)',  dot:'rgba(204,93,57,0.75)',  init:'A'  },
   'Google':     { bg:'rgba(66,133,244,0.2)',  dot:'rgba(66,133,244,0.75)', init:'G'  },
@@ -617,86 +613,30 @@ function logoImg(company, size) {
   return '<span style="width:' + s + 'px;height:' + s + 'px;border-radius:4px;background:' + lc.bg + ';display:inline-flex;align-items:center;justify-content:center;font-size:' + Math.round(s*0.45) + 'px;font-weight:700;color:rgba(255,255,255,0.5);flex-shrink:0">' + lc.init + '</span>';
 }
 
-// ══ DDP CONFIG ════════════════════════════════════════
+// ââ DDP CONFIG ââââââââââââââââââââââââââââââââââââââââ
 const DDP_CONFIG = {
   trsbench: {
-    title: '<span class="hl">TRS</span>bench — Unified Rankings',
-    sub: 'Weighted composite · 10 pillars · Formula TR2-unified-v1.3 · Coverage bonus: +3% per pillar above 5, +5% for 10/10',
+    title: '<span class="hl">TRS</span>bench â Unified Rankings',
+    sub: 'Weighted composite Â· 10 pillars Â· Formula TR2-unified-v1.3 Â· Coverage bonus: +3% per pillar above 5, +5% for 10/10',
     file: 'trs-data-unified.json', totalPillars: 10, sourceCount: 25,
     methLink: 'trsmethodology.html',
     pillars: [
-      { key:'safety',              label:'Safe',     icon:'🛡️', pct:'16%', compact:false },
-      { key:'truth_confabulation', label:'Truth',    icon:'🔍', pct:'14%', compact:false },
-      { key:'reasoning',           label:'Reason',   icon:'🧠', pct:'13%', compact:false },
-      { key:'human_preference',    label:'Pref',     icon:'📋', pct:'11%', compact:false },
-      { key:'coding',              label:'Code',     icon:'💻', pct:'11%', compact:false },
-      { key:'agent_capability',    label:'Agent',    icon:'🤖', pct:'10%', compact:true  },
-      { key:'knowledge',           label:'Know',     icon:'📚', pct:'8%',  compact:true  },
-      { key:'forecasting_finance', label:'Fcast',    icon:'📈', pct:'7%',  compact:true  },
-      { key:'efficiency',          label:'Effic',    icon:'⚡', pct:'5%',  compact:true  },
-      { key:'usage_adoption',      label:'Usage',    icon:'📊', pct:'5%',  compact:true  },
-    ],
-  },
-  truscore: {
-    title: '<span class="hl">TRU</span>score — Truth Rankings',
-    sub: 'Weighted composite · 5 pillars · 9 verified sources · Independent &amp; transparent',
-    file: 'truscore-data.json', totalPillars: 5, sourceCount: 9, minSources: 3,
-    methLink: 'truscore.html',
-    pillars: [
-      { key:'truthfulness',     label:'Truthfulness',      icon:'✅', pct:'35%', compact:false },
-      { key:'hallucination',    label:'Confabulation',     icon:'🧠', pct:'20%', compact:false },
-      { key:'reasoning',        label:'Reasoning',         icon:'🔬', pct:'20%', compact:false },
-      { key:'neutrality',       label:'Neutrality',        icon:'⚖️', pct:'15%', compact:false },
-      { key:'response_quality', label:'Response Quality',  icon:'🎯', pct:'10%', compact:true  },
-    ],
-  },
-  trscode: {
-    title: '<span class="hl">TRS</span>code — Coding Rankings',
-    sub: 'Weighted composite · 5 pillars · 8 verified sources · Independent &amp; transparent',
-    file: 'trscode-data.json', totalPillars: 5, sourceCount: 8,
-        minSources: 1,
-    methLink: 'trscode-methodology.html',
-    pillars: [
-      { key:'issue_resolution',  label:'Issue Res.',  icon:'🔧', pct:'30%', compact:false },
-      { key:'code_generation',   label:'Code Gen.',   icon:'💡', pct:'25%', compact:false },
-      { key:'agentic_coding',    label:'Agentic',     icon:'🤖', pct:'20%', compact:false },
-      { key:'scientific',        label:'Scientific',  icon:'🔬', pct:'15%', compact:true  },
-      { key:'human_preference',  label:'Human Pref',  icon:'👥', pct:'10%', compact:true  },
-    ],
-  },
-  trfcast: {
-    title: '<span class="hl">TRF</span>cast — Prediction Rankings',
-    sub: 'Weighted composite · 5 pillars · 4 verified sources · Independent &amp; transparent',
-    file: 'trf-data.json', totalPillars: 5, sourceCount: 4,
-    minSources: 1,
-    methLink: 'trfcast-methodology.html',
-    pillars: [
-      { key:'forecasting',         label:'Forecasting',    icon:'🔮', pct:'35%', compact:false },
-      { key:'trading',             label:'Trading',        icon:'📈', pct:'25%', compact:false },
-      { key:'calibration',         label:'Calibration',    icon:'🎯', pct:'20%', compact:false },
-      { key:'financial_reasoning', label:'Fin. Reasoning', icon:'💰', pct:'12%', compact:true  },
-      { key:'market_intelligence', label:'Market Intel',   icon:'🧮', pct:'8%',  compact:true  },
-    ],
-  },
-  tragents: {
-    title: '<span class="hl">TR</span><span style="color:#f87171">Agents</span> — Agent Rankings',
-    sub: 'Weighted composite · 6 pillars · 10+ verified sources · Independent &amp; transparent',
-    file: 'tragent-data.json', totalPillars: 6, sourceCount: 10,
-    minSources: 3,
-    methLink: 'tragents-methodology.html',
-    pillars: [
-      { key:'task_completion',  label:'Task Completion',  icon:'✅', pct:'25%', compact:false },
-      { key:'cost_efficiency',  label:'Cost Efficiency',  icon:'💰', pct:'20%', compact:false },
-      { key:'tool_reliability', label:'Tool Reliability', icon:'🔧', pct:'20%', compact:false },
-      { key:'safety_security',  label:'Safety',           icon:'🛡️', pct:'15%', compact:true  },
-      { key:'accessibility',    label:'Accessibility',    icon:'🌐', pct:'10%', compact:true  },
-      { key:'multi_model',      label:'Multi-Model',      icon:'🤝', pct:'10%', compact:true  },
+      { key:'safety',              label:'Safe',     icon:'ð¡ï¸', pct:'16%', compact:false },
+      { key:'truth_confabulation', label:'Truth',    icon:'ð', pct:'14%', compact:false },
+      { key:'reasoning',           label:'Reason',   icon:'ð§ ', pct:'13%', compact:false },
+      { key:'human_preference',    label:'Pref',     icon:'ð', pct:'11%', compact:false },
+      { key:'coding',              label:'Code',     icon:'ð»', pct:'11%', compact:false },
+      { key:'agent_capability',    label:'Agent',    icon:'ð¤', pct:'10%', compact:true  },
+      { key:'knowledge',           label:'Know',     icon:'ð', pct:'8%',  compact:true  },
+      { key:'forecasting_finance', label:'Fcast',    icon:'ð', pct:'7%',  compact:true  },
+      { key:'efficiency',          label:'Effic',    icon:'â¡', pct:'5%',  compact:true  },
+      { key:'usage_adoption',      label:'Usage',    icon:'ð', pct:'5%',  compact:true  },
     ],
   },
 };
 
-// ══ STATE ════════════════════════════════════════════
-const _ddpData = { trsbench:null, truscore:null, trscode:null, trfcast:null, tragents:null };
+// ââ STATE ââââââââââââââââââââââââââââââââââââââââââââ
+const _ddpData = { trsbench:null };
 let currentDDP = 'trsbench';
 function activeData(){ return _ddpData[currentDDP]; }
 function getColspan(){ return 3 + DDP_CONFIG[currentDDP].pillars.length; }
@@ -705,7 +645,7 @@ let activeFilter = { lab:'All Labs', license:'all' };
 let searchQuery = '';
 let currentRankMode = 'models';
 
-// ══ UTILITIES ════════════════════════════════════════
+// ââ UTILITIES ââââââââââââââââââââââââââââââââââââââââ
 function fmtDate(iso){
   const [,m,d] = iso.split('-');
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -762,32 +702,32 @@ function sparkColor(pts){
   return 'rgba(0,229,255,0.35)';
 }
 
-// ══ THEAD + SIDEBAR PILLAR RENDERERS ═════════════════
+// ââ THEAD + SIDEBAR PILLAR RENDERERS âââââââââââââââââ
 function renderThead(){
   const pillars = DDP_CONFIG[currentDDP].pillars;
   const ths = pillars.map(p =>
     `<th${p.compact?' class="hide-compact"':''} style="font-size:11px;padding:6px 4px;white-space:nowrap">${p.label}</th>`
   ).join('');
   document.getElementById('theadRow').innerHTML =
-    `<th style="width:52px;text-align:center">#</th><th>Model</th><th style="min-width:130px">Score <span class="sort-icon">↓</span></th>${ths}`;
+    `<th style="width:52px;text-align:center">#</th><th>Model</th><th style="min-width:130px">Score <span class="sort-icon">â</span></th>${ths}`;
 }
 
 function buildPillarSidebar(){
   const cfg = DDP_CONFIG[currentDDP];
   document.getElementById('pillarHeader').innerHTML =
-    `Pillars (${cfg.totalPillars}) <span class="sb-chevron">▾</span>`;
+    `Pillars (${cfg.totalPillars}) <span class="sb-chevron">â¾</span>`;
   document.getElementById('pillarList').innerHTML =
-    `<div class="pillar-item active" onclick="setPillar('overall',this)"><span class="p-icon">🏆</span> Overall <span class="p-check">✓</span></div>` +
+    `<div class="pillar-item active" onclick="setPillar('overall',this)"><span class="p-icon">ð</span> Overall <span class="p-check">â</span></div>` +
     `<div style="height:1px;background:rgba(0,229,255,0.2);margin:6px 0;"></div>` +
     `<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:0.1em;padding:4px 12px;text-transform:uppercase;">Category</div>` +
     `<div style="height:1px;background:rgba(255,255,255,0.08);margin:2px 0 4px;"></div>` +
     cfg.pillars.map(p =>
       `<div class="pillar-item" onclick="setPillar('${p.key}',this)" style="padding-left:24px"><span class="p-icon">${p.icon}</span> ${p.label}</div>`
     ).join('');
-  document.getElementById('activePillarPill').textContent = 'Overall ✓';
+  document.getElementById('activePillarPill').textContent = 'Overall â';
 }
 
-// ══ SET DDP ═══════════════════════════════════════════
+// ââ SET DDP âââââââââââââââââââââââââââââââââââââââââââ
 function setDDP(ddp){
   if(currentDDP === ddp && activeData()) return;
   currentDDP = ddp;
@@ -819,11 +759,11 @@ function setDDP(ddp){
     buildLabFilter(data.models);
     renderTable();
     const lastDate = data.dates?.length ? data.dates[data.dates.length-1] : null;
-    if(lastDate) document.getElementById('metaUpdate').textContent = '↻ Updated ' + fmtDate(lastDate) + (data.run_at ? ' · ' + data.run_at : '');
+    if(lastDate) document.getElementById('metaUpdate').textContent = 'â» Updated ' + fmtDate(lastDate) + (data.run_at ? ' Â· ' + data.run_at : '');
     document.getElementById('metaSources').textContent = cfg.sourceCount + '/' + cfg.sourceCount + ' sources fired';
   } else {
     document.getElementById('tableBody').innerHTML =
-      `<tr><td colspan="${getColspan()}"><div class="loading-state"><div class="spinner"></div> Loading ${cfg.title.replace(/<[^>]*>/g,'')} data…</div></td></tr>`;
+      `<tr><td colspan="${getColspan()}"><div class="loading-state"><div class="spinner"></div> Loading ${cfg.title.replace(/<[^>]*>/g,'')} dataâ¦</div></td></tr>`;
     fetch(cfg.file + '?v=' + Date.now())
       .then(r => r.json())
       .then(d => {
@@ -832,28 +772,28 @@ function setDDP(ddp){
         buildLabFilter(d.models);
         renderTable();
         const lastDate = d.dates?.length ? d.dates[d.dates.length-1] : null;
-        if(lastDate) document.getElementById('metaUpdate').textContent = '↻ Updated ' + fmtDate(lastDate) + (d.run_at ? ' · ' + d.run_at : '');
+        if(lastDate) document.getElementById('metaUpdate').textContent = 'â» Updated ' + fmtDate(lastDate) + (d.run_at ? ' Â· ' + d.run_at : '');
         document.getElementById('metaSources').textContent = cfg.sourceCount + '/' + cfg.sourceCount + ' sources fired';
       })
       .catch(() => {
         if(currentDDP === ddp)
           document.getElementById('tableBody').innerHTML =
-            `<tr><td colspan="${getColspan()}"><div class="loading-state" style="color:rgba(248,113,113,0.8)">⚠ Failed to load data</div></td></tr>`;
+            `<tr><td colspan="${getColspan()}"><div class="loading-state" style="color:rgba(248,113,113,0.8)">â  Failed to load data</div></td></tr>`;
       });
   }
 }
 
-// Pillar score cell — highlights the top score in each column
+// Pillar score cell â highlights the top score in each column
 function pCol(model, pillar){
   const ps = model.pillar_scores;
-  if(!ps || ps[pillar] == null) return '<span style="font-size:10px;color:rgba(255,255,255,0.18)">—</span>';
+  if(!ps || ps[pillar] == null) return '<span style="font-size:10px;color:rgba(255,255,255,0.18)">â</span>';
   const val = ps[pillar];
   // Highlight if this pillar score is notably high (>=90)
   const hi = val >= 90 ? ' hi' : '';
   return `<span class="pcol${hi}">${val.toFixed(1)}</span>`;
 }
 
-// ══ RENDER TABLE ═════════════════════════════════════
+// ââ RENDER TABLE âââââââââââââââââââââââââââââââââââââ
 function renderTable(){
   const data = activeData();
   if(!data) return;
@@ -894,7 +834,7 @@ function renderTable(){
   const estimatedModels = models.filter(m => (m.tier === 'estimated' || getCoverage(m) < 5) && getCoverage(m) >= 3);
   const minimalModels = models.filter(m => getCoverage(m) < 3 && m.tier !== 'verified');
 
-  // Build rows for a group of models — tierLevel: 'verified', 'estimated', or 'minimal'
+  // Build rows for a group of models â tierLevel: 'verified', 'estimated', or 'minimal'
   function buildRows(group, tierLevel){
     const cfgPillars = DDP_CONFIG[currentDDP].pillars;
     const totalP = DDP_CONFIG[currentDDP].totalPillars;
@@ -914,15 +854,15 @@ function renderTable(){
       const dimStyle = (tierLevel !== 'verified') ? 'opacity:0.7;' : '';
 
     let rankHTML;
-    if(showMedals && tierRank===1) rankHTML = `<div class="rank-cell"><span class="medal medal-gold">🥇</span></div>`;
-    else if(showMedals && tierRank===2) rankHTML = `<div class="rank-cell"><span class="medal medal-silver">🥈</span></div>`;
-    else if(showMedals && tierRank===3) rankHTML = `<div class="rank-cell"><span class="medal medal-bronze">🥉</span></div>`;
+    if(showMedals && tierRank===1) rankHTML = `<div class="rank-cell"><span class="medal medal-gold">ð¥</span></div>`;
+    else if(showMedals && tierRank===2) rankHTML = `<div class="rank-cell"><span class="medal medal-silver">ð¥</span></div>`;
+    else if(showMedals && tierRank===3) rankHTML = `<div class="rank-cell"><span class="medal medal-bronze">ð¥</span></div>`;
     else rankHTML = `<div class="rank-cell">${tierRank}</div>`;
 
     let chgHTML;
     if(Math.abs(chg) < 0.005) chgHTML = `<span class="chg nc">+0.00</span>`;
-    else if(chg > 0) chgHTML = `<span class="chg up">↑ ${chg.toFixed(2)}</span>`;
-    else chgHTML = `<span class="chg dn">↓ ${Math.abs(chg).toFixed(2)}</span>`;
+    else if(chg > 0) chgHTML = `<span class="chg up">â ${chg.toFixed(2)}</span>`;
+    else chgHTML = `<span class="chg dn">â ${Math.abs(chg).toFixed(2)}</span>`;
 
     let rowClass = '';
     if(showMedals && tierRank===1) rowClass = 'row-1';
@@ -955,13 +895,13 @@ function renderTable(){
   const estimatedDivider = estimatedModels.length ? `
     <tr><td colspan="${getColspan()}" style="padding:8px 16px;background:rgba(0,229,255,0.04);border-top:2px solid rgba(0,229,255,0.25);border-bottom:1px solid rgba(0,229,255,0.1);">
       <span style="font-size:11px;font-weight:700;color:rgba(0,229,255,0.7);letter-spacing:0.1em">ESTIMATED</span>
-      <span style="font-size:10px;color:rgba(255,255,255,0.35);margin-left:12px">3–4 pillars covered · Scores may shift as more data comes in</span>
+      <span style="font-size:10px;color:rgba(255,255,255,0.35);margin-left:12px">3â4 pillars covered Â· Scores may shift as more data comes in</span>
     </td></tr>` : '';
 
   const minimalDivider = minimalModels.length ? `
     <tr><td colspan="${getColspan()}" style="padding:8px 16px;background:rgba(255,200,0,0.03);border-top:2px solid rgba(255,200,0,0.2);border-bottom:1px solid rgba(255,200,0,0.08);">
       <span style="font-size:11px;font-weight:700;color:rgba(255,200,0,0.6);letter-spacing:0.1em">MINIMAL DATA</span>
-      <span style="font-size:10px;color:rgba(255,255,255,0.35);margin-left:12px">1–2 pillars · Incomplete coverage</span>
+      <span style="font-size:10px;color:rgba(255,255,255,0.35);margin-left:12px">1â2 pillars Â· Incomplete coverage</span>
     </td></tr>` : '';
 
   tbody.innerHTML = buildRows(verifiedModels, 'verified')
@@ -971,8 +911,8 @@ function renderTable(){
     + buildRows(minimalModels, 'minimal');
 }
 
-// ══ BUILD TICKER ═════════════════════════════════════
-// ══ TICKER — mirrors original homepage exactly ════════════════════════════
+// ââ BUILD TICKER âââââââââââââââââââââââââââââââââââââ
+// ââ TICKER â mirrors original homepage exactly ââââââââââââââââââââââââââââ
 const TICKER_LOGOS = {
   anthropic: 'https://www.google.com/s2/favicons?domain=anthropic.com&sz=64',
   openai:    'https://www.google.com/s2/favicons?domain=openai.com&sz=64',
@@ -1001,10 +941,6 @@ function makeTickerItem(logoUrl, company, cat, name, valHtml, href){
 function buildTicker(datasets){
   const benches = [
     {catHtml:'#1 <span style="color:#00d4ff">TRS</span><span style="color:rgba(255,255,255,0.75)">bench</span>',  url:'/scores',         data:datasets[0]},
-    {catHtml:'#1 <span style="color:#00d4ff">TRU</span><span style="color:rgba(255,255,255,0.75)">score</span>', url:'/truscore-scores', data:datasets[1]},
-    {catHtml:'#1 <span style="color:#00d4ff">TRS</span><span style="color:rgba(255,255,255,0.75)">code</span>',  url:'/trscode-scores',  data:datasets[2]},
-    {catHtml:'#1 <span style="color:#00d4ff">TRF</span><span style="color:rgba(255,255,255,0.75)">cast</span>',  url:'/trfcast-scores',  data:datasets[3]},
-    {catHtml:'#1 <span style="color:#00d4ff">TR</span><span style="color:#ff5252">Agents</span>',                url:'/tragents',        data:datasets[4]},
   ];
   const items = [];
   let bigGain = {delta:-Infinity, name:null};
@@ -1049,22 +985,18 @@ function buildTicker(datasets){
   track.style.animationDuration = Math.max(24, items.length * 7) + 's';
   track.classList.add('animating');
 }
-// Load all 5 DDP feeds for ticker (independent of main table fetch)
+// Load TRSbench feed for ticker (independent of main table fetch)
 Promise.all([
   fetch('trs-data.json?v='+Date.now()).then(r=>r.json()),
-  fetch('truscore-data.json?v='+Date.now()).then(r=>r.json()),
-  fetch('trscode-data.json?v='+Date.now()).then(r=>r.json()),
-  fetch('trf-data.json?v='+Date.now()).then(r=>r.json()),
-  fetch('tragent-data.json?v='+Date.now()).then(r=>r.json()),
 ]).then(function(datasets){
   // Cache all DDP data so About card works cross-benchmark without extra fetches
-  ['trsbench','truscore','trscode','trfcast','tragents'].forEach(function(k,i){
+  ['trsbench'].forEach(function(k,i){
     if(!_ddpData[k]) _ddpData[k] = datasets[i];
   });
   buildTicker(datasets);
 }).catch(e => console.warn('Ticker error:', e));
 
-// ══ BUILD LAB FILTER ═════════════════════════════════
+// ââ BUILD LAB FILTER âââââââââââââââââââââââââââââââââ
 function buildLabFilter(models){
   const TOP_LABS = ['Google','xAI','Anthropic','DeepSeek','OpenAI','Meta'];
   const allLabs = [...new Set(models.map(m=>m.company).filter(Boolean))];
@@ -1086,7 +1018,7 @@ function buildLabFilter(models){
     + rest.map(makeItem).join('');
 }
 
-// ══ FILTER HANDLERS ══════════════════════════════════
+// ââ FILTER HANDLERS ââââââââââââââââââââââââââââââââââ
 function filterByLab(lab, el){
   activeFilter.lab = lab;
   document.querySelectorAll('#labList .lab-item').forEach(li=>{
@@ -1102,7 +1034,7 @@ function filterByLab(lab, el){
   renderTable();
 }
 
-// ══ RENDER LABS TABLE ════════════════════════════════
+// ââ RENDER LABS TABLE ââââââââââââââââââââââââââââââââ
 function renderLabsTable(){
   const data = activeData();
   if(!data) return;
@@ -1140,16 +1072,16 @@ function renderLabsTable(){
     const chg = getChange(lab.bestModel);
     let chgHTML;
     if(Math.abs(chg) < 0.005) chgHTML = `<span class="chg nc">+0.00</span>`;
-    else if(chg > 0) chgHTML = `<span class="chg up">↑ ${chg.toFixed(2)}</span>`;
-    else chgHTML = `<span class="chg dn">↓ ${Math.abs(chg).toFixed(2)}</span>`;
+    else if(chg > 0) chgHTML = `<span class="chg up">â ${chg.toFixed(2)}</span>`;
+    else chgHTML = `<span class="chg dn">â ${Math.abs(chg).toFixed(2)}</span>`;
 
     const covered = getCoverage(lab.bestModel);
     const covBadge = covered >= 0 ? `<span style="font-size:9px;color:rgba(0,229,255,0.45);margin-right:6px;font-weight:400">${covered}/${totalP}</span>` : '';
 
     let rankHTML;
-    if(rank===1) rankHTML = `<div class="rank-cell"><span class="medal medal-gold">🥇</span></div>`;
-    else if(rank===2) rankHTML = `<div class="rank-cell"><span class="medal medal-silver">🥈</span></div>`;
-    else if(rank===3) rankHTML = `<div class="rank-cell"><span class="medal medal-bronze">🥉</span></div>`;
+    if(rank===1) rankHTML = `<div class="rank-cell"><span class="medal medal-gold">ð¥</span></div>`;
+    else if(rank===2) rankHTML = `<div class="rank-cell"><span class="medal medal-silver">ð¥</span></div>`;
+    else if(rank===3) rankHTML = `<div class="rank-cell"><span class="medal medal-bronze">ð¥</span></div>`;
     else rankHTML = `<div class="rank-cell">${rank}</div>`;
 
     const coClass = coClassMap[lab.company] || 'co-other';
@@ -1157,7 +1089,7 @@ function renderLabsTable(){
 
     function bestPCol(pillar){
       const vals = lab.models.map(m => m.pillar_scores?.[pillar]).filter(v => v!=null && v>0);
-      if(!vals.length) return `<span class="pcol" style="color:rgba(255,255,255,0.15)">—</span>`;
+      if(!vals.length) return `<span class="pcol" style="color:rgba(255,255,255,0.15)">â</span>`;
       const best = Math.max(...vals);
       return `<span class="pcol${best>=90?' hi':''}">${best.toFixed(1)}</span>`;
     }
@@ -1190,9 +1122,9 @@ function setPillar(pillar, el){
   document.querySelectorAll('.pillar-item').forEach(p=>{ p.classList.remove('active'); p.querySelector('.p-check') && (p.querySelector('.p-check').textContent=''); });
   el.classList.add('active');
   const check = el.querySelector('.p-check') || el;
-  if(el.querySelector('.p-check')) el.querySelector('.p-check').textContent = '✓';
-  const label = el.textContent.replace('✓','').trim();
-  document.getElementById('activePillarPill').textContent = label + ' ✓';
+  if(el.querySelector('.p-check')) el.querySelector('.p-check').textContent = 'â';
+  const label = el.textContent.replace('â','').trim();
+  document.getElementById('activePillarPill').textContent = label + ' â';
 }
 
 function setLicense(mode, el){
@@ -1201,7 +1133,7 @@ function setLicense(mode, el){
   const r = el.querySelector('.radio'); r.classList.add('on'); r.innerHTML='';
 }
 
-// ══ VIEW TOGGLE ═══════════════════════════════════════
+// ââ VIEW TOGGLE âââââââââââââââââââââââââââââââââââââââ
 function setView(mode){
   const body = document.getElementById('mainbody');
   const btnC = document.getElementById('btnCompact');
@@ -1210,72 +1142,64 @@ function setView(mode){
   else { body.classList.remove('compact'); btnE.classList.add('active'); btnC.classList.remove('active'); }
 }
 
-// ══ SIDEBAR COLLAPSE ══════════════════════════════════
+// ââ SIDEBAR COLLAPSE ââââââââââââââââââââââââââââââââââ
 function toggleSidebar(){
   const wrap = document.getElementById('sbWrap');
   const sidebar = document.getElementById('sidebar');
   const btn = document.getElementById('collapseBtn');
   sidebar.classList.toggle('collapsed');
   wrap.classList.toggle('is-collapsed');
-  btn.querySelector('.ct-arrow').textContent = sidebar.classList.contains('collapsed') ? '›' : '‹';
+  btn.querySelector('.ct-arrow').textContent = sidebar.classList.contains('collapsed') ? 'âº' : 'â¹';
 }
 
-// ══ MODEL MODAL ══════════════════════════════════════
+// ââ MODEL MODAL ââââââââââââââââââââââââââââââââââââââ
 let _v2Chart = null;
 
 const V2_BOARD_INFO = {
-  trsbench: { label:'TRSbench', cat:'Overall',    icon:'🏆' },
-  truscore: { label:'TRUscore', cat:'Truth',       icon:'✅' },
-  trscode:  { label:'TRScode',  cat:'Coding',      icon:'💻' },
-  trfcast:  { label:'TRFcast',  cat:'Prediction',  icon:'🔮' },
-  tragents: { label:'TRAgents', cat:'Agents',      icon:'🤖' },
+  trsbench: { label:'TRSbench', cat:'Overall',    icon:'ð' },
 };
-const V2_BOARD_ORDER = ['trsbench','truscore','trscode','trfcast','tragents'];
+const V2_BOARD_ORDER = ['trsbench'];
 
 const V2_BOARD_LABEL_HTML = {
   trsbench: '<span style="color:#00d4ff">TRS</span><span style="color:#fff">bench</span>',
-  truscore: '<span style="color:#00d4ff">TRU</span><span style="color:#fff">score</span>',
-  trscode:  '<span style="color:#00d4ff">TRS</span><span style="color:#fff">code</span>',
-  trfcast:  '<span style="color:#00d4ff">TRF</span><span style="color:#fff">cast</span>',
-  tragents: '<span style="color:#00d4ff">TR</span><span style="color:#ff5252">Agents</span>',
 };
 
 const MODEL_BIOS = {
-  'Claude Opus 4.6':  { tier:'Flagship',    bio:'"Claude Opus 4.6 is our most capable model to date." — Anthropic',                                                released:'February 5, 2026',    by:'Anthropic'   },
-  'Claude Opus 4.5':  { tier:'Flagship',    bio:'"Claude Opus 4.5 is our strongest model for coding and agents." — Anthropic',                                     released:'November 24, 2025',   by:'Anthropic'   },
+  'Claude Opus 4.6':  { tier:'Flagship',    bio:'"Claude Opus 4.6 is our most capable model to date." â Anthropic',                                                released:'February 5, 2026',    by:'Anthropic'   },
+  'Claude Opus 4.5':  { tier:'Flagship',    bio:'"Claude Opus 4.5 is our strongest model for coding and agents." â Anthropic',                                     released:'November 24, 2025',   by:'Anthropic'   },
   'Claude Opus 4.1':  { tier:'Flagship',    bio:'As of August 2025, Anthropic described Claude Opus 4.1 as "our most capable model to date."',                     released:'August 5, 2025',      by:'Anthropic'   },
-  'Claude Sonnet 4.6':{ tier:'Pro',         bio:'"Claude Sonnet 4.6 is our most capable Sonnet model yet." — Anthropic',                                           released:'February 17, 2026',   by:'Anthropic'   },
-  'Claude Sonnet 4.5':{ tier:'Pro',         bio:'"Claude Sonnet 4.5 is best for real-world agents and coding." — Anthropic',                                       released:'September 29, 2025',  by:'Anthropic'   },
-  'GPT-5.2':          { tier:'Flagship',    bio:'"GPT-5.2 is our most advanced frontier model for professional work and agents." — OpenAI',                        released:'December 11, 2025',   by:'OpenAI'      },
-  'GPT-5.1':          { tier:'Pro',         bio:'"GPT-5.1 is a smarter, more conversational ChatGPT." — OpenAI',                                                   released:'November 12, 2025',   by:'OpenAI'      },
+  'Claude Sonnet 4.6':{ tier:'Pro',         bio:'"Claude Sonnet 4.6 is our most capable Sonnet model yet." â Anthropic',                                           released:'February 17, 2026',   by:'Anthropic'   },
+  'Claude Sonnet 4.5':{ tier:'Pro',         bio:'"Claude Sonnet 4.5 is best for real-world agents and coding." â Anthropic',                                       released:'September 29, 2025',  by:'Anthropic'   },
+  'GPT-5.2':          { tier:'Flagship',    bio:'"GPT-5.2 is our most advanced frontier model for professional work and agents." â OpenAI',                        released:'December 11, 2025',   by:'OpenAI'      },
+  'GPT-5.1':          { tier:'Pro',         bio:'"GPT-5.1 is a smarter, more conversational ChatGPT." â OpenAI',                                                   released:'November 12, 2025',   by:'OpenAI'      },
   'GPT-5':            { tier:'Flagship',    bio:'As of October 2025, OpenAI called GPT-5 "our breakthrough model with native agents."',                            released:'October 20, 2025',    by:'OpenAI'      },
-  'O3':               { tier:'Specialized', bio:'"o3 is our advanced step-by-step reasoning model." — OpenAI',                                                     released:'June 25, 2025',       by:'OpenAI'      },
-  'Gemini 3 Pro':     { tier:'Flagship',    bio:'"Gemini 3 Pro is Google\'s most intelligent model yet." — Google',                                                released:'November 18, 2025',   by:'Google'      },
+  'O3':               { tier:'Specialized', bio:'"o3 is our advanced step-by-step reasoning model." â OpenAI',                                                     released:'June 25, 2025',       by:'OpenAI'      },
+  'Gemini 3 Pro':     { tier:'Flagship',    bio:'"Gemini 3 Pro is Google\'s most intelligent model yet." â Google',                                                released:'November 18, 2025',   by:'Google'      },
   'Gemini 2.5 Pro':   { tier:'Flagship',    bio:'As of June 2025, Google described Gemini 2.5 Pro as "their most intelligent model yet."',                        released:'June 10, 2025',       by:'Google'      },
-  'Gemini Flash 3':   { tier:'Efficient',   bio:'"Gemini Flash 3 is frontier intelligence built for speed." — Google',                                             released:'December 17, 2025',   by:'Google'      },
-  'Gemini 3 Flash':   { tier:'Efficient',   bio:'"Gemini 3 Flash is frontier intelligence built for speed." — Google',                                             released:'December 17, 2025',   by:'Google'      },
-  'Grok 4.20':        { tier:'Flagship',    bio:'"Grok 4.20 is xAI\'s breakthrough multi-agent collaborative AI model." — xAI',                                   released:'February 17, 2026',   by:'xAI'         },
-  'Grok 4.1':         { tier:'Specialized', bio:'"Grok 4.1 is exceptionally capable in creative and emotional interactions." — xAI',                              released:'November 17, 2025',   by:'xAI'         },
-  'DeepSeek V3.2':    { tier:'Flagship',    bio:'"DeepSeek V3.2 is our most advanced open model yet." — DeepSeek',                                                released:'December 15, 2025',   by:'DeepSeek'    },
-  'DeepSeek V3.1':    { tier:'Pro',         bio:'"DeepSeek V3.1 sets new open-source performance records." — DeepSeek',                                           released:'August 28, 2025',     by:'DeepSeek'    },
-  'DeepSeek R1':      { tier:'Specialized', bio:'"DeepSeek R1 is our advanced reasoning model for agents." — DeepSeek',                                           released:'January 20, 2025',    by:'DeepSeek'    },
-  'GLM-5':            { tier:'Flagship',    bio:'"GLM-5 is our strongest and most intelligent model." — Zhipu AI',                                                released:'February 11, 2026',   by:'Zhipu AI'    },
-  'GLM-4':            { tier:'Pro',         bio:'"GLM-4 is our powerful general-purpose frontier model." — Zhipu AI',                                             released:'June 20, 2025',       by:'Zhipu AI'    },
-  'Llama 4.08B':      { tier:'Efficient',   bio:'"Llama 4.08B is our balanced efficient open model." — Meta',                                                     released:'April 5, 2025',       by:'Meta'        },
-  'Llama 4.05B':      { tier:'Efficient',   bio:'"Llama 4.05B is our efficient high-performance variant." — Meta',                                                released:'April 5, 2025',       by:'Meta'        },
+  'Gemini Flash 3':   { tier:'Efficient',   bio:'"Gemini Flash 3 is frontier intelligence built for speed." â Google',                                             released:'December 17, 2025',   by:'Google'      },
+  'Gemini 3 Flash':   { tier:'Efficient',   bio:'"Gemini 3 Flash is frontier intelligence built for speed." â Google',                                             released:'December 17, 2025',   by:'Google'      },
+  'Grok 4.20':        { tier:'Flagship',    bio:'"Grok 4.20 is xAI\'s breakthrough multi-agent collaborative AI model." â xAI',                                   released:'February 17, 2026',   by:'xAI'         },
+  'Grok 4.1':         { tier:'Specialized', bio:'"Grok 4.1 is exceptionally capable in creative and emotional interactions." â xAI',                              released:'November 17, 2025',   by:'xAI'         },
+  'DeepSeek V3.2':    { tier:'Flagship',    bio:'"DeepSeek V3.2 is our most advanced open model yet." â DeepSeek',                                                released:'December 15, 2025',   by:'DeepSeek'    },
+  'DeepSeek V3.1':    { tier:'Pro',         bio:'"DeepSeek V3.1 sets new open-source performance records." â DeepSeek',                                           released:'August 28, 2025',     by:'DeepSeek'    },
+  'DeepSeek R1':      { tier:'Specialized', bio:'"DeepSeek R1 is our advanced reasoning model for agents." â DeepSeek',                                           released:'January 20, 2025',    by:'DeepSeek'    },
+  'GLM-5':            { tier:'Flagship',    bio:'"GLM-5 is our strongest and most intelligent model." â Zhipu AI',                                                released:'February 11, 2026',   by:'Zhipu AI'    },
+  'GLM-4':            { tier:'Pro',         bio:'"GLM-4 is our powerful general-purpose frontier model." â Zhipu AI',                                             released:'June 20, 2025',       by:'Zhipu AI'    },
+  'Llama 4.08B':      { tier:'Efficient',   bio:'"Llama 4.08B is our balanced efficient open model." â Meta',                                                     released:'April 5, 2025',       by:'Meta'        },
+  'Llama 4.05B':      { tier:'Efficient',   bio:'"Llama 4.05B is our efficient high-performance variant." â Meta',                                                released:'April 5, 2025',       by:'Meta'        },
   'Llama 4.0':        { tier:'Flagship',    bio:'As of April 2025, Meta described Llama 4.0 as "their most advanced open foundation model."',                     released:'April 5, 2025',       by:'Meta'        },
-  'Mistral Large 3':  { tier:'Flagship',    bio:'"Mistral Large 3 is our most powerful model." — Mistral AI',                                                     released:'December 2, 2025',    by:'Mistral AI'  },
+  'Mistral Large 3':  { tier:'Flagship',    bio:'"Mistral Large 3 is our most powerful model." â Mistral AI',                                                     released:'December 2, 2025',    by:'Mistral AI'  },
   'Mistral Large':    { tier:'Flagship',    bio:'As of July 2025, Mistral described Mistral Large as "our flagship frontier model."',                             released:'July 10, 2025',       by:'Mistral AI'  },
-  'Mistral Voxtral':  { tier:'Specialized', bio:'"Voxtral is our specialized multimodal voice model." — Mistral AI',                                              released:'July 25, 2025',       by:'Mistral AI'  },
-  'Qwen3-Coder':      { tier:'Specialized', bio:'"Qwen3-Coder is our specialized coding and agent model." — Alibaba',                                             released:'December 10, 2025',   by:'Alibaba'     },
-  'Qwen3':            { tier:'Flagship',    bio:'"Qwen3 is our most capable model family yet." — Alibaba',                                                        released:'November 25, 2025',   by:'Alibaba'     },
-  'Qwen2.5':          { tier:'Pro',         bio:'"Qwen2.5 is our improved open large language model." — Alibaba',                                                 released:'September 19, 2024',  by:'Alibaba'     },
-  'MiniMax M2.5':     { tier:'Pro',         bio:'"M2.5 is our most capable agentic model yet." — MiniMax',                                                        released:'February 12, 2026',   by:'MiniMax'     },
-  'MiniMax M2':       { tier:'Pro',         bio:'"M2 is our enhanced agentic performance model." — MiniMax',                                                      released:'October 10, 2025',    by:'MiniMax'     },
-  'MiniMax M1':       { tier:'Pro',         bio:'"M1 is our high-performance general AI model." — MiniMax',                                                       released:'June 15, 2025',       by:'MiniMax'     },
-  'Kimi K2.5':        { tier:'Specialized', bio:'"Kimi K2.5 is our top long-context multimodal model." — Moonshot AI',                                            released:'January 27, 2026',    by:'Moonshot AI' },
-  'Cohere Command R+':{ tier:'Pro',         bio:'"Command R+ is our most powerful enterprise RAG model." — Cohere',                                               released:'April 2, 2025',       by:'Cohere'      },
-  'Cohere Aya':       { tier:'Specialized', bio:'"Aya is our leading open multilingual model family." — Cohere',                                                  released:'February 17, 2026',   by:'Cohere'      },
+  'Mistral Voxtral':  { tier:'Specialized', bio:'"Voxtral is our specialized multimodal voice model." â Mistral AI',                                              released:'July 25, 2025',       by:'Mistral AI'  },
+  'Qwen3-Coder':      { tier:'Specialized', bio:'"Qwen3-Coder is our specialized coding and agent model." â Alibaba',                                             released:'December 10, 2025',   by:'Alibaba'     },
+  'Qwen3':            { tier:'Flagship',    bio:'"Qwen3 is our most capable model family yet." â Alibaba',                                                        released:'November 25, 2025',   by:'Alibaba'     },
+  'Qwen2.5':          { tier:'Pro',         bio:'"Qwen2.5 is our improved open large language model." â Alibaba',                                                 released:'September 19, 2024',  by:'Alibaba'     },
+  'MiniMax M2.5':     { tier:'Pro',         bio:'"M2.5 is our most capable agentic model yet." â MiniMax',                                                        released:'February 12, 2026',   by:'MiniMax'     },
+  'MiniMax M2':       { tier:'Pro',         bio:'"M2 is our enhanced agentic performance model." â MiniMax',                                                      released:'October 10, 2025',    by:'MiniMax'     },
+  'MiniMax M1':       { tier:'Pro',         bio:'"M1 is our high-performance general AI model." â MiniMax',                                                       released:'June 15, 2025',       by:'MiniMax'     },
+  'Kimi K2.5':        { tier:'Specialized', bio:'"Kimi K2.5 is our top long-context multimodal model." â Moonshot AI',                                            released:'January 27, 2026',    by:'Moonshot AI' },
+  'Cohere Command R+':{ tier:'Pro',         bio:'"Command R+ is our most powerful enterprise RAG model." â Cohere',                                               released:'April 2, 2025',       by:'Cohere'      },
+  'Cohere Aya':       { tier:'Specialized', bio:'"Aya is our leading open multilingual model family." â Cohere',                                                  released:'February 17, 2026',   by:'Cohere'      },
 };
 
 function _computeRankDelta(bData, modelName){
@@ -1300,7 +1224,7 @@ function openV2Modal(modelName, ddp){
   const modal    = document.getElementById('v2-modal');
   if(!backdrop || !modal) return;
 
-  // Header — use current DDP data for logo/company
+  // Header â use current DDP data for logo/company
   const curData = _ddpData[ddp];
   const model   = curData ? curData.models.find(m => m.name === modelName) : null;
   const company = model ? (model.company || '') : '';
@@ -1320,7 +1244,7 @@ if(rank===1)      modal.classList.add('glow-gold');
     else if(rank===3) modal.classList.add('glow-bronze');
   }
 
-  // About boards — cross-DDP rankings (mm-* card style, no score)
+  // About boards â cross-DDP rankings (mm-* card style, no score)
   let boardsHTML = '';
   V2_BOARD_ORDER.forEach(bid => {
     const info  = V2_BOARD_INFO[bid];
@@ -1332,9 +1256,9 @@ if(rank===1)      modal.classList.add('glow-gold');
     const rankCls      = rank===1?'rank-gold':rank===2?'rank-silver':rank===3?'rank-bronze':'';
     const rankColor    = rank===1?'#ffd700':rank===2?'#c8c8dc':rank===3?'#cd7f32':rank>0?'rgba(255,255,255,0.82)':'rgba(255,255,255,0.85)';
     // Medal emoji replaces "#N" for top 3; blank for not ranked
-    const rankLbl = rank===1 ? '<span class="mm-medal-glow">🥇</span>'
-                  : rank===2 ? '<span class="mm-medal-glow">🥈</span>'
-                  : rank===3 ? '<span class="mm-medal-glow">🥉</span>'
+    const rankLbl = rank===1 ? '<span class="mm-medal-glow">ð¥</span>'
+                  : rank===2 ? '<span class="mm-medal-glow">ð¥</span>'
+                  : rank===3 ? '<span class="mm-medal-glow">ð¥</span>'
                   : rank > 0 ? '#'+rank : '';
     const notRankedCls = rank ? '' : ' not-ranked';
     const labelHtml    = V2_BOARD_LABEL_HTML[bid] || info.label;
@@ -1373,7 +1297,7 @@ if(rank===1)      modal.classList.add('glow-gold');
   const bioEl = document.getElementById('v2-mm-bio');
   if(bioEl) bioEl.textContent = mbio.bio || '';
   const relEl = document.getElementById('v2-mm-released');
-  if(relEl) relEl.textContent = mbio.released ? 'Released · '+mbio.released : '';
+  if(relEl) relEl.textContent = mbio.released ? 'Released Â· '+mbio.released : '';
   // Watermark
   const wmEl = document.getElementById('v2-mm-watermark');
   if(wmEl){ wmEl.src = logoUrl; wmEl.style.display = logoUrl ? '' : 'none'; }
@@ -1407,7 +1331,7 @@ function _buildV2TrendChart(modelName, ddp){
   if(!data) return;
   const model = data.models.find(m => m.name === modelName);
 
-  // ── Board label ──
+  // ââ Board label ââ
   const boardLbl = document.getElementById('v2-trend-board-label');
   if(boardLbl) boardLbl.innerHTML = V2_BOARD_LABEL_HTML[ddp] || ddp;
 
@@ -1418,7 +1342,7 @@ function _buildV2TrendChart(modelName, ddp){
     return (s !== null && s !== undefined && s > 0) ? s : null;
   });
 
-  // Trim leading + trailing nulls — removes dead zones
+  // Trim leading + trailing nulls â removes dead zones
   let start = 0, end = allValues.length - 1;
   while(start <= end && allValues[start] === null) start++;
   while(end >= start && allValues[end]   === null) end--;
@@ -1429,7 +1353,7 @@ function _buildV2TrendChart(modelName, ddp){
   const values = (start > end) ? [] : allValues.slice(start, end + 1);
   const lastIdx = values.length - 1;
 
-  // ── Rank on this board ──
+  // ââ Rank on this board ââ
   let boardRank = 0;
   if(model){
     const sorted = [...data.models]
@@ -1439,7 +1363,7 @@ function _buildV2TrendChart(modelName, ddp){
     boardRank = sorted.findIndex(m => m.name === modelName) + 1;
   }
 
-  // ── Hero update helper ──
+  // ââ Hero update helper ââ
   function _seedHero(idx){
     const scoreEl = document.getElementById('v2-trend-hero-score');
     const dateEl  = document.getElementById('v2-trend-hero-date');
@@ -1448,7 +1372,7 @@ function _buildV2TrendChart(modelName, ddp){
     if(!scoreEl) return;
     const s = (idx >= 0 && idx < values.length) ? values[idx] : null;
     if(s == null){
-      scoreEl.textContent = '—';
+      scoreEl.textContent = 'â';
       dateEl.textContent  = labels[idx] || '';
       rankEl.textContent  = '';
       deltaEl.textContent = '';
@@ -1533,7 +1457,7 @@ function _buildV2TrendChart(modelName, ddp){
     }
   });
 
-  // ── Pointer handlers (mouse + touch) ──
+  // ââ Pointer handlers (mouse + touch) ââ
   const ttEl    = document.getElementById('v2-trend-tooltip');
   const ttDate  = document.getElementById('v2-tt-date');
   const ttScore = document.getElementById('v2-tt-score');
@@ -1588,14 +1512,14 @@ function _buildV2TrendChart(modelName, ddp){
   canvas.addEventListener('touchcancel', handlePointerEnd);
 }
 
-// ══ DATE HEADER ═══════════════════════════════════════
+// ââ DATE HEADER âââââââââââââââââââââââââââââââââââââââ
 (function setDate(){
   const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const d = new Date();
   document.getElementById('todayDate').textContent = months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
 })();
 
-// ══ LOAD DATA ═════════════════════════════════════════
+// ââ LOAD DATA âââââââââââââââââââââââââââââââââââââââââ
 // Init thead + sidebar for default DDP (trsbench) immediately
 renderThead();
 buildPillarSidebar();
@@ -1607,7 +1531,7 @@ fetch('trs-data.json?v=' + Date.now())
     if(currentDDP !== 'trsbench') return;
 
     const lastDate = (data.dates||[]).slice(-1)[0] || null;
-    if(lastDate) document.getElementById('metaUpdate').textContent = '↻ Updated ' + fmtDate(lastDate) + (data.run_at ? ' · ' + data.run_at : '');
+    if(lastDate) document.getElementById('metaUpdate').textContent = 'â» Updated ' + fmtDate(lastDate) + (data.run_at ? ' Â· ' + data.run_at : '');
     document.getElementById('metaSources').textContent = '25/25 sources fired';
 
     const rankedCount = data.models.filter(m => getLatestScore(m) !== null).length;
@@ -1617,11 +1541,11 @@ fetch('trs-data.json?v=' + Date.now())
     renderTable();
   })
   .catch(err => {
-    document.getElementById('tableBody').innerHTML = `<tr><td colspan="${getColspan()}"><div class="loading-state" style="color:rgba(248,113,113,0.8)">⚠ Failed to load score data: ${err.message}</div></td></tr>`;
+    document.getElementById('tableBody').innerHTML = `<tr><td colspan="${getColspan()}"><div class="loading-state" style="color:rgba(248,113,113,0.8)">â  Failed to load score data: ${err.message}</div></td></tr>`;
   });
 </script>
 
-<!-- ══ MODEL MODAL ════════════════════════════════════ -->
+<!-- ââ MODEL MODAL ââââââââââââââââââââââââââââââââââââ -->
 <div id="v2-modal-backdrop" onclick="if(event.target===this)closeV2Modal()">
   <div id="v2-modal">
     <button id="v2-modal-close" onclick="closeV2Modal()">&#215;</button>
@@ -1655,7 +1579,7 @@ fetch('trs-data.json?v=' + Date.now())
     <!-- Trend panel -->
     <div id="v2-panel-trend" class="v2-panel" style="display:none">
       <div id="v2-trend-hero">
-        <div id="v2-trend-hero-score">—</div>
+        <div id="v2-trend-hero-score">â</div>
         <div id="v2-trend-hero-meta">
           <span id="v2-trend-hero-date"></span>
           <span id="v2-trend-hero-rank"></span>
