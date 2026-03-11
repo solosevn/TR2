@@ -97,8 +97,6 @@ def notify(text: str) -> None:
 
 
 # ══ PLAYWRIGHT HELPERS ════════════════════════════════════════════
-def playwright_get(url: str, wait_ms: int = 5000) -> str:
-
 # ── Playwright helpers ───────────────────────────────────────────
 def playwright_get(url: str, wait_ms: int = 5000) -> str:
     """Launch headless Chromium, load url, return page HTML."""
@@ -298,8 +296,6 @@ def scrape_simpleqa() -> dict:
 
 # ── 2: FACTS Benchmark — Truthfulness ────────────────────────────
 def scrape_facts() -> dict:
-
-def scrape_facts() -> dict:
     """
     FACTS Benchmark Suite (Google DeepMind) — kaggle.com/benchmarks/google/facts
     4 sub-benchmarks: Parametric, Search, Multimodal, Grounding.
@@ -405,8 +401,6 @@ def scrape_facts() -> dict:
 
 # ── 3: TruthfulQA ─────────────────────────────────────────────────
 def scrape_truthfulqa() -> dict:
-
-def scrape_truthfulqa() -> dict:
     """
     llm-stats.com/benchmarks/truthfulqa
     MC1 + MC2 scores (0-100). Returns average of available sub-scores.
@@ -481,8 +475,6 @@ def scrape_truthfulqa() -> dict:
 
 
 # ── 4: HalluHard — Hallucination ─────────────────────────────────
-def scrape_halluhard() -> dict:
-
 def scrape_halluhard() -> dict:
     """
     HalluHard — halluhard.com (EPFL-backed)
@@ -615,8 +607,6 @@ def scrape_halluhard() -> dict:
 
 # ── 5: Vectara Hallucination ──────────────────────────────────────
 def scrape_vectara_hallucination() -> dict:
-
-def scrape_vectara_hallucination() -> dict:
     """
     huggingface.co/spaces/vectara/leaderboard
     HHEM-2.3: % hallucination in summarization across 7,700+ articles.
@@ -650,9 +640,6 @@ def scrape_vectara_hallucination() -> dict:
 
 
 # ── 6: HLE — Reasoning ───────────────────────────────────────────
-def scrape_hle() -> dict:
-
-
 # ═══ PILLAR 3: REASONING (13%) ══════════════════════════════════
 def scrape_arc_agi2() -> dict[str, float]:
     """arcprize.org/leaderboard — ARC-AGI-2 column. Returns {model: score_pct}."""
@@ -869,8 +856,6 @@ def scrape_hle() -> dict:
 
 
 # ── 7: LiveBench — Reasoning ──────────────────────────────────────
-def scrape_livebench() -> dict:
-
 # ═══ PILLAR 4: HUMAN PREFERENCE (11%) ═══════════════════════════
 def scrape_arena_overall() -> dict[str, float]:
     """arena.ai main leaderboard — overall ELO across all task categories.
@@ -1776,7 +1761,7 @@ def scrape_helm_mmlu() -> dict[str, float]:
     )
 
 
-def scrape_simpleqa() -> dict[str, float]:
+def scrape_simpleqa_knowledge() -> dict[str, float]:
     """SimpleQA leaderboard via llm-stats.com.
     Source: https://llm-stats.com/benchmarks/simpleqa
     43 models. Factual accuracy 0-1 float. Returns {model: 0-100}."""
@@ -1942,8 +1927,6 @@ def scrape_rallies() -> tuple[dict[str, float], dict[str, float]]:
 
     return return_scores, winrate_scores
 def scrape_alpha_arena() -> tuple[dict[str, float], dict[str, float]]:
-
-def scrape_alpha_arena() -> tuple[dict[str, float], dict[str, float]]:
     """
     Alpha Arena (nof1.ai/leaderboard) leaderboard. Returns two dicts:
     - return_pct: portfolio Return % (best per base model)
@@ -1991,8 +1974,6 @@ def scrape_alpha_arena() -> tuple[dict[str, float], dict[str, float]]:
         log.error(f"  Alpha Arena: {e}")
 
     return return_scores, sharpe_scores
-def scrape_financearena() -> tuple[dict[str, float], dict[str, float]]:
-
 def scrape_financearena() -> tuple[dict[str, float], dict[str, float]]:
     """
     FinanceArena leaderboard. Returns two dicts:
@@ -2223,7 +2204,7 @@ PILLAR_SCRAPERS = {
     "knowledge": [
         scrape_mmlu_pro,
         scrape_helm_mmlu,
-        scrape_simpleqa,
+        scrape_simpleqa_knowledge,
     ],
     "forecasting_finance": [
         scrape_forecastbench,
