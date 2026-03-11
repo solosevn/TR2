@@ -29,7 +29,6 @@ import requests
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
 from telegram import Bot
-from model_names import match_name, canonicalize
 
 # ── logging ───────────────────────────────────────────────────────
 logging.basicConfig(level=logging.INFO,
