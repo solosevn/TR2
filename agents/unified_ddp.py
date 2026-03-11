@@ -2294,7 +2294,7 @@ def normalize_sources_and_merge(scraper_list: list) -> tuple[dict[str, float], i
                 merged[model] = merged.get(model, 0.0) + norm
                 counts[model] = counts.get(model, 0) + 1
     if not merged:
-        return {}
+        return {}, 0
     return {m: round(merged[m] / counts[m], 4) for m in merged}, sources_hit
 
 
