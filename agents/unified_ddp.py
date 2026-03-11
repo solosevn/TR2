@@ -10,7 +10,7 @@
 """
 
 import os, sys, json, hashlib, subprocess, asyncio, logging, re
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 # ── dependency guard ──────────────────────────────────────────────
