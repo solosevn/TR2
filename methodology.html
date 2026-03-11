@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TR2 Unified Methodology - Training Run</title>
+<style>
+  :root { --bg:#0a0e1a; --surface:#111827; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#06b6d4; --red:#ef4444; --green:#22c55e; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; line-height:1.7; }
+  .top-nav { background:#0d1117; border-bottom:1px solid var(--border); padding:14px 32px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+  .top-nav .logo { font-size:1.3rem; font-weight:700; color:var(--red); text-decoration:none; }
+  .top-nav a { color:var(--muted); text-decoration:none; font-size:0.9rem; }
+  .back-btn { display:inline-block; margin:20px 32px; color:var(--muted); text-decoration:none; font-size:0.85rem; border:1px solid var(--border); padding:6px 14px; border-radius:6px; }
+  .page-wrap { display:flex; max-width:1200px; margin:0 auto; padding:0 32px 80px; gap:48px; }
+  .sidebar { position:sticky; top:80px; width:200px; flex-shrink:0; align-self:flex-start; padding:24px; background:var(--surface); border:1px solid var(--border); border-radius:12px; }
+  .sidebar h4 { color:var(--accent); font-size:0.7rem; letter-spacing:2px; margin-bottom:16px; }
+  .sidebar a { display:block; color:var(--muted); text-decoration:none; font-size:0.85rem; padding:4px 0; }
+  .content { flex:1; min-width:0; }
+  .hero { text-align:center; margin-bottom:60px; }
+  .hero .badge { display:inline-block; background:var(--accent); color:#000; font-size:0.65rem; font-weight:700; letter-spacing:2px; padding:4px 14px; border-radius:20px; margin-bottom:16px; }
+  .hero h1 { font-size:2.6rem; font-weight:800; margin-bottom:8px; }
+  .hero h1 span { color:var(--red); }
+  .hero .sub { color:var(--muted); font-size:1.05rem; font-style:italic; }
+  .hero .version { color:var(--muted); font-size:0.8rem; margin-top:12px; letter-spacing:1px; }
+  .section { margin-bottom:56px; }
+  .section-badge { display:inline-block; border:1px solid var(--accent); color:var(--accent); font-size:0.65rem; font-weight:700; letter-spacing:2px; padding:3px 12px; border-radius:20px; margin-bottom:12px; }
+  .section h2 { font-size:1.7rem; margin-bottom:16px; }
+  .section p { color:var(--muted); margin-bottom:14px; }
+  .formula-box { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:28px; text-align:center; margin:24px 0; }
+  .formula-box .label { color:var(--red); font-size:0.7rem; font-weight:700; letter-spacing:2px; margin-bottom:12px; }
+  .formula-box .formula { font-size:1rem; line-height:1.8; }
+  .formula-box .formula .w { color:var(--accent); font-weight:700; }
+  .data-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:0.9rem; }
+  .data-table thead th { color:var(--accent); font-size:0.7rem; font-weight:700; letter-spacing:1.5px; text-align:left; padding:12px 16px; border-bottom:1px solid var(--border); }
+  .data-table tbody td { padding:14px 16px; border-bottom:1px solid var(--border); vertical-align:top; }
+  .data-table tbody tr:hover { background:rgba(6,182,212,0.04); }
+  .weight-badge { display:inline-block; background:rgba(6,182,212,0.15); color:var(--accent); font-weight:700; font-size:0.8rem; padding:2px 10px; border-radius:6px; }
+  .pillar-section { margin-bottom:40px; }
+  .pillar-section h3 { font-size:1.2rem; margin-bottom:8px; }
+  .pillar-section h3 .pw { color:var(--accent); font-size:0.9rem; }
+  .source-list { list-style:none; padding:0; }
+  .source-list li { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:14px 18px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }
+  .source-list li .name { font-weight:600; }
+  .source-list li a { color:var(--accent); text-decoration:none; font-size:0.85rem; }
+  .rationale-card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:20px 24px; margin-bottom:12px; }
+  .rationale-card h4 { margin-bottom:6px; }
+  .rationale-card h4 .rw { color:var(--accent); font-size:0.9rem; }
+  .rationale-card p { color:var(--muted); font-size:0.9rem; }
+  hr { border:none; border-top:1px solid var(--border); margin:40px 0; }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="index-unified.html" class="logo">Training Run</a>
+  <a href="index-unified.html">About</a>
+</nav>
+<a href="index-unified.html" class="back-btn">&larr; Back</a>
+<div class="page-wrap">
+<aside class="sidebar">
+  <h4>ON THIS PAGE</h4>
+  <a href="#what">What is TRSbench Unified?</a>
+  <a href="#formula">The Formula</a>
+  <a href="#weights">Why These Weights</a>
+  <a href="#sources">All 37 Sources</a>
+  <a href="#qualification">Qualification Rules</a>
+  <a href="#integrity">Data Integrity</a>
+  <a href="#coverage">Coverage Bonus</a>
+</aside>
+<main class="content">
+<div class="hero">
+  <div class="badge">TRAINING RUN</div>
+  <h1><span>TRSbench</span> Unified Methodology</h1>
+  <p class="sub">One leaderboard. Ten pillars. Every public benchmark that matters.</p>
+  <p class="version">VERSION 1.3 &nbsp;|&nbsp; MARCH 2026</p>
+</div>
+<hr>
+<div class="section" id="what">
+  <div class="section-badge">SECTION 1</div>
+  <h2>What is TRSbench Unified?</h2>
+  <p>TRSbench Unified is the single composite AI benchmark tracker that replaced the five separate Training Run leaderboards (TRSbench, TRUscore, TRAgents, TRFcast, TRScode). It tracks a weighted composite score measuring how well AI models perform across <strong>10 pillars</strong> of capability, updated daily from <strong>37 independent public sources</strong>.</p>
+  <p>Every score can be traced back to a public leaderboard. Every source link is listed below so anyone can verify the data independently. Transparency is not optional &mdash; it is the product.</p>
+</div>
+<hr>
+<div class="section" id="formula">
+  <div class="section-badge">SECTION 2</div>
+  <h2>The TRSbench Unified Formula</h2>
+  <div class="formula-box">
+    <div class="label">COMPOSITE SCORE &mdash; TR2-UNIFIED-V1.3</div>
+    <div class="formula">TRSbench = Safety <span class="w">(16%)</span> + Truth <span class="w">(14%)</span> + Reasoning <span class="w">(13%)</span> + Human Preference <span class="w">(11%)</span> + Coding <span class="w">(11%)</span> + Agent <span class="w">(10%)</span> + Knowledge <span class="w">(8%)</span> + Forecasting <span class="w">(7%)</span> + Efficiency <span class="w">(5%)</span> + Usage <span class="w">(5%)</span></div>
+  </div>
+  <table class="data-table">
+    <thead><tr><th>PILLAR</th><th>WEIGHT</th><th>WHAT IT MEASURES</th><th>PRIMARY SOURCES</th></tr></thead>
+    <tbody>
+      <tr><td>Safety</td><td><span class="weight-badge">16%</span></td><td>Resistance to harmful prompts, safe behavior under adversarial conditions</td><td>HELM Safety, AIR-Bench</td></tr>
+      <tr><td>Truth &amp; Confabulation</td><td><span class="weight-badge">14%</span></td><td>Factual accuracy, hallucination resistance, truthful output</td><td>SimpleQA, FACTS, TruthfulQA, HalluHard, Vectara</td></tr>
+      <tr><td>Reasoning</td><td><span class="weight-badge">13%</span></td><td>Logic, abstraction, multi-step problem solving</td><td>ARC-AGI-2, LiveBench, HELM Capabilities, HLE</td></tr>
+      <tr><td>Human Preference</td><td><span class="weight-badge">11%</span></td><td>How humans rate model output quality in blind comparisons</td><td>Chatbot Arena, AlpacaEval</td></tr>
+      <tr><td>Coding</td><td><span class="weight-badge">11%</span></td><td>Real-world software engineering and code generation</td><td>SWE-bench, EvalPlus, LiveCodeBench, BigCodeBench, Terminal-Bench, SciCode + 3 more</td></tr>
+      <tr><td>Agent Capability</td><td><span class="weight-badge">10%</span></td><td>Autonomous task completion, tool use, multi-model coordination</td><td>GAIA, OSWorld, tau-bench, MCP Atlas, Galileo, OpenRouter</td></tr>
+      <tr><td>Knowledge</td><td><span class="weight-badge">8%</span></td><td>Breadth and depth of factual knowledge</td><td>MMLU-Pro, HELM MMLU, SimpleQA</td></tr>
+      <tr><td>Forecasting &amp; Finance</td><td><span class="weight-badge">7%</span></td><td>Prediction accuracy, financial reasoning</td><td>ForecastBench, Rallies.ai, Alpha Arena, FinanceArena</td></tr>
+      <tr><td>Efficiency</td><td><span class="weight-badge">5%</span></td><td>Speed, cost, throughput per dollar</td><td>Artificial Analysis, PricePerToken</td></tr>
+      <tr><td>Usage &amp; Adoption</td><td><span class="weight-badge">5%</span></td><td>Real-world developer adoption and API traffic</td><td>OpenRouter Rankings</td></tr>
+    </tbody>
+  </table>
+</div>
+<hr>
+<div class="section" id="weights">
+  <div class="section-badge">SECTION 3</div>
+  <h2>Why These Weights?</h2>
+  <div class="rationale-card"><h4>Safety <span class="rw">16%</span></h4><p>The highest weight because a model that is unsafe is unusable regardless of capability. Safety is the floor, not a feature.</p></div>
+  <div class="rationale-card"><h4>Truth &amp; Confabulation <span class="rw">14%</span></h4><p>A model that confidently fabricates information is dangerous in professional contexts. Factual reliability is second only to safety.</p></div>
+  <div class="rationale-card"><h4>Reasoning <span class="rw">13%</span></h4><p>Abstract reasoning and multi-step logic are the core differentiators between models. This is what makes a model useful for hard problems.</p></div>
+  <div class="rationale-card"><h4>Human Preference <span class="rw">11%</span></h4><p>Blind human evaluations capture quality dimensions that benchmarks miss: tone, helpfulness, instruction-following, and overall utility.</p></div>
+  <div class="rationale-card"><h4>Coding <span class="rw">11%</span></h4><p>Software engineering is the single highest-value use case for LLMs today. Nine sub-benchmarks ensure coverage across generation, debugging, and real-world repo tasks.</p></div>
+  <div class="rationale-card"><h4>Agent Capability <span class="rw">10%</span></h4><p>Autonomous agents are the future of AI deployment. Task completion, tool reliability, and multi-model coordination measure readiness for production agent workflows.</p></div>
+  <div class="rationale-card"><h4>Knowledge <span class="rw">8%</span></h4><p>Broad factual knowledge matters but is increasingly commoditized. Weighted lower than reasoning because retrieval augmentation can compensate for knowledge gaps.</p></div>
+  <div class="rationale-card"><h4>Forecasting &amp; Finance <span class="rw">7%</span></h4><p>Prediction and financial reasoning are high-value verticals that test a model's ability to reason about uncertainty and real-world outcomes.</p></div>
+  <div class="rationale-card"><h4>Efficiency <span class="rw">5%</span></h4><p>Speed and cost matter for production deployment. A model that is 10x more expensive for 5% better results loses in practice.</p></div>
+  <div class="rationale-card"><h4>Usage &amp; Adoption <span class="rw">5%</span></h4><p>Developer adoption is a market signal. Models that developers actually choose to use carry a signal that benchmarks alone cannot capture.</p></div>
+</div>
+<hr>
+<div class="section" id="sources">
+  <div class="section-badge">SECTION 4</div>
+  <h2>All 37 Sources</h2>
+  <p>Every source below is scraped daily by the TR2 Unified DDP. Click any link to see the original leaderboard and verify the data yourself.</p>
+  <div class="pillar-section">
+    <h3>Safety <span class="pw">16%</span> &mdash; 2 sources</h3>
+    <ul class="source-list">
+      <li><span class="name">HELM Safety</span> <a href="https://crfm.stanford.edu/helm/safety/latest/#/leaderboard" target="_blank">crfm.stanford.edu &rarr;</a></li>
+      <li><span class="name">AIR-Bench</span> <a href="https://crfm.stanford.edu/helm/air-bench/latest/#/leaderboard" target="_blank">crfm.stanford.edu &rarr;</a></li>
+    </ul>
+  </div>
+  <div class="pillar-section">
+    <h3>Truth &amp; Confabulation <span class="pw">14%</span> &mdash; 5 sources</h3>
+    <ul class="source-list">
+      <li><span class="name">SimpleQA</span> <a href="https://llm-stats.com/benchmarks/simpleqa" target="_blank">llm-stats.com &rarr;</a></li>
+      <li><span class="name">FACTS Benchmark (Google/Kaggle)</span> <a href="https://www.kaggle.com/benchmarks/google/facts" target="_blank">kaggle.com &rarr;</a></li>
+      <li><span class="name">TruthfulQA</span> <a href="https://llm-stats.com/benchmarks/truthfulqa" target="_blank">llm-stats.com &rarr;</a></li>
+      <li><span class="name">HalluHard</span> <a href="https://halluhard.com/" target="_blank">halluhard.com &rarr;</a></li>
+      <li><span class="name">Vectara Hallucination Leaderboard</span> <a href="https://huggingface.co/spaces/vectara/leaderboard" target="_blank">huggingface.co &rarr;</a></li>
+    </ul>
+  </div>
+  <div class="pillar-section">
+    <h3>Reasoning <span class="pw">13%</span> &mdash; 4 sources</h3>
+    <ul class="source-list">
+      <li><span class="name">ARC-AGI-2</span> <a href="https://arcprize.org/leaderboard" target="_blank">arcprize.org &rarr;</a></li>
+      <li><span class="name">LiveBench Reasoning</span> <a href="https://livebench.ai" target="_blank">livebench.ai &rarr;</a></li>
+      <li><span class="name">HELM Capabilities</span> <a href="https://crfm.stanford.edu/helm/capabilities/latest/#/leaderboard" target="_blank">crfm.stanford.edu &rarr;</a></li>
+      <li><span class="name">HLE (Humanity's Last Exam)</span> <a href="https://lastexam.ai/" target="_blank">lastexam.ai &rarr;</a></li>
+    </ul>
+  </div>
+  <div class="pillar-section">
+    <h3>Human Preference <span class="pw">11%</span> &mdash; 3 sources</h3>
+    <ul class="source-list">
+      <li><span class="name">Chatbot Arena Overall</span> <a href="https://arena.ai/leaderboard" target="_blank">arena.ai &rarr;</a></li>
+      <li><span class="name">Chatbot Arena Text</span> <a href="https://arena.ai/leaderboard/text" target="_blank">arena.ai/text &rarr;</a></li>
+      <li><span class="name">AlpacaEval</span> <a href="https://tatsu-lab.github.io/alpaca_eval/" target="_blank">tatsu-lab.github.io &rarr;</a></li>
+    </ul>
+  </div>
+  <div class="pillar-section">
+    <h3>Coding <span class="pw">11%</span> &mdash; 9 sources</h3>
+    <ul class="source-list">
+      <li><span class="name">SWE-bench Verified</span> <a href="https://www.swebench.com/" target="_blank">swebench.com &rarr;</a></li>
+      <li><span class="name">EvalPlus</span> <a href="https://evalplus.github.io/leaderboard.html" target="_blank">evalplus.github.io &rarr;</a></li>
+      <li><span class="name">LiveCodeBench</span> <a href="https://livecodebench.github.io/leaderboard.html" target="_blank">livecodebench.github.io &rarr;</a></li>
+      <li><span class="name">SWE-rebench</span> <a href="https://swe-rebench.com/leaderboard" target="_blank">swe-rebench.com &rarr;</a></li>
+      <li><span class="name">BigCodeBench</span> <a href="https://bigcode-bench.github.io/" target="_blank">bigcode-bench.github.io &rarr;</a></li>
+      <li><span class="name">Terminal-Bench Hard</span> <a href="https://tbench.ai/leaderboard/terminal-bench/2.0" target="_blank">tbench.ai &rarr;</a></li>
+      <li><span class="name">SWE-bench Pro (Scale AI)</span> <a href="https://scale.com/leaderboard/swe_bench_pro_public" target="_blank">scale.com &rarr;</a></li>
+      <li><span class="name">SciCode</span> <a href="https://scicode-bench.github.io/leaderboard/" target="_blank">scicode-bench.github.io &rarr;</a></li>
+      <li><span class="name">Chatbot Arena Code</span> <a href="https://arena.ai/leaderboard/code" target="_blank">arena.ai/code &rarr;</a></li>
+    </ul>
+  </div>
+  <div class="pillar-section">
+    <h3>Agent Capability <span class="pw">10%</span> &mdash; 7 sources</h3>
+    <ul class="source-list">
+      <li><span class="name">SWE-bench Verified (task completion)</span> <a href="https://www.swebench.com/" target="_blank">swebench.com &rarr;</a></li>
+      <li><span class="name">GAIA</span> <a href="https://hal.cs.princeton.edu/gaia" target="_blank">hal.cs.princeton.edu &rarr;</a></li>
+      <li><span class="name">OSWorld</span> <a href="https://os-world.github.io/" target="_blank">os-world.github.io &rarr;</a></li>
+      <li><span class="name">tau-bench</span> <a href="https://taubench.com/#leaderboard" target="_blank">taubench.com &rarr;</a></li>
+      <li><span class="name">MCP Atlas (Scale AI)</span> <a href="https://scale.com/leaderboard/mcp_atlas" target="_blank">scale.com &rarr;</a></li>
+      <li><span class="name">Galileo Agent Leaderboard</span> <a href="https://huggingface.co/spaces/galileo-ai/agent-leaderboard" target="_blank">huggingface.co &rarr;</a></li>
+      <li><span class="name">OpenRouter Rankings (multi-model)</span> <a href="https://openrouter.ai/rankings" target="_blank">openrouter.ai &rarr;</a></li>
+    </ul>
+  </div>
+  <div class="pillar-section">
+    <h3>Knowledge <span class="pw">8%</span> &mdash; 3 sources</h3>
+    <ul class="source-list">
+      <li><span class="name">MMLU-Pro</span> <a href="https://huggingface.co/spaces/TIGER-Lab/MMLU-Pro" target="_blank">huggingface.co &rarr;</a></li>
+      <li><span class="name">HELM MMLU</span> <a href="https://crfm.stanford.edu/helm/mmlu/latest/#/leaderboard" target="_blank">crfm.stanford.edu &rarr;</a></li>
+      <li><span class="name">SimpleQA (Knowledge)</span> <a href="https://llm-stats.com/benchmarks/simpleqa" target="_blank">llm-stats.com &rarr;</a></li>
+    </ul>
+  </div>
+  <div class="pillar-section">
+    <h3>Forecasting &amp; Finance <span class="pw">7%</span> &mdash; 4 sources</h3>
+    <ul class="source-list">
+      <li><span class="name">ForecastBench</span> <a href="https://forecastbench.org/baseline/" target="_blank">forecastbench.org &rarr;</a></li>
+      <li><span class="name">Rallies.ai</span> <a href="https://rallies.ai/arena" target="_blank">rallies.ai &rarr;</a></li>
+      <li><span class="name">Alpha Arena (Nof1)</span> <a href="https://nof1.ai/leaderboard" target="_blank">nof1.ai &rarr;</a></li>
+      <li><span class="name">FinanceArena</span> <a href="https://financearena.ai/" target="_blank">financearena.ai &rarr;</a></li>
+    </ul>
+  </div>
+  <div class="pillar-section">
+    <h3>Efficiency <span class="pw">5%</span> &mdash; 2 sources</h3>
+    <ul class="source-list">
+      <li><span class="name">Artificial Analysis</span> <a href="https://artificialanalysis.ai/leaderboards/models" target="_blank">artificialanalysis.ai &rarr;</a></li>
+      <li><span class="name">PricePerToken</span> <a href="https://pricepertoken.com" target="_blank">pricepertoken.com &rarr;</a></li>
+    </ul>
+  </div>
+  <div class="pillar-section">
+    <h3>Usage &amp; Adoption <span class="pw">5%</span> &mdash; 1 source</h3>
+    <ul class="source-list">
+      <li><span class="name">OpenRouter Rankings</span> <a href="https://openrouter.ai/rankings" target="_blank">openrouter.ai &rarr;</a></li>
+    </ul>
+  </div>
+</div>
+<hr>
+<div class="section" id="qualification">
+  <div class="section-badge">SECTION 5</div>
+  <h2>Qualification Rules</h2>
+  <p>Models are assigned one of three tiers based on data coverage:</p>
+  <div class="rationale-card"><h4>Verified</h4><p>Scores in 7+ of 10 pillars. Composite score is highly representative.</p></div>
+  <div class="rationale-card"><h4>Estimated</h4><p>Scores in 4-6 pillars. Composite is directionally useful but gaps exist.</p></div>
+  <div class="rationale-card"><h4>Minimal</h4><p>Scores in 3 or fewer pillars. Listed for tracking but treat composite with caution.</p></div>
+</div>
+<hr>
+<div class="section" id="integrity">
+  <div class="section-badge">SECTION 6</div>
+  <h2>Data Integrity</h2>
+  <p>The TR2 Unified DDP runs every day at 4:15 AM CST. It scrapes all 37 sources, normalizes scores within each source (top model = 100), averages across sources per pillar, then applies the weighted formula. Changes are committed to GitHub and the leaderboard updates automatically.</p>
+  <p>If a source is down or returns no data, the scraper logs it and continues. Missing sources do not penalize a model &mdash; scores are averaged only across sources that returned data for that model.</p>
+  <p>Model name matching uses a canonical roster with 150+ aliases to ensure variant names all map to the same model.</p>
+</div>
+<hr>
+<div class="section" id="coverage">
+  <div class="section-badge">SECTION 7</div>
+  <h2>Coverage Bonus</h2>
+  <p>Models appearing in more pillars receive a coverage bonus: <strong>+3% per pillar above 5</strong>. A model with scores in all 10 pillars gets a 15% bonus. This rewards models that are broadly evaluated rather than cherry-picked on favorable benchmarks.</p>
+  <p>The old system used a dampener formula that penalized sparse models. The new coverage bonus is simpler and more transparent: you get your weighted score plus a flat bonus for breadth.</p>
+</div>
+</main>
+</div>
+</body>
+</html>
