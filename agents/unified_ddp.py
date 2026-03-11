@@ -44,6 +44,7 @@ DATA_FILE   = REPO_PATH / "trs-data-unified.json"
 TODAY            = date.today().isoformat()
 DRY_RUN          = "--dry-run"       in sys.argv
 TEST_TELEGRAM    = "--test-telegram" in sys.argv
+_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 
 # ── TRSbench Bible V2.5 weights ───────────────────────────────────
 
@@ -212,6 +213,48 @@ def _parse_helm_leaderboard(url: str, source_name: str, wait_ms: int = 10000) ->
 
 
 # ═══ PILLAR 1: SAFETY (16%) ═════════════════════════════════════
+# ——— SHARED HELPERS ———————————————————————————————————————————
+
+def parse_first_table(html: str) -> list[dict]:
+    """Return rows as list of {col: val} dicts from the largest table."""
+    soup = BeautifulSoup(html, "html.parser")
+    tables = soup.find_all("table")
+    if not tables:
+        return []
+    target = max(tables, key=lambda t: len(t.find_all("tr")))
+    rows = target.find_all("tr")
+    if len(rows) < 2:
+        return []
+    headers = [th.get_text(strip=True) for th in rows[0].find_all(["th", "td"])]
+    result = []
+    for row in rows[1:]:
+        cells = [td.get_text(strip=True) for td in row.find_all(["td", "th"])]
+        if cells:
+            result.append(dict(zip(headers, cells)))
+    return result
+
+
+def _parse_mcp_atlas_innertext(text: str) -> dict[str, float]:
+    """Parse MCP Atlas leaderboard innerText."""
+    scores: dict[str, float] = {}
+    lines_list = [l.strip() for l in text.split("\n") if l.strip()]
+    score_pat = re.compile(r"^(\d+(?:\.\d+)?)\s*%$")
+    _skip = {"introduction", "key metrics", "release", "paper", "dataset",
+             "github", "performance", "top pass", "held-out", "mcp", "atlas",
+             "scale", "leaderboard", "benchmark", "tasks", "tools", "servers"}
+    for i, line in enumerate(lines_list):
+        m = score_pat.match(line)
+        if m and i > 0:
+            name = lines_list[i - 1]
+            if score_pat.match(name):
+                continue
+            if (len(name) > 2
+                    and not any(name.lower().startswith(kw) for kw in _skip)
+                    and name not in scores):
+                scores[name] = float(m.group(1))
+    return scores
+
+
 def scrape_helm_safety() -> dict[str, float]:
     """HELM Safety leaderboard (Stanford CRFM).
     Source: https://crfm.stanford.edu/helm/safety/latest/#/leaderboard
@@ -2237,14 +2280,19 @@ def normalize_sources_and_merge(scraper_list: list) -> tuple[dict[str, float], i
         raw = scraper_fn()
         if not raw:
             continue
-        top = max(raw.values())
-        if top <= 0:
-            continue
-        sources_hit += 1
-        for model, val in raw.items():
-            norm = (val / top) * 100.0
-            merged[model] = merged.get(model, 0.0) + norm
-            counts[model] = counts.get(model, 0) + 1
+        # Handle scrapers returning multiple dicts (e.g. forecast sub-metrics)
+        dicts_to_process = list(raw) if isinstance(raw, (tuple, list)) else [raw]
+        for d in dicts_to_process:
+            if not isinstance(d, dict) or not d:
+                continue
+            top = max(d.values())
+            if top <= 0:
+                continue
+            sources_hit += 1
+            for model, val in d.items():
+                norm = (val / top) * 100.0
+                merged[model] = merged.get(model, 0.0) + norm
+                counts[model] = counts.get(model, 0) + 1
     if not merged:
         return {}
     return {m: round(merged[m] / counts[m], 4) for m in merged}, sources_hit
