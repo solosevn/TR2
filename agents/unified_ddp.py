@@ -39,8 +39,7 @@ log = logging.getLogger("trsbench")
 # ══ CONFIG ════════════════════════════════════════════════════════
 TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
-REPO_PATH        = Path(os.environ.get("REPO_PATH",
-                        str(Path.home() / "Desktop/TR2")))
+REPO_PATH        = Path(__file__).resolve().parent.parent
 DATA_FILE   = REPO_PATH / "trs-data-unified.json"
 TODAY            = date.today().isoformat()
 DRY_RUN          = "--dry-run"       in sys.argv
