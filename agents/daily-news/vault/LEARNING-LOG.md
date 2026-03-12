@@ -337,3 +337,76 @@ Changes to `github_publisher.py`:
 
 ### Agent Reflection
 _Reflection will be added after performance data is collected._
+
+---
+
+## INSTITUTIONAL LEARNING INTAKE — March 12, 2026
+### Source: 12 CEO-LEARNING + LEARNING documents from V1 operations (trainingrun-site)
+### Ingested by: David Solomon directive — "feed these into Baggins so he learns from them"
+
+The following lessons are distilled from 12 operational learning documents produced during the V1→TR2 migration (March 5-12, 2026). These represent hard-won institutional knowledge from real production incidents. Baggins must internalize these before they are needed — not after.
+
+---
+
+### LESSON B-001: Single Source of Truth for Templates (from CEO-LEARNING-001)
+**What happened:** Paper 010's news card used the wrong HTML format because `github_publisher.py` had its own hardcoded V1 card template that was never updated when `html_stager.py` got the V2.0 template.
+**Rule for Baggins:** When generating any output (article HTML, news cards, Telegram messages), there must be ONE function that produces it. Never duplicate template logic across files. Import from the canonical source.
+**Applies to:** Steps 7, 8, 13, 14 of PROCESS.md
+
+### LESSON B-002: Trace Code Paths, Don't Assume (from CEO-LEARNING-001)
+**What happened:** `build_news_card()` existed and was imported — but never called during the publish flow. The code was there but dead.
+**Rule for Baggins:** "The code exists" ≠ "the code runs." Trace the actual execution path from trigger to output. Verify functions are called, not just defined.
+**Applies to:** Any debugging of the article pipeline
+
+### LESSON B-003: Never Append to HTML Files — Always Replace (from CEO-LEARNING-004)
+**What happened:** `news.html` ended up with two complete HTML documents stacked (644 lines instead of 326) because an update appended instead of replacing.
+**Rule for Baggins:** When updating news.html, always: read the current file, modify in memory, write the complete replacement. After any update, verify: single `<!DOCTYPE html>`, single `</html>`, paper count matches actual card count.
+**Applies to:** Step 13 of PROCESS.md
+
+### LESSON B-004: Verify Paper Count Matches Reality (from CEO-LEARNING-004)
+**What happened:** news.html said "9 papers published" when 11 existed.
+**Rule for Baggins:** After adding any paper card, count the actual `paper-card` elements and update the `paper-count` span. If they don't match, fix both.
+**Applies to:** Step 13 of PROCESS.md
+
+### LESSON B-005: Git Push Is Not Verification (from CEO-LEARNING-002, CEO-LEARNING-007)
+**What happened:** Code was committed and assumed to work. Files were written locally but never pushed.
+**Rule for Baggins:** After publishing, verify the article is live on the actual site. "Done" = tested and confirmed working on the live site, not "code pushed."
+**Applies to:** Steps 13-14 of PROCESS.md
+
+### LESSON B-006: Silent Failures Are the Most Dangerous (from CEO-LEARNING-002, CEO-LEARNING-003)
+**What happened:** Script not found → zero output, no error. Data silently lost by `-X theirs` rebase.
+**Rule for Baggins:** Every failure must produce a visible signal. If the pipeline fails at any step, send a Telegram notification. The absence of a notification IS the notification.
+**Applies to:** All steps — add error handling that notifies
+
+### LESSON B-007: Restructures Break More Than You Think (from CEO-LEARNING-002, CEO-LEARNING-009)
+**What happened:** V10 restructure moved files but didn't update crontab, launchd plists, internal paths, or hardcoded data paths.
+**Rule for Baggins:** After ANY path change: verify launchd plist paths, import paths, config.py paths, github_publisher.py URLs, template paths. Do a dry run. Don't assume anything works just because it was working before.
+**Applies to:** Any migration or restructure event
+
+### LESSON B-008: Security — .env Files Never in Repo (from CEO-LEARNING-005)
+**Rule for Baggins:** Never commit .env files. All secrets via os.getenv(). If you see a credential in any file, stop and flag immediately. The repo is public.
+**Applies to:** All operations — permanent rule
+
+### LESSON B-009: Be an Employee, Not a Reporter (from CEO-LEARNING-006)
+**What happened:** TRSitekeeper ran 24 checks, reported scores, went to sleep. Caught zero real problems. It was a reporter, not an employee.
+**Rule for Baggins:** Don't just report results — act on them. If engagement drops, investigate. If a story fails, try alternatives. Load vault context before every cycle. Read your own history. L1 reports, L3 thinks and acts.
+**Applies to:** The entire LOOP.md cycle — core autonomy principle
+
+### LESSON B-010: The Handoff Document Is Institutional Memory (from CEO-LEARNING-008)
+**What happened:** MORNING_CONTEXT.md went stale across 4+ sessions. New sessions wasted time re-investigating solved problems.
+**Rule for Baggins:** Keep vault files current. After every significant event, update the relevant vault file immediately. Stale vault = stale agent.
+**Applies to:** Steps 14-15 of PROCESS.md
+
+### LESSON B-011: Bandaid Fixes Create Debt (from CEO-LEARNING-002)
+**What happened:** Stale data files copied back to make the site "look right" without fixing the pipeline.
+**Rule for Baggins:** If a fix doesn't address the code that generates the output, it's a bandaid. Always ask: "What generates this output?" not "What does the output look like?"
+**Applies to:** Any troubleshooting
+
+### LESSON B-012: Centralized Push for Shared Files (from CEO-LEARNING-003)
+**What happened:** 5 scrapers each pushed status.json with `-X theirs` rebase. Each push overwrote the previous. Only last 2 survived.
+**Rule for Baggins:** When multiple agents write to shared files, coordinate who pushes. One coordinator pushes shared state.
+**Applies to:** Future integration with Gollum's feedback loop
+
+---
+
+*12 lessons from V1 operations. Real failures, real cost, real time. Baggins reads these as part of LEARNING-LOG.md tail load.*
