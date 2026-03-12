@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1440">
 <title>Training Run — AI Leaderboard & Daily Benchmark Rankings</title>
-<meta name="description" content="Training Run: Independent daily AI benchmark rankings. Live scores for TRSbench unified leaderboard and TS Arena — updated every morning at 7AM CST.">
+<meta name="description" content="Training Run: Independent daily AI benchmark rankings. Live scores for TRSbench, TRUscore, TRScode, TRFcast, and TRAgents — updated every morning at 7AM CST.">
 <meta name="keywords" content="AI leaderboard, AI benchmark, daily AI rankings, LLM leaderboard, GPT benchmark, Claude benchmark, Gemini benchmark, AI conditioning, TRSbench">
 <meta property="og:title" content="Training Run — Daily AI Benchmark Rankings">
-<meta property="og:description" content="Independent daily AI leaderboard. Live scores updated every morning. TRSbench unified leaderboard and TS Arena.">
+<meta property="og:description" content="Independent daily AI leaderboard. Live scores updated every morning. TRSbench, TRUscore, TRScode, TRFcast, TRAgents.">
 <meta property="og:url" content="https://trainingrun.ai/">
 <meta name="twitter:card" content="summary_large_image">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -427,6 +427,10 @@ body.compact .lb-table tbody tr { height:40px; }
 <div class="h-nav">
   <div class="htabs">
         <div class="htab active" data-ddp="trsbench" onclick="setDDP('trsbench')"><span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TRS</span>bench</span> <span class="tpill">(Overall)</span></div>
+    <div class="htab" data-ddp="truscore" onclick="setDDP('truscore')"><span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TRU</span>score</span> <span class="tpill">(Truth)</span></div>
+    <div class="htab" data-ddp="trscode" onclick="setDDP('trscode')"><span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TRS</span>code</span> <span class="tpill">(Coding)</span></div>
+    <div class="htab" data-ddp="trfcast" onclick="setDDP('trfcast')"><span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TRF</span>cast</span> <span class="tpill">(Prediction)</span></div>
+    <div class="htab" data-ddp="tragents" onclick="setDDP('tragents')"><span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TR</span><span style="color:#f87171">Agents</span></span> <span class="tpill">(Agents)</span></div>
       <a href="https://tsarena.ai" target="_blank" class="htab arena-hl">
         <span style="font-size:15px;white-space:nowrap"><span style="color:#00e5ff">TS</span> Arena</span> <span class="tpill" style="background:rgba(0,229,255,0.12);color:#00e5ff;border:1px solid rgba(0,229,255,0.3)">AI &amp; Safety</span>
       </a>
@@ -501,25 +505,26 @@ body.compact .lb-table tbody tr { height:40px; }
 
     <div class="content-head">
       <div class="content-title"><span class="hl">TRS</span>bench — Overall Rankings</div>
-      <div class="content-sub">Weighted composite · 10 pillars · 37 verified cited sources · Independent &amp; transparent</div>
+      <div class="content-sub">Weighted composite · 7 pillars · 18 verified benchmark sources · Independent &amp; transparent</div>
       <div class="content-meta">
         <div class="meta-dot"></div>
         <span id="metaUpdate">Loading…</span>
         <span style="color:rgba(255,255,255,0.1)">|</span>
-        <span id="metaSources">37 sources fired</span>
+        <span id="metaSources">18/18 sources fired</span>
         <span style="color:rgba(255,255,255,0.1)">|</span>
         <span id="metaCount">— models ranked</span>
         <span style="color:rgba(255,255,255,0.1)">|</span>
-        <a href="methodology.html" class="meta-link">View Methodology →</a>
+        <a href="trsmethodology.html" class="meta-link">View Methodology →</a>
       </div>
     </div>
 
     <!-- TOOLBAR -->
     <div class="toolbar">
       <div class="t-left">
-        <!-- filter pills removed for now -->
-        <div class="f-pill" id="activePillarPill" style="display:none">Overall ✓</div>
-        <div class="f-pill-plain" id="activeLabPill" style="display:none">All Labs</div>
+        <div class="btn-sm">⚙ Filters</div>
+        <div class="f-pill" id="activePillarPill">Overall ✓</div>
+        <div class="f-pill-plain" id="activeLabPill">All Labs</div>
+        <div class="f-pill-plain">All Licenses</div>
       </div>
       <div class="t-right">
         <div class="search-box">
@@ -616,27 +621,80 @@ function logoImg(company, size) {
 // ══ DDP CONFIG ════════════════════════════════════════
 const DDP_CONFIG = {
   trsbench: {
-    title: '<span class="hl">TRS</span>bench — Unified Rankings',
-    sub: 'Weighted composite · 10 pillars · Formula TR2-unified-v1.3 · Coverage bonus: +3% per pillar above 5, +5% for 10/10',
-    file: 'trs-data-unified.json', totalPillars: 10, sourceCount: 37,
-    methLink: 'methodology.html',
+    title: '<span class="hl">TRS</span>bench — Overall Rankings',
+    sub: 'Weighted composite · 7 pillars · 18 verified sources · Independent &amp; transparent',
+    file: 'trs-data.json', totalPillars: 7, sourceCount: 18,
+    methLink: 'trsmethodology.html',
     pillars: [
-      { key:'safety',              label:'Safe',     icon:'🛡️', pct:'16%', compact:false },
-      { key:'truth_confabulation', label:'Truth',    icon:'🔍', pct:'14%', compact:false },
-      { key:'reasoning',           label:'Reason',   icon:'🧠', pct:'13%', compact:false },
-      { key:'human_preference',    label:'Pref',     icon:'📋', pct:'11%', compact:false },
-      { key:'coding',              label:'Code',     icon:'💻', pct:'11%', compact:false },
-      { key:'agent_capability',    label:'Agent',    icon:'🤖', pct:'10%', compact:true  },
-      { key:'knowledge',           label:'Know',     icon:'📚', pct:'8%',  compact:true  },
-      { key:'forecasting_finance', label:'Fcast',    icon:'📈', pct:'7%',  compact:true  },
-      { key:'efficiency',          label:'Effic',    icon:'⚡', pct:'5%',  compact:true  },
-      { key:'usage_adoption',      label:'Usage',    icon:'📊', pct:'5%',  compact:true  },
+      { key:'safety',           label:'Safety',       icon:'🛡️', pct:'21%', compact:false },
+      { key:'reasoning',        label:'Reasoning',    icon:'🧠', pct:'20%', compact:false },
+      { key:'coding',           label:'Coding',       icon:'💻', pct:'20%', compact:false },
+      { key:'human_preference', label:'Instruction',  icon:'📋', pct:'18%', compact:true  },
+      { key:'knowledge',        label:'Knowledge',    icon:'📚', pct:'8%',  compact:true  },
+      { key:'efficiency',       label:'Efficiency',   icon:'⚡', pct:'7%',  compact:true  },
+      { key:'usage_adoption',   label:'Usage',        icon:'📊', pct:'6%',  compact:true  },
+    ],
+  },
+  truscore: {
+    title: '<span class="hl">TRU</span>score — Truth Rankings',
+    sub: 'Weighted composite · 5 pillars · 9 verified sources · Independent &amp; transparent',
+    file: 'truscore-data.json', totalPillars: 5, sourceCount: 9, minSources: 3,
+    methLink: 'truscore.html',
+    pillars: [
+      { key:'truthfulness',     label:'Truthfulness',      icon:'✅', pct:'35%', compact:false },
+      { key:'hallucination',    label:'Confabulation',     icon:'🧠', pct:'20%', compact:false },
+      { key:'reasoning',        label:'Reasoning',         icon:'🔬', pct:'20%', compact:false },
+      { key:'neutrality',       label:'Neutrality',        icon:'⚖️', pct:'15%', compact:false },
+      { key:'response_quality', label:'Response Quality',  icon:'🎯', pct:'10%', compact:true  },
+    ],
+  },
+  trscode: {
+    title: '<span class="hl">TRS</span>code — Coding Rankings',
+    sub: 'Weighted composite · 5 pillars · 8 verified sources · Independent &amp; transparent',
+    file: 'trscode-data.json', totalPillars: 5, sourceCount: 8,
+        minSources: 1,
+    methLink: 'trscode-methodology.html',
+    pillars: [
+      { key:'issue_resolution',  label:'Issue Res.',  icon:'🔧', pct:'30%', compact:false },
+      { key:'code_generation',   label:'Code Gen.',   icon:'💡', pct:'25%', compact:false },
+      { key:'agentic_coding',    label:'Agentic',     icon:'🤖', pct:'20%', compact:false },
+      { key:'scientific',        label:'Scientific',  icon:'🔬', pct:'15%', compact:true  },
+      { key:'human_preference',  label:'Human Pref',  icon:'👥', pct:'10%', compact:true  },
+    ],
+  },
+  trfcast: {
+    title: '<span class="hl">TRF</span>cast — Prediction Rankings',
+    sub: 'Weighted composite · 5 pillars · 4 verified sources · Independent &amp; transparent',
+    file: 'trf-data.json', totalPillars: 5, sourceCount: 4,
+    minSources: 1,
+    methLink: 'trfcast-methodology.html',
+    pillars: [
+      { key:'forecasting',         label:'Forecasting',    icon:'🔮', pct:'35%', compact:false },
+      { key:'trading',             label:'Trading',        icon:'📈', pct:'25%', compact:false },
+      { key:'calibration',         label:'Calibration',    icon:'🎯', pct:'20%', compact:false },
+      { key:'financial_reasoning', label:'Fin. Reasoning', icon:'💰', pct:'12%', compact:true  },
+      { key:'market_intelligence', label:'Market Intel',   icon:'🧮', pct:'8%',  compact:true  },
+    ],
+  },
+  tragents: {
+    title: '<span class="hl">TR</span><span style="color:#f87171">Agents</span> — Agent Rankings',
+    sub: 'Weighted composite · 6 pillars · 10+ verified sources · Independent &amp; transparent',
+    file: 'tragent-data.json', totalPillars: 6, sourceCount: 10,
+    minSources: 3,
+    methLink: 'tragents-methodology.html',
+    pillars: [
+      { key:'task_completion',  label:'Task Completion',  icon:'✅', pct:'25%', compact:false },
+      { key:'cost_efficiency',  label:'Cost Efficiency',  icon:'💰', pct:'20%', compact:false },
+      { key:'tool_reliability', label:'Tool Reliability', icon:'🔧', pct:'20%', compact:false },
+      { key:'safety_security',  label:'Safety',           icon:'🛡️', pct:'15%', compact:true  },
+      { key:'accessibility',    label:'Accessibility',    icon:'🌐', pct:'10%', compact:true  },
+      { key:'multi_model',      label:'Multi-Model',      icon:'🤝', pct:'10%', compact:true  },
     ],
   },
 };
 
 // ══ STATE ════════════════════════════════════════════
-const _ddpData = { trsbench:null };
+const _ddpData = { trsbench:null, truscore:null, trscode:null, trfcast:null, tragents:null };
 let currentDDP = 'trsbench';
 function activeData(){ return _ddpData[currentDDP]; }
 function getColspan(){ return 3 + DDP_CONFIG[currentDDP].pillars.length; }
@@ -706,7 +764,7 @@ function sparkColor(pts){
 function renderThead(){
   const pillars = DDP_CONFIG[currentDDP].pillars;
   const ths = pillars.map(p =>
-    `<th${p.compact?' class="hide-compact"':''} style="font-size:11px;padding:6px 4px;white-space:nowrap">${p.label}</th>`
+    `<th${p.compact?' class="hide-compact"':''}>${p.label} <span style="font-size:8px;color:rgba(255,255,255,0.2)">${p.pct}</span></th>`
   ).join('');
   document.getElementById('theadRow').innerHTML =
     `<th style="width:52px;text-align:center">#</th><th>Model</th><th style="min-width:130px">Score <span class="sort-icon">↓</span></th>${ths}`;
@@ -718,11 +776,8 @@ function buildPillarSidebar(){
     `Pillars (${cfg.totalPillars}) <span class="sb-chevron">▾</span>`;
   document.getElementById('pillarList').innerHTML =
     `<div class="pillar-item active" onclick="setPillar('overall',this)"><span class="p-icon">🏆</span> Overall <span class="p-check">✓</span></div>` +
-    `<div style="height:1px;background:rgba(0,229,255,0.2);margin:6px 0;"></div>` +
-    `<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:0.1em;padding:4px 12px;text-transform:uppercase;">Category</div>` +
-    `<div style="height:1px;background:rgba(255,255,255,0.08);margin:2px 0 4px;"></div>` +
     cfg.pillars.map(p =>
-      `<div class="pillar-item" onclick="setPillar('${p.key}',this)" style="padding-left:24px"><span class="p-icon">${p.icon}</span> ${p.label}</div>`
+      `<div class="pillar-item" onclick="setPillar('${p.key}',this)"><span class="p-icon">${p.icon}</span> ${p.label}</div>`
     ).join('');
   document.getElementById('activePillarPill').textContent = 'Overall ✓';
 }
@@ -801,15 +856,13 @@ function renderTable(){
   const tbody = document.getElementById('tableBody');
   const query = (document.getElementById('searchInput').value||'').toLowerCase();
 
-  // Build per-tier rank maps from FULL unfiltered list (ranks stay locked when filtering)
-  const _allScored = data.models.filter(m => getLatestScore(m) !== null);
-  const _allVerified = _allScored.filter(m => (m.tier === 'verified') || (getCoverage(m) >= 5)).sort((a,b) => (getLatestScore(b)||0)-(getLatestScore(a)||0));
-  const _allEstimated = _allScored.filter(m => (m.tier === 'estimated' || getCoverage(m) < 5) && getCoverage(m) >= 3).sort((a,b) => (getLatestScore(b)||0)-(getLatestScore(a)||0));
-  const _allMinimal = _allScored.filter(m => getCoverage(m) < 3 && m.tier !== 'verified').sort((a,b) => (getLatestScore(b)||0)-(getLatestScore(a)||0));
-  const tierRankMap = new Map();
-  _allVerified.forEach((m, i) => tierRankMap.set(m.name, { rank: i+1, tier: 'verified' }));
-  _allEstimated.forEach((m, i) => tierRankMap.set(m.name, { rank: i+1, tier: 'estimated' }));
-  _allMinimal.forEach((m, i) => tierRankMap.set(m.name, { rank: i+1, tier: 'minimal' }));
+  // Build global rank map using FRESH-FIRST ordering (same as table display)
+  const _minSrc = DDP_CONFIG[currentDDP].minSources || 0;
+  const _allScored = data.models.filter(m => getLatestScore(m) !== null).filter(m => !_minSrc || (m.source_count || 0) >= _minSrc);
+  const _gFresh = _allScored.filter(m => isFreshToday(m)).sort((a,b) => (getLatestScore(b)||0)-(getLatestScore(a)||0));
+  const _gStale = _allScored.filter(m => !isFreshToday(m)).sort((a,b) => (getLatestScore(b)||0)-(getLatestScore(a)||0));
+  const globalRankMap = new Map();
+  [..._gFresh, ..._gStale].forEach((m, i) => globalRankMap.set(m.name, i + 1));
 
   // Filter + sort models
   let models = data.models
@@ -819,7 +872,7 @@ function renderTable(){
     .filter(m => !query || m.name.toLowerCase().includes(query) || (m.company||'').toLowerCase().includes(query))
     .sort((a,b) => (getLatestScore(b)||0) - (getLatestScore(a)||0));
 
-  const maxScore = models.length ? getLatestScore(models[0]) : 100;
+  const maxScore = _gFresh.length ? getLatestScore(_gFresh[0]) : 100;
 
   if(!models.length){
     tbody.innerHTML = `<tr><td colspan="${getColspan()}" style="text-align:center;padding:40px;color:rgba(255,255,255,0.3);font-size:13px;">No models match your filters.</td></tr>`;
@@ -829,19 +882,16 @@ function renderTable(){
 
   document.getElementById('metaCount').textContent = models.length + ' models ranked';
 
-  // Split by tier: verified (5+ pillars), estimated (3-4), and minimal (1-2)
-  const verifiedModels = models.filter(m => (m.tier === 'verified') || (getCoverage(m) >= 5));
-  const estimatedModels = models.filter(m => (m.tier === 'estimated' || getCoverage(m) < 5) && getCoverage(m) >= 3);
-  const minimalModels = models.filter(m => getCoverage(m) < 3 && m.tier !== 'verified');
+  // Split fresh (scored today) vs stale (carry-forward from previous day)
+  const freshModels = models.filter(m => isFreshToday(m));
+  const staleModels = models.filter(m => !isFreshToday(m));
 
-  // Build rows for a group of models — tierLevel: 'verified', 'estimated', or 'minimal'
-  function buildRows(group, tierLevel){
+  // Build rows for a group of models
+  function buildRows(group, rankOffset, isStale){
     const cfgPillars = DDP_CONFIG[currentDDP].pillars;
     const totalP = DDP_CONFIG[currentDDP].totalPillars;
-    const showMedals = (tierLevel === 'verified');
     return group.map((m, i) => {
-      const tierInfo = tierRankMap.get(m.name);
-      const tierRank = tierInfo ? tierInfo.rank : (i + 1);  // Locked rank from full list
+      const rank = globalRankMap.get(m.name) || (i + 1 + rankOffset);
       const score = getLatestScore(m);
       const chg = getChange(m);
       const pts7 = getLast7(m);
@@ -851,13 +901,16 @@ function renderTable(){
       const coverageBadge = covered >= 0
         ? `<span style="font-size:9px;color:rgba(0,229,255,0.45);margin-right:6px;font-weight:400">${covered}/${totalP}</span>`
         : '';
-      const dimStyle = (tierLevel !== 'verified') ? 'opacity:0.7;' : '';
+      const staleRowStyle = isStale ? 'opacity:0.62;' : '';
+      const staleScoreNote = isStale
+        ? `<span style="font-size:8px;color:rgba(255,200,0,0.55);margin-left:4px">${fmtDate(data.dates[data.dates.length-2]||'')}</span>`
+        : '';
 
     let rankHTML;
-    if(showMedals && tierRank===1) rankHTML = `<div class="rank-cell"><span class="medal medal-gold">🥇</span></div>`;
-    else if(showMedals && tierRank===2) rankHTML = `<div class="rank-cell"><span class="medal medal-silver">🥈</span></div>`;
-    else if(showMedals && tierRank===3) rankHTML = `<div class="rank-cell"><span class="medal medal-bronze">🥉</span></div>`;
-    else rankHTML = `<div class="rank-cell">${tierRank}</div>`;
+    if(rank===1) rankHTML = `<div class="rank-cell"><span class="medal medal-gold">🥇</span></div>`;
+    else if(rank===2) rankHTML = `<div class="rank-cell"><span class="medal medal-silver">🥈</span></div>`;
+    else if(rank===3) rankHTML = `<div class="rank-cell"><span class="medal medal-bronze">🥉</span></div>`;
+    else rankHTML = `<div class="rank-cell">${rank}</div>`;
 
     let chgHTML;
     if(Math.abs(chg) < 0.005) chgHTML = `<span class="chg nc">+0.00</span>`;
@@ -865,9 +918,9 @@ function renderTable(){
     else chgHTML = `<span class="chg dn">↓ ${Math.abs(chg).toFixed(2)}</span>`;
 
     let rowClass = '';
-    if(showMedals && tierRank===1) rowClass = 'row-1';
-    else if(showMedals && tierRank===2) rowClass = 'row-2';
-    else if(showMedals && tierRank===3) rowClass = 'row-3';
+    if(rank===1) rowClass = 'row-1';
+    else if(rank===2) rowClass = 'row-2';
+    else if(rank===3) rowClass = 'row-3';
 
     const coClass = {
       'Anthropic':'co-anthropic','Google':'co-google','OpenAI':'co-openai',
@@ -879,36 +932,27 @@ function renderTable(){
       `<td${p.compact?' class="hide-compact"':''}>${pCol(m, p.key)}</td>`
     ).join('');
 
-    return `<tr class="${rowClass} ${coClass}" style="${dimStyle}" data-model="${m.name.replace(/"/g,'&quot;')}" onclick="openV2Modal(this.dataset.model,'${currentDDP}')">
+    return `<tr class="${rowClass} ${coClass}" style="${staleRowStyle}" data-model="${m.name.replace(/"/g,'&quot;')}" onclick="openV2Modal(this.dataset.model,'${currentDDP}')">
       <td>${rankHTML}</td>
       <td><div class="m-cell">
         ${logoImg(m.company, 28)}
         <div><div class="m-name">${m.name}</div><div class="m-lab">${m.company}</div></div>
       </div></td>
-      <td>${coverageBadge}<span class="score-val">${score.toFixed(2)}</span><span style="margin-left:9px">${chgHTML}</span></td>
+      <td>${coverageBadge}<span class="score-val">${score.toFixed(2)}</span><span style="margin-left:9px">${chgHTML}</span>${staleScoreNote}</td>
       ${pillarCells}
     </tr>`;
   }).join('');
   }
 
-  // Tier divider bars
-  const estimatedDivider = estimatedModels.length ? `
-    <tr><td colspan="${getColspan()}" style="padding:8px 16px;background:rgba(0,229,255,0.04);border-top:2px solid rgba(0,229,255,0.25);border-bottom:1px solid rgba(0,229,255,0.1);">
-      <span style="font-size:11px;font-weight:700;color:rgba(0,229,255,0.7);letter-spacing:0.1em">ESTIMATED</span>
-      <span style="font-size:10px;color:rgba(255,255,255,0.35);margin-left:12px">3–4 pillars covered · Scores may shift as more data comes in</span>
+  // Stale divider row
+  const staleDivider = staleModels.length ? `
+    <tr><td colspan="${getColspan()}" style="padding:6px 16px;background:rgba(255,200,0,0.04);border-top:1px solid rgba(255,200,0,0.12);border-bottom:1px solid rgba(255,200,0,0.08);">
+      <span style="font-size:10px;color:rgba(255,200,0,0.45);letter-spacing:0.08em">&#9203; NOT SCORED TODAY &middot; Last known scores shown &middot; Updates on next scrape</span>
     </td></tr>` : '';
 
-  const minimalDivider = minimalModels.length ? `
-    <tr><td colspan="${getColspan()}" style="padding:8px 16px;background:rgba(255,200,0,0.03);border-top:2px solid rgba(255,200,0,0.2);border-bottom:1px solid rgba(255,200,0,0.08);">
-      <span style="font-size:11px;font-weight:700;color:rgba(255,200,0,0.6);letter-spacing:0.1em">MINIMAL DATA</span>
-      <span style="font-size:10px;color:rgba(255,255,255,0.35);margin-left:12px">1–2 pillars · Incomplete coverage</span>
-    </td></tr>` : '';
-
-  tbody.innerHTML = buildRows(verifiedModels, 'verified')
-    + estimatedDivider
-    + buildRows(estimatedModels, 'estimated')
-    + minimalDivider
-    + buildRows(minimalModels, 'minimal');
+  tbody.innerHTML = buildRows(freshModels, 0, false)
+    + staleDivider
+    + buildRows(staleModels, freshModels.length, true);
 }
 
 // ══ BUILD TICKER ═════════════════════════════════════
@@ -941,6 +985,10 @@ function makeTickerItem(logoUrl, company, cat, name, valHtml, href){
 function buildTicker(datasets){
   const benches = [
     {catHtml:'#1 <span style="color:#00d4ff">TRS</span><span style="color:rgba(255,255,255,0.75)">bench</span>',  url:'/scores',         data:datasets[0]},
+    {catHtml:'#1 <span style="color:#00d4ff">TRU</span><span style="color:rgba(255,255,255,0.75)">score</span>', url:'/truscore-scores', data:datasets[1]},
+    {catHtml:'#1 <span style="color:#00d4ff">TRS</span><span style="color:rgba(255,255,255,0.75)">code</span>',  url:'/trscode-scores',  data:datasets[2]},
+    {catHtml:'#1 <span style="color:#00d4ff">TRF</span><span style="color:rgba(255,255,255,0.75)">cast</span>',  url:'/trfcast-scores',  data:datasets[3]},
+    {catHtml:'#1 <span style="color:#00d4ff">TR</span><span style="color:#ff5252">Agents</span>',                url:'/tragents',        data:datasets[4]},
   ];
   const items = [];
   let bigGain = {delta:-Infinity, name:null};
@@ -985,12 +1033,16 @@ function buildTicker(datasets){
   track.style.animationDuration = Math.max(24, items.length * 7) + 's';
   track.classList.add('animating');
 }
-// Load TRSbench feed for ticker (independent of main table fetch)
+// Load all 5 DDP feeds for ticker (independent of main table fetch)
 Promise.all([
-  fetch('trs-data-unified.json?v='+Date.now()).then(r=>r.json()),
+  fetch('trs-data.json?v='+Date.now()).then(r=>r.json()),
+  fetch('truscore-data.json?v='+Date.now()).then(r=>r.json()),
+  fetch('trscode-data.json?v='+Date.now()).then(r=>r.json()),
+  fetch('trf-data.json?v='+Date.now()).then(r=>r.json()),
+  fetch('tragent-data.json?v='+Date.now()).then(r=>r.json()),
 ]).then(function(datasets){
   // Cache all DDP data so About card works cross-benchmark without extra fetches
-  ['trsbench'].forEach(function(k,i){
+  ['trsbench','truscore','trscode','trfcast','tragents'].forEach(function(k,i){
     if(!_ddpData[k]) _ddpData[k] = datasets[i];
   });
   buildTicker(datasets);
@@ -1157,11 +1209,19 @@ let _v2Chart = null;
 
 const V2_BOARD_INFO = {
   trsbench: { label:'TRSbench', cat:'Overall',    icon:'🏆' },
+  truscore: { label:'TRUscore', cat:'Truth',       icon:'✅' },
+  trscode:  { label:'TRScode',  cat:'Coding',      icon:'💻' },
+  trfcast:  { label:'TRFcast',  cat:'Prediction',  icon:'🔮' },
+  tragents: { label:'TRAgents', cat:'Agents',      icon:'🤖' },
 };
-const V2_BOARD_ORDER = ['trsbench'];
+const V2_BOARD_ORDER = ['trsbench','truscore','trscode','trfcast','tragents'];
 
 const V2_BOARD_LABEL_HTML = {
   trsbench: '<span style="color:#00d4ff">TRS</span><span style="color:#fff">bench</span>',
+  truscore: '<span style="color:#00d4ff">TRU</span><span style="color:#fff">score</span>',
+  trscode:  '<span style="color:#00d4ff">TRS</span><span style="color:#fff">code</span>',
+  trfcast:  '<span style="color:#00d4ff">TRF</span><span style="color:#fff">cast</span>',
+  tragents: '<span style="color:#00d4ff">TR</span><span style="color:#ff5252">Agents</span>',
 };
 
 const MODEL_BIOS = {
@@ -1524,7 +1584,7 @@ function _buildV2TrendChart(modelName, ddp){
 renderThead();
 buildPillarSidebar();
 
-fetch('trs-data-unified.json?v=' + Date.now())
+fetch('trs-data.json?v=' + Date.now())
   .then(r => { if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
   .then(data => {
     _ddpData.trsbench = data;
@@ -1532,7 +1592,7 @@ fetch('trs-data-unified.json?v=' + Date.now())
 
     const lastDate = (data.dates||[]).slice(-1)[0] || null;
     if(lastDate) document.getElementById('metaUpdate').textContent = '↻ Updated ' + fmtDate(lastDate) + (data.run_at ? ' · ' + data.run_at : '');
-    document.getElementById('metaSources').textContent = '37 sources fired';
+    document.getElementById('metaSources').textContent = '18/18 sources fired';
 
     const rankedCount = data.models.filter(m => getLatestScore(m) !== null).length;
     document.getElementById('metaCount').textContent = rankedCount + ' models ranked';
