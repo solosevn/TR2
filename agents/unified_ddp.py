@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
 ══════════════════════════════════════════════════════════════════
-  TR2 UNIFIED DDP — Daily Data Pipeline
+  ⚒️  GIMLI — TR2 Unified DDP (Daily Data Pipeline)
   solosevn/TR2 | TR2-unified-v1.3
 ══════════════════════════════════════════════════════════════════
-  ONE scraper, 10 pillars, 40+ sources.
-  Feeds trs-data-unified.json for the TR2 unified leaderboard.
+  Agent:  Gimli / TRSbench Scoring Engine (L0 — deterministic)
+  Role:   ONE scraper, 10 pillars, 37 sources.
+          Feeds trs-data-unified.json for the TR2 unified leaderboard.
+  Avatar: assets/emojis.com gimli-dwarf.png
 ══════════════════════════════════════════════════════════════════
 """
 
@@ -34,7 +36,7 @@ from telegram import Bot
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s  %(levelname)-7s  %(message)s",
                     datefmt="%H:%M:%S")
-log = logging.getLogger("trsbench")
+log = logging.getLogger("gimli")
 
 # ══ CONFIG ════════════════════════════════════════════════════════
 TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN", "")
@@ -2757,7 +2759,7 @@ def write_status(status: str, ranked: list, source_summary: list,
 
     sdata["last_updated"] = now_iso
     sdata["tr2_unified"] = {
-        "name":             "TR2 Unified DDP",
+        "name":             "Gimli — TR2 Unified DDP",
         "enabled":          True,
         "last_run":         now_iso,
         "last_run_date":    TODAY,
@@ -2794,18 +2796,18 @@ def main():
     start_time = _time.time()
 
     if TEST_TELEGRAM:
-        notify("<b>TR2 Unified DDP online</b>\nTelegram works!")
+        notify("⚒️ <b>Gimli online</b>\nTelegram works!")
         print("Telegram test sent.")
         return
 
     mode = "DRY RUN" if DRY_RUN else "LIVE"
-    log.info(f"TR2 Unified DDP | {TODAY} | {mode}")
-    notify(f"<b>TR2 Unified DDP starting</b>\n{TODAY}\n{mode}\n{TOTAL_SOURCES} sources")
+    log.info(f"⚒️ Gimli | {TODAY} | {mode}")
+    notify(f"⚒️ <b>Gimli | TR2 DDP starting</b>\n{TODAY}\n{mode}\n{TOTAL_SOURCES} sources")
 
     # Load data
     if not DATA_FILE.exists():
         msg = f"trs-data-unified.json not found at {DATA_FILE}"
-        log.error(msg); notify(f"ERROR: {msg}"); return
+        log.error(msg); notify(f"⚒️ <b>Gimli | ERROR</b>\n{msg}"); return
 
     with open(DATA_FILE) as f:
         data = json.load(f)
@@ -2813,7 +2815,7 @@ def main():
     models = data["models"]
     names  = [m["name"] for m in models]
     dates  = data["dates"]
-    notify(f"Loaded. Models: {len(models)} | Dates: {dates[0]} to {dates[-1]}")
+    notify(f"⚒️ Loaded. Models: {len(models)} | Dates: {dates[0]} to {dates[-1]}")
 
     # Date slot
     if TODAY in dates:
@@ -2847,7 +2849,7 @@ def main():
         log.info(f"  {sources_hit}/{len(scraper_list)} sources | "
                  f"{len(result)} models | {matched} matched")
 
-    notify("<b>Scraping complete</b>\n" + "\n".join(source_summary))
+    notify("⚒️ <b>Gimli | Scraping complete</b>\n" + "\n".join(source_summary))
 
     # Auto-discover new models
     new_models = auto_discover_models(data, all_results)
@@ -2929,9 +2931,9 @@ def main():
 
     ok = git_push(f"TR2 unified update {TODAY} ({len(qualified)} models)")
     if ok:
-        notify(f"<b>TR2 Unified DDP done!</b>\n{TODAY}\n{len(qualified)} models")
+        notify(f"⚒️ <b>Gimli | TR2 DDP done!</b>\n{TODAY}\n{len(qualified)} models")
     else:
-        notify(f"JSON updated but push failed. cd {REPO_PATH} && git push")
+        notify(f"⚒️ <b>Gimli | Push failed</b>\nJSON updated but push failed.\ncd {REPO_PATH} && git push")
 
 
 if __name__ == "__main__":
