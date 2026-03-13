@@ -11,7 +11,7 @@
 ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 """
 
-import os, sys, json, hashlib, subprocess, asyncio, logging, re
+import os, sys, json, hashlib, subprocess, logging, re
 from datetime import date, datetime
 from pathlib import Path
 
@@ -19,7 +19,6 @@ from pathlib import Path
 for pkg, hint in [
     ("playwright", "pip3 install playwright && python3 -m playwright install chromium"),
     ("bs4",        "pip3 install beautifulsoup4"),
-    ("telegram",   "pip3 install python-telegram-bot"),
     ("requests",   "pip3 install requests"),
 ]:
     try:
@@ -30,7 +29,6 @@ for pkg, hint in [
 import requests
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
-from telegram import Bot
 
 # ââ logging âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 logging.basicConfig(level=logging.INFO,
@@ -39,14 +37,11 @@ logging.basicConfig(level=logging.INFO,
 log = logging.getLogger("gimli")
 
 # ââ CONFIG ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN", "")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 REPO_PATH        = Path(__file__).resolve().parent.parent
 DATA_FILE   = REPO_PATH / "trs-data-unified.json"
 STATUS_FILE = REPO_PATH / "status.json"
 TODAY            = date.today().isoformat()
 DRY_RUN          = "--dry-run"       in sys.argv
-TEST_TELEGRAM    = "--test-telegram" in sys.argv
 _UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 
 # ââ TRSbench Bible V2.5 weights âââââââââââââââââââââââââââââââââââ
@@ -86,16 +81,8 @@ QUALIFICATION_MIN_PILLARS = 1
 
 
 def notify(text: str) -> None:
-    if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
-        log.info(f"[TG] {text}")
-        return
-    async def _send():
-        await Bot(token=TELEGRAM_TOKEN).send_message(
-            chat_id=TELEGRAM_CHAT_ID, text=text, parse_mode="HTML")
-    try:
-        asyncio.run(_send())
-    except Exception as e:
-        log.warning(f"Telegram non-fatal: {e}")
+    """Log status messages. No external notifications."""
+    log.info(text)
 
 
 # ââ PLAYWRIGHT HELPERS ââââââââââââââââââââââââââââââââââââââââââââ
@@ -2796,11 +2783,6 @@ def auto_discover_models(data: dict, all_results: dict) -> list:
 def main():
     import time as _time
     start_time = _time.time()
-
-    if TEST_TELEGRAM:
-        notify("âï¸ <b>Gimli online</b>\nTelegram works!")
-        print("Telegram test sent.")
-        return
 
     mode = "DRY RUN" if DRY_RUN else "LIVE"
     log.info(f"âï¸ Gimli | {TODAY} | {mode}")
