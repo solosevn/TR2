@@ -8,8 +8,8 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load .env from agent directory
-load_dotenv(Path(__file__).parent / ".env")
+# Load .env from agent directory (override=True ensures .env wins over system env)
+load_dotenv(Path(__file__).parent / ".env", override=True)
 
 # ──────────────────────────────────────────────────────────
 # TELEGRAM
@@ -52,10 +52,10 @@ REDDIT_USERNAME = os.getenv("REDDIT_USERNAME", "")
 REDDIT_PASSWORD = os.getenv("REDDIT_PASSWORD", "")
 REDDIT_USER_AGENT = "Kennedy Media Agent v1.0 by /u/trainingrun"
 TARGET_SUBREDDITS = [
-    "MachineLearning",
-    "artificial",
-    "LocalLLaMA",
-    "singularity",
+        "MachineLearning",
+        "artificial",
+        "LocalLLaMA",
+        "singularity",
 ]
 
 # YouTube Data API v3
@@ -84,45 +84,58 @@ LOG_FILE = AGENT_DIR / "kennedy.log"
 MEMORY_DIR.mkdir(exist_ok=True)
 
 # ──────────────────────────────────────────────────────────
+# AGENT COMMS — File-based communication with subordinates
+# ──────────────────────────────────────────────────────────
+BAGGINS_DIR = TR_REPO_PATH / "agents" / "baggins"
+BAGGINS_COMMS_DIR = BAGGINS_DIR / "comms"
+BAGGINS_PENDING_REVIEW = BAGGINS_COMMS_DIR / "pending_review.json"
+BAGGINS_APPROVAL_PATH = BAGGINS_COMMS_DIR / "approval.json"
+BAGGINS_PUBLISHED_PATH = BAGGINS_COMMS_DIR / "published.json"
+BAGGINS_LOG = BAGGINS_DIR / "agent.log"
+
+GOLLUM_DIR = TR_REPO_PATH / "agents" / "gollum"
+GOLLUM_SCOUT_LOG = GOLLUM_DIR / "scout.log"
+
+# ──────────────────────────────────────────────────────────
 # CONTEXT VAULT — Files the agent reads for instructions
 # ──────────────────────────────────────────────────────────
 VAULT_FILES = {
-    "user_md": "shared/USER.md",
-    "reasoning_md": "shared/REASONING-CHECKLIST.md",
-    "soul_md": "agents/kennedy/vault/SOUL.md",
-    "config_md": "agents/kennedy/vault/CONFIG.md",
-    "process_md": "agents/kennedy/vault/PROCESS.md",
-    "cadence_md": "agents/kennedy/vault/CADENCE.md",
-    "run_log_md": "agents/kennedy/vault/RUN-LOG.md",
-    "learning_md": "agents/kennedy/vault/LEARNING-LOG.md",
-    "style_md": "agents/kennedy/vault/STYLE-EVOLUTION.md",
-    "loop_md": "agents/kennedy/vault/LOOP.md",
-    "memory_md": "agents/kennedy/vault/MEMORY-PROTOCOL.md",
-    "autonomy_md": "agents/kennedy/vault/AUTONOMY-RULES.md",
+        "user_md": "shared/USER.md",
+        "reasoning_md": "shared/REASONING-CHECKLIST.md",
+        "soul_md": "agents/kennedy/vault/SOUL.md",
+        "config_md": "agents/kennedy/vault/CONFIG.md",
+        "process_md": "agents/kennedy/vault/PROCESS.md",
+        "cadence_md": "agents/kennedy/vault/CADENCE.md",
+        "run_log_md": "agents/kennedy/vault/RUN-LOG.md",
+        "learning_md": "agents/kennedy/vault/LEARNING-LOG.md",
+        "style_md": "agents/kennedy/vault/STYLE-EVOLUTION.md",
+        "loop_md": "agents/kennedy/vault/LOOP.md",
+        "memory_md": "agents/kennedy/vault/MEMORY-PROTOCOL.md",
+        "autonomy_md": "agents/kennedy/vault/AUTONOMY-RULES.md",
 }
 
 # ──────────────────────────────────────────────────────────
 # MEMORY FILES — Runtime state
 # ──────────────────────────────────────────────────────────
 MEMORY_FILES = {
-    "results_tsv": MEMORY_DIR / "results.tsv",
-    "tried_fixes": MEMORY_DIR / "tried_fixes.jsonl",
-    "error_log": MEMORY_DIR / "error_log.jsonl",
-    "reflection_log": MEMORY_DIR / "reflection_log.jsonl",
-    "health_state": MEMORY_DIR / "health_state.json",
-    "huddle_log": MEMORY_DIR / "huddle_log.jsonl",
+        "results_tsv": MEMORY_DIR / "results.tsv",
+        "tried_fixes": MEMORY_DIR / "tried_fixes.jsonl",
+        "error_log": MEMORY_DIR / "error_log.jsonl",
+        "reflection_log": MEMORY_DIR / "reflection_log.jsonl",
+        "health_state": MEMORY_DIR / "health_state.json",
+        "huddle_log": MEMORY_DIR / "huddle_log.jsonl",
 }
 
 # ──────────────────────────────────────────────────────────
 # UTM TRACKING
 # ──────────────────────────────────────────────────────────
 UTM_BASE = {
-    "x": "utm_source=x&utm_medium=social",
-    "reddit": "utm_source=reddit&utm_medium=social",
-    "linkedin": "utm_source=linkedin&utm_medium=social",
-    "hackernews": "utm_source=hackernews&utm_medium=social",
-    "youtube": "utm_source=youtube&utm_medium=video",
-    "newsletter": "utm_source=newsletter&utm_medium=email",
+        "x": "utm_source=x&utm_medium=social",
+        "reddit": "utm_source=reddit&utm_medium=social",
+        "linkedin": "utm_source=linkedin&utm_medium=social",
+        "hackernews": "utm_source=hackernews&utm_medium=social",
+        "youtube": "utm_source=youtube&utm_medium=video",
+        "newsletter": "utm_source=newsletter&utm_medium=email",
 }
 
 # ──────────────────────────────────────────────────────────
