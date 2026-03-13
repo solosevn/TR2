@@ -55,16 +55,16 @@ CACHE_DIR.mkdir(exist_ok=True)
 VAULT_FILES = {
     "user_md":        "shared/USER.md",
     "reasoning_md":   "shared/REASONING-CHECKLIST.md",
-    "soul_md":        "agents/daily-news/vault/SOUL.md",
-    "config_md":      "agents/daily-news/vault/CONFIG.md",
-    "process_md":     "agents/daily-news/vault/PROCESS.md",
-    "style_md":       "agents/daily-news/vault/STYLE-EVOLUTION.md",
-    "run_log_md":     "agents/daily-news/vault/RUN-LOG.md",
-    "learning_md":    "agents/daily-news/vault/LEARNING-LOG.md",
-    "engagement_md":  "agents/daily-news/vault/ENGAGEMENT-LOG.md",
-    "loop_md":        "agents/daily-news/vault/LOOP.md",
-    "memory_md":      "agents/daily-news/vault/MEMORY-PROTOCOL.md",
-    "autonomy_md":    "agents/daily-news/vault/AUTONOMY-RULES.md",
+    "soul_md":        "agents/baggins/vault/SOUL.md",
+    "config_md":      "agents/baggins/vault/CONFIG.md",
+    "process_md":     "agents/baggins/vault/PROCESS.md",
+    "style_md":       "agents/baggins/vault/STYLE-EVOLUTION.md",
+    "run_log_md":     "agents/baggins/vault/RUN-LOG.md",
+    "learning_md":    "agents/baggins/vault/LEARNING-LOG.md",
+    "engagement_md":  "agents/baggins/vault/ENGAGEMENT-LOG.md",
+    "loop_md":        "agents/baggins/vault/LOOP.md",
+    "memory_md":      "agents/baggins/vault/MEMORY-PROTOCOL.md",
+    "autonomy_md":    "agents/baggins/vault/AUTONOMY-RULES.md",
 }
 
 # ──────────────────────────────────────────────────────────
