@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Python
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment
+.env
+*.env
+
+# Vault cache (runtime — not source of truth)
+.vault-cache/
+**/.vault-cache/
+
+# Agent runtime logs (local only)
+agents/daily-news/agent.log
+agents/content-scout/scout.log
+agents/baggins/agent.log
+agents/gollum/scout.log
+ddp.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+Desktop.ini
