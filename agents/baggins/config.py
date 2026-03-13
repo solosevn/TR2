@@ -12,12 +12,6 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).parent / ".env")
 
 # ──────────────────────────────────────────────────────────
-# TELEGRAM
-# ──────────────────────────────────────────────────────────
-TRNEWZ_BOT_TOKEN = os.getenv("TRNEWZ_BOT_TOKEN", "")
-DAVID_CHAT_ID = int(os.getenv("DAVID_CHAT_ID", "0"))
-
-# ──────────────────────────────────────────────────────────
 # GROK (xAI) — OpenAI-compatible API
 # ──────────────────────────────────────────────────────────
 XAI_API_KEY = os.getenv("XAI_API_KEY", "")
@@ -50,21 +44,29 @@ STAGING_DIR.mkdir(exist_ok=True)
 CACHE_DIR.mkdir(exist_ok=True)
 
 # ──────────────────────────────────────────────────────────
+# FILE-BASED COMMUNICATION WITH KENNEDY
+# ──────────────────────────────────────────────────────────
+COMMS_DIR = AGENT_DIR / "comms"
+COMMS_DIR.mkdir(exist_ok=True)
+PENDING_REVIEW_PATH = COMMS_DIR / "pending_review.json"
+APPROVAL_PATH = COMMS_DIR / "approval.json"
+
+# ──────────────────────────────────────────────────────────
 # CONTEXT VAULT — Files the agent reads for instructions
 # ──────────────────────────────────────────────────────────
 VAULT_FILES = {
-    "user_md":        "shared/USER.md",
-    "reasoning_md":   "shared/REASONING-CHECKLIST.md",
-    "soul_md":        "agents/baggins/vault/SOUL.md",
-    "config_md":      "agents/baggins/vault/CONFIG.md",
-    "process_md":     "agents/baggins/vault/PROCESS.md",
-    "style_md":       "agents/baggins/vault/STYLE-EVOLUTION.md",
-    "run_log_md":     "agents/baggins/vault/RUN-LOG.md",
-    "learning_md":    "agents/baggins/vault/LEARNING-LOG.md",
-    "engagement_md":  "agents/baggins/vault/ENGAGEMENT-LOG.md",
-    "loop_md":        "agents/baggins/vault/LOOP.md",
-    "memory_md":      "agents/baggins/vault/MEMORY-PROTOCOL.md",
-    "autonomy_md":    "agents/baggins/vault/AUTONOMY-RULES.md",
+        "user_md":        "shared/USER.md",
+        "reasoning_md":   "shared/REASONING-CHECKLIST.md",
+        "soul_md":        "agents/baggins/vault/SOUL.md",
+        "config_md":      "agents/baggins/vault/CONFIG.md",
+        "process_md":     "agents/baggins/vault/PROCESS.md",
+        "style_md":       "agents/baggins/vault/STYLE-EVOLUTION.md",
+        "run_log_md":     "agents/baggins/vault/RUN-LOG.md",
+        "learning_md":    "agents/baggins/vault/LEARNING-LOG.md",
+        "engagement_md":  "agents/baggins/vault/ENGAGEMENT-LOG.md",
+        "loop_md":        "agents/baggins/vault/LOOP.md",
+        "memory_md":      "agents/baggins/vault/MEMORY-PROTOCOL.md",
+        "autonomy_md":    "agents/baggins/vault/AUTONOMY-RULES.md",
 }
 
 # ──────────────────────────────────────────────────────────
@@ -86,7 +88,7 @@ POLL_INTERVAL_SECONDS = 5
 # ARTICLE CATEGORIES (from CONFIG.md)
 # ──────────────────────────────────────────────────────────
 CATEGORIES = [
-    "AI Safety", "AI Research", "AI Ethics", "AI Tools",
-    "AI Policy", "AI Agents", "Machine Learning", "Open Source",
-    "AI in Medicine", "AI in Business", "Compute & Infrastructure",
+        "AI Safety", "AI Research", "AI Ethics", "AI Tools",
+        "AI Policy", "AI Agents", "Machine Learning", "Open Source",
+        "AI in Medicine", "AI in Business", "Compute & Infrastructure",
 ]
