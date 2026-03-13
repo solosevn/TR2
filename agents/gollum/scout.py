@@ -47,6 +47,7 @@ import hashlib
 import traceback
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from dotenv import load_dotenv
 import logging
 logger = logging.getLogger("ContentScout")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(message)s")
@@ -70,6 +71,9 @@ except ImportError as e:
 
 from urllib.parse import urlparse
 from collections import Counter
+
+# Load .env file for secrets
+load_dotenv(Path(__file__).parent / ".env")
 
 # ─────────────────────────────────────────────
 # CONFIG
