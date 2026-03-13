@@ -1,6 +1,6 @@
 # CONFIG.md — Daily News Agent
 ## Technical Configuration
-> **Location:** context-vault/agents/trainingrun/daily-news/CONFIG.md
+> **Location:** agents/baggins/vault/CONFIG.md
 > **Version:** 1.0 — March 5, 2026
 > **Owner:** David Solomon
 > **Status:** Active
@@ -69,7 +69,7 @@ Post-publish tracking active — I'll log performance in 24-48 hours.
 | **Image Directory** | `assets/news/` |
 | **Signature Image** | `assets/signature.png` |
 | **Site URL** | `https://trainingrun.ai` |
-| **Repository** | `solosevn/trainingrun-site` (GitHub Pages, `main` branch) |
+| **Repository** | `solosevn/TR2` (GitHub Pages, `main` branch) |
 
 ### Article HTML Structure Notes
 
