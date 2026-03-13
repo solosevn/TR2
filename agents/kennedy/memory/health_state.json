@@ -1,0 +1,13 @@
+{
+  "last_updated": null,
+  "status": "initializing",
+  "content_on_schedule": null,
+  "engagement_trend": null,
+  "platforms_active": [],
+  "experiments_running": 0,
+  "experiments_completed_this_week": 0,
+  "top_performing_platform": null,
+  "top_performing_content_type": null,
+  "issues": ["First boot — no baseline data yet"],
+  "escalations_pending": []
+}
