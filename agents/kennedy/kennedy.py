@@ -32,7 +32,10 @@ from config import (
     KENNEDY_BOT_TOKEN, DAVID_CHAT_ID, XAI_API_KEY,
     GROK_API_BASE, GROK_MODEL, GROK_FAST_MODEL,
     ACTIVE_HOURS_START, ACTIVE_HOURS_END,
-    LOG_FILE, AGENT_DIR,
+    LOG_FILE, AGENT_DIR, SCOUT_BRIEFING_PATH,
+    BAGGINS_COMMS_DIR, BAGGINS_PENDING_REVIEW, BAGGINS_APPROVAL_PATH,
+    BAGGINS_PUBLISHED_PATH, BAGGINS_LOG,
+    GOLLUM_SCOUT_LOG,
 )
 from kennedy_context_loader import load_full_context, build_system_prompt
 from kennedy_learning_logger import (
@@ -67,6 +70,8 @@ else:
 halted = False
 hold_publishing = False
 agent_context = {}
+pending_article = None  # Tracks current pending review from Baggins
+last_pending_check = None  # Timestamp of last pending_review.json we notified David about
 
 
 # ──────────────────────────────────────────────────────────
@@ -116,9 +121,12 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     await update.message.reply_text(
         "Kennedy online. Media Director for TrainingRun 2.0.\n\n"
-        "Commands:\n"
+        "Article Review:\n"
+        "/approve — Publish Baggins' pending article\n"
+        "/reject — Kill the article\n"
+        "(Or reply with edit notes)\n\n"
+        "Operations:\n"
         "/status — Current health and metrics\n"
-        "/approve — Approve pending content\n"
         "/hold — Pause all publishing\n"
         "/resume — Resume operations\n"
         "/strategy — Current content strategy\n"
@@ -217,6 +225,17 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Kennedy is halted. Send /resume to restart operations.")
         return
 
+    # If there's a pending article and David sends a message, treat it as edit notes
+    if pending_article and text:
+        write_baggins_approval("edit", notes=text)
+        paper = pending_article.get("paper_number", "?")
+        await update.message.reply_text(
+            f"Got it. Sending edit notes to Baggins for Paper {paper:03d}.\n"
+            f"He'll revise and send it back."
+        )
+        logger.info(f"David sent edit notes for Paper {paper:03d}: {text[:100]}")
+        return
+
     # Use Grok to interpret and respond to David's message
     response = ask_grok(
         f"David sent this message via Telegram: \"{text}\"\n\n"
@@ -238,6 +257,107 @@ async def send_to_david(app: Application, message: str):
         await app.bot.send_message(chat_id=DAVID_CHAT_ID, text=message)
     except Exception as e:
         logger.error(f"Failed to send Telegram message: {e}")
+
+
+# ──────────────────────────────────────────────────────────
+# BAGGINS MONITORING — Article review flow
+# ──────────────────────────────────────────────────────────
+
+def check_baggins_pending():
+    """Read Baggins' pending_review.json if it exists."""
+    if not BAGGINS_PENDING_REVIEW.exists():
+        return None
+    try:
+        with open(BAGGINS_PENDING_REVIEW) as f:
+            return json.load(f)
+    except (json.JSONDecodeError, IOError):
+        return None
+
+
+def write_baggins_approval(action: str, notes: str = ""):
+    """Write approval.json for Baggins to pick up."""
+    approval = {
+        "action": action,
+        "notes": notes,
+        "from": "kennedy",
+        "timestamp": datetime.now().isoformat(),
+    }
+    BAGGINS_COMMS_DIR.mkdir(exist_ok=True)
+    with open(BAGGINS_APPROVAL_PATH, "w") as f:
+        json.dump(approval, f, indent=2)
+    logger.info(f"Wrote approval for Baggins: {action} {notes[:50] if notes else ''}")
+
+
+def format_pending_review(pending: dict) -> str:
+    """Format a pending review into a Telegram message for David."""
+    paper = pending.get("paper_number", "?")
+    headline = pending.get("headline", "No headline")
+    subtitle = pending.get("subtitle", "")
+    category = pending.get("category", "")
+    reasoning = pending.get("reasoning", "")
+    runner_up = pending.get("runner_up", "")
+    status = pending.get("status", "pending_review")
+    edit_count = pending.get("edit_count", 0)
+
+    msg = (
+        f"{'REVISED ' if status == 'revised' else ''}ARTICLE FOR REVIEW\n"
+        f"━━━━━━━━━━━━━━━━━━━\n"
+        f"Paper {paper:03d}: {headline}\n"
+    )
+    if subtitle:
+        msg += f"{subtitle}\n"
+    msg += f"\nCategory: {category}\n"
+    if reasoning:
+        msg += f"\nWhy this story: {reasoning[:300]}\n"
+    if runner_up:
+        msg += f"Runner-up: {runner_up[:150]}\n"
+    if edit_count:
+        msg += f"\nEdit #{edit_count}\n"
+    msg += (
+        f"\n━━━━━━━━━━━━━━━━━━━\n"
+        f"/approve — Publish it\n"
+        f"/reject — Kill it\n"
+        f"Or reply with edit notes"
+    )
+    return msg
+
+
+async def notify_pending_review(app: Application, pending: dict):
+    """Send Baggins' pending article to David for review."""
+    global pending_article, last_pending_check
+    pending_article = pending
+    last_pending_check = pending.get("timestamp", "")
+    msg = format_pending_review(pending)
+    await send_to_david(app, msg)
+    logger.info(f"Sent pending review to David — Paper {pending.get('paper_number', '?')}")
+
+
+async def cmd_approve(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle /approve command — approve Baggins' pending article."""
+    if update.effective_chat.id != DAVID_CHAT_ID:
+        return
+    if not pending_article:
+        await update.message.reply_text("No article pending review.")
+        return
+    write_baggins_approval("approve")
+    paper = pending_article.get("paper_number", "?")
+    await update.message.reply_text(f"Paper {paper:03d} approved. Baggins is publishing.")
+    logger.info(f"David approved Paper {paper:03d}")
+
+
+async def cmd_reject(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle /reject command — reject Baggins' pending article."""
+    global pending_article
+    if update.effective_chat.id != DAVID_CHAT_ID:
+        return
+    if not pending_article:
+        await update.message.reply_text("No article pending review.")
+        return
+    write_baggins_approval("reject")
+    paper = pending_article.get("paper_number", "?")
+    pending_article = None
+    await update.message.reply_text(f"Paper {paper:03d} rejected. Baggins cycle ended.")
+    logger.info(f"David rejected Paper {paper:03d}")
 
 
 # ──────────────────────────────────────────────────────────
@@ -318,10 +438,41 @@ async def run_cycle(app: Application):
 async def morning_intelligence(app: Application):
     """6:00 AM — Read Gollum's briefing, pull platform metrics."""
     logger.info("Morning intelligence gathering")
-    # TODO: Read scout-briefing.json
-    # TODO: Pull platform metrics from previous day
-    # TODO: Compile 24h engagement report
-    await send_to_david(app, "Good morning. Loading today's intelligence...")
+
+    # Read Gollum's scout briefing
+    intel_parts = []
+    if SCOUT_BRIEFING_PATH.exists():
+        try:
+            with open(SCOUT_BRIEFING_PATH) as f:
+                briefing = json.load(f)
+            story_count = len(briefing.get("stories", []))
+            brief_date = briefing.get("date", "unknown")
+            sources = briefing.get("sources_checked", 0)
+            intel_parts.append(
+                f"Gollum's briefing ({brief_date}): {story_count} stories from {sources} sources"
+            )
+            # Top 3 stories summary
+            for i, story in enumerate(briefing.get("stories", [])[:3]):
+                title = story.get("title", "")[:80]
+                source = story.get("source", "")
+                intel_parts.append(f"  {i+1}. {title} ({source})")
+        except (json.JSONDecodeError, IOError) as e:
+            intel_parts.append(f"Gollum briefing read error: {e}")
+    else:
+        intel_parts.append("No scout briefing found — Gollum may not have run yet")
+
+    # Check Baggins status
+    if BAGGINS_LOG.exists():
+        try:
+            lines = BAGGINS_LOG.read_text().strip().split("\n")[-5:]
+            last_line = lines[-1] if lines else "No recent activity"
+            intel_parts.append(f"\nBaggins last activity: {last_line[:120]}")
+        except IOError:
+            intel_parts.append("Could not read Baggins log")
+
+    morning_msg = "Good morning. Here's today's intelligence:\n\n" + "\n".join(intel_parts)
+    await send_to_david(app, morning_msg)
+    logger.info("Morning intelligence sent to David")
 
 
 async def daily_huddle(app: Application):
@@ -349,12 +500,33 @@ async def distribution_cycle(app: Application):
         return
 
     logger.info("Content distribution cycle")
-    # TODO: Check for new content from Baggins
-    # TODO: Check for new benchmark data from Gimli
-    # TODO: Generate platform-specific posts via Grok 4.1 Fast
-    # TODO: Send proposals to David via @KennedyMBot
-    # TODO: On approval, post to platforms with UTM tracking
-    # TODO: Log experiment to results.tsv
+
+    # Check for pending article from Baggins
+    pending = check_baggins_pending()
+    if pending:
+        pending_ts = pending.get("timestamp", "")
+        if pending_ts != last_pending_check:
+            # New or updated pending review — notify David
+            await notify_pending_review(app, pending)
+        else:
+            logger.info("Pending review already sent to David — waiting for response")
+    else:
+        logger.info("No pending articles from Baggins")
+
+    # Check if Baggins published something (for social distribution)
+    if BAGGINS_PUBLISHED_PATH.exists():
+        try:
+            with open(BAGGINS_PUBLISHED_PATH) as f:
+                published = json.load(f)
+            if published.get("status") == "published":
+                headline = published.get("headline", "")
+                url = published.get("url", "")
+                logger.info(f"Baggins published: {headline}")
+                # TODO: Generate platform-specific posts via Grok
+                # TODO: Post to X, Reddit, etc. with UTM tracking
+                # TODO: Log experiment to results.tsv
+        except (json.JSONDecodeError, IOError):
+            pass
 
 
 async def measurement_cycle(app: Application):
@@ -409,6 +581,8 @@ def main():
     # Register handlers
     app.add_handler(CommandHandler("start", cmd_start))
     app.add_handler(CommandHandler("status", cmd_status))
+    app.add_handler(CommandHandler("approve", cmd_approve))
+    app.add_handler(CommandHandler("reject", cmd_reject))
     app.add_handler(CommandHandler("hold", cmd_hold))
     app.add_handler(CommandHandler("resume", cmd_resume))
     app.add_handler(CommandHandler("strategy", cmd_strategy))
