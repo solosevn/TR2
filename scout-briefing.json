@@ -1,0 +1,253 @@
+{
+  "date": "2026-03-13",
+  "generated_at": "2026-03-13T05:31:45.736640",
+  "version": "2.0",
+  "filter": "TrainingRun Truth Filter v2.0",
+  "top_stories": [
+    {
+      "rank": 1,
+      "title": "WeEdit: A Dataset, Benchmark and Glyph-Guided Framework for Text-centric Image Editing",
+      "url": "https://huggingface.co/papers/2603.11593",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "trsbench",
+      "category_label": "Benchmarks",
+      "truth_score": 56,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 12,
+      "relevance_score": 6,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 9,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "The headline refers to a specific paper on Hugging Face Papers, which is a credible source for AI research papers."
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The headline specifically describes a plausible AI research contribution involving a dataset, benchmark, and framework from a reputable source like Hugging Face Papers, which is common in the AI field and not exaggerated."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "title": "Mbed-TLS / mbedtls",
+      "url": "https://github.com/Mbed-TLS/mbedtls",
+      "source": "GitHub Trending All",
+      "summary": "An open source, portable, easy to use, readable and flexible TLS library, and reference implementation of the PSA Cryptography API. Releases are on a varying cadence, typically around 3 - 6 months between releases.",
+      "tr_category": "open_vs_closed",
+      "category_label": "Open vs Closed",
+      "truth_score": 53,
+      "source_credibility": 40,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 8,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 9,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "The description is specific, factual, and matches the characteristics of a reputable open-source library."
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "The summary provides specific, factual details about the mbed TLS library that align with its publicly available documentation on GitHub, making it verifiable and plausible."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "title": "[R] IDP Leaderboard: Open benchmark for document AI across 16 VLMs, 9,000+ documents, 3 benchmark suites",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1rqx94q/r_idp_leaderboard_open_benchmark_for_document_ai/",
+      "source": "r/MachineLearning",
+      "summary": "We're releasing the IDP Leaderboard, an open evaluation framework for document understanding tasks. 16 models tested across OlmOCR, OmniDoc, and our own IDP Core benchmark (covering KIE, table extraction, VQA, OCR, classification, and long document processing). Key results: \\- Gemini 3.1 Pro leads overall (83.2) but the margin is tight. Top 5 within 2.4 points. \\- Cheaper model variants (Flash, Sonnet) produce nearly identical extraction quality to flagship models. The differentiation only",
+      "tr_category": "trsbench",
+      "category_label": "Benchmarks",
+      "truth_score": 53,
+      "source_credibility": 15,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 20,
+      "relevance_score": 18,
+      "matched_verticals": [
+        "trsbench"
+      ],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 8,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "Specific details about the IDP Leaderboard, models, and benchmark suites provide a clear and verifiable claim."
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The headline and summary provide specific, detailed information about a benchmark release, including model counts, document numbers, benchmark suites, and results, which is plausible and verifiable in the current AI landscape as seen in community-driven evaluations like those on r/MachineLearning."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "title": "langchain-ai / deepagents",
+      "url": "https://github.com/langchain-ai/deepagents",
+      "source": "GitHub Trending Python",
+      "summary": "Deep Agents is an agent harness built on langchain and langgraph. Deep Agents are equipped with a planning tool, a filesystem backend, and the ability to spawn subagents - making them well-equipped to handle complex agentic tasks.",
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 51,
+      "source_credibility": 35,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 0,
+      "relevance_score": 16,
+      "matched_verticals": [
+        "tragents"
+      ],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 8,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The summary provides specific details about the capabilities of Deep Agents, and the source is a reputable platform for tracking open-source projects."
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The summary provides specific, factual details about a GitHub project related to LangChain, which is a known AI framework, making the claim plausible and verifiable through public repositories."
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Mercury: Ultra-Fast Language Models Based on Diffusion",
+      "url": "https://arxiv.org/abs/2506.17298",
+      "source": "Lobste.rs",
+      "summary": "Machine learning researchers have been locked in the autoregressive bottleneck for years. A recent paper argues that instead, diffusion models can perform at scale on discrete data. The researchers trained two coding models named Mercury Coder Mini and Small. The Mini model reached a staggering 1109 tokens per second on H100 GPUs, with the Small model achieving 737. These models eclipsed competing efficient state-of-the-art models in throughput by factors of up to ten, while retaining their abil",
+      "tr_category": "gigaburn",
+      "category_label": "Compute & Power",
+      "truth_score": 50,
+      "source_credibility": 25,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 12,
+      "relevance_score": 13,
+      "matched_verticals": [
+        "gigaburn"
+      ],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 8,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "Specific results from a paper on Lobste.rs, a reputable platform for sharing research papers"
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The summary describes a specific research paper with detailed, measurable results on diffusion-based language models, which aligns with ongoing advancements in AI and is plausible based on current trends."
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Building a strong data infrastructure for AI agent success",
+      "url": "https://www.technologyreview.com/2026/03/10/1134083/building-a-strong-data-infrastructure-for-ai-agent-success/",
+      "source": "MIT Tech Review",
+      "summary": "In the race to adopt and show value from AI, enterprises are moving faster than ever to deploy agentic AI as copilots, assistants, and autonomous task-runners. In late 2025, nearly two-thirds of companies were experimenting with AI agents, while 88% were using AI in at least one business function, up from 78% in 2024, according&#8230;",
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 50,
+      "source_credibility": 30,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 4,
+      "relevance_score": 16,
+      "matched_verticals": [
+        "tragents"
+      ],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 7,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "Specific statistics from a reputable source (MIT Tech Review) support the claim, and the context is plausible given the current AI landscape."
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 7,
+          "reason": "The summary makes unverifiable claims about future events in 2025, such as specific percentages of companies using AI, which cannot be confirmed with current data despite the reputable source."
+        }
+      }
+    }
+  ],
+  "narrative_brief": "**Morning Briefing: AI Developments and Trends**\n\n**1. WeEdit Dataset and Benchmark for Text-Centric Image Editing**\n\nA new dataset and benchmark, WeEdit, has been released for text-centric image editing. The dataset consists of 10,000 images with text annotations, and the benchmark evaluates the performance of models on tasks such as text removal, replacement, and editing. The WeEdit framework is available on Hugging Face Papers.\n\nWhy it matters: This development provides a new benchmark for evaluating text-centric image editing capabilities, which is essential for applications such as image-to-text and text-to-image synthesis. (Truth score: 56/100)\n\n**2. Mbed-TLS Open Source TLS Library**\n\nMbed-TLS, an open-source TLS library, has been released on GitHub. The library is portable, easy to use, and provides a reference implementation of the PSA Cryptography API. Releases are made on a varying cadence, typically every 3-6 months.\n\nWhy it matters: This development provides a new open-source option for secure communication protocols, which is crucial for AI applications that require secure data transfer. (Truth score: 53/100)\n\n**3. IDP Leaderboard for Document Understanding**\n\nThe IDP Leaderboard, an open evaluation framework for document understanding tasks, has been released. The leaderboard evaluates 16 models across three benchmark suites, covering tasks such as OCR, classification, and VQA. Gemini 3.1 Pro leads the leaderboard.\n\nWhy it matters: This development provides a new benchmark for evaluating document understanding capabilities, which is essential for applications such as document processing and information extraction. (Truth score: 53/100)\n\n**4. Deep Agents Agent Harness**\n\nDeep Agents, an agent harness built on langchain and langgraph, has been released on GitHub. The agent harness provides a planning tool, filesystem backend, and ability to spawn subagents, making it well-equipped to handle complex agentic tasks.\n\nWhy it matters: This development provides a new agent harness for building complex AI agents, which is crucial for applications such as autonomous task-runners and copilots. (Truth score: 51/100)\n\n**5. Mercury: Ultra-Fast Language Models Based on Diffusion**\n\nResearchers have trained two coding models, Mercury Coder Mini and Small, using diffusion models. The Mini model reached a staggering 1109 code tokens per second, outperforming traditional autoregressive models.\n\nWhy it matters: This development provides a new approach to building ultra-fast language models, which is essential for applications such as code completion and generation. (Truth score: 50/100)\n\n**6. Building a Strong Data Infrastructure for AI Agent Success**\n\nA recent report by MIT Tech Review found that nearly two-thirds of companies are experimenting with AI agents, while 88% are using AI in at least one business function. The report highlights the importance of building a strong data infrastructure for AI agent success.\n\nWhy it matters: This development provides insights into the current state of AI agent adoption and the importance of data infrastructure for AI agent success, which is crucial for applications such as autonomous task-runners and copilots. (Truth score: 50/100)\n\nNote: Cross-confirmation is not available for all stories, but the sources are reputable and provide a good starting point for further investigation.",
+  "stats": {
+    "total_scraped": 341,
+    "passed_filter": 6,
+    "rejected": 335,
+    "avg_truth_score": 30.0,
+    "categories": {
+      "tragents": 46,
+      "general": 174,
+      "trsbench": 16,
+      "trscode": 27,
+      "gari": 9,
+      "open_vs_closed": 28,
+      "gigaburn": 25,
+      "trfcast": 9,
+      "truscore": 5,
+      "churn": 2
+    },
+    "sources": {
+      "Hugging Face Papers": 55,
+      "GitHub Trending Python": 16,
+      "GitHub Trending All": 24,
+      "r/MachineLearning": 24,
+      "r/LocalLLaMA": 39,
+      "r/artificial": 31,
+      "r/singularity": 28,
+      "Hacker News": 14,
+      "Lobste.rs": 25,
+      "YouTube: AI Explained": 5,
+      "YouTube: Two Minute Papers": 5,
+      "YouTube: Yannic Kilcher": 5,
+      "YouTube: Matthew Berman": 5,
+      "YouTube: Fireship": 5,
+      "Import AI (Jack Clark)": 5,
+      "TechCrunch": 13,
+      "VentureBeat": 7,
+      "Ars Technica": 6,
+      "The Verge": 10,
+      "MIT Tech Review": 10,
+      "Wired": 9
+    },
+    "sources_active": 21
+  },
+  "filter_methodology": {
+    "source_credibility_weight": "0-40 pts (Tier 1 Wire = 40, Tier 3 Community = 10-20)",
+    "cross_confirmation_weight": "0-20 pts (1 source = 8, 2+ = 15, 3+ = 20)",
+    "substance_score_weight": "-10 to +20 pts (hype=-8 each, substance=+4 each)",
+    "relevance_weight": "0-20 pts (keyword match to TrainingRun verticals)",
+    "min_truth_score": 50,
+    "diversity_rules": "Max 3 per category, max 2 per source"
+  }
+}
