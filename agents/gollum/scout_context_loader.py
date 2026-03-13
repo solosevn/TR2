@@ -2,7 +2,7 @@
 Content Scout — Context Loader
 ================================
 Loads vault files from the context-vault before each scrape cycle and briefing.
-Follows the same pattern as daily_news_agent/context_loader.py.
+Follows the same pattern as agents/baggins/context_loader.py.
 
 Files loaded:
   SOUL.md, CONFIG.md, PROCESS.md, CADENCE.md, RUN-LOG.md,
@@ -34,18 +34,18 @@ CACHE_TTL = 86400  # 24 hours in seconds
 
 # Vault file paths relative to repo root
 SCOUT_VAULT_FILES = {
-    "SOUL":             "agents/content-scout/vault/SOUL.md",
-    "CONFIG":           "agents/content-scout/vault/CONFIG.md",
-    "PROCESS":          "agents/content-scout/vault/PROCESS.md",
-    "CADENCE":          "agents/content-scout/vault/CADENCE.md",
-    "RUN_LOG":          "agents/content-scout/vault/RUN-LOG.md",
-    "LEARNING_LOG":     "agents/content-scout/vault/LEARNING-LOG.md",
-    "STYLE_EVOLUTION":  "agents/content-scout/vault/STYLE-EVOLUTION.md",
-    "SOURCES":          "agents/content-scout/vault/SOURCES.md",
-    "TRUTH_FILTER":     "agents/content-scout/vault/TRUTH-FILTER.md",
-    "LOOP":             "agents/content-scout/vault/LOOP.md",
-    "MEMORY_PROTOCOL":  "agents/content-scout/vault/MEMORY-PROTOCOL.md",
-    "AUTONOMY_RULES":   "agents/content-scout/vault/AUTONOMY-RULES.md",
+    "SOUL":             "agents/gollum/vault/SOUL.md",
+    "CONFIG":           "agents/gollum/vault/CONFIG.md",
+    "PROCESS":          "agents/gollum/vault/PROCESS.md",
+    "CADENCE":          "agents/gollum/vault/CADENCE.md",
+    "RUN_LOG":          "agents/gollum/vault/RUN-LOG.md",
+    "LEARNING_LOG":     "agents/gollum/vault/LEARNING-LOG.md",
+    "STYLE_EVOLUTION":  "agents/gollum/vault/STYLE-EVOLUTION.md",
+    "SOURCES":          "agents/gollum/vault/SOURCES.md",
+    "TRUTH_FILTER":     "agents/gollum/vault/TRUTH-FILTER.md",
+    "LOOP":             "agents/gollum/vault/LOOP.md",
+    "MEMORY_PROTOCOL":  "agents/gollum/vault/MEMORY-PROTOCOL.md",
+    "AUTONOMY_RULES":   "agents/gollum/vault/AUTONOMY-RULES.md",
 }
 
 # Feedback file from Daily News Agent
