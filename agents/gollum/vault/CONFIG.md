@@ -1,7 +1,7 @@
 # Content Scout — CONFIG.md
 # Version: 1.0 | Created: March 6, 2026
 # Parent Agent: Daily News Agent
-# Location: context-vault/agents/trainingrun/daily-news/content-scout/
+# Location: agents/gollum/vault/
 
 ---
 
@@ -12,8 +12,8 @@
 | Python | 3.13 (`/Library/Frameworks/Python.framework/Versions/3.13/bin/python3`) |
 | Host | David's Mac (local) |
 | Service | launchd (`com.trainingrun.scout`) |
-| Working Dir | `/Users/davidsolomon/trainingrun-site/content_scout/` |
-| Repo Path | `/Users/davidsolomon/trainingrun-site` |
+| Working Dir | `/Users/davidsolomon/Desktop/TR2/agents/gollum/` |
+| Repo Path | `/Users/davidsolomon/Desktop/TR2` |
 
 ---
 
@@ -53,14 +53,14 @@
 
 | File | Path | Purpose |
 |------|------|---------|
-| scout.py | `content_scout/scout.py` | Main agent code |
-| scout_brain.md | `content_scout/scout_brain.md` | Legacy brain file (replaced by vault) |
-| scout_context_loader.py | `content_scout/scout_context_loader.py` | Vault file loader |
-| scout_learning_logger.py | `content_scout/scout_learning_logger.py` | Learning/logging system |
-| scout-data.json | `content_scout/scout-data.json` | Local data store (pruned after 3 days) |
+| scout.py | `agents/gollum/scout.py` | Main agent code |
+| scout_brain.md | `agents/gollum/scout_brain.md` | Legacy brain file (replaced by vault) |
+| scout_context_loader.py | `agents/gollum/scout_context_loader.py` | Vault file loader |
+| scout_learning_logger.py | `agents/gollum/scout_learning_logger.py` | Learning/logging system |
+| scout-data.json | `agents/gollum/scout-data.json` | Local data store (pruned after 3 days) |
 | scout-briefing.json | `$TR_REPO_PATH/scout-briefing.json` | Output for Daily News Agent + website |
 | scout-feedback.json | `$TR_REPO_PATH/scout-feedback.json` | Feedback from Daily News Agent |
-| scout.log | `content_scout/scout.log` | stdout/stderr via launchd |
+| scout.log | `agents/gollum/scout.log` | stdout/stderr via launchd |
 
 ---
 
@@ -68,15 +68,15 @@
 
 | Key | GitHub Path |
 |-----|-------------|
-| SOUL | `context-vault/agents/trainingrun/daily-news/content-scout/SOUL.md` |
-| CONFIG | `context-vault/agents/trainingrun/daily-news/content-scout/CONFIG.md` |
-| PROCESS | `context-vault/agents/trainingrun/daily-news/content-scout/PROCESS.md` |
-| CADENCE | `context-vault/agents/trainingrun/daily-news/content-scout/CADENCE.md` |
-| RUN_LOG | `context-vault/agents/trainingrun/daily-news/content-scout/RUN-LOG.md` |
-| LEARNING_LOG | `context-vault/agents/trainingrun/daily-news/content-scout/LEARNING-LOG.md` |
-| STYLE_EVOLUTION | `context-vault/agents/trainingrun/daily-news/content-scout/STYLE-EVOLUTION.md` |
-| SOURCES | `context-vault/agents/trainingrun/daily-news/content-scout/SOURCES.md` |
-| TRUTH_FILTER | `context-vault/agents/trainingrun/daily-news/content-scout/TRUTH-FILTER.md` |
+| SOUL | `agents/gollum/vault/SOUL.md` |
+| CONFIG | `agents/gollum/vault/CONFIG.md` |
+| PROCESS | `agents/gollum/vault/PROCESS.md` |
+| CADENCE | `agents/gollum/vault/CADENCE.md` |
+| RUN_LOG | `agents/gollum/vault/RUN-LOG.md` |
+| LEARNING_LOG | `agents/gollum/vault/LEARNING-LOG.md` |
+| STYLE_EVOLUTION | `agents/gollum/vault/STYLE-EVOLUTION.md` |
+| SOURCES | `agents/gollum/vault/SOURCES.md` |
+| TRUTH_FILTER | `agents/gollum/vault/TRUTH-FILTER.md` |
 
 ---
 
