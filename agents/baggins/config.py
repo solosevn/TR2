@@ -8,8 +8,8 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load .env from agent directory
-load_dotenv(Path(__file__).parent / ".env")
+# Load .env from agent directory (override=True ensures .env wins over system env)
+load_dotenv(Path(__file__).parent / ".env", override=True)
 
 # ──────────────────────────────────────────────────────────
 # GROK (xAI) — OpenAI-compatible API
@@ -55,18 +55,18 @@ APPROVAL_PATH = COMMS_DIR / "approval.json"
 # CONTEXT VAULT — Files the agent reads for instructions
 # ──────────────────────────────────────────────────────────
 VAULT_FILES = {
-        "user_md":        "shared/USER.md",
-        "reasoning_md":   "shared/REASONING-CHECKLIST.md",
-        "soul_md":        "agents/baggins/vault/SOUL.md",
-        "config_md":      "agents/baggins/vault/CONFIG.md",
-        "process_md":     "agents/baggins/vault/PROCESS.md",
-        "style_md":       "agents/baggins/vault/STYLE-EVOLUTION.md",
-        "run_log_md":     "agents/baggins/vault/RUN-LOG.md",
-        "learning_md":    "agents/baggins/vault/LEARNING-LOG.md",
-        "engagement_md":  "agents/baggins/vault/ENGAGEMENT-LOG.md",
-        "loop_md":        "agents/baggins/vault/LOOP.md",
-        "memory_md":      "agents/baggins/vault/MEMORY-PROTOCOL.md",
-        "autonomy_md":    "agents/baggins/vault/AUTONOMY-RULES.md",
+            "user_md":        "shared/USER.md",
+            "reasoning_md":   "shared/REASONING-CHECKLIST.md",
+            "soul_md":        "agents/baggins/vault/SOUL.md",
+            "config_md":      "agents/baggins/vault/CONFIG.md",
+            "process_md":     "agents/baggins/vault/PROCESS.md",
+            "style_md":       "agents/baggins/vault/STYLE-EVOLUTION.md",
+            "run_log_md":     "agents/baggins/vault/RUN-LOG.md",
+            "learning_md":    "agents/baggins/vault/LEARNING-LOG.md",
+            "engagement_md":  "agents/baggins/vault/ENGAGEMENT-LOG.md",
+            "loop_md":        "agents/baggins/vault/LOOP.md",
+            "memory_md":      "agents/baggins/vault/MEMORY-PROTOCOL.md",
+            "autonomy_md":    "agents/baggins/vault/AUTONOMY-RULES.md",
 }
 
 # ──────────────────────────────────────────────────────────
@@ -88,7 +88,7 @@ POLL_INTERVAL_SECONDS = 5
 # ARTICLE CATEGORIES (from CONFIG.md)
 # ──────────────────────────────────────────────────────────
 CATEGORIES = [
-        "AI Safety", "AI Research", "AI Ethics", "AI Tools",
-        "AI Policy", "AI Agents", "Machine Learning", "Open Source",
-        "AI in Medicine", "AI in Business", "Compute & Infrastructure",
+            "AI Safety", "AI Research", "AI Ethics", "AI Tools",
+            "AI Policy", "AI Agents", "Machine Learning", "Open Source",
+            "AI in Medicine", "AI in Business", "Compute & Infrastructure",
 ]
