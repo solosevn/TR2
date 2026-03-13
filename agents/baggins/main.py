@@ -5,11 +5,11 @@ Daily News Agent — Main Orchestrator
 The execution engine for TrainingRun.AI's autonomous journalist.
 
 This agent:
-  1. Listens for Content Scout's morning briefing (via local file or Telegram)
+  1. Listens for Content Scout's morning briefing (via local file)
   2. Selects the best story using Grok + David's 5-filter test
   3. Writes a full article in David's voice using Grok
-  4. Stages the HTML and sends David a Telegram review request
-  5. Waits for David's approval (push it / edit / kill it)
+  4. Stages the HTML and writes pending review for Kennedy (file-based)
+  5. Waits for Kennedy's approval (push it / edit / kill it)
   6. Publishes to GitHub on approval
   7. Logs everything for the learning engine
 
@@ -22,10 +22,10 @@ Reads instructions from context-vault files:
   SOUL.md, CONFIG.md, PROCESS.md, CADENCE.md, STYLE-EVOLUTION.md, USER.md
 """
 
+import os
 import sys
 import json
 import time
-import asyncio
 import logging
 import datetime
 import argparse
@@ -33,7 +33,8 @@ from pathlib import Path
 
 # Agent modules
 from config import (
-    TRNEWZ_BOT_TOKEN, DAVID_CHAT_ID, XAI_API_KEY, GITHUB_TOKEN,
+    XAI_API_KEY, GITHUB_TOKEN,
+    COMMS_DIR, PENDING_REVIEW_PATH, APPROVAL_PATH,
     SCOUT_BRIEFING_PATH, STAGING_DIR, LOG_FILE, POLL_INTERVAL_SECONDS,
     APPROVAL_TIMEOUT_MINUTES,
 )
@@ -43,13 +44,6 @@ from article_writer import write_article, revise_article
 from html_stager import stage_article, get_next_paper_number, build_news_card
 from github_publisher import publish_article, commit_vault_file
 from learning_logger import log_to_run_log, log_to_learning_log, commit_logs
-from telegram_handler import (
-    send_review_request, send_publish_confirmation, send_error,
-    parse_david_response, format_status_message, send_message,
-)
-
-from telegram import Bot, Update
-from telegram.ext import Application, MessageHandler, CommandHandler, filters, ContextTypes
 
 # ──────────────────────────────────────────────────────────
 # LOGGING
@@ -96,7 +90,6 @@ class AgentState:
         self.cycle_start = None
         self.phase_times = {}       # Timing per phase
         self.dry_run = False
-        self.pending_response = None  # Asyncio future for David's response
 
     def reset(self):
         """Reset state for a new cycle."""
@@ -111,7 +104,7 @@ agent = AgentState()
 # WORKFLOW — The 15-step PROCESS.md as code
 # ──────────────────────────────────────────────────────────
 
-async def run_workflow(bot: Bot, dry_run: bool = False):
+def run_workflow(dry_run=False):
     """
     Execute the full Daily News Agent workflow.
     Follows PROCESS.md V3.0 steps 1-15.
@@ -158,12 +151,8 @@ async def run_workflow(bot: Bot, dry_run: bool = False):
                     "• Manual trigger: restart Daily News Agent after scout runs"
                 )
                 logger.warning(f"DEADLINE ALERT: No briefing by 5:45 AM{briefing_age_msg}")
-                if not dry_run:
-                    await send_error(bot, alert)
             else:
                 logger.warning("No stories found in briefing. Waiting for Content Scout.")
-                if not dry_run:
-                    await send_error(bot, f"No stories in today's Content Scout briefing{briefing_age_msg}. Skipping cycle.")
             return
 
         logger.info(f"Found {len(agent.stories)} stories from Content Scout")
@@ -183,8 +172,6 @@ async def run_workflow(bot: Bot, dry_run: bool = False):
 
         if agent.selection.get("error"):
             logger.error(f"Story selection failed: {agent.selection['error']}")
-            if not dry_run:
-                await send_error(bot, f"Story selection failed: {agent.selection['error']}")
             return
 
         logger.info(f"Selected: {agent.selection.get('title', 'Unknown')} ({agent.phase_times['selection']:.1f} min)")
@@ -207,8 +194,6 @@ async def run_workflow(bot: Bot, dry_run: bool = False):
 
         if agent.article.get("error"):
             logger.error(f"Article writing failed: {agent.article['error']}")
-            if not dry_run:
-                await send_error(bot, f"Article writing failed: {agent.article['error']}")
             return
 
         logger.info(f"Article written: '{agent.article.get('headline', '')}' ({agent.phase_times['writing']:.1f} min)")
@@ -244,74 +229,65 @@ async def run_workflow(bot: Bot, dry_run: bool = False):
 
         logger.info(f"Staged: {agent.staged.get('filename', '')} ({agent.phase_times['staging']:.1f} min)")
 
-        # ── Step 8: Send Telegram review to David ──
+        # ── Step 8: Write pending review for Kennedy ──
         agent.state = AgentState.AWAITING_APPROVAL
 
         if dry_run:
-            logger.info("[DRY RUN] Would send Telegram review request")
+            logger.info("[DRY RUN] Would write pending review for Kennedy")
             logger.info(f"[DRY RUN] Headline: {agent.article.get('headline', '')}")
             logger.info(f"[DRY RUN] Staged at: {agent.staged.get('local_path', '')}")
             logger.info("═══ DRY RUN COMPLETE ═══")
             _print_cycle_summary()
             return
 
-        logger.info("Sending review request to David...")
-        await send_review_request(
-            bot=bot,
-            paper_number=agent.paper_number,
-            headline=agent.article.get("headline", ""),
-            subtitle=agent.article.get("subtitle", ""),
-            category=agent.article.get("category", "AI Research"),
-            reasoning=agent.selection.get("reasoning", ""),
-            article_preview=agent.article.get("article_html", ""),
-            runner_up=agent.selection.get("runner_up", ""),
-        )
+        logger.info("Writing pending review for Kennedy...")
 
-        # Send image to Telegram if available
-        if agent.article.get("image_url"):
-            try:
-                await bot.send_photo(
-                    chat_id=DAVID_CHAT_ID,
-                    photo=agent.article["image_url"],
-                    caption=f"\ud83d\udcf8 Proposed Figure 1 for Paper {agent.paper_number:03d}"
-                )
-            except Exception as img_err:
-                logger.warning(f"Could not send image to Telegram: {img_err}")
+        # Write pending review for Kennedy
+        pending = {
+            "status": "pending_review",
+            "paper_number": agent.paper_number,
+            "headline": agent.article.get("headline", ""),
+            "subtitle": agent.article.get("subtitle", ""),
+            "category": agent.article.get("category", "AI Research"),
+            "reasoning": agent.selection.get("reasoning", ""),
+            "runner_up": agent.selection.get("runner_up", ""),
+            "article_preview": agent.article.get("article_html", "")[:800],
+            "image_url": agent.article.get("image_url", ""),
+            "staged_file": agent.staged.get("filename", ""),
+            "timestamp": datetime.datetime.now().isoformat(),
+        }
+        with open(PENDING_REVIEW_PATH, "w") as f:
+            json.dump(pending, f, indent=2)
+        logger.info(f"Pending review written for Kennedy — Paper {agent.paper_number:03d}")
 
-        logger.info("⏳ Waiting for David's response...")
-        # Response handling happens in the message handler (handle_message)
+        logger.info("⏳ Waiting for Kennedy's response...")
+        # Response handling happens in the main loop (check_for_approval)
 
     except Exception as e:
         logger.error(f"Workflow error: {e}", exc_info=True)
-        if not dry_run:
-            try:
-                await send_error(bot, f"Workflow error: {str(e)[:200]}")
-            except:
-                pass
 
 
-async def handle_approval(bot: Bot, action: str, notes: str = ""):
+def handle_approval(action: str, notes: str = ""):
     """
-    Handle David's response to the review request.
-    Called from the message handler.
+    Handle Kennedy's response to the review request.
+    Called from the main loop.
     """
     if action == "approve":
         # ── Step 11-14: Publish ──
-        await do_publish(bot)
+        do_publish()
 
     elif action == "edit":
         # ── Step 10: Revision cycle ──
-        await do_edit(bot, notes)
+        do_edit(notes)
 
     elif action == "reject":
         # Kill it
-        logger.info("David rejected the article. Cycle ended.")
-        await send_message(bot, "❌ Article killed. Back to listening for tomorrow's briefing.")
+        logger.info("Kennedy rejected the article. Cycle ended.")
         agent.state = AgentState.IDLE
 
 
-async def do_edit(bot: Bot, notes: str):
-    """Handle an edit request from David."""
+def do_edit(notes: str):
+    """Handle an edit request from Kennedy."""
     agent.state = AgentState.EDITING
     agent.edit_count += 1
     agent.edit_notes.append(notes)
@@ -325,7 +301,7 @@ async def do_edit(bot: Bot, notes: str):
     )
 
     if revision.get("error"):
-        await send_error(bot, f"Revision failed: {revision['error']}")
+        logger.error(f"Revision failed: {revision['error']}")
         return
 
     # Update article with revision
@@ -334,15 +310,29 @@ async def do_edit(bot: Bot, notes: str):
     # Re-stage
     agent.staged = stage_article(agent.article, agent.paper_number)
 
-    # Send revised version
+    # Update pending review with revision
     agent.state = AgentState.AWAITING_APPROVAL
-    from telegram_handler import format_revision_message
-    msg = format_revision_message(agent.paper_number, notes)
-    await send_message(bot, msg)
-    logger.info("Revised article sent for re-review")
+    pending = {
+        "status": "revised",
+        "paper_number": agent.paper_number,
+        "headline": agent.article.get("headline", ""),
+        "subtitle": agent.article.get("subtitle", ""),
+        "category": agent.article.get("category", "AI Research"),
+        "reasoning": agent.selection.get("reasoning", ""),
+        "runner_up": agent.selection.get("runner_up", ""),
+        "article_preview": agent.article.get("article_html", "")[:800],
+        "image_url": agent.article.get("image_url", ""),
+        "staged_file": agent.staged.get("filename", ""),
+        "edit_count": agent.edit_count,
+        "edit_notes": notes,
+        "timestamp": datetime.datetime.now().isoformat(),
+    }
+    with open(PENDING_REVIEW_PATH, "w") as f:
+        json.dump(pending, f, indent=2)
+    logger.info(f"Revised article staged — edit #{agent.edit_count}")
 
 
-async def do_publish(bot: Bot):
+def do_publish():
     """Publish the approved article."""
     agent.state = AgentState.PUBLISHING
     phase_start = time.time()
@@ -361,26 +351,40 @@ async def do_publish(bot: Bot):
     if pub_result.get("errors"):
         for err in pub_result["errors"]:
             logger.error(err)
-        await send_error(bot, f"Publish errors: {'; '.join(pub_result['errors'])}")
         return
 
     for step in pub_result.get("steps", []):
         logger.info(step)
 
-    # ── Step 13: Send confirmation ──
-        # Commit image to GitHub if we have one
-        if agent.article.get("image_url"):
-            from image_generator import download_image, commit_image_to_github
-            image_bytes = download_image(agent.article["image_url"])
-            if image_bytes:
-                img_result = commit_image_to_github(image_bytes, agent.paper_number)
-                if img_result.get("error"):
-                    logger.warning(f"Image commit failed (non-fatal): {img_result['error']}")
-                else:
-                    logger.info(f"Image committed: {img_result['image_path']}")
+    # ── Step 13: Commit image to GitHub if we have one ──
+    if agent.article.get("image_url"):
+        from image_generator import download_image, commit_image_to_github
+        image_bytes = download_image(agent.article["image_url"])
+        if image_bytes:
+            img_result = commit_image_to_github(image_bytes, agent.paper_number)
+            if img_result.get("error"):
+                logger.warning(f"Image commit failed (non-fatal): {img_result['error']}")
+            else:
+                logger.info(f"Image committed: {img_result['image_path']}")
 
     article_url = pub_result.get("article_url", f"https://trainingrun.ai/{agent.staged['filename']}")
-    await send_publish_confirmation(bot, agent.paper_number, agent.article.get("headline", ""), article_url)
+
+    # Write published confirmation
+    published = {
+        "status": "published",
+        "paper_number": agent.paper_number,
+        "headline": agent.article.get("headline", ""),
+        "url": article_url,
+        "timestamp": datetime.datetime.now().isoformat(),
+    }
+    with open(COMMS_DIR / "published.json", "w") as f:
+        json.dump(published, f, indent=2)
+
+    # Clear pending review
+    if PENDING_REVIEW_PATH.exists():
+        PENDING_REVIEW_PATH.unlink()
+    if APPROVAL_PATH.exists():
+        APPROVAL_PATH.unlink()
 
     # ── Step 14-15: Log to learning engine ──
     agent.state = AgentState.LOGGING
@@ -449,7 +453,7 @@ async def do_publish(bot: Bot):
     # Done
     logger.info(f"═══ CYCLE COMPLETE — Paper {agent.paper_number:03d} published in {total_cycle:.1f} min ═══")
     _print_cycle_summary()
-    # Mark today as processed (prevents handle_scout_check from re-triggering)
+    # Mark today as processed (prevents check_for_scout_briefing from re-triggering)
     last_file = STAGING_DIR / ".last_processed_date"
     last_file.write_text(datetime.date.today().isoformat())
     logger.info("Marked today as processed")
@@ -467,88 +471,38 @@ def _print_cycle_summary():
 
 
 # ──────────────────────────────────────────────────────────
-# TELEGRAM BOT — Message handlers
+# FILE-BASED POLLING
 # ──────────────────────────────────────────────────────────
 
-async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle incoming Telegram messages from David."""
-    if not update.message or not update.message.text:
-        return
-
-    # Only respond to David
-    if update.message.chat_id != DAVID_CHAT_ID:
-        return
-
-    text = update.message.text.strip()
-    logger.info(f"Message from David: {text[:100]}")
-
-    # Status check
-    if text.lower() in ("status", "/status"):
-        await update.message.reply_text(format_status_message(), parse_mode="Markdown")
-        return
-
-    # Manual trigger
-    if text.lower() in ("run", "/run", "go", "start"):
-        if agent.state == AgentState.IDLE:
-            logger.info("Manual trigger received — starting workflow")
-            agent.state = AgentState.SELECTING  # Lock state immediately to prevent race
-            # Mark today as processed so handle_scout_check won't double-trigger
-            last_file = STAGING_DIR / ".last_processed_date"
-            last_file.write_text(datetime.date.today().isoformat())
-            bot = context.bot
-            asyncio.create_task(run_workflow(bot))
-        else:
-            await update.message.reply_text(f"Agent is busy (state: {agent.state}). Wait for current cycle to finish.")
-        return
-
-    # If we're waiting for approval, parse the response
-    if agent.state == AgentState.AWAITING_APPROVAL:
-        agent.phase_times["_approval_start"] = agent.phase_times.get("_approval_start", time.time())
-        response = parse_david_response(text)
-        bot = context.bot
-
-        if response["action"] == "unknown":
-            # Treat as edit notes if they look like feedback
-            if len(text) > 10:
-                response["action"] = "edit"
-                response["notes"] = text
-                await update.message.reply_text("📝 Treating your message as edit feedback. Revising...")
-            else:
-                await update.message.reply_text(
-                    "I didn't understand that. Reply with:\n"
-                    "  ✅ push it\n  ✏️ edit: [notes]\n  ❌ kill it"
-                )
-                return
-
-        await handle_approval(bot, response["action"], response["notes"])
-        return
-
-
-async def handle_scout_check(context: ContextTypes.DEFAULT_TYPE):
-    """
-    Periodic check: has Content Scout delivered a fresh briefing?
-    Runs every 5 minutes. If a fresh briefing is found and agent is idle, trigger workflow.
-    """
-    if agent.state != AgentState.IDLE:
-        return
-
-    # Check if briefing file is fresh (today's date)
+def check_for_scout_briefing():
+    """Check if Content Scout has delivered a fresh briefing."""
     today = datetime.date.today().isoformat()
+
+    # Check if we already processed today
+    last_file = STAGING_DIR / ".last_processed_date"
+    if last_file.exists() and last_file.read_text().strip() == today:
+        return False
 
     briefing = load_scout_briefing()
     brief_date = briefing.get("date", "")
 
     if brief_date == today and get_stories_from_briefing(briefing):
-        # Check if we already processed today
-        last_file = STAGING_DIR / ".last_processed_date"
-        if last_file.exists() and last_file.read_text().strip() == today:
-            return  # Already processed today
-
         logger.info(f"Fresh Content Scout briefing detected for {today}!")
-        last_file.write_text(today)
+        return True
+    return False
 
-        bot = context.bot
-        await run_workflow(bot)
+
+def check_for_approval():
+    """Check if Kennedy has written an approval response."""
+    if not APPROVAL_PATH.exists():
+        return None
+
+    try:
+        with open(APPROVAL_PATH) as f:
+            approval = json.load(f)
+        return approval
+    except (json.JSONDecodeError, IOError):
+        return None
 
 
 # ──────────────────────────────────────────────────────────
@@ -558,10 +512,6 @@ async def handle_scout_check(context: ContextTypes.DEFAULT_TYPE):
 def check_config():
     """Verify all required config is present."""
     issues = []
-    if not TRNEWZ_BOT_TOKEN:
-        issues.append("TRNEWZ_BOT_TOKEN not set")
-    if not DAVID_CHAT_ID:
-        issues.append("DAVID_CHAT_ID not set")
     if not XAI_API_KEY:
         issues.append("XAI_API_KEY not set")
     if not GITHUB_TOKEN:
@@ -570,17 +520,18 @@ def check_config():
 
 
 def main():
-    """Main entry point."""
-    parser = argparse.ArgumentParser(description="Daily News Agent for TrainingRun.AI")
-    parser.add_argument("--test", action="store_true", help="Test all connections and exit")
-    parser.add_argument("--dry-run", action="store_true", help="Run full workflow without publishing or sending Telegram")
+    """Main entry point — Baggins runs as an autonomous agent daemon."""
+    parser = argparse.ArgumentParser(description="Baggins — Daily News Agent for TrainingRun.AI")
+    parser.add_argument("--test", action="store_true", help="Test connections and exit")
+    parser.add_argument("--dry-run", action="store_true", help="Run workflow without publishing")
     parser.add_argument("--check", action="store_true", help="Check config and exit")
     args = parser.parse_args()
 
     # Banner
     logger.info("╔══════════════════════════════════════════╗")
-    logger.info("║   Daily News Agent — TrainingRun.AI      ║")
-    logger.info("║   Powered by Grok (xAI)                  ║")
+    logger.info("║   Baggins — Daily News Agent             ║")
+    logger.info("║   TrainingRun.AI | Powered by Grok (xAI) ║")
+    logger.info("║   Reports to Kennedy via file comms      ║")
     logger.info("╚══════════════════════════════════════════╝")
 
     # Config check
@@ -593,22 +544,20 @@ def main():
             sys.exit(1)
         return
 
-    logger.info("Config OK ✅")
+    logger.info("Config OK")
 
     if args.check:
-        logger.info("Config check passed. All required variables are set.")
+        logger.info("Config check passed.")
         return
 
     # Connection tests
     if args.test:
         logger.info("── Running Connection Tests ──")
-        from telegram_handler import test_bot_token
         from story_selector import test_grok_connection
         from github_publisher import test_github_connection
         from context_loader import test_context_loader
 
         results = []
-        results.append(("Telegram", asyncio.run(test_bot_token())))
         results.append(("Grok API", test_grok_connection()))
         results.append(("GitHub API", test_github_connection()))
         results.append(("Context Vault", test_context_loader()))
@@ -616,48 +565,57 @@ def main():
         logger.info("── Test Results ──")
         all_pass = True
         for name, ok in results:
-            status = "✅ PASS" if ok else "❌ FAIL"
+            status = "PASS" if ok else "FAIL"
             logger.info(f"  {name}: {status}")
             if not ok:
                 all_pass = False
 
         if all_pass:
-            logger.info("All tests passed! Agent is ready to run.")
+            logger.info("All tests passed. Agent is ready.")
         else:
-            logger.error("Some tests failed. Fix issues above before running.")
+            logger.error("Some tests failed. Fix issues above.")
         return
 
     # Dry run
     if args.dry_run:
         logger.info("── DRY RUN MODE ──")
-        bot = Bot(token=TRNEWZ_BOT_TOKEN)
-        asyncio.run(run_workflow(bot, dry_run=True))
+        run_workflow(dry_run=True)
         return
 
-    # ── LIVE MODE: Start Telegram bot polling ──
-    logger.info("Starting Telegram bot polling...")
-    logger.info(f"Listening for Content Scout briefings and David's messages...")
-    logger.info(f"Chat ID: {DAVID_CHAT_ID}")
+    # ── LIVE MODE: Daemon loop ──
+    logger.info("Baggins is live — watching for scout briefings and Kennedy's responses...")
+    logger.info(f"Comms dir: {COMMS_DIR}")
 
-    app = Application.builder().token(TRNEWZ_BOT_TOKEN).build()
+    while True:
+        try:
+            # Check for fresh scout briefing
+            if agent.state == AgentState.IDLE and check_for_scout_briefing():
+                agent.state = AgentState.SELECTING
+                run_workflow()
+                # After workflow, state is AWAITING_APPROVAL or IDLE
 
-    # Message handler — catches all text messages from David
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+            # Check for Kennedy's approval/edit/reject
+            if agent.state == AgentState.AWAITING_APPROVAL:
+                approval = check_for_approval()
+                if approval:
+                    action = approval.get("action", "")
+                    notes = approval.get("notes", "")
+                    logger.info(f"Kennedy response: {action} {notes[:100] if notes else ''}")
 
-    # Command handlers
-    app.add_handler(CommandHandler("status", handle_message))
-    app.add_handler(CommandHandler("run", handle_message))
+                    # Delete approval file before processing
+                    if APPROVAL_PATH.exists():
+                        APPROVAL_PATH.unlink()
 
-    # Periodic job: check for fresh Content Scout briefing every 5 minutes
-    job_queue = app.job_queue
-    if job_queue:
-        job_queue.run_repeating(handle_scout_check, interval=300, first=30)
-        logger.info("Scout briefing checker: every 5 minutes")
+                    handle_approval(action, notes)
 
-    logger.info("═══ AGENT LIVE — Listening... ═══")
+            time.sleep(30)  # Check every 30 seconds
 
-    # Start polling (blocks until Ctrl+C)
-    app.run_polling(poll_interval=POLL_INTERVAL_SECONDS)
+        except KeyboardInterrupt:
+            logger.info("Baggins shutting down.")
+            break
+        except Exception as e:
+            logger.error(f"Main loop error: {e}", exc_info=True)
+            time.sleep(60)
 
 
 if __name__ == "__main__":
