@@ -6,7 +6,8 @@ Follows the same pattern as daily_news_agent/context_loader.py.
 
 Files loaded:
   SOUL.md, CONFIG.md, PROCESS.md, CADENCE.md, RUN-LOG.md,
-  LEARNING-LOG.md, STYLE-EVOLUTION.md, SOURCES.md, TRUTH-FILTER.md
+  LEARNING-LOG.md, STYLE-EVOLUTION.md, SOURCES.md, TRUTH-FILTER.md,
+  LOOP.md, MEMORY-PROTOCOL.md, AUTONOMY-RULES.md
 
 Load priority: local repo → cache (24h TTL) → GitHub raw
 
@@ -42,6 +43,9 @@ SCOUT_VAULT_FILES = {
     "STYLE_EVOLUTION":  "agents/content-scout/vault/STYLE-EVOLUTION.md",
     "SOURCES":          "agents/content-scout/vault/SOURCES.md",
     "TRUTH_FILTER":     "agents/content-scout/vault/TRUTH-FILTER.md",
+    "LOOP":             "agents/content-scout/vault/LOOP.md",
+    "MEMORY_PROTOCOL":  "agents/content-scout/vault/MEMORY-PROTOCOL.md",
+    "AUTONOMY_RULES":   "agents/content-scout/vault/AUTONOMY-RULES.md",
 }
 
 # Feedback file from Daily News Agent
@@ -157,7 +161,7 @@ def load_all_context() -> dict:
         else:
             failed += 1
 
-    logger.info(f"[ContextLoader] Loaded {loaded}/9 vault files ({failed} failed)")
+    logger.info(f"[ContextLoader] Loaded {loaded}/{len(SCOUT_VAULT_FILES)} vault files ({failed} failed)")
     return context
 
 

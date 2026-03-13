@@ -62,6 +62,9 @@ VAULT_FILES = {
     "run_log_md":     "agents/daily-news/vault/RUN-LOG.md",
     "learning_md":    "agents/daily-news/vault/LEARNING-LOG.md",
     "engagement_md":  "agents/daily-news/vault/ENGAGEMENT-LOG.md",
+    "loop_md":        "agents/daily-news/vault/LOOP.md",
+    "memory_md":      "agents/daily-news/vault/MEMORY-PROTOCOL.md",
+    "autonomy_md":    "agents/daily-news/vault/AUTONOMY-RULES.md",
 }
 
 # ──────────────────────────────────────────────────────────
