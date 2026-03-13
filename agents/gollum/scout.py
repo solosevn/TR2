@@ -79,8 +79,7 @@ load_dotenv(Path(__file__).parent / ".env")
 # CONFIG
 # ─────────────────────────────────────────────
 
-TELEGRAM_TOKEN   = os.getenv("TELEGRAM_TOKEN", "")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
+# Telegram removed — Kennedy handles all communication
 XAI_API_KEY      = os.getenv("XAI_API_KEY", "")
 REPO_PATH        = os.getenv("TR_REPO_PATH", str(Path.home() / "Desktop" / "TR2"))
 SCOUT_DIR        = os.path.join(os.path.dirname(os.path.abspath(__file__)))
@@ -841,55 +840,7 @@ TR_CATEGORY_LABELS = {
 }
 
 
-def format_telegram_brief(top_10: list, stats: dict) -> str:
-    """
-    Format the top 10 for Telegram delivery.
-    Clean, scannable bullets David can read on his phone at 5:30 AM.
-    """
-    date_str = datetime.date.today().strftime("%b %d, %Y")
-
-    lines = []
-    lines.append(f"SCOUT DAILY BRIEF — {date_str}")
-    lines.append(f"Scanned {stats['total_scraped']} items → filtered to top {len(top_10)}")
-    lines.append("")
-
-    for i, item in enumerate(top_10, 1):
-        cat_label = TR_CATEGORY_LABELS.get(item.get("tr_category", "general"), "News")
-        title = item["title"][:120]
-        truth = item["truth_score"]
-
-        lines.append(f"{i}. {cat_label}")
-        lines.append(f"   {title}")
-
-        ai_verdict = item.get("ai_verdict", "")
-        if ai_verdict == "AI_VERIFIED":
-            badge = "VERIFIED"
-        elif ai_verdict == "LIKELY_TRUE":
-            badge = "LIKELY TRUE"
-        elif ai_verdict == "WARNING":
-            badge = "CAUTION"
-        elif ai_verdict == "SUSPICIOUS":
-            badge = "UNCONFIRMED"
-        else:
-            badge = "INFO"
-
-        source = item.get("source", "")
-        cross = item.get("cross_confirmation", 0)
-        if cross > 0:
-            lines.append(f"   {badge} | {len(item.get('cross_sources', []))+1} sources | Truth: {truth}/100")
-        else:
-            lines.append(f"   {badge} | {source} | Truth: {truth}/100")
-
-        if item.get("url"):
-            lines.append(f"   {item['url']}")
-        lines.append("")
-
-    lines.append("—")
-    cats_covered = len(set(item.get("tr_category", "general") for item in top_10))
-    lines.append(f"Categories: {cats_covered} | Sources active: {stats.get('sources_active', 0)}")
-    lines.append("trainingrun.ai — Truth > Hype | Data > Opinion")
-
-    return "\n".join(lines)
+# format_telegram_brief removed — Kennedy handles all communication
 
 
 # ─────────────────────────────────────────────
@@ -989,29 +940,8 @@ def clean_text(text: str) -> str:
 # ─────────────────────────────────────────────
 
 def tg_send(text: str):
-    """Send a message to David via Telegram."""
-    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    MAX_LEN = 3900
-    chunks = []
-    while len(text) > MAX_LEN:
-        split_at = text.rfind("\n", 0, MAX_LEN)
-        if split_at < MAX_LEN // 2:
-            split_at = MAX_LEN
-        chunks.append(text[:split_at])
-        text = text[split_at:].lstrip("\n")
-    chunks.append(text)
-
-    for chunk in chunks:
-        if not chunk.strip():
-            continue
-        payload = {"chat_id": TELEGRAM_CHAT_ID, "text": chunk, "parse_mode": "HTML"}
-        try:
-            resp = requests.post(url, json=payload, timeout=10)
-            if not resp.ok:
-                payload.pop("parse_mode")
-                requests.post(url, json=payload, timeout=10)
-        except Exception as e:
-            print(f"[Telegram] {e}")
+    """Log status messages. No external notifications — Kennedy handles communication."""
+    print(f"[Scout] {text[:200]}")
 
 
 # ─────────────────────────────────────────────
@@ -2062,10 +1992,6 @@ def run():
     print(f"  xAI API Key: {'SET' if XAI_API_KEY else 'not set (Ollama-only verification)'}")
     print(f"  Philosophy: Truth > Hype | Data > Opinion | Facts > Clickbait")
     print("=" * 60)
-
-    if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
-        print("ERROR: TELEGRAM_TOKEN and TELEGRAM_CHAT_ID must be set.")
-        sys.exit(1)
 
     data = load_data()
     prune_old_items(data)
