@@ -3,22 +3,30 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.trainingrun.daily-news</string>
+    <string>com.trainingrun.baggins</string>
 
     <key>ProgramArguments</key>
     <array>
         <string>/Library/Frameworks/Python.framework/Versions/3.13/bin/python3</string>
-        <string>/Users/davidsolomon/Desktop/TR2/agents/daily-news/main.py</string>
+        <string>/Users/davidsolomon/Desktop/TR2/agents/baggins/main.py</string>
     </array>
 
+        <key>EnvironmentVariables</key>
+        <dict>
+            <key>TR_REPO_PATH</key>
+            <string>/Users/davidsolomon/Desktop/TR2</string>
+            <key>PATH</key>
+            <string>/Library/Frameworks/Python.framework/Versions/3.13/bin:/usr/local/bin:/usr/bin:/bin</string>
+        </dict>
+
     <key>WorkingDirectory</key>
-    <string>/Users/davidsolomon/Desktop/TR2/agents/daily-news</string>
+    <string>/Users/davidsolomon/Desktop/TR2/agents/baggins</string>
 
     <key>StandardOutPath</key>
-    <string>/Users/davidsolomon/Desktop/TR2/agents/daily-news/agent.log</string>
+    <string>/Users/davidsolomon/Desktop/TR2/agents/baggins/agent.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Users/davidsolomon/Desktop/TR2/agents/daily-news/agent.log</string>
+    <string>/Users/davidsolomon/Desktop/TR2/agents/baggins/agent.log</string>
 
     <key>RunAtLoad</key>
     <true/>
