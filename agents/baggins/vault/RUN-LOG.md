@@ -201,3 +201,18 @@ Each published article gets one entry. Logged at Step 14 of PROCESS.md (after pu
 | **Edit Requests** | 0 |
 | **First-Pass Approval** | Yes ✅ |
 | **Published** | 2026-03-09 05:38 AM CST |
+
+---
+
+## Paper 012 | March 17, 2026 | Building AI Teams with DeepAgents and LangChain
+
+| Field | Value |
+|---|---|
+| **Source** | https://github.com/langchain-ai/deepagents |
+| **Category** | AI Agents |
+| **Status** | Published ✅ |
+| **Process** | Agent — autonomous cycle |
+| **Cycle Time** | 23.6 minutes |
+| **Edit Requests** | 1 |
+| **First-Pass Approval** | No — 1 edit(s) requested |
+| **Published** | 2026-03-17 05:54 AM CST |
