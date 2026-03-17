@@ -1,42 +1,42 @@
 {
-  "last_updated": "2026-03-15T05:55:13.698058",
+  "last_updated": "2026-03-17T04:36:52.833899",
   "tr2_unified": {
     "name": "Gimli \u00e2\u0080\u0094 TR2 Unified DDP",
     "enabled": true,
-    "last_run": "2026-03-15T05:55:13.698058",
-    "last_run_date": "2026-03-15",
+    "last_run": "2026-03-17T04:36:52.833899",
+    "last_run_date": "2026-03-17",
     "status": "success",
-    "duration_seconds": 8462.2,
+    "duration_seconds": 1312.2,
     "sources_total": 40,
-    "sources_hit": 14,
-    "models_qualified": 1194,
-    "top_model": "Mercury 2",
+    "sources_hit": 36,
+    "models_qualified": 1347,
+    "top_model": "Grok Code Fast 1",
     "top_score": 100.0,
     "top5": [
       {
         "rank": 1,
-        "name": "Mercury 2",
+        "name": "Grok Code Fast 1",
         "score": 100.0
       },
       {
         "rank": 2,
-        "name": "mercury",
+        "name": "grok-code-fast-1",
         "score": 100.0
       },
       {
         "rank": 3,
-        "name": "mercury-2",
-        "score": 100.0
+        "name": "Grok 4.1 Fast",
+        "score": 99.69
       },
       {
         "rank": 4,
-        "name": "mercury-coder",
-        "score": 100.0
+        "name": "grok-4.1-fast",
+        "score": 99.69
       },
       {
         "rank": 5,
-        "name": "lfm2-8b-a1b",
-        "score": 100.0
+        "name": "gpt-5-mini-2025-08-07-high",
+        "score": 98.87
       }
     ]
   }
