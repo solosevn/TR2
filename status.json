@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-03-17T04:36:52.833899",
+  "last_updated": "2026-03-17T04:48:26.862307",
   "tr2_unified": {
     "name": "Gimli \u00e2\u0080\u0094 TR2 Unified DDP",
     "enabled": true,
-    "last_run": "2026-03-17T04:36:52.833899",
+    "last_run": "2026-03-17T04:48:26.862307",
     "last_run_date": "2026-03-17",
     "status": "success",
-    "duration_seconds": 1312.2,
+    "duration_seconds": 1105.5,
     "sources_total": 40,
     "sources_hit": 36,
     "models_qualified": 1347,
@@ -36,7 +36,7 @@
       {
         "rank": 5,
         "name": "gpt-5-mini-2025-08-07-high",
-        "score": 98.87
+        "score": 98.86
       }
     ]
   }
