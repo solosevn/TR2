@@ -1,5 +1,5 @@
 """
-Kennedy — Media Director Agent
+Kennedy â Media Director Agent
 ================================
 Main agent script. Runs as a Telegram bot + scheduled loop.
 
@@ -43,9 +43,9 @@ from kennedy_learning_logger import (
     update_health_state, log_huddle,
 )
 
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 # LOGGING
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(name)s] %(levelname)s: %(message)s",
@@ -56,15 +56,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger("kennedy")
 
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 # GROK API CLIENT
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 grok_client = None
 if XAI_API_KEY:
     grok_client = OpenAI(api_key=XAI_API_KEY, base_url=GROK_API_BASE)
     logger.info("Grok API client initialized")
 else:
-    logger.error("XAI_API_KEY not set — Kennedy cannot reason")
+    logger.error("XAI_API_KEY not set â Kennedy cannot reason")
 
 # Global state
 halted = False
@@ -74,9 +74,9 @@ pending_article = None  # Tracks current pending review from Baggins
 last_pending_check = None  # Timestamp of last pending_review.json we notified David about
 
 
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 # GROK API CALLS
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 def ask_grok(prompt: str, mode: str = "operations", max_tokens: int = 2000) -> str:
     """
@@ -111,9 +111,9 @@ def ask_grok(prompt: str, mode: str = "operations", max_tokens: int = 2000) -> s
         return f"[ERROR: {e}]"
 
 
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 # TELEGRAM HANDLERS
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle /start command."""
@@ -122,28 +122,28 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "Kennedy online. Media Director for TrainingRun 2.0.\n\n"
         "Article Review:\n"
-        "/approve — Publish Baggins' pending article\n"
-        "/reject — Kill the article\n"
+        "/approve â Publish Baggins' pending article\n"
+        "/reject â Kill the article\n"
         "(Or reply with edit notes)\n\n"
         "Operations:\n"
-        "/status — Current health and metrics\n"
-        "/hold — Pause all publishing\n"
-        "/resume — Resume operations\n"
-        "/strategy — Current content strategy\n"
-        "/experiments — Last 10 experiment results\n"
-        "HALT — Emergency stop"
+        "/status â Current health and metrics\n"
+        "/hold â Pause all publishing\n"
+        "/resume â Resume operations\n"
+        "/strategy â Current content strategy\n"
+        "/experiments â Last 10 experiment results\n"
+        "HALT â Emergency stop"
     )
 
 
 async def cmd_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /status command — report current health."""
+    """Handle /status command â report current health."""
     if update.effective_chat.id != DAVID_CHAT_ID:
         return
 
     health = agent_context.get("health", {})
     status_msg = (
         f"Kennedy Status Report\n"
-        f"━━━━━━━━━━━━━━━━━━━\n"
+        f"âââââââââââââââââââ\n"
         f"Status: {health.get('status', 'unknown')}\n"
         f"Content on schedule: {health.get('content_on_schedule', 'N/A')}\n"
         f"Engagement trend: {health.get('engagement_trend', 'N/A')}\n"
@@ -159,28 +159,28 @@ async def cmd_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def cmd_hold(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /hold command — pause publishing."""
+    """Handle /hold command â pause publishing."""
     global hold_publishing
     if update.effective_chat.id != DAVID_CHAT_ID:
         return
     hold_publishing = True
-    logger.info("HOLD received from David — publishing paused")
+    logger.info("HOLD received from David â publishing paused")
     await update.message.reply_text("Publishing paused. Measurement and learning continue. Send /resume to restart.")
 
 
 async def cmd_resume(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /resume command — resume operations."""
+    """Handle /resume command â resume operations."""
     global halted, hold_publishing
     if update.effective_chat.id != DAVID_CHAT_ID:
         return
     halted = False
     hold_publishing = False
-    logger.info("RESUME received from David — all operations resumed")
+    logger.info("RESUME received from David â all operations resumed")
     await update.message.reply_text("All operations resumed. Kennedy is active.")
 
 
 async def cmd_strategy(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /strategy command — summarize current content strategy."""
+    """Handle /strategy command â summarize current content strategy."""
     if update.effective_chat.id != DAVID_CHAT_ID:
         return
 
@@ -193,7 +193,7 @@ async def cmd_strategy(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def cmd_experiments(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /experiments command — show last 10 results."""
+    """Handle /experiments command â show last 10 results."""
     if update.effective_chat.id != DAVID_CHAT_ID:
         return
 
@@ -209,10 +209,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     text = update.message.text.strip() if update.message.text else ""
 
-    # HALT — emergency stop
+    # HALT â emergency stop
     if text.upper() == "HALT":
         halted = True
-        logger.warning("HALT received from David — all operations stopped")
+        logger.warning("HALT received from David â all operations stopped")
         log_run("halt", 0, "HALT received", "Emergency stop by David")
         await update.message.reply_text(
             "HALT received. All operations stopped.\n"
@@ -220,7 +220,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-    # Normal message — process as a request from David
+    # Normal message â process as a request from David
     if halted:
         await update.message.reply_text("Kennedy is halted. Send /resume to restart operations.")
         return
@@ -241,15 +241,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"David sent this message via Telegram: \"{text}\"\n\n"
         f"Interpret his intent (he uses voice-to-text, expect typos). "
         f"If it's a request, explain what you'll do. If it's a question, answer it. "
-        f"Be concise and direct — David doesn't want lengthy responses.",
+        f"Be concise and direct â David doesn't want lengthy responses.",
         mode="operations"
     )
     await update.message.reply_text(response)
 
 
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 # NOTIFICATION HELPERS
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 async def send_to_david(app: Application, message: str):
     """Send a message to David via Telegram."""
@@ -259,9 +259,9 @@ async def send_to_david(app: Application, message: str):
         logger.error(f"Failed to send Telegram message: {e}")
 
 
-# ──────────────────────────────────────────────────────────
-# BAGGINS MONITORING — Article review flow
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+# BAGGINS MONITORING â Article review flow
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 def check_baggins_pending():
     """Read Baggins' pending_review.json if it exists."""
@@ -301,7 +301,7 @@ def format_pending_review(pending: dict) -> str:
 
     msg = (
         f"{'REVISED ' if status == 'revised' else ''}ARTICLE FOR REVIEW\n"
-        f"━━━━━━━━━━━━━━━━━━━\n"
+        f"âââââââââââââââââââ\n"
         f"Paper {paper:03d}: {headline}\n"
     )
     if subtitle:
@@ -314,9 +314,9 @@ def format_pending_review(pending: dict) -> str:
     if edit_count:
         msg += f"\nEdit #{edit_count}\n"
     msg += (
-        f"\n━━━━━━━━━━━━━━━━━━━\n"
-        f"/approve — Publish it\n"
-        f"/reject — Kill it\n"
+        f"\nâââââââââââââââââââ\n"
+        f"/approve â Publish it\n"
+        f"/reject â Kill it\n"
         f"Or reply with edit notes"
     )
     return msg
@@ -329,11 +329,12 @@ async def notify_pending_review(app: Application, pending: dict):
     last_pending_check = pending.get("timestamp", "")
     msg = format_pending_review(pending)
     await send_to_david(app, msg)
-    logger.info(f"Sent pending review to David — Paper {pending.get('paper_number', '?')}")
+    logger.info(f"Sent pending review to David â Paper {pending.get('paper_number', '?')}")
 
 
 async def cmd_approve(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /approve command — approve Baggins' pending article."""
+    """Handle /approve command â approve Baggins' pending article."""
+    global pending_article
     if update.effective_chat.id != DAVID_CHAT_ID:
         return
     if not pending_article:
@@ -341,12 +342,13 @@ async def cmd_approve(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     write_baggins_approval("approve")
     paper = pending_article.get("paper_number", "?")
+    pending_article = None
     await update.message.reply_text(f"Paper {paper:03d} approved. Baggins is publishing.")
     logger.info(f"David approved Paper {paper:03d}")
 
 
 async def cmd_reject(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /reject command — reject Baggins' pending article."""
+    """Handle /reject command â reject Baggins' pending article."""
     global pending_article
     if update.effective_chat.id != DAVID_CHAT_ID:
         return
@@ -360,9 +362,9 @@ async def cmd_reject(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.info(f"David rejected Paper {paper:03d}")
 
 
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 # MAIN LOOP CYCLE
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 async def run_cycle(app: Application):
     """
@@ -376,19 +378,19 @@ async def run_cycle(app: Application):
     global agent_context
 
     if halted:
-        logger.info("Kennedy is halted — skipping cycle")
+        logger.info("Kennedy is halted â skipping cycle")
         return
 
     cycle_start = time.time()
 
     # Step 1: Load context
     agent_context = load_full_context()
-    logger.info("Context loaded — starting cycle")
+    logger.info("Context loaded â starting cycle")
 
     # Step 2: Check active hours
     current_hour = datetime.now().hour
     if current_hour < ACTIVE_HOURS_START or current_hour >= ACTIVE_HOURS_END:
-        logger.info(f"Outside active hours ({current_hour}h) — sleeping")
+        logger.info(f"Outside active hours ({current_hour}h) â sleeping")
         return
 
     # Step 3: Determine cycle type based on time
@@ -431,12 +433,12 @@ async def run_cycle(app: Application):
     logger.info(f"Cycle {cycle_type} completed in {duration:.1f}s")
 
 
-# ──────────────────────────────────────────────────────────
-# CYCLE IMPLEMENTATIONS (stubs — Kennedy builds these out)
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+# CYCLE IMPLEMENTATIONS (stubs â Kennedy builds these out)
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 async def morning_intelligence(app: Application):
-    """6:00 AM — Read Gollum's briefing, pull platform metrics."""
+    """6:00 AM â Read Gollum's briefing, pull platform metrics."""
     logger.info("Morning intelligence gathering")
 
     # Read Gollum's scout briefing
@@ -459,7 +461,7 @@ async def morning_intelligence(app: Application):
         except (json.JSONDecodeError, IOError) as e:
             intel_parts.append(f"Gollum briefing read error: {e}")
     else:
-        intel_parts.append("No scout briefing found — Gollum may not have run yet")
+        intel_parts.append("No scout briefing found â Gollum may not have run yet")
 
     # Check Baggins status
     if BAGGINS_LOG.exists():
@@ -476,17 +478,17 @@ async def morning_intelligence(app: Application):
 
 
 async def daily_huddle(app: Application):
-    """6:30 AM — Huddle with Baggins + Oden."""
+    """6:30 AM â Huddle with Baggins + Oden."""
     logger.info("Daily huddle with content team")
     # TODO: Read Baggins' health_state.json
     # TODO: Read Oden's health_state.json (when built)
     # TODO: Generate huddle summary via Grok 4
     # TODO: Write coaching insights to team LEARNING-LOGs
-    log_huddle("kennedy", ["baggins"], learnings=["First huddle — establishing baseline"])
+    log_huddle("kennedy", ["baggins"], learnings=["First huddle â establishing baseline"])
 
 
 async def gandalf_report(app: Application):
-    """7:00 AM — Report to Gandalf."""
+    """7:00 AM â Report to Gandalf."""
     logger.info("Reporting to Gandalf")
     # TODO: Generate media arm health summary
     # TODO: Write to Gandalf's huddle input
@@ -494,9 +496,9 @@ async def gandalf_report(app: Application):
 
 
 async def distribution_cycle(app: Application):
-    """Throughout day — distribute content to platforms."""
+    """Throughout day â distribute content to platforms."""
     if hold_publishing:
-        logger.info("Publishing on hold — skipping distribution")
+        logger.info("Publishing on hold â skipping distribution")
         return
 
     logger.info("Content distribution cycle")
@@ -506,10 +508,10 @@ async def distribution_cycle(app: Application):
     if pending:
         pending_ts = pending.get("timestamp", "")
         if pending_ts != last_pending_check:
-            # New or updated pending review — notify David
+            # New or updated pending review â notify David
             await notify_pending_review(app, pending)
         else:
-            logger.info("Pending review already sent to David — waiting for response")
+            logger.info("Pending review already sent to David â waiting for response")
     else:
         logger.info("No pending articles from Baggins")
 
@@ -530,7 +532,7 @@ async def distribution_cycle(app: Application):
 
 
 async def measurement_cycle(app: Application):
-    """9:00 AM — Measure engagement on yesterday's posts."""
+    """9:00 AM â Measure engagement on yesterday's posts."""
     logger.info("Measurement cycle")
     # TODO: Poll X API for engagement on yesterday's posts
     # TODO: Poll Reddit API for post performance
@@ -541,39 +543,39 @@ async def measurement_cycle(app: Application):
 
 
 async def reflection_cycle(app: Application):
-    """9:00 PM — End of day reflection."""
+    """9:00 PM â End of day reflection."""
     logger.info("End of day reflection")
     # TODO: Summarize today's experiments
     # TODO: Identify patterns
     # TODO: Write to reflection_log.jsonl
     # TODO: Update LEARNING-LOG.md if patterns found
     # TODO: Update health_state.json
-    # TODO: Check if 10 experiments reached → write to Red Book
+    # TODO: Check if 10 experiments reached â write to Red Book
     update_health_state({"last_reflection": datetime.now().isoformat()})
 
 
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 # MAIN
-# ──────────────────────────────────────────────────────────
+# ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 def main():
     """Start Kennedy."""
     logger.info("=" * 60)
-    logger.info("Kennedy — Media Director — Starting up")
+    logger.info("Kennedy â Media Director â Starting up")
     logger.info("=" * 60)
 
     if not KENNEDY_BOT_TOKEN:
-        logger.error("KENNEDY_BOT_TOKEN not set — cannot start Telegram bot")
+        logger.error("KENNEDY_BOT_TOKEN not set â cannot start Telegram bot")
         sys.exit(1)
 
     if not XAI_API_KEY:
-        logger.error("XAI_API_KEY not set — Kennedy cannot reason")
+        logger.error("XAI_API_KEY not set â Kennedy cannot reason")
         sys.exit(1)
 
     # Load initial context
     global agent_context
     agent_context = load_full_context()
-    logger.info(f"Initial context loaded — {len(agent_context['vault'])} vault files")
+    logger.info(f"Initial context loaded â {len(agent_context['vault'])} vault files")
 
     # Build Telegram application
     app = Application.builder().token(KENNEDY_BOT_TOKEN).build()
@@ -590,7 +592,7 @@ def main():
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     # Start polling
-    logger.info("Kennedy is live on @KennedyMBot — waiting for David")
+    logger.info("Kennedy is live on @KennedyMBot â waiting for David")
     update_health_state({"status": "online", "boot_time": datetime.now().isoformat()})
     
     # Schedule autonomous cycles via job_queue
