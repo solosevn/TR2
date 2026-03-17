@@ -592,6 +592,19 @@ def main():
     # Start polling
     logger.info("Kennedy is live on @KennedyMBot — waiting for David")
     update_health_state({"status": "online", "boot_time": datetime.now().isoformat()})
+    
+    # Schedule autonomous cycles via job_queue
+    async def _job_distribution(context: ContextTypes.DEFAULT_TYPE):
+        await distribution_cycle(context.application)
+
+    async def _job_run_cycle(context: ContextTypes.DEFAULT_TYPE):
+        await run_cycle(context.application)
+
+    job_queue = app.job_queue
+    job_queue.run_repeating(_job_distribution, interval=60, first=10)
+    job_queue.run_repeating(_job_run_cycle, interval=300, first=60)
+    logger.info("Autonomous cycles scheduled: distribution (60s), run_cycle (300s)")
+
 
     app.run_polling(allowed_updates=Update.ALL_TYPES)
 
