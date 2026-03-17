@@ -23,7 +23,7 @@ DAVID_CHAT_ID = int(os.getenv("DAVID_CHAT_ID", "0"))
 XAI_API_KEY = os.getenv("XAI_API_KEY", "")
 GROK_API_BASE = "https://api.x.ai/v1"
 GROK_MODEL = "grok-4"              # Strategy: huddles, experiments, self-improvement
-GROK_FAST_MODEL = "grok-4.1-fast"  # Operations: posting, measurement, routine decisions
+GROK_FAST_MODEL = "grok-4-1-fast-non-reasoning"  # Operations: posting, measurement, routine decisions
 
 # ──────────────────────────────────────────────────────────
 # GITHUB
