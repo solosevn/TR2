@@ -410,3 +410,35 @@ The following lessons are distilled from 12 operational learning documents produ
 ---
 
 *12 lessons from V1 operations. Real failures, real cost, real time. Baggins reads these as part of LEARNING-LOG.md tail load.*
+
+---
+
+## Paper 012 | March 17, 2026
+
+### Process Metrics
+| Phase | Time |
+|---|---|
+| Story Selection | 0.3 min |
+| Article Writing | 0.3 min |
+| HTML Staging | 0.1 min |
+| Approval Wait | 0.0 min |
+| **Total Cycle** | **0.6 min** |
+
+### Approval Data
+- **First-pass approval:** NO
+- **Edit cycles:** 1
+- **David's edit notes:**
+  - what do you think about the article - is it a good story and is it written like I would right it?
+
+### Audience Metrics (24-48h post-publish)
+- Page views: _pending_
+- X impressions: _pending_
+- X engagements: _pending_
+- Click-through rate: _pending_
+
+### Reasoning Checklist
+- Applied: YES
+- Outcome: Story selected and article written using 5-filter test
+
+### Agent Reflection
+_Reflection will be added after performance data is collected._
