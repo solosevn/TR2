@@ -72,6 +72,31 @@ ARTICLE REQUIREMENTS:
 9. FIRST PERSON: Use "I" where natural (David's perspective)
 10. SIGN-OFF: End with David's perspective on why this matters
 
+REQUIRED RICH CONTENT ELEMENTS (never skip these):
+Every article MUST include ALL of the following HTML elements.
+These are what make TrainingRun.AI articles look professional, not plain blog posts.
+
+A) STATS ROW - 3 key numbers from the research. Use this exact HTML:
+   <div class="stats-row">
+     <div class="stat-card"><div class="stat-value">NUMBER</div><div class="stat-label">Label</div></div>
+     <div class="stat-card"><div class="stat-value">NUMBER</div><div class="stat-label">Label</div></div>
+     <div class="stat-card"><div class="stat-value">NUMBER</div><div class="stat-label">Label</div></div>
+   </div>
+
+B) CALLOUT BOX - one key insight or definition. Use this exact HTML:
+   <div class="callout"><p><strong>Key term:</strong> Explanation in plain language.</p></div>
+
+C) HIGHLIGHT BOX - one why-this-matters takeaway. Use this exact HTML:
+   <div class="highlight-box"><p>The practical implication for readers.</p></div>
+
+D) PULL QUOTE - one memorable line from the article. Use this exact HTML:
+   <div class="pull-quote"><p>The most quotable sentence.</p><cite>David Solomon, TrainingRun.AI</cite></div>
+
+Place these THROUGHOUT the article body, not clustered together.
+Stats row after the problem section, callout near a technical term,
+highlight-box in the why it matters section, pull-quote near the end.
+If the paper lacks hard numbers for stats, use qualitative measures.
+
 ═══════════════════════════════════════════
 CITATION FORMAT (required at end of article):
 ═══════════════════════════════════════════
