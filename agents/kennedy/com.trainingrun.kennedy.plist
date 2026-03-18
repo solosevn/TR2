@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.trainingrun.kennedy</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/opt/homebrew/bin/python3</string>
+		<string>/Users/davidsolomon/Desktop/TR2/agents/kennedy/kennedy.py</string>
+	</array>
+	<key>WorkingDirectory</key>
+	<string>/Users/davidsolomon/Desktop/TR2/agents/kennedy</string>
+	<key>StandardOutPath</key>
+	<string>/Users/davidsolomon/Desktop/TR2/agents/kennedy/kennedy_stdout.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/davidsolomon/Desktop/TR2/agents/kennedy/kennedy_stderr.log</string>
+	<key>KeepAlive</key>
+	<true/>
+	<key>ThrottleInterval</key>
+	<integer>30</integer>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+	</dict>
+</dict>
+</plist>

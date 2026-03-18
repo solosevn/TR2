@@ -329,9 +329,11 @@ def format_pending_review(pending: dict) -> str:
         msg += f"{subtitle}\n"
     msg += f"\nCategory: {category}\n"
     if reasoning:
-        msg += f"\nWhy this story: {(reasoning[:300].rsplit(" ", 1)[0] + "...") if len(reasoning) > 300 else reasoning}\n"
+        reasoning_short = (reasoning[:300].rsplit(" ", 1)[0] + "...") if len(reasoning) > 300 else reasoning
+        msg += f"\nWhy this story: {reasoning_short}\n"
     if runner_up:
-        msg += f"Runner-up: {(runner_up[:150].rsplit(" ", 1)[0] + "...") if len(runner_up) > 150 else runner_up}\n"
+        runner_short = (runner_up[:150].rsplit(" ", 1)[0] + "...") if len(runner_up) > 150 else runner_up
+        msg += f"Runner-up: {runner_short}\n"
     if edit_count:
         msg += f"\nEdit #{edit_count}\n"
     msg += (
@@ -606,6 +608,9 @@ def main():
     agent_context = load_full_context()
     logger.info(f"Initial context loaded ÃÂ¢ÃÂÃÂ {len(agent_context['vault'])} vault files")
 
+    # Heartbeat: Log that Kennedy is alive (for monitoring)
+    logger.info(f"Kennedy heartbeat - startup at {datetime.now().isoformat()}")
+    
     # Build Telegram application
     app = Application.builder().token(KENNEDY_BOT_TOKEN).build()
 
@@ -626,10 +631,18 @@ def main():
     
     # Schedule autonomous cycles via job_queue
     async def _job_distribution(context: ContextTypes.DEFAULT_TYPE):
-        await distribution_cycle(context.application)
+        try:
+            await distribution_cycle(context.application)
+        except Exception as e:
+            logger.error(f"Error in distribution cycle job: {e}", exc_info=True)
+            log_error(str(e), "distribution_cycle job failed", "", "Will retry in 60s")
 
     async def _job_run_cycle(context: ContextTypes.DEFAULT_TYPE):
-        await run_cycle(context.application)
+        try:
+            await run_cycle(context.application)
+        except Exception as e:
+            logger.error(f"Error in run_cycle job: {e}", exc_info=True)
+            log_error(str(e), "run_cycle job failed", "", "Will retry in 300s")
 
     job_queue = app.job_queue
     job_queue.run_repeating(_job_distribution, interval=60, first=10)
@@ -637,8 +650,21 @@ def main():
     logger.info("Autonomous cycles scheduled: distribution (60s), run_cycle (300s)")
 
 
-    app.run_polling(allowed_updates=Update.ALL_TYPES)
+    try:
+        logger.info("Starting polling loop")
+        app.run_polling(allowed_updates=Update.ALL_TYPES)
+    except Exception as e:
+        logger.error(f"Fatal error in polling loop: {e}", exc_info=True)
+        log_error(str(e), "Polling loop crashed", "", "Check logs and restart Kennedy")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        logger.info("Kennedy shutdown requested")
+    except Exception as e:
+        logger.error(f"Fatal error during startup: {e}", exc_info=True)
+        log_error(str(e), "Kennedy startup failed", "", "Check logs")
+        sys.exit(1)
