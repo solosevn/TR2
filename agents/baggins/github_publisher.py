@@ -150,6 +150,16 @@ def update_news_index(article_filename: str, paper_number: int, title: str,
     if not inserted:
         raise RuntimeError("Could not find insertion point in news.html")
 
+    # Update paper count in the filter bar
+    count_match = re.search(r'>(\d+) papers published<', updated_html)
+    if count_match:
+        old_count = int(count_match.group(1))
+        new_count = old_count + 1
+        updated_html = updated_html.replace(
+            f'>{old_count} papers published<',
+            f'>{new_count} papers published<'
+        )
+
     # Commit updated news.html
     create_or_update_file(
         path=NEWS_INDEX_PATH,
