@@ -226,15 +226,34 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Kennedy is halted. Send /resume to restart operations.")
         return
 
-    # If there's a pending article and David sends a message, treat it as edit notes
+    # Kennedy thinks before acting - even during pending review
+    # Route through ask_grok() which loads full context (SOUL, memory, learning)
     if pending_article and text:
-        write_baggins_approval("edit", notes=text)
         paper = pending_article.get("paper_number", "?")
-        await update.message.reply_text(
-            f"Got it. Sending edit notes to Baggins for Paper {paper:03d}.\n"
-            f"He'll revise and send it back."
+        intent = ask_grok(
+            f"David sent this message while Paper {paper:03d} is pending review:\n"
+            f"\"{text}\"\n\n"
+            f"Classify David's intent. Reply with EXACTLY one of these on the first line:\n"
+            f"EDIT - if David wants changes to the article\n"
+            f"QUESTION - if David is asking something\n"
+            f"CONVERSATION - if David is chatting or thinking out loud\n"
+            f"\nThen on the next line, respond as Kennedy his Media Director.",
+            mode="operations"
         )
-        logger.info(f"David sent edit notes for Paper {paper:03d}: {text[:100]}")
+        lines = intent.strip().split("\n", 1)
+        classification = lines[0].strip().upper() if lines else "CONVERSATION"
+        grok_response = lines[1].strip() if len(lines) > 1 else intent
+
+        if classification.startswith("EDIT"):
+            write_baggins_approval("edit", notes=text)
+            await update.message.reply_text(
+                f"Got it. Sending edit notes to Baggins for Paper {paper:03d}.\n"
+                f"He'll revise and send it back."
+            )
+            logger.info(f"Edit notes sent to Baggins for Paper {paper:03d}: {text[:100]}")
+        else:
+            await update.message.reply_text(grok_response)
+            logger.info(f"Kennedy responded (intent={classification}): {grok_response[:100]}")
         return
 
     # Use Grok to interpret and respond to David's message
