@@ -1,14 +1,14 @@
 {
-  "last_updated": "2026-03-18T04:37:37.092553",
+  "last_updated": "2026-03-18T04:48:30.087782",
   "tr2_unified": {
     "name": "Gimli \u00e2\u0080\u0094 TR2 Unified DDP",
     "enabled": true,
-    "last_run": "2026-03-18T04:37:37.092553",
+    "last_run": "2026-03-18T04:48:30.087782",
     "last_run_date": "2026-03-18",
     "status": "success",
-    "duration_seconds": 1356.0,
+    "duration_seconds": 1108.9,
     "sources_total": 40,
-    "sources_hit": 36,
+    "sources_hit": 37,
     "models_qualified": 1349,
     "top_model": "Grok Code Fast",
     "top_score": 99.4,
@@ -20,23 +20,23 @@
       },
       {
         "rank": 2,
-        "name": "LongCat Flash Lite",
-        "score": 97.53
+        "name": "GPT-5 Nano High",
+        "score": 97.78
       },
       {
         "rank": 3,
-        "name": "grok-4-1-fast-reasoning",
-        "score": 97.5
+        "name": "gpt-5-high",
+        "score": 97.78
       },
       {
         "rank": 4,
-        "name": "grok-4-0709",
-        "score": 97.42
+        "name": "gpt-5-nano-high",
+        "score": 97.78
       },
       {
         "rank": 5,
-        "name": "Gemini 3.1 Flash-Lite",
-        "score": 97.37
+        "name": "gpt-5-nano",
+        "score": 97.78
       }
     ]
   }
