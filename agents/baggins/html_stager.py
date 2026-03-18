@@ -245,10 +245,12 @@ def stage_article(article_data: dict, paper_number: int) -> dict:
     image_caption = article_data.get("image_caption", "")
     if image_url and article_body:
         figure_html = _build_figure_html(image_url, image_caption, paper_number)
-        paragraphs = article_body.split("</p>")
-        if len(paragraphs) > 2:
-            paragraphs.insert(2, f"\n{figure_html}\n")
-            article_body = "</p>".join(paragraphs)
+        # Insert figure after 2nd </p> without corrupting HTML
+        # BUG FIX: old split/rejoin on </p> created stray </p> tags
+        p_closes = list(re.finditer(r'</p>', article_body))
+        if len(p_closes) >= 2:
+            insert_pos = p_closes[1].end()
+            article_body = article_body[:insert_pos] + "\n" + figure_html + "\n" + article_body[insert_pos:]
         else:
             article_body = figure_html + "\n" + article_body
 
