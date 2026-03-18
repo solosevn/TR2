@@ -309,9 +309,9 @@ def format_pending_review(pending: dict) -> str:
         msg += f"{subtitle}\n"
     msg += f"\nCategory: {category}\n"
     if reasoning:
-        msg += f"\nWhy this story: {reasoning[:300]}\n"
+        msg += f"\nWhy this story: {(reasoning[:300].rsplit(" ", 1)[0] + "...") if len(reasoning) > 300 else reasoning}\n"
     if runner_up:
-        msg += f"Runner-up: {runner_up[:150]}\n"
+        msg += f"Runner-up: {(runner_up[:150].rsplit(" ", 1)[0] + "...") if len(runner_up) > 150 else runner_up}\n"
     if edit_count:
         msg += f"\nEdit #{edit_count}\n"
     msg += (
