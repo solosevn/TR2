@@ -216,3 +216,18 @@ Each published article gets one entry. Logged at Step 14 of PROCESS.md (after pu
 | **Edit Requests** | 1 |
 | **First-Pass Approval** | No — 1 edit(s) requested |
 | **Published** | 2026-03-17 05:54 AM CST |
+
+---
+
+## Paper 013 | March 18, 2026 | AI Models Need to Show Their Work: Introducing the CRYSTAL Benchmark
+
+| Field | Value |
+|---|---|
+| **Source** | https://www.reddit.com/r/MachineLearning/comments/1rwswk1/r_beyond_final_answers_crystal_benchmark_for/ |
+| **Category** | Benchmarks |
+| **Status** | Published ✅ |
+| **Process** | Agent — autonomous cycle |
+| **Cycle Time** | 514.8 minutes |
+| **Edit Requests** | 2 |
+| **First-Pass Approval** | No — 2 edit(s) requested |
+| **Published** | 2026-03-18 02:06 PM CST |
