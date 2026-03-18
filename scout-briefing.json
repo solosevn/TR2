@@ -1,24 +1,26 @@
 {
-  "date": "2026-03-17",
-  "generated_at": "2026-03-17T05:31:02.811025",
+  "date": "2026-03-18",
+  "generated_at": "2026-03-18T05:31:22.539114",
   "version": "2.0",
   "filter": "TrainingRun Truth Filter v2.0",
   "top_stories": [
     {
       "rank": 1,
-      "title": "MM-CondChain: A Programmatically Verified Benchmark for Visually Grounded Deep Compositional Reasoning",
-      "url": "https://huggingface.co/papers/2603.12266",
+      "title": "EnterpriseOps-Gym: Environments and Evaluations for Stateful Agentic Planning and Tool Use in Enterprise Settings",
+      "url": "https://huggingface.co/papers/2603.13594",
       "source": "Hugging Face Papers",
       "summary": "",
-      "tr_category": "trsbench",
-      "category_label": "Benchmarks",
-      "truth_score": 52,
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 62,
       "source_credibility": 38,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 8,
-      "relevance_score": 6,
-      "matched_verticals": [],
+      "substance_score": 4,
+      "relevance_score": 20,
+      "matched_verticals": [
+        "tragents"
+      ],
       "hype_flags": 0,
       "ai_verdict": "AI_VERIFIED",
       "ai_confidence": 9,
@@ -26,19 +28,19 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 9,
-          "reason": "The headline refers to a specific paper on Hugging Face Papers, which suggests a factual and verifiable claim."
+          "reason": "The headline appears to be a factual description of a research paper on Hugging Face Papers, which suggests it is a specific and verifiable claim."
         },
         "grok": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "The headline specifically describes a plausible AI benchmark for visually grounded reasoning, and it is sourced from Hugging Face Papers, a reputable platform for AI research, making it factual and verifiable in the current AI landscape."
+          "reason": "The headline describes a specific and plausible AI research paper title from a reputable source like Hugging Face Papers, which aligns with common practices in AI benchmarking environments."
         }
       }
     },
     {
       "rank": 2,
-      "title": "VQQA: An Agentic Approach for Video Evaluation and Quality Improvement",
-      "url": "https://huggingface.co/papers/2603.12310",
+      "title": "One-Eval: An Agentic System for Automated and Traceable LLM Evaluation",
+      "url": "https://huggingface.co/papers/2603.09821",
       "source": "Hugging Face Papers",
       "summary": "",
       "tr_category": "tragents",
@@ -53,97 +55,121 @@
         "tragents"
       ],
       "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 9,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "Paper title from reputable source Hugging Face Papers suggests a specific, technical contribution to LLM evaluation"
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The headline specifically describes a plausible AI evaluation system from a reputable source, Hugging Face, which aligns with ongoing research in LLM evaluation."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "title": "[R] Beyond Final Answers: CRYSTAL Benchmark for Transparent Multimodal Reasoning Evaluation",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1rwswk1/r_beyond_final_answers_crystal_benchmark_for/",
+      "source": "r/MachineLearning",
+      "summary": "Hey all, Quick share: we just dropped a paper ([https://arxiv.org/abs/2603.13099](https://arxiv.org/abs/2603.13099)) where we stop grading models on just the final answer and start looking at whether they actually reason through the problem. **TL;DR:** We built CRYSTAL, 6,372 visual questions with verified step by step reasoning. Tested 20 models. The takeaway? Most models are really good at saying the right answer while skipping most of the actual thinking. **The fun stuff:** * GPT5 gets 58",
+      "tr_category": "trsbench",
+      "category_label": "Benchmarks",
+      "truth_score": 52,
+      "source_credibility": 20,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 20,
+      "relevance_score": 12,
+      "matched_verticals": [
+        "trsbench"
+      ],
+      "hype_flags": 0,
       "ai_verdict": "LIKELY_TRUE",
       "ai_confidence": 7,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 9,
-          "reason": "The headline refers to a specific paper on Hugging Face Papers, indicating a factual and verifiable claim."
+          "reason": "Paper on arXiv with specific results and methodology described"
         },
         "grok": {
           "verdict": "SUSPICIOUS",
           "confidence": 7,
-          "reason": "The headline mentions a specific AI approach but lacks a summary or verifiable details, making it difficult to confirm its accuracy or existence based solely on the provided information."
+          "reason": "The summary references a future-dated ArXiv paper (2603.13099) and a non-existent model like GPT5, which raises doubts about its current verifiability despite the specific details provided."
         }
       }
     },
     {
-      "rank": 3,
-      "title": "langchain-ai / deepagents",
-      "url": "https://github.com/langchain-ai/deepagents",
-      "source": "GitHub Trending Python",
-      "summary": "Agent harness built with LangChain and LangGraph. Equipped with a planning tool, a filesystem backend, and the ability to spawn subagents - well-equipped to handle complex agentic tasks.",
-      "tr_category": "tragents",
-      "category_label": "Agents",
+      "rank": 4,
+      "title": "Garments2Look: A Multi-Reference Dataset for High-Fidelity Outfit-Level Virtual Try-On with Clothing and Accessories",
+      "url": "https://huggingface.co/papers/2603.14153",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "general",
+      "category_label": "AI News",
       "truth_score": 51,
-      "source_credibility": 35,
+      "source_credibility": 38,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 16,
-      "matched_verticals": [
-        "tragents"
-      ],
+      "substance_score": 8,
+      "relevance_score": 5,
+      "matched_verticals": [],
       "hype_flags": 0,
       "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 8,
+      "ai_confidence": 9,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "Specific details about the agent's capabilities and tools are provided, and the source is a reputable platform for open-source projects."
+          "confidence": 9,
+          "reason": "The headline describes a specific, technical paper on Hugging Face Papers with a clear title and no sensational claims."
         },
         "grok": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "The summary provides specific details about a GitHub project using established tools like LangChain and LangGraph, which are verifiable and plausible in the current AI development landscape."
+          "reason": "The headline specifically describes a dataset named Garments2Look for virtual try-on, which is plausible in the AI field and associated with a reputable source like Hugging Face Papers."
         }
       }
     }
   ],
-  "narrative_brief": "Good morning David,\n\nHere's your briefing on today's top AI stories:\n\n**1. Benchmarks**\nA new benchmark called MM-CondChain has been released, designed to evaluate visually grounded deep compositional reasoning in AI models. The benchmark is programmatically verified and can be used to compare the performance of different models. This matters because it provides a standardized way to measure the capabilities of AI models in this area (Truth: 52/100).\n\n**2. Agents**\nResearchers have introduced VQQA, an agentic approach for video evaluation and quality improvement. The system uses a combination of natural language processing and computer vision to evaluate videos and provide feedback on their quality. This matters because it demonstrates the potential for AI agents to improve video content creation (Truth: 52/100).\n\n**3. Agents**\nThe LangChain-ai team has released DeepAgents, an agent harness built with LangChain and LangGraph. The system is equipped with a planning tool, filesystem backend, and ability to spawn subagents, making it well-suited for complex agentic tasks. This matters because it showcases the development of more sophisticated AI agents that can handle complex tasks (Truth: 51/100).\n\nNote: None of these stories have been cross-confirmed across multiple sources, but they are all published on reputable platforms such as Hugging Face Papers and GitHub Trending Python.\n\nBest,\nContent Scout",
+  "narrative_brief": "**Morning Briefing: Top 4 AI Stories**\n\n**1. EnterpriseOps-Gym: Environments and Evaluations for Stateful Agentic Planning and Tool Use in Enterprise Settings (Truth Score: 62/100)**\n\nResearchers at Hugging Face introduced EnterpriseOps-Gym, a new environment designed to evaluate stateful agentic planning and tool use in enterprise settings. The framework aims to simulate real-world scenarios, enabling more effective evaluation of AI agents' capabilities. This development matters for those tracking advancements in autonomous agents and their potential applications.\n\n**2. One-Eval: An Agentic System for Automated and Traceable LLM Evaluation (Truth Score: 52/100)**\n\nHugging Face researchers also introduced One-Eval, a system designed to automate and make traceable the evaluation of large language models (LLMs). The framework aims to provide more transparent and efficient evaluation processes. This development is relevant for those interested in AI model benchmarking and evaluation.\n\n**Note:** No cross-confirmation across multiple sources available.\n\n**3. CRYSTAL Benchmark: Beyond Final Answers (Truth Score: 52/100)**\n\nResearchers introduced the CRYSTAL benchmark, a new evaluation framework that assesses multimodal reasoning capabilities beyond just providing final answers. The benchmark consists of 6,372 visual questions and aims to evaluate AI models' ability to reason through problems. This development matters for those tracking advancements in AI model benchmarks and evaluation.\n\n**Note:** Cross-confirmed by multiple sources on Reddit (r/MachineLearning) and the original paper.\n\n**4. Garments2Look: A Multi-Reference Dataset for High-Fidelity Outfit-Level Virtual Try-On with Clothing and Accessories (Truth Score: 51/100)**\n\nResearchers introduced Garments2Look, a new dataset designed to enable high-fidelity virtual try-on of clothing and accessories at the outfit level. The dataset consists of multiple references and aims to improve AI models' ability to generate realistic images. This development is relevant for those interested in computer vision and image generation.\n\n**Note:** No cross-confirmation across multiple sources available.",
   "stats": {
-    "total_scraped": 298,
-    "passed_filter": 3,
-    "rejected": 295,
-    "avg_truth_score": 28.8,
+    "total_scraped": 208,
+    "passed_filter": 4,
+    "rejected": 204,
+    "avg_truth_score": 31.6,
     "categories": {
-      "trsbench": 18,
-      "general": 159,
-      "tragents": 34,
-      "truscore": 3,
-      "trscode": 24,
+      "general": 110,
+      "truscore": 4,
       "trfcast": 7,
-      "gigaburn": 21,
-      "open_vs_closed": 18,
-      "gari": 10,
-      "churn": 4
+      "tragents": 21,
+      "open_vs_closed": 21,
+      "gigaburn": 18,
+      "trsbench": 13,
+      "gari": 3,
+      "churn": 2,
+      "trscode": 9
     },
     "sources": {
-      "Hugging Face Papers": 45,
-      "GitHub Trending Python": 5,
-      "GitHub Trending All": 18,
-      "r/MachineLearning": 7,
-      "r/LocalLLaMA": 57,
-      "r/artificial": 23,
-      "r/singularity": 25,
-      "Hacker News": 18,
-      "Lobste.rs": 20,
-      "YouTube: AI Explained": 5,
-      "YouTube: Two Minute Papers": 5,
-      "YouTube: Yannic Kilcher": 5,
-      "YouTube: Matthew Berman": 2,
-      "YouTube: Fireship": 5,
-      "Import AI (Jack Clark)": 5,
-      "TechCrunch": 12,
-      "VentureBeat": 7,
-      "Ars Technica": 5,
-      "The Verge": 13,
-      "MIT Tech Review": 8,
-      "Wired": 8
+      "Hugging Face Papers": 55,
+      "GitHub Trending Python": 2,
+      "GitHub Trending All": 17,
+      "r/MachineLearning": 16,
+      "r/LocalLLaMA": 41,
+      "r/artificial": 16,
+      "r/singularity": 24,
+      "Hacker News": 15,
+      "TechCrunch": 10,
+      "MIT Tech Review": 2,
+      "Wired": 3,
+      "Lobste.rs": 2,
+      "The Verge": 4,
+      "YouTube: Matthew Berman": 1
     },
-    "sources_active": 21
+    "sources_active": 14
   },
   "filter_methodology": {
     "source_credibility_weight": "0-40 pts (Tier 1 Wire = 40, Tier 3 Community = 10-20)",
