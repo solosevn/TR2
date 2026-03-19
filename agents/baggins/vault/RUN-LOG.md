@@ -231,3 +231,18 @@ Each published article gets one entry. Logged at Step 14 of PROCESS.md (after pu
 | **Edit Requests** | 2 |
 | **First-Pass Approval** | No — 2 edit(s) requested |
 | **Published** | 2026-03-18 02:06 PM CST |
+
+---
+
+## Paper 014 | March 19, 2026 | Simplifying AI with Unsloth: A Local Solution for Open Models
+
+| Field | Value |
+|---|---|
+| **Source** | https://github.com/unslothai/unsloth |
+| **Category** | Open Source |
+| **Status** | Published ✅ |
+| **Process** | Agent — autonomous cycle |
+| **Cycle Time** | 109.1 minutes |
+| **Edit Requests** | 2 |
+| **First-Pass Approval** | No — 2 edit(s) requested |
+| **Published** | 2026-03-19 07:19 AM CST |
