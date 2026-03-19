@@ -1,25 +1,25 @@
 {
-  "date": "2026-03-18",
-  "generated_at": "2026-03-18T05:31:22.539114",
+  "date": "2026-03-19",
+  "generated_at": "2026-03-19T05:30:39.269940",
   "version": "2.0",
   "filter": "TrainingRun Truth Filter v2.0",
   "top_stories": [
     {
       "rank": 1,
-      "title": "EnterpriseOps-Gym: Environments and Evaluations for Stateful Agentic Planning and Tool Use in Enterprise Settings",
-      "url": "https://huggingface.co/papers/2603.13594",
-      "source": "Hugging Face Papers",
-      "summary": "",
-      "tr_category": "tragents",
-      "category_label": "Agents",
-      "truth_score": 62,
-      "source_credibility": 38,
+      "title": "unslothai / unsloth",
+      "url": "https://github.com/unslothai/unsloth",
+      "source": "GitHub Trending Python",
+      "summary": "Unified web UI for training and running open models like Qwen, DeepSeek, and Gemma locally.",
+      "tr_category": "open_vs_closed",
+      "category_label": "Open vs Closed",
+      "truth_score": 50,
+      "source_credibility": 35,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 20,
+      "substance_score": 0,
+      "relevance_score": 15,
       "matched_verticals": [
-        "tragents"
+        "open_vs_closed"
       ],
       "hype_flags": 0,
       "ai_verdict": "AI_VERIFIED",
@@ -27,149 +27,53 @@
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The headline appears to be a factual description of a research paper on Hugging Face Papers, which suggests it is a specific and verifiable claim."
-        },
-        "grok": {
-          "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "The headline describes a specific and plausible AI research paper title from a reputable source like Hugging Face Papers, which aligns with common practices in AI benchmarking environments."
-        }
-      }
-    },
-    {
-      "rank": 2,
-      "title": "One-Eval: An Agentic System for Automated and Traceable LLM Evaluation",
-      "url": "https://huggingface.co/papers/2603.09821",
-      "source": "Hugging Face Papers",
-      "summary": "",
-      "tr_category": "tragents",
-      "category_label": "Agents",
-      "truth_score": 52,
-      "source_credibility": 38,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 10,
-      "matched_verticals": [
-        "tragents"
-      ],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 9,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "Paper title from reputable source Hugging Face Papers suggests a specific, technical contribution to LLM evaluation"
+          "reason": "GitHub Trending Python provides a specific and verifiable source for the claim, indicating a unified web UI for training and running open models."
         },
         "grok": {
           "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The headline specifically describes a plausible AI evaluation system from a reputable source, Hugging Face, which aligns with ongoing research in LLM evaluation."
-        }
-      }
-    },
-    {
-      "rank": 3,
-      "title": "[R] Beyond Final Answers: CRYSTAL Benchmark for Transparent Multimodal Reasoning Evaluation",
-      "url": "https://www.reddit.com/r/MachineLearning/comments/1rwswk1/r_beyond_final_answers_crystal_benchmark_for/",
-      "source": "r/MachineLearning",
-      "summary": "Hey all, Quick share: we just dropped a paper ([https://arxiv.org/abs/2603.13099](https://arxiv.org/abs/2603.13099)) where we stop grading models on just the final answer and start looking at whether they actually reason through the problem. **TL;DR:** We built CRYSTAL, 6,372 visual questions with verified step by step reasoning. Tested 20 models. The takeaway? Most models are really good at saying the right answer while skipping most of the actual thinking. **The fun stuff:** * GPT5 gets 58",
-      "tr_category": "trsbench",
-      "category_label": "Benchmarks",
-      "truth_score": 52,
-      "source_credibility": 20,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 20,
-      "relevance_score": 12,
-      "matched_verticals": [
-        "trsbench"
-      ],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 7,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
           "confidence": 9,
-          "reason": "Paper on arXiv with specific results and methodology described"
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 7,
-          "reason": "The summary references a future-dated ArXiv paper (2603.13099) and a non-existent model like GPT5, which raises doubts about its current verifiability despite the specific details provided."
-        }
-      }
-    },
-    {
-      "rank": 4,
-      "title": "Garments2Look: A Multi-Reference Dataset for High-Fidelity Outfit-Level Virtual Try-On with Clothing and Accessories",
-      "url": "https://huggingface.co/papers/2603.14153",
-      "source": "Hugging Face Papers",
-      "summary": "",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 51,
-      "source_credibility": 38,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 8,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 9,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The headline describes a specific, technical paper on Hugging Face Papers with a clear title and no sensational claims."
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The headline specifically describes a dataset named Garments2Look for virtual try-on, which is plausible in the AI field and associated with a reputable source like Hugging Face Papers."
+          "reason": "The summary provides specific details about an open-source GitHub project for training AI models locally, which aligns with known tools in the AI landscape and is verifiable via GitHub."
         }
       }
     }
   ],
-  "narrative_brief": "**Morning Briefing: Top 4 AI Stories**\n\n**1. EnterpriseOps-Gym: Environments and Evaluations for Stateful Agentic Planning and Tool Use in Enterprise Settings (Truth Score: 62/100)**\n\nResearchers at Hugging Face introduced EnterpriseOps-Gym, a new environment designed to evaluate stateful agentic planning and tool use in enterprise settings. The framework aims to simulate real-world scenarios, enabling more effective evaluation of AI agents' capabilities. This development matters for those tracking advancements in autonomous agents and their potential applications.\n\n**2. One-Eval: An Agentic System for Automated and Traceable LLM Evaluation (Truth Score: 52/100)**\n\nHugging Face researchers also introduced One-Eval, a system designed to automate and make traceable the evaluation of large language models (LLMs). The framework aims to provide more transparent and efficient evaluation processes. This development is relevant for those interested in AI model benchmarking and evaluation.\n\n**Note:** No cross-confirmation across multiple sources available.\n\n**3. CRYSTAL Benchmark: Beyond Final Answers (Truth Score: 52/100)**\n\nResearchers introduced the CRYSTAL benchmark, a new evaluation framework that assesses multimodal reasoning capabilities beyond just providing final answers. The benchmark consists of 6,372 visual questions and aims to evaluate AI models' ability to reason through problems. This development matters for those tracking advancements in AI model benchmarks and evaluation.\n\n**Note:** Cross-confirmed by multiple sources on Reddit (r/MachineLearning) and the original paper.\n\n**4. Garments2Look: A Multi-Reference Dataset for High-Fidelity Outfit-Level Virtual Try-On with Clothing and Accessories (Truth Score: 51/100)**\n\nResearchers introduced Garments2Look, a new dataset designed to enable high-fidelity virtual try-on of clothing and accessories at the outfit level. The dataset consists of multiple references and aims to improve AI models' ability to generate realistic images. This development is relevant for those interested in computer vision and image generation.\n\n**Note:** No cross-confirmation across multiple sources available.",
+  "narrative_brief": "Here's your morning briefing:\n\n**Story 1: Open vs Closed**\n\nWhat happened: A new open-source project called \"unsloth\" has been trending on GitHub, providing a unified web UI for training and running open models like Qwen, DeepSeek, and Gemma locally.\n\nWhy it matters: This development could make it easier for developers to access and utilize open-source AI models, potentially increasing adoption and collaboration in the field. However, its impact is still uncertain without more data on usage and adoption rates. (Truth score: 50/100)\n\nNote: No cross-confirmation across multiple sources.\n\nI'll wait for your confirmation before moving on to the next story!",
   "stats": {
-    "total_scraped": 208,
-    "passed_filter": 4,
-    "rejected": 204,
-    "avg_truth_score": 31.6,
+    "total_scraped": 214,
+    "passed_filter": 1,
+    "rejected": 213,
+    "avg_truth_score": 29.3,
     "categories": {
-      "general": 110,
-      "truscore": 4,
-      "trfcast": 7,
-      "tragents": 21,
+      "trscode": 15,
+      "general": 113,
+      "tragents": 37,
+      "trsbench": 10,
       "open_vs_closed": 21,
-      "gigaburn": 18,
-      "trsbench": 13,
+      "gigaburn": 8,
       "gari": 3,
-      "churn": 2,
-      "trscode": 9
+      "churn": 1,
+      "trfcast": 4,
+      "truscore": 2
     },
     "sources": {
-      "Hugging Face Papers": 55,
-      "GitHub Trending Python": 2,
-      "GitHub Trending All": 17,
+      "Hugging Face Papers": 41,
+      "GitHub Trending Python": 10,
+      "GitHub Trending All": 19,
       "r/MachineLearning": 16,
-      "r/LocalLLaMA": 41,
-      "r/artificial": 16,
-      "r/singularity": 24,
-      "Hacker News": 15,
-      "TechCrunch": 10,
-      "MIT Tech Review": 2,
-      "Wired": 3,
-      "Lobste.rs": 2,
+      "TechCrunch": 13,
       "The Verge": 4,
-      "YouTube: Matthew Berman": 1
+      "MIT Tech Review": 2,
+      "r/LocalLLaMA": 44,
+      "r/artificial": 14,
+      "r/singularity": 26,
+      "Hacker News": 18,
+      "YouTube: Matthew Berman": 3,
+      "YouTube: Fireship": 1,
+      "Wired": 1,
+      "Lobste.rs": 2
     },
-    "sources_active": 14
+    "sources_active": 15
   },
   "filter_methodology": {
     "source_credibility_weight": "0-40 pts (Tier 1 Wire = 40, Tier 3 Community = 10-20)",
