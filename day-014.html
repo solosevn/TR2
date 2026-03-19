@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simplifying AI with Unsloth: A Local Solution for Open Models — TrainingRun.AI Daily</title>
+  <meta name="description" content="Unsloth offers a unified way to run AI models on your computer.">
+  <style>
+    :root {
+      --cyan: #00d4ff;
+      --cyan-dark: #0099cc;
+      --cyan-glow: rgba(0, 212, 255, 0.5);
+      --purple: #8a2be2;
+      --amber: #f59e0b;
+      --bg-dark: #0a0a1a;
+      --bg-darker: #050510;
+      --bg-card: rgba(20, 20, 40, 0.85);
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0b0;
+      --text-muted: #606070;
+      --border-subtle: rgba(0, 212, 255, 0.15);
+      --border-accent: rgba(0, 212, 255, 0.3);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: var(--bg-darker);
+      color: var(--text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ─── SITE HEADER ─────────────────────────────────── */
+    .site-header {
+      background: rgba(5, 5, 16, 0.97);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .site-header .brand { display: flex; flex-direction: column; }
+    .site-header .brand-name {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .site-header .brand-sub {
+      font-family: 'Arial', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .site-header nav { display: flex; align-items: center; gap: 20px; }
+    .site-header nav a {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .site-header nav a:hover { color: var(--cyan); }
+    .btn-news {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      background: rgba(0, 212, 255, 0.12);
+      border: 1px solid var(--border-accent);
+      color: var(--cyan);
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .btn-news:hover { background: rgba(0, 212, 255, 0.22); box-shadow: 0 0 12px rgba(0,212,255,0.25); }
+
+    /* ─── NEWSPAPER MASTHEAD ──────────────────────────── */
+    .masthead {
+      background: linear-gradient(180deg, #060614 0%, #0a0a1a 100%);
+      border-bottom: 2px solid var(--cyan);
+      padding: 32px 0 24px;
+      text-align: center;
+    }
+    .masthead-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .masthead-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--amber);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .masthead-logo {
+      font-family: 'Arial', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(0,212,255,0.4);
+    }
+    .masthead-logo span { color: #ffffff; }
+    .masthead-tagline {
+      font-family: 'Arial', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      color: var(--amber);
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+    .masthead-rule { display: flex; align-items: center; gap: 16px; margin: 20px 0 0; }
+    .masthead-rule hr { flex: 1; border: none; border-top: 1px solid rgba(0,212,255,0.25); }
+    .masthead-dateline {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    /* ─── ARTICLE WRAPPER ─────────────────────────────── */
+    .article-wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* ─── ARTICLE HEADER ──────────────────────────────── */
+    .article-kicker {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .article-headline {
+      font-family: 'Arial', sans-serif;
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 18px;
+    }
+    .article-headline em { font-style: normal; color: var(--cyan); }
+    .article-deck {
+      font-size: 19px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      font-style: italic;
+      border-left: 3px solid var(--cyan);
+      padding-left: 18px;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 40px;
+    }
+    .article-byline { font-family: 'Arial', sans-serif; font-size: 13px; font-weight: 700; color: var(--cyan); }
+    .article-date { font-family: 'Arial', sans-serif; font-size: 12px; color: var(--text-muted); }
+    .article-tag {
+      font-family: 'Arial', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 4px;
+      padding: 3px 8px;
+    }
+
+    /* ─── ARTICLE BODY ────────────────────────────────── */
+    .article-body p { font-size: 17px; line-height: 1.85; color: #d8d8e8; margin-bottom: 24px; }
+    .callout p::first-letter,
+    .highlight-box p::first-letter {
+      font-family: 'Arial', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--cyan);
+    }
+    .article-body h2 {
+      font-family: 'Arial', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 48px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+    }
+    .article-body h2::before {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0;
+      width: 48px; height: 2px;
+      background: var(--cyan);
+    }
+    .callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-left: 4px solid var(--cyan);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .callout p { margin-bottom: 0 !important; font-size: 16px !important; color: var(--text-primary) !important; }
+    .callout strong { color: var(--cyan); }
+    .highlight-box {
+      background: rgba(245, 158, 11, 0.07);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-left: 4px solid var(--amber);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .highlight-box p { margin-bottom: 0 !important; font-size: 16px !important; color: #f0e0b0 !important; }
+    .stats-row { display: flex; gap: 16px; margin: 32px 0; flex-wrap: wrap; }
+    .stat-card {
+      flex: 1; min-width: 140px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: 10px;
+      padding: 18px 20px;
+      text-align: center;
+    }
+    .stat-value {
+      font-family: 'Arial', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--cyan);
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(0,212,255,0.4);
+    }
+    .stat-label { font-family: 'Arial', sans-serif; font-size: 11px; color: var(--text-secondary); margin-top: 6px; line-height: 1.4; }
+    .article-figure {
+      margin: 40px 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .figure-img-wrap { background: #1a1a2e; padding: 24px; display: flex; justify-content: center; }
+    .figure-img-wrap img { max-width: 100%; border-radius: 6px; }
+    .figure-caption {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border-subtle);
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .figure-caption strong { color: var(--cyan); font-style: normal; }
+    .pull-quote {
+      margin: 40px 0;
+      padding: 0 32px;
+      text-align: center;
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      font-size: 80px;
+      color: var(--cyan);
+      opacity: 0.3;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .pull-quote p { font-size: 22px !important; font-style: italic; color: var(--text-primary) !important; line-height: 1.5 !important; margin-bottom: 0 !important; position: relative; z-index: 1; }
+    .pull-quote cite { display: block; font-family: 'Arial', sans-serif; font-size: 12px; color: var(--cyan); margin-top: 10px; font-style: normal; letter-spacing: 0.1em; }
+    .article-cta {
+      background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(138,43,226,0.06));
+      border: 1px solid var(--border-accent);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 48px 0 0;
+      text-align: center;
+    }
+    .article-cta p { color: var(--text-secondary) !important; font-size: 15px !important; margin-bottom: 12px !important; }
+    .cta-link {
+      font-family: 'Arial', sans-serif;
+      display: inline-block;
+      background: var(--cyan);
+      color: #000;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: box-shadow 0.2s;
+    }
+    .cta-link:hover { box-shadow: 0 0 20px rgba(0,212,255,0.5); }
+    .credits {
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .credits h3 { font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+    .credits p { font-family: 'Arial', sans-serif; font-size: 12px !important; line-height: 1.7 !important; color: var(--text-muted) !important; margin-bottom: 10px !important; }
+    .credits a { color: var(--cyan); }
+    .day-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 60px;
+    }
+    .day-nav a { font-family: 'Arial', sans-serif; font-size: 13px; color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .day-nav a:hover { color: var(--cyan); }
+    .day-badge { font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+    .site-footer {
+      background: #060614;
+      border-top: 1px solid var(--border-subtle);
+      padding: 24px 32px;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .site-footer a { color: var(--cyan); text-decoration: none; }
+
+    @media print {
+      body { background: #fff !important; color: #111 !important; }
+      .site-nav, .day-nav, .site-footer, button { display: none !important; }
+      .article-body { max-width: 100%; padding: 0; }
+      .masthead { background: #fff !important; border-bottom: 1px solid #ddd !important; }
+      .masthead-logo, .masthead-label, .masthead-dateline { color: #111 !important; filter: none !important; }
+      .article-figure img { max-width: 80%; }
+      a { color: #0066cc !important; }
+      .pull-quote, .callout, .highlight-box, .stats-grid, .article-cta { background: #f5f5f5 !important; border-color: #ccc !important; color: #111 !important; }
+      .pull-quote p, .callout p, .highlight-box p { color: #111 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <a href="https://trainingrun.ai" class="brand" style="text-decoration:none;">
+      <div class="brand-name">Training <span style="color:#fff;">Run</span></div>
+      <div class="brand-sub">Your Weekly AI Conditioning</div>
+    </a>
+    <nav>
+      <a href="https://trainingrun.ai">Leaderboard</a>
+      <a href="https://trainingrun.ai/news.html" class="btn-news">🗞️ Daily News</a>
+      <a href="https://trainingrun.ai#episode" style="background:rgba(138,43,226,0.15);border:1px solid rgba(138,43,226,0.4);color:#c084fc;padding:6px 14px;border-radius:6px;font-size:13px;font-weight:600;">▶ Watch Latest Episode</a>
+    </nav>
+  </header>
+
+  <!-- NEWSPAPER MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-label">Daily Intelligence Briefing</div>
+      <div class="masthead-logo">Training<span>Run</span>.AI</div>
+      <div class="masthead-rule">
+        <hr>
+        <span class="masthead-dateline">MARCH 19, 2026 &nbsp;·&nbsp; PAPER 014</span>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <main class="article-wrap">
+
+    <div class="article-kicker">OPEN SOURCE</div>
+
+    <h1 class="article-headline">
+      Simplifying AI with Unsloth: A Local Solution for Open Models
+    </h1>
+
+    <p class="article-deck">
+      Unsloth offers a unified way to run AI models on your computer.
+    </p>
+
+    <div class="article-meta">
+      <span class="article-byline">By TrainingRun.AI</span>
+      <span class="article-date">March 19, 2026</span>
+      <span class="article-tag">Open Source</span> <span class="article-tag">AI</span>
+    </div>
+
+    <div class="article-body">
+
+      <p>Ever tried to tinker with AI on your own computer, only to get bogged down by a maze of complicated setups and jargon? That’s a real frustration for many—myself included—when we want to explore powerful tools without needing a tech degree or a supercomputer in the basement.</p>
+
+<p>Here’s where Unsloth steps in. It’s a new open-source project I came across on GitHub’s trending list, and it’s tackling this exact problem. Unsloth provides a unified web interface—a kind of digital dashboard—that lets you train and run open AI models like Qwen, DeepSeek, and Gemma right on your personal machine. No need to juggle multiple tools or wrestle with endless configuration files. Think of it as a user-friendly gateway to AI, simplifying what’s often a headache-inducing process. For context, “open models” are AI systems whose code and design are publicly available, meaning anyone can use or modify them without paying a licensing fee. Unsloth makes accessing these models as easy as opening a web browser.</p>
+
+    <div class="article-figure">
+        <div class="figure-img-wrap">
+            <img src="https://imgen.x.ai/xai-imgen/xai-tmp-imgen-dd79d6a8-e486-4f41-89ac-3bea1bcb20a9.jpeg" alt="Visual overview: Unsloth offers a unified way to run AI models on your computer." />
+        </div>
+        <div class="figure-caption">
+            <strong>Figure 1:</strong> Visual overview: Unsloth offers a unified way to run AI models on your computer.
+        </div>
+    </div>
+</p>
+
+<h2>The Problem: AI Is Often Out of Reach</h2>
+<p>Let’s be honest—AI can feel like it’s locked behind a wall of complexity. If you’re not a programmer or don’t have access to high-end hardware, experimenting with AI models often feels impossible. You might download a model, only to spend hours figuring out how to make it work, installing dependencies (those are the extra bits of software needed to run a program), and troubleshooting errors that make no sense. I’ve been there with my kids, trying to show them how AI works, only to get stuck on step one. And for small businesses or hobbyists, the cost of cloud services—where you rent computing power from big companies—can add up fast. The barrier isn’t just technical; it’s also about time and money.</p>
+
+<h2>The Solution: Unsloth Makes It Local and Simple</h2>
+<p>Unsloth cuts through this mess by offering a single, streamlined way to manage everything. It’s a web-based tool, so you interact with it through a browser window, no command-line wizardry required. You can pick an open model, train it with your own data if you want (think of training as teaching the AI to recognize patterns), and run it—all from one place. The “local” part is key: everything happens on your computer, not some distant server. That means no recurring fees and more control over your data, which is a big deal if you’re concerned about privacy. Whether you’re a teacher wanting to demo AI to students, a small business testing out chatbots, or just curious like me, Unsloth lowers the entry point. It’s not perfect yet—it’s still a young project—but the idea is refreshing.</p>
+
+<!-- IMAGE: A screenshot of Unsloth’s web interface showing a simple dashboard with options to select and run AI models, highlighting its user-friendly design. -->
+
+<p>Why does this matter to me? I see Unsloth as part of a bigger shift toward democratizing AI. When tools like this make technology more accessible, they empower everyday people to experiment, learn, and build without needing a corporate budget or a PhD. It’s not just about running a model; it’s about breaking down walls. Imagine a high school student using Unsloth to create a simple AI for a science project, or a local shop owner building a customer service bot without breaking the bank. That’s the kind of impact I get excited about. AI shouldn’t be a gated community—it should be a public park. Projects like Unsloth are paving the paths to get us there.</p>
+
+<p>As I think about the future, I can’t help but wonder how tools like this will evolve. Will they inspire more people to dive into AI, creating a wave of innovation from unexpected places? I believe they will, and I’m rooting for Unsloth to keep pushing in that direction. For now, it’s a promising start, and I’ll be keeping an eye on how it grows.</p>
+
+      <!-- ─── BOTTOM CTA ─────────────────────────────── -->
+      <div class="article-cta">
+        <p>Read the original paper: <em>unslothai / unsloth</em></p>
+        <a class="cta-link" href="https://github.com/unslothai/unsloth" target="_blank">Read the Full Paper →</a>
+        <p style="margin-top:16px!important;">What do you think? <a href="https://x.com/aitrainingrun" style="color:var(--cyan);">Drop a reply on X.</a> We read every one.</p>
+        <p style="margin-top:4px!important;">— <em>The TrainingRun.AI Team</em></p>
+      </div>
+
+      <!-- ─── BYLINE + SHARE ─────────────────────────── -->
+      <div style="margin-top:40px;padding-top:28px;border-top:1px solid var(--border-subtle);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <div>
+          <img src="assets/signature.png" alt="David Solomon signature" style="height:60px;width:auto;display:block;margin-bottom:6px;opacity:0.92;">
+          <div style="font-size:14px;font-weight:600;color:var(--text-primary);">David Solomon</div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;"><a href="mailto:david@trainingrun.ai" style="color:var(--text-secondary);text-decoration:none;">david@trainingrun.ai</a></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button onclick="window.print()" style="cursor:pointer;padding:9px 18px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);border-radius:8px;color:var(--cyan);font-size:13px;font-weight:600;letter-spacing:0.02em;">⬇ Export PDF</button>
+          <button onclick="window.location.href='mailto:?subject=Paper%20014%3A%20Simplifying%20AI%20with%20Unsloth%3A%20A%20Local%20Solution%20for%20Open%20Models%20%E2%80%94%20TrainingRun.AI&body=Check%20out%20this%20article%20from%20TrainingRun.AI%3A%0A%0ASimplifying%20AI%20with%20Unsloth%3A%20A%20Local%20Solution%20for%20Open%20Models%0AUnsloth%20offers%20a%20unified%20way%20to%20run%20AI%20models%20on%20your%20computer.%0A%0Ahttps%3A//trainingrun.ai/day-014.html'" style="cursor:pointer;padding:9px 18px;background:rgba(255,255,255,0.04);border:1px solid var(--border-subtle);border-radius:8px;color:var(--text-secondary);font-size:13px;font-weight:600;letter-spacing:0.02em;">✉ Email this</button>
+        </div>
+      </div>
+
+    </div><!-- /article-body -->
+
+    <!-- DAY NAVIGATION -->
+    <div class="day-nav">
+      <a href="day-013.html">← Paper 013</a>
+      <span class="day-badge">Paper 014</span>
+      <a href="news.html">All Articles →</a>
+    </div>
+
+    <!-- CREDITS -->
+    <div class="credits">
+      <h3>Credits &amp; Original Research</h3>
+      <p>This article explains and discusses the breakthrough presented in: <strong>unslothai / unsloth</strong> (Ongoing | GitHub Trending Python)</p>
+      <p><strong>Authors:</strong> UnslothAI Team</p>
+      <p><strong>Institutions:</strong> See original paper</p>
+      <p>All technical innovation, figures, and performance results belong entirely to the original research team. TrainingRun.AI is translating the implications for the broader AI agent community. Full paper → <a href="https://github.com/unslothai/unsloth" target="_blank">github.com/unslothai/unsloth</a></p>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    © 2026 TrainingRun.AI &nbsp;·&nbsp; <a href="https://trainingrun.ai">Leaderboard</a> &nbsp;·&nbsp; <a href="news.html">Daily News</a> &nbsp;·&nbsp; Independent AI Research
+  </footer>
+
+</body>
+</html>
