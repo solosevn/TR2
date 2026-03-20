@@ -6,6 +6,7 @@ No git CLI needed — pure API calls.
 """
 
 import base64
+import re
 import requests
 
 from config import GITHUB_TOKEN, GITHUB_API_BASE, REPO_BRANCH, NEWS_INDEX_PATH

@@ -3,23 +3,23 @@
 ## Problem
 news.html filter bar showed "11 papers published" after Paper 012 was live. Counter was hardcoded and never updated by any agent during publish.
 
-## Root Cause
+## Root Cause (Original — 2026-03-17)
 The counter and the card list were built by two different processes at two different times. update_news_index() in github_publisher.py was automated to insert new article cards at the top of news.html — but it only touched the card list, not the counter. The counter was a static string set once by a human and never wired into the publish pipeline.
 
-This is a state consistency failure: two pieces of data on the same page (card count and counter display) that should always agree, but no code enforced that agreement.
+## Fix Attempt #1 (Commit 496cd7b)
+Added auto-increment logic using `re.search()` to find and bump the counter. Changed 11 → 12 in news.html.
 
-## Fix
-Commit: 496cd7b — news.html + github_publisher.py
+**This fix was incomplete.** The `re` module was never imported in `github_publisher.py`. The `re.search()` call on line 154 raised a silent `NameError` every time, swallowed by the try/except in `publish_article()`. Papers 013 and 014 both published with cards inserted but counter stuck at 12.
 
-Immediate: Changed hardcoded "11 papers published" to "12 papers published" in news.html.
+## Root Cause (Real — 2026-03-19)
+Missing `import re` in `github_publisher.py`. The auto-increment code existed but could never execute.
 
-Permanent: Added auto-increment logic to update_news_index() in github_publisher.py. After inserting the new card and before committing, the function now:
-1. Uses re.search to find the current counter value in the HTML
-2. Extracts the number, adds 1
-3. Replaces the old counter string with the new one
-4. Commits both changes (new card + updated counter) in one operation
+**Lesson:** When you add code that uses a module, verify the import exists. When a fix is committed, verify it actually works on the next execution — don't assume.
 
-Paper 013 and every future paper will auto-update the counter. No human touch needed.
+## Fix #2 (2026-03-19)
+1. Added `import re` to `github_publisher.py` (line 9)
+2. Corrected news.html counter: 12 → 14 (matching actual paper count)
+3. Tested: regex simulation confirms 14 → 15 on next publish
 
 ## Pattern: Page State Consistency
 

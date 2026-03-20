@@ -2902,7 +2902,49 @@ def main():
         m["display_rank"] = 0
         m["tier"] = "minimal"
 
-    data["models"] = ranked + disqualified
+    # ── Post-scoring dedup: merge models with identical normalized names ──
+    # Scrapers return both display names ("Grok Code Fast 1") and API names
+    # ("grok-code-fast-1") which produce separate model entries. This pass
+    # groups them by _normalize() key and keeps the entry with the best
+    # today-score, merging coverage data from duplicates.
+    all_models = ranked + disqualified
+    dedup_groups = {}
+    for m in all_models:
+        key = _normalize(m["name"])
+        if key not in dedup_groups:
+            dedup_groups[key] = m
+        else:
+            existing = dedup_groups[key]
+            existing_score = today_score(existing)
+            new_score = today_score(m)
+            if new_score > existing_score:
+                # Keep the higher-scoring entry but preserve best coverage
+                m["category_count"] = max(m.get("category_count", 0),
+                                          existing.get("category_count", 0))
+                m["source_count"] = max(m.get("source_count", 0),
+                                        existing.get("source_count", 0))
+                dedup_groups[key] = m
+            else:
+                existing["category_count"] = max(existing.get("category_count", 0),
+                                                  m.get("category_count", 0))
+                existing["source_count"] = max(existing.get("source_count", 0),
+                                                m.get("source_count", 0))
+
+    deduped = list(dedup_groups.values())
+    dedup_removed = len(all_models) - len(deduped)
+    if dedup_removed > 0:
+        log.info(f"Dedup: merged {dedup_removed} duplicate model entries")
+
+    # Re-rank after dedup
+    qualified_d = [m for m in deduped if m.get("category_count", 0) >= QUALIFICATION_MIN_PILLARS]
+    disqualified_d = [m for m in deduped if m.get("category_count", 0) < QUALIFICATION_MIN_PILLARS]
+    ranked_final = sorted(qualified_d, key=today_score, reverse=True)
+    for i, m in enumerate(ranked_final):
+        m["display_rank"] = i + 1
+    for m in disqualified_d:
+        m["display_rank"] = 0
+
+    data["models"] = ranked_final + disqualified_d
     data["dates"]  = dates
     data["run_at"] = datetime.now().strftime("%-I:%M %p") + " CST"
 
@@ -2911,9 +2953,9 @@ def main():
     log.info(f"Wrote {DATA_FILE.name}")
 
     duration = _time.time() - start_time
-    write_status("success", ranked, source_summary, duration, total_sources_hit)
+    write_status("success", ranked_final, source_summary, duration, total_sources_hit)
 
-    ok = git_push(f"TR2 unified update {TODAY} ({len(qualified)} models)")
+    ok = git_push(f"TR2 unified update {TODAY} ({len(qualified_d)} models)")
     if ok:
         notify(f"âï¸ <b>Gimli | TR2 DDP done!</b>\n{TODAY}\n{len(qualified)} models")
     else:

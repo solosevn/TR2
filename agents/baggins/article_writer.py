@@ -130,6 +130,83 @@ DATE: {today}
     return prompt
 
 
+REQUIRED_RICH_ELEMENTS = {
+    "stats-row": '<div class="stats-row">',
+    "callout": '<div class="callout">',
+    "highlight-box": '<div class="highlight-box">',
+    "pull-quote": '<blockquote class="pull-quote">',
+}
+
+
+def _check_rich_elements(article_html: str) -> list:
+    """Return list of missing rich element names."""
+    return [name for name, tag in REQUIRED_RICH_ELEMENTS.items()
+            if tag not in article_html and f'class="{name}"' not in article_html]
+
+
+def _enforce_rich_elements(client, article_html: str, missing: list) -> str:
+    """
+    Ask Grok to insert the missing rich elements into the existing article.
+    Returns the updated HTML or None on failure.
+    """
+    missing_specs = []
+    if "stats-row" in missing:
+        missing_specs.append(
+            'STATS ROW — 3 key numbers: <div class="stats-row">'
+            '<div class="stat-card"><div class="stat-value">NUMBER</div>'
+            '<div class="stat-label">Label</div></div> (x3)</div>')
+    if "callout" in missing:
+        missing_specs.append(
+            'CALLOUT — key insight: <div class="callout"><p><strong>Term:</strong> Explanation.</p></div>')
+    if "highlight-box" in missing:
+        missing_specs.append(
+            'HIGHLIGHT BOX — why it matters: <div class="highlight-box"><p>Takeaway.</p></div>')
+    if "pull-quote" in missing:
+        missing_specs.append(
+            'PULL QUOTE — memorable line: <blockquote class="pull-quote"><p>Quote.</p>'
+            '<cite>David Solomon, TrainingRun.AI</cite></blockquote>')
+
+    enforce_prompt = f"""The article below is missing required visual elements. Add them WITHOUT changing any existing text.
+
+MISSING ELEMENTS (insert these into the article body):
+{chr(10).join(f"- {s}" for s in missing_specs)}
+
+PLACEMENT RULES:
+- Stats row after the problem/intro section
+- Callout near a technical term or key definition
+- Highlight box in the "why it matters" section
+- Pull quote near the end, before the sign-off
+
+RETURN: The complete article HTML with the missing elements inserted. Return ONLY the HTML, nothing else.
+
+ARTICLE:
+{article_html}"""
+
+    try:
+        from config import GROK_MODEL
+        response = client.chat.completions.create(
+            model=GROK_MODEL,
+            messages=[
+                {"role": "system", "content": "Insert the specified HTML elements into the article. Return only the updated HTML."},
+                {"role": "user", "content": enforce_prompt}
+            ],
+            temperature=0.3,
+            max_tokens=3500,
+        )
+        result = response.choices[0].message.content.strip()
+        # Verify the elements were actually added
+        still_missing = _check_rich_elements(result)
+        if len(still_missing) < len(missing):
+            print(f"[ArticleWriter] Rich element retry: added {len(missing) - len(still_missing)} of {len(missing)} missing elements")
+            return result
+        else:
+            print("[ArticleWriter] Rich element retry failed — elements still missing")
+            return None
+    except Exception as e:
+        print(f"[ArticleWriter] Rich element enforcement failed: {e}")
+        return None
+
+
 def write_article(story: dict, selection: dict, user_md: str, style_md: str, learning_md: str = "", engagement_md: str = "") -> dict:
     """
     Call Grok API to write the full article.
@@ -160,6 +237,16 @@ def write_article(story: dict, selection: dict, user_md: str, style_md: str, lea
         result = parse_article_response(reply)
         result["raw_response"] = reply
         result["model"] = GROK_MODEL
+
+        # Validate rich content elements — retry once if missing
+        article_html = result.get("article_html", "")
+        missing = _check_rich_elements(article_html)
+        if missing and article_html:
+            print(f"[ArticleWriter] Missing rich elements: {missing} — retrying with enforcement prompt")
+            retry_result = _enforce_rich_elements(client, article_html, missing)
+            if retry_result:
+                result["article_html"] = retry_result
+                result["rich_elements_retried"] = True
 
         # Fallback: if category wasn't parsed, use selection's
         if not result.get("category"):
