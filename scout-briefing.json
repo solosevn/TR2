@@ -1,26 +1,24 @@
 {
-  "date": "2026-03-19",
-  "generated_at": "2026-03-19T05:30:39.269940",
+  "date": "2026-03-20",
+  "generated_at": "2026-03-20T05:31:03.341590",
   "version": "2.0",
   "filter": "TrainingRun Truth Filter v2.0",
   "top_stories": [
     {
       "rank": 1,
-      "title": "unslothai / unsloth",
-      "url": "https://github.com/unslothai/unsloth",
-      "source": "GitHub Trending Python",
-      "summary": "Unified web UI for training and running open models like Qwen, DeepSeek, and Gemma locally.",
+      "title": "SigNoz / signoz",
+      "url": "https://github.com/SigNoz/signoz",
+      "source": "GitHub Trending All",
+      "summary": "SigNoz is an open-source observability platform native to OpenTelemetry with logs, traces and metrics in a single application. An open-source alternative to DataDog, NewRelic, etc. \ud83d\udd25 \ud83d\udda5. \ud83d\udc49 Open source Application Performance Monitoring (APM) &amp; Observability tool",
       "tr_category": "open_vs_closed",
       "category_label": "Open vs Closed",
-      "truth_score": 50,
+      "truth_score": 53,
       "source_credibility": 35,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 15,
-      "matched_verticals": [
-        "open_vs_closed"
-      ],
+      "substance_score": 12,
+      "relevance_score": 6,
+      "matched_verticals": [],
       "hype_flags": 0,
       "ai_verdict": "AI_VERIFIED",
       "ai_confidence": 9,
@@ -28,52 +26,87 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "GitHub Trending Python provides a specific and verifiable source for the claim, indicating a unified web UI for training and running open models."
+          "reason": "Specific details about SigNoz's features and comparison to proprietary tools are provided, with a credible source (GitHub Trending)"
         },
         "grok": {
           "verdict": "VERIFIED",
           "confidence": 9,
-          "reason": "The summary provides specific details about an open-source GitHub project for training AI models locally, which aligns with known tools in the AI landscape and is verifiable via GitHub."
+          "reason": "The summary provides specific, factual details about SigNoz as an open-source observability platform based on OpenTelemetry, which aligns with verifiable information from its GitHub source and general knowledge of such tools."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "title": "MiroThinker H1 tops GPT 5.4, Claude 4.6 Opus on BrowseComp; its 3B param open source variant beats GPT 5 on GAIA",
+      "url": "https://www.reddit.com/r/singularity/comments/1rxyz9c/mirothinker_h1_tops_gpt_54_claude_46_opus_on/",
+      "source": "r/singularity",
+      "summary": "Was reading through the MiroThinker paper (arXiv:2603.15726) and two things jumped out at me that I think are worth discussing. First, the BrowseComp results. MiroThinker H1 scores 88.2, beating Gemini 3.1 Pro at 85.9, Claude 4.6 Opus at 84.0, and GPT 5.4 at 82.7. On GAIA the gap is even wider: 88.5 vs GPT 5's 76.4. These are strong results for a browsing agent, but I want to be upfront that it doesn't dominate everywhere. On SUPERChem, Gemini 3 Pro leads comfortably (63.2 vs 51.3). On Humanity",
+      "tr_category": "trsbench",
+      "category_label": "Benchmarks",
+      "truth_score": 51,
+      "source_credibility": 15,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 16,
+      "relevance_score": 20,
+      "matched_verticals": [
+        "trsbench",
+        "open_vs_closed"
+      ],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 7,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "Specific results from a published paper on arXiv provide concrete evidence to support the claim."
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 7,
+          "reason": "The claim references a non-existent arXiv paper dated in the future (2603.15726), and while it provides specific scores, the models like GPT 5.4 are not publicly known, raising doubts about verifiability."
         }
       }
     }
   ],
-  "narrative_brief": "Here's your morning briefing:\n\n**Story 1: Open vs Closed**\n\nWhat happened: A new open-source project called \"unsloth\" has been trending on GitHub, providing a unified web UI for training and running open models like Qwen, DeepSeek, and Gemma locally.\n\nWhy it matters: This development could make it easier for developers to access and utilize open-source AI models, potentially increasing adoption and collaboration in the field. However, its impact is still uncertain without more data on usage and adoption rates. (Truth score: 50/100)\n\nNote: No cross-confirmation across multiple sources.\n\nI'll wait for your confirmation before moving on to the next story!",
+  "narrative_brief": "**Morning Briefing**\n\n**Story 1: Open Source Observability Platform Gains Traction**\n\nSigNoz, an open-source observability platform native to OpenTelemetry, has gained popularity on GitHub with its logs, traces, and metrics in a single application. This alternative to proprietary tools like DataDog and NewRelic offers a free and customizable solution for monitoring applications. (Source: GitHub Trending All)\n\nWhy it matters: SigNoz's growth highlights the increasing adoption of open-source solutions in AI and ML, which can reduce costs and increase transparency.\n\n**Story 2: MiroThinker H1 Tops GPT-5.4 on BrowseComp**\n\nMiroThinker H1, an open-source variant with 3 billion parameters, has outperformed GPT-5.4, Claude 4.6 Opus, and other models on the BrowseComp benchmark, scoring 88.2. On GAIA, MiroThinker H1 also leads with a score of 88.5. (Source: r/singularity)\n\nWhy it matters: This development shows that open-source models can rival proprietary ones in terms of performance, which could have implications for the global AI landscape and the competition between major players.\n\nNote: Both stories are based on single sources, but they align with broader trends in the AI industry.",
   "stats": {
-    "total_scraped": 214,
-    "passed_filter": 1,
-    "rejected": 213,
-    "avg_truth_score": 29.3,
+    "total_scraped": 230,
+    "passed_filter": 2,
+    "rejected": 228,
+    "avg_truth_score": 28.0,
     "categories": {
-      "trscode": 15,
-      "general": 113,
-      "tragents": 37,
+      "trfcast": 5,
+      "general": 120,
+      "gari": 8,
       "trsbench": 10,
-      "open_vs_closed": 21,
-      "gigaburn": 8,
-      "gari": 3,
-      "churn": 1,
-      "trfcast": 4,
-      "truscore": 2
+      "gigaburn": 15,
+      "truscore": 2,
+      "tragents": 31,
+      "open_vs_closed": 16,
+      "trscode": 17,
+      "churn": 6
     },
     "sources": {
-      "Hugging Face Papers": 41,
-      "GitHub Trending Python": 10,
-      "GitHub Trending All": 19,
-      "r/MachineLearning": 16,
-      "TechCrunch": 13,
-      "The Verge": 4,
-      "MIT Tech Review": 2,
-      "r/LocalLLaMA": 44,
-      "r/artificial": 14,
-      "r/singularity": 26,
-      "Hacker News": 18,
-      "YouTube: Matthew Berman": 3,
-      "YouTube: Fireship": 1,
-      "Wired": 1,
-      "Lobste.rs": 2
+      "Hugging Face Papers": 35,
+      "GitHub Trending Python": 6,
+      "GitHub Trending All": 17,
+      "r/MachineLearning": 14,
+      "r/LocalLLaMA": 54,
+      "r/artificial": 20,
+      "Hacker News": 24,
+      "Lobste.rs": 7,
+      "TechCrunch": 7,
+      "The Verge": 3,
+      "MIT Tech Review": 3,
+      "Wired": 6,
+      "r/singularity": 29,
+      "YouTube: Fireship": 3,
+      "Ars Technica": 1,
+      "YouTube: Matthew Berman": 1
     },
-    "sources_active": 15
+    "sources_active": 16
   },
   "filter_methodology": {
     "source_credibility_weight": "0-40 pts (Tier 1 Wire = 40, Tier 3 Community = 10-20)",
