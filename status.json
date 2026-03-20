@@ -1,42 +1,42 @@
 {
-  "last_updated": "2026-03-20T04:35:28.132745",
+  "last_updated": "2026-03-20T04:47:45.309735",
   "tr2_unified": {
     "name": "Gimli \u00e2\u0080\u0094 TR2 Unified DDP",
     "enabled": true,
-    "last_run": "2026-03-20T04:35:28.132745",
+    "last_run": "2026-03-20T04:47:45.309735",
     "last_run_date": "2026-03-20",
     "status": "success",
-    "duration_seconds": 1227.2,
+    "duration_seconds": 1063.4,
     "sources_total": 40,
     "sources_hit": 37,
     "models_qualified": 1122,
-    "top_model": "Gemini 1.5 Flash",
+    "top_model": "Gemini 1.5 Flash 002",
     "top_score": 97.56,
     "top5": [
       {
         "rank": 1,
-        "name": "Gemini 1.5 Flash",
+        "name": "Gemini 1.5 Flash 002",
         "score": 97.56
       },
       {
         "rank": 2,
-        "name": "LongCat Flash Lite",
-        "score": 96.83
+        "name": "gemini-1.5-flash-001",
+        "score": 97.56
       },
       {
         "rank": 3,
-        "name": "GPT-5",
-        "score": 96.76
+        "name": "gemini-1.5-flash-8b-001",
+        "score": 97.56
       },
       {
         "rank": 4,
-        "name": "gpt-5.3-chat-latest",
-        "score": 96.45
+        "name": "Gemini 2.0 Flash",
+        "score": 97.56
       },
       {
         "rank": 5,
-        "name": "gpt-5.3-chat",
-        "score": 96.45
+        "name": "Gemini 2.0 Flash Lite",
+        "score": 97.56
       }
     ]
   }
