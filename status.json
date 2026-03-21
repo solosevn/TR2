@@ -1,42 +1,42 @@
 {
-  "last_updated": "2026-03-20T04:47:45.309735",
+  "last_updated": "2026-03-21T04:34:38.996467",
   "tr2_unified": {
     "name": "Gimli \u00e2\u0080\u0094 TR2 Unified DDP",
     "enabled": true,
-    "last_run": "2026-03-20T04:47:45.309735",
-    "last_run_date": "2026-03-20",
+    "last_run": "2026-03-21T04:34:38.996467",
+    "last_run_date": "2026-03-21",
     "status": "success",
-    "duration_seconds": 1063.4,
+    "duration_seconds": 1177.9,
     "sources_total": 40,
-    "sources_hit": 37,
-    "models_qualified": 1122,
-    "top_model": "Gemini 1.5 Flash 002",
-    "top_score": 97.56,
+    "sources_hit": 36,
+    "models_qualified": 1126,
+    "top_model": "grok-4.1-fast",
+    "top_score": 100.0,
     "top5": [
       {
         "rank": 1,
-        "name": "Gemini 1.5 Flash 002",
-        "score": 97.56
+        "name": "grok-4.1-fast",
+        "score": 100.0
       },
       {
         "rank": 2,
-        "name": "gemini-1.5-flash-001",
-        "score": 97.56
+        "name": "grok-code-fast-1",
+        "score": 98.56
       },
       {
         "rank": 3,
-        "name": "gemini-1.5-flash-8b-001",
-        "score": 97.56
+        "name": "GPT-5.3 Codex",
+        "score": 98.04
       },
       {
         "rank": 4,
-        "name": "Gemini 2.0 Flash",
-        "score": 97.56
+        "name": "gpt-5.3-codex (codex-harness)",
+        "score": 98.04
       },
       {
         "rank": 5,
-        "name": "Gemini 2.0 Flash Lite",
-        "score": 97.56
+        "name": "GPT-5.3 Codex High",
+        "score": 97.81
       }
     ]
   }
