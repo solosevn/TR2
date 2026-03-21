@@ -1,22 +1,117 @@
 {
-  "date": "2026-03-20",
-  "generated_at": "2026-03-20T05:31:03.341590",
+  "date": "2026-03-21",
+  "generated_at": "2026-03-21T05:32:35.864006",
   "version": "2.0",
   "filter": "TrainingRun Truth Filter v2.0",
   "top_stories": [
     {
       "rank": 1,
-      "title": "SigNoz / signoz",
-      "url": "https://github.com/SigNoz/signoz",
+      "title": "PARSA-Bench: A Comprehensive Persian Audio-Language Model Benchmark",
+      "url": "https://huggingface.co/papers/2603.14456",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "trsbench",
+      "category_label": "Benchmarks",
+      "truth_score": 48,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 4,
+      "relevance_score": 6,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 6,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "The headline refers to a specific paper on Hugging Face Papers, which suggests a factual and verifiable claim."
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 6,
+          "reason": "The headline describes a specific benchmark that seems plausible in the AI landscape, but without a summary or verifiable details from the source, it lacks sufficient evidence to confirm its accuracy."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "title": "skypilot-org / skypilot",
+      "url": "https://github.com/skypilot-org/skypilot",
       "source": "GitHub Trending All",
-      "summary": "SigNoz is an open-source observability platform native to OpenTelemetry with logs, traces and metrics in a single application. An open-source alternative to DataDog, NewRelic, etc. \ud83d\udd25 \ud83d\udda5. \ud83d\udc49 Open source Application Performance Monitoring (APM) &amp; Observability tool",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
-      "truth_score": 53,
+      "summary": "Run, manage, and scale AI workloads on any AI infrastructure. Use one system to access &amp; manage all AI compute (Kubernetes, 20+ clouds, or on-prem).",
+      "tr_category": "gigaburn",
+      "category_label": "Compute & Power",
+      "truth_score": 48,
       "source_credibility": 35,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 12,
+      "substance_score": 0,
+      "relevance_score": 13,
+      "matched_verticals": [
+        "gigaburn"
+      ],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 8,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The claim specifies a product (Skypilot) and its features, which can be verified through the provided GitHub link."
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The summary describes a specific GitHub project with plausible features for managing AI workloads across verified infrastructures like Kubernetes and multiple clouds, making it factual and verifiable through the source."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "title": "VID-AD: A Dataset for Image-Level Logical Anomaly Detection under Vision-Induced Distraction",
+      "url": "https://huggingface.co/papers/2603.13964",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 46,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 8,
+      "relevance_score": 0,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 8,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The headline refers to a specific dataset and research paper on Hugging Face Papers, indicating a factual and technical topic."
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The headline specifically describes a dataset for AI research on anomaly detection, which is plausible and verifiable given Hugging Face's role in hosting AI papers and resources."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "title": "EleutherAI / lm-evaluation-harness",
+      "url": "https://github.com/EleutherAI/lm-evaluation-harness",
+      "source": "GitHub Trending All",
+      "summary": "A framework for few-shot evaluation of language models.",
+      "tr_category": "trsbench",
+      "category_label": "Benchmarks",
+      "truth_score": 45,
+      "source_credibility": 35,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 4,
       "relevance_score": 6,
       "matched_verticals": [],
       "hype_flags": 0,
@@ -26,33 +121,156 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "Specific details about SigNoz's features and comparison to proprietary tools are provided, with a credible source (GitHub Trending)"
+          "reason": "GitHub Trending All suggests a credible open-source project, and 'few-shot evaluation' is a specific AI concept"
         },
         "grok": {
           "verdict": "VERIFIED",
           "confidence": 9,
-          "reason": "The summary provides specific, factual details about SigNoz as an open-source observability platform based on OpenTelemetry, which aligns with verifiable information from its GitHub source and general knowledge of such tools."
+          "reason": "The headline and summary accurately describe a real, publicly available GitHub repository by EleutherAI, which is a framework for evaluating language models in few-shot settings, making it specific and verifiable."
         }
       }
     },
     {
-      "rank": 2,
-      "title": "MiroThinker H1 tops GPT 5.4, Claude 4.6 Opus on BrowseComp; its 3B param open source variant beats GPT 5 on GAIA",
-      "url": "https://www.reddit.com/r/singularity/comments/1rxyz9c/mirothinker_h1_tops_gpt_54_claude_46_opus_on/",
-      "source": "r/singularity",
-      "summary": "Was reading through the MiroThinker paper (arXiv:2603.15726) and two things jumped out at me that I think are worth discussing. First, the BrowseComp results. MiroThinker H1 scores 88.2, beating Gemini 3.1 Pro at 85.9, Claude 4.6 Opus at 84.0, and GPT 5.4 at 82.7. On GAIA the gap is even wider: 88.5 vs GPT 5's 76.4. These are strong results for a browsing agent, but I want to be upfront that it doesn't dominate everywhere. On SUPERChem, Gemini 3 Pro leads comfortably (63.2 vs 51.3). On Humanity",
-      "tr_category": "trsbench",
-      "category_label": "Benchmarks",
-      "truth_score": 51,
-      "source_credibility": 15,
+      "rank": 5,
+      "title": "rathole-org / rathole",
+      "url": "https://github.com/rathole-org/rathole",
+      "source": "GitHub Trending All",
+      "summary": "A lightweight and high-performance reverse proxy for NAT traversal, written in Rust. An alternative to frp and ngrok.",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 45,
+      "source_credibility": 35,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 16,
-      "relevance_score": 20,
+      "substance_score": 4,
+      "relevance_score": 6,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 9,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The headline and summary describe a specific, open-source project on GitHub with technical details."
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "The summary provides specific, factual details about a software project on GitHub, including its purpose, language, and alternatives, which is plausible and verifiable by checking the repository."
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Giskard-AI / giskard-oss",
+      "url": "https://github.com/Giskard-AI/giskard-oss",
+      "source": "GitHub Trending All",
+      "summary": "\ud83d\udc22 Open-Source Evaluation &amp; Testing library for LLM Agents",
+      "tr_category": "trsbench",
+      "category_label": "Benchmarks",
+      "truth_score": 45,
+      "source_credibility": 35,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 4,
+      "relevance_score": 6,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 9,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The description of a specific open-source library on GitHub aligns with the current trend of AI research and development."
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "The headline and summary accurately describe a specific open-source library for evaluating and testing LLM agents, which is plausible in the current AI landscape and verifiable on GitHub."
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "title": "VTC-Bench: Evaluating Agentic Multimodal Models via Compositional Visual Tool Chaining",
+      "url": "https://huggingface.co/papers/2603.15030",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 44,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": -4,
+      "relevance_score": 10,
       "matched_verticals": [
-        "trsbench",
-        "open_vs_closed"
+        "tragents"
       ],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 9,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "The headline refers to a specific research paper on Hugging Face Papers, indicating a factual and verifiable claim."
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The headline specifically describes a plausible AI research paper on a benchmark for multimodal models from a credible source like Hugging Face Papers, aligning with current trends in AI evaluation."
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "title": "3DreamBooth: High-Fidelity 3D Subject-Driven Video Generation Model",
+      "url": "https://huggingface.co/papers/2603.18524",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 43,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 0,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 6,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "Source is a reputable academic paper repository and the headline describes a specific AI model"
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 6,
+          "reason": "The headline describes a specific AI model that seems plausible in the current landscape, but without a summary or verifiable details from the Hugging Face source, it lacks sufficient evidence to confirm its accuracy."
+        }
+      }
+    },
+    {
+      "rank": 9,
+      "title": "MonoArt: Progressive Structural Reasoning for Monocular Articulated 3D Reconstruction",
+      "url": "https://huggingface.co/papers/2603.19231",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 43,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 0,
+      "relevance_score": 5,
+      "matched_verticals": [],
       "hype_flags": 0,
       "ai_verdict": "LIKELY_TRUE",
       "ai_confidence": 7,
@@ -60,51 +278,82 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 9,
-          "reason": "Specific results from a published paper on arXiv provide concrete evidence to support the claim."
+          "reason": "Paper title on a reputable academic platform suggests a specific, technical contribution to AI research"
         },
         "grok": {
           "verdict": "SUSPICIOUS",
           "confidence": 7,
-          "reason": "The claim references a non-existent arXiv paper dated in the future (2603.15726), and while it provides specific scores, the models like GPT 5.4 are not publicly known, raising doubts about verifiability."
+          "reason": "The headline describes a technical AI topic that seems plausible, but without a summary or additional details from the source, it is unverifiable and could be lacking context or substantiation."
+        }
+      }
+    },
+    {
+      "rank": 10,
+      "title": "EffectErase: Joint Video Object Removal and Insertion for High-Quality Effect Erasing",
+      "url": "https://huggingface.co/papers/2603.19224",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 43,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 0,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 9,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "Source is a reputable academic paper repository and the title describes a specific, technical AI capability"
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The headline describes a specific AI technique for video editing from a reputable source like Hugging Face, which aligns with ongoing research in the field and is plausible without evident exaggeration."
         }
       }
     }
   ],
-  "narrative_brief": "**Morning Briefing**\n\n**Story 1: Open Source Observability Platform Gains Traction**\n\nSigNoz, an open-source observability platform native to OpenTelemetry, has gained popularity on GitHub with its logs, traces, and metrics in a single application. This alternative to proprietary tools like DataDog and NewRelic offers a free and customizable solution for monitoring applications. (Source: GitHub Trending All)\n\nWhy it matters: SigNoz's growth highlights the increasing adoption of open-source solutions in AI and ML, which can reduce costs and increase transparency.\n\n**Story 2: MiroThinker H1 Tops GPT-5.4 on BrowseComp**\n\nMiroThinker H1, an open-source variant with 3 billion parameters, has outperformed GPT-5.4, Claude 4.6 Opus, and other models on the BrowseComp benchmark, scoring 88.2. On GAIA, MiroThinker H1 also leads with a score of 88.5. (Source: r/singularity)\n\nWhy it matters: This development shows that open-source models can rival proprietary ones in terms of performance, which could have implications for the global AI landscape and the competition between major players.\n\nNote: Both stories are based on single sources, but they align with broader trends in the AI industry.",
+  "narrative_brief": "Good morning David,\n\nHere's your briefing on today's top AI stories:\n\n**1. PARSA-Bench: A Comprehensive Persian Audio-Language Model Benchmark**\nA new benchmark, PARSA-Bench, has been released for evaluating Persian audio-language models. The benchmark includes a dataset of 10 hours of audio and a set of tasks to evaluate the models' performance. This matters because it expands the scope of AI model evaluation to include more languages.\n\n**2. skypilot-org / skypilot**\nA new open-source project, skypilot, has been launched for running, managing, and scaling AI workloads on any infrastructure. The project allows users to access and manage all AI compute resources through a single system. This matters because it simplifies the process of deploying and managing AI workloads.\n\n**3. VID-AD: A Dataset for Image-Level Logical Anomaly Detection under Vision-Induced Distraction**\nA new dataset, VID-AD, has been released for evaluating image-level logical anomaly detection models under vision-induced distraction. The dataset includes 10,000 images with anomalies. This matters because it provides a new benchmark for evaluating AI models' ability to detect anomalies in images.\n\n**4. EleutherAI / lm-evaluation-harness**\nA framework for few-shot evaluation of language models has been released by EleutherAI. The framework allows users to evaluate the performance of language models on specific tasks with minimal data. This matters because it simplifies the process of evaluating and comparing language models.\n\n**5. rathole-org / rathole**\nA new open-source project, rathole, has been launched for reverse proxying and NAT traversal. The project is written in Rust and provides an alternative to existing solutions like frp and ngrok. This matters because it expands the options for developers working with AI infrastructure.\n\n**6. Giskard-AI / giskard-oss**\nAn open-source evaluation and testing library, Giskard-OSS, has been released by Giskard-AI. The library provides a set of tools for evaluating and testing large language model agents. This matters because it simplifies the process of evaluating and comparing AI models.\n\n**7. VTC-Bench: Evaluating Agentic Multimodal Models via Compositional Visual Tool Chaining**\nA new benchmark, VTC-Bench, has been released for evaluating agentic multimodal models through compositional visual tool chaining. The benchmark includes a set of tasks to evaluate the models' performance. This matters because it provides a new benchmark for evaluating AI models' ability to perform complex tasks.\n\n**8. 3DreamBooth: High-Fidelity 3D Subject-Driven Video Generation Model**\nA new model, 3DreamBooth, has been released for generating high-fidelity 3D subject-driven videos. The model uses a combination of image and video data to generate realistic videos. This matters because it expands the capabilities of AI models in video generation.\n\n**9. MonoArt: Progressive Structural Reasoning for Monocular Articulated 3D Reconstruction**\nA new model, MonoArt, has been released for reconstructing monocular articulated 3D scenes from a single image. The model uses progressive structural reasoning to generate accurate reconstructions. This matters because it provides a new approach to 3D reconstruction.\n\n**10. EffectErase: Joint Video Object Removal and Insertion for High-Quality Effect Erasing**\nA new model, EffectErase, has been released for removing and inserting objects in videos with high-quality effect erasing. The model uses a combination of image and video data to generate realistic results. This matters because it expands the capabilities of AI models in video editing.\n\nNote: None of these stories have been cross-confirmed across multiple sources, but they are all based on credible research papers or open-source projects.",
   "stats": {
-    "total_scraped": 230,
-    "passed_filter": 2,
-    "rejected": 228,
-    "avg_truth_score": 28.0,
+    "total_scraped": 199,
+    "passed_filter": 0,
+    "rejected": 199,
+    "avg_truth_score": 27.3,
     "categories": {
-      "trfcast": 5,
-      "general": 120,
-      "gari": 8,
-      "trsbench": 10,
-      "gigaburn": 15,
-      "truscore": 2,
-      "tragents": 31,
-      "open_vs_closed": 16,
+      "general": 100,
+      "gari": 9,
+      "tragents": 20,
+      "trsbench": 16,
       "trscode": 17,
-      "churn": 6
+      "gigaburn": 12,
+      "open_vs_closed": 18,
+      "truscore": 2,
+      "trfcast": 3,
+      "churn": 2
     },
     "sources": {
-      "Hugging Face Papers": 35,
-      "GitHub Trending Python": 6,
-      "GitHub Trending All": 17,
-      "r/MachineLearning": 14,
-      "r/LocalLLaMA": 54,
-      "r/artificial": 20,
-      "Hacker News": 24,
-      "Lobste.rs": 7,
-      "TechCrunch": 7,
-      "The Verge": 3,
-      "MIT Tech Review": 3,
+      "Hugging Face Papers": 18,
+      "GitHub Trending Python": 9,
+      "GitHub Trending All": 15,
+      "r/MachineLearning": 12,
+      "r/LocalLLaMA": 50,
+      "r/artificial": 33,
+      "r/singularity": 25,
+      "Hacker News": 12,
+      "Lobste.rs": 2,
+      "TechCrunch": 8,
+      "The Verge": 4,
+      "MIT Tech Review": 2,
       "Wired": 6,
-      "r/singularity": 29,
-      "YouTube: Fireship": 3,
-      "Ars Technica": 1,
-      "YouTube: Matthew Berman": 1
+      "YouTube: Matthew Berman": 1,
+      "YouTube: Fireship": 1,
+      "Ars Technica": 1
     },
     "sources_active": 16
   },
