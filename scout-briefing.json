@@ -1,22 +1,86 @@
 {
-  "date": "2026-03-22",
-  "generated_at": "2026-03-22T05:32:25.151148",
+  "date": "2026-03-23",
+  "generated_at": "2026-03-23T05:32:36.621844",
   "version": "2.0",
   "filter": "TrainingRun Truth Filter v2.0",
   "top_stories": [
     {
       "rank": 1,
-      "title": "TauricResearch / TradingAgents",
-      "url": "https://github.com/TauricResearch/TradingAgents",
-      "source": "GitHub Trending Python",
-      "summary": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
-      "tr_category": "tragents",
-      "category_label": "Agents",
-      "truth_score": 49,
-      "source_credibility": 35,
+      "title": "HopChain: Multi-Hop Data Synthesis for Generalizable Vision-Language Reasoning",
+      "url": "https://huggingface.co/papers/2603.17024",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 47,
+      "source_credibility": 38,
       "cross_confirmation": 0,
       "cross_sources": [],
       "substance_score": 4,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 6,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "Paper title on a reputable academic platform suggests a specific, technical contribution to AI research"
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 6,
+          "reason": "The headline mentions a specific AI paper title from a reputable source like Hugging Face Papers, but without a summary or additional details, it lacks verifiability and could be vague or incomplete."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "title": "jamwithai / production-agentic-rag-course",
+      "url": "https://github.com/jamwithai/production-agentic-rag-course",
+      "source": "GitHub Trending Python",
+      "summary": "\ud83c\udf10 Make websites accessible for AI agents. Automate tasks online with ease.",
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 45,
+      "source_credibility": 35,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 0,
+      "relevance_score": 10,
+      "matched_verticals": [
+        "tragents"
+      ],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 7,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "GitHub Trending Python provides a specific, factual source for the claim about automating tasks online with ease."
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 7,
+          "reason": "The headline appears to be a GitHub repository name and the summary is vague about specific tools or results for making websites accessible to AI agents, making it unverifiable without further details."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "title": "teng-lin / notebooklm-py",
+      "url": "https://github.com/teng-lin/notebooklm-py",
+      "source": "GitHub Trending Python",
+      "summary": "Unofficial Python API and agentic skill for Google NotebookLM. Full programmatic access to NotebookLM's features\u2014including capabilities the web UI doesn't expose\u2014via Python, CLI, and AI agents like Claude Code, Codex, and OpenClaw.",
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 45,
+      "source_credibility": 35,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 0,
       "relevance_score": 10,
       "matched_verticals": [
         "tragents"
@@ -28,290 +92,125 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "GitHub Trending Python indicates a publicly available, specific project with source code"
+          "reason": "The claim references a specific GitHub repository and mentions well-known AI agents, indicating a factual description of an existing project."
         },
         "grok": {
           "verdict": "SUSPICIOUS",
           "confidence": 6,
-          "reason": "The headline and summary describe a GitHub project that seems plausible in the AI landscape, but lack specific details like the repository's actual content or verifiable results, making it potentially vague and unverifiable."
-        }
-      }
-    },
-    {
-      "rank": 2,
-      "title": "Nous Research's NousCoder-14B is an open-source coding model landing right in the Claude Code moment",
-      "url": "https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in",
-      "source": "VentureBeat",
-      "summary": "Nous Research, the open-source artificial intelligence startup backed by crypto venture firm Paradigm, released a new competitive programming model on Monday that it says matches or exceeds several larger proprietary systems \u00e2\u0080\u0094 trained in just four days using 48 of Nvidia&#x27;s latest B200 graphics processors.The model, called NousCoder-14B, is another entry in a crowded field of AI coding assistants, but arrives at a particularly charged moment: Claude Code, the agentic programming tool from",
-      "tr_category": "trscode",
-      "category_label": "Code & Dev",
-      "truth_score": 49,
-      "source_credibility": 26,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 8,
-      "relevance_score": 15,
-      "matched_verticals": [
-        "trscode",
-        "tragents",
-        "gigaburn",
-        "open_vs_closed"
-      ],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 7,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "Specific details about the model, training process, and comparison to proprietary systems are provided."
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 7,
-          "reason": "The claims about the model's performance matching or exceeding larger proprietary systems are based on the company's statements and lack independent verification, making them potentially exaggerated or unverifiable."
-        }
-      }
-    },
-    {
-      "rank": 3,
-      "title": "dlt-hub / dlt",
-      "url": "https://github.com/dlt-hub/dlt",
-      "source": "GitHub Trending All",
-      "summary": "data load tool (dlt) is an open source Python library that makes data loading easy \ud83d\udee0\ufe0f",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
-      "truth_score": 48,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 8,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 9,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The summary accurately describes a specific open-source Python library on GitHub, with no exaggerated or unsubstantiated claims."
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The summary provides a specific and factual description of an existing open-source Python library called dlt on GitHub, which is plausible and verifiable through the source."
+          "reason": "The claim about an unofficial Python API providing full access to unexposed features of Google NotebookLM is plausible but unverifiable without direct inspection of the GitHub repository, potentially exaggerating capabilities."
         }
       }
     },
     {
       "rank": 4,
-      "title": "anthropics / claude-plugins-official",
-      "url": "https://github.com/anthropics/claude-plugins-official",
-      "source": "GitHub Trending Python",
-      "summary": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
+      "title": "servo / servo",
+      "url": "https://github.com/servo/servo",
+      "source": "GitHub Trending All",
+      "summary": "Servo aims to empower developers with a lightweight, high-performance alternative for embedding web technologies in applications.",
+      "tr_category": "trscode",
+      "category_label": "Code & Dev",
       "truth_score": 45,
       "source_credibility": 35,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 10,
-      "matched_verticals": [
-        "open_vs_closed"
-      ],
+      "substance_score": 4,
+      "relevance_score": 6,
+      "matched_verticals": [],
       "hype_flags": 0,
       "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 8,
+      "ai_confidence": 9,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "GitHub Trending Python provides a list of popular projects, and Anthropic is a well-known AI research organization"
+          "reason": "The claim is specific and factual, referencing a real project on GitHub with a clear description of its goals."
         },
         "grok": {
           "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The headline and summary specifically reference a plausible GitHub repository for Anthropic's Claude plugins, which aligns with the company's known practices in AI development and is verifiable through public sources like GitHub."
+          "confidence": 9,
+          "reason": "The summary accurately reflects the established goals of the Servo project, a real open-source web engine on GitHub, making it specific, factual, and verifiable."
         }
       }
     },
     {
       "rank": 5,
-      "title": "simular-ai / Agent-S",
-      "url": "https://github.com/simular-ai/Agent-S",
+      "title": "home-assistant / core",
+      "url": "https://github.com/home-assistant/core",
       "source": "GitHub Trending Python",
-      "summary": "Agent S: an open agentic framework that uses computers like a human",
-      "tr_category": "tragents",
-      "category_label": "Agents",
-      "truth_score": 45,
+      "summary": "\ud83c\udfe1 Open source home automation that puts local control and privacy first.",
+      "tr_category": "open_vs_closed",
+      "category_label": "Open vs Closed",
+      "truth_score": 44,
       "source_credibility": 35,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 10,
-      "matched_verticals": [
-        "tragents"
-      ],
+      "substance_score": 4,
+      "relevance_score": 5,
+      "matched_verticals": [],
       "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 7,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 10,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "GitHub Trending Python provides a specific, open-source framework description"
+          "confidence": 9,
+          "reason": "GitHub Trending Python provides a specific and verifiable source for the open-source home automation project"
         },
         "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 7,
-          "reason": "The summary is vague and lacks specific, verifiable details about the framework's capabilities, making it hard to confirm its claims based solely on the headline and source."
+          "verdict": "VERIFIED",
+          "confidence": 10,
+          "reason": "The headline and summary accurately describe the Home Assistant project, a well-known open-source home automation software on GitHub that emphasizes local control and privacy, making it specific, factual, and verifiable."
         }
       }
     },
     {
       "rank": 6,
-      "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files \u00e2\u0080\u0094 no coding required",
-      "url": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
-      "source": "VentureBeat",
-      "summary": "Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users \u00e2\u0080\u0094 and according to company insiders, the team built the entire feature in approximately a week and a half, largely using Claude Code itself.The launch marks a major inflection point in the race to deliver practical AI agents to mainstream users, positioning Anthropic to compete not just with OpenAI and Google in conversational AI, but with Micro",
-      "tr_category": "trscode",
-      "category_label": "Code & Dev",
-      "truth_score": 45,
-      "source_credibility": 26,
+      "title": "dotnet / core",
+      "url": "https://github.com/dotnet/core",
+      "source": "GitHub Trending All",
+      "summary": ".NET news, announcements, release notes, and more!",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 44,
+      "source_credibility": 40,
       "cross_confirmation": 0,
       "cross_sources": [],
       "substance_score": 4,
-      "relevance_score": 15,
-      "matched_verticals": [
-        "trscode",
-        "open_vs_closed"
-      ],
+      "relevance_score": 0,
+      "matched_verticals": [],
       "hype_flags": 0,
       "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 7,
+      "ai_confidence": 8,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "The article cites a specific source (VentureBeat) and provides details about the product launch, which suggests that the information is factual and verifiable."
+          "reason": ".NET Core is a well-documented open-source framework on GitHub, and the source provided (GitHub Trending All) is a credible indicator of its relevance."
         },
         "grok": {
           "verdict": "SUSPICIOUS",
-          "confidence": 7,
-          "reason": "The headline and summary mention a specific product launch by Anthropic, which is plausible given their AI developments, but claims about the rapid build time from company insiders and exaggerated language like 'wildly successful' and 'major inflection point' lack verifiable evidence."
+          "confidence": 9,
+          "reason": "The headline and summary are vague, lacking specific details about any particular news, announcements, or release notes, making it unverifiable as a factual claim."
         }
       }
     },
     {
       "rank": 7,
-      "title": "opengaming / osgameclones",
-      "url": "https://github.com/opengaming/osgameclones",
-      "source": "GitHub Trending Python",
-      "summary": "Open Source Clones of Popular Games",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
+      "title": "The Download: The Pentagon\u2019s new AI plans, and next-gen nuclear reactors",
+      "url": "https://www.technologyreview.com/2026/03/18/1134371/the-download-the-pentagons-new-ai-plans-and-next-gen-nuclear-reactors/",
+      "source": "MIT Tech Review",
+      "summary": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. The Pentagon is planning for AI companies to train on classified data,&#160;defense&#160;official says&#160; The Pentagon plans to set up secure environments for generative AI companies to train military-specific versions of their&#8230;",
+      "tr_category": "tragents",
+      "category_label": "Agents",
       "truth_score": 44,
-      "source_credibility": 35,
+      "source_credibility": 30,
       "cross_confirmation": 0,
       "cross_sources": [],
       "substance_score": 4,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 9,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "GitHub Trending Python provides a list of popular open-source projects, and 'opengaming/osgameclones' appears to be a legitimate repository with a clear description."
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The headline and summary accurately describe a verifiable GitHub repository focused on open-source clones of popular games, which aligns with common practices in the open-source community and can be confirmed on GitHub."
-        }
-      }
-    },
-    {
-      "rank": 8,
-      "title": "facebookresearch / vjepa2",
-      "url": "https://github.com/facebookresearch/vjepa2",
-      "source": "GitHub Trending Python",
-      "summary": "PyTorch code and models for VJEPA2 self-supervised learning from video.",
-      "tr_category": "trscode",
-      "category_label": "Code & Dev",
-      "truth_score": 44,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 9,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The headline and summary describe a specific, publicly available GitHub repository with PyTorch code and models for VJEPA2 self-supervised learning from video."
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The headline and summary specifically describe a plausible GitHub repository from Facebook Research for AI models, which aligns with known practices in the AI community and can be verified by checking the source."
-        }
-      }
-    },
-    {
-      "rank": 9,
-      "title": "pocketbase / pocketbase",
-      "url": "https://github.com/pocketbase/pocketbase",
-      "source": "GitHub Trending All",
-      "summary": "Open Source realtime backend in 1 file",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
-      "truth_score": 44,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 9,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "PocketBase is a real open-source project on GitHub with a single-file backend implementation"
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The summary accurately describes PocketBase as an open-source real-time backend in a single file, which is verifiable through its official GitHub repository."
-        }
-      }
-    },
-    {
-      "rank": 10,
-      "title": "formbricks / formbricks",
-      "url": "https://github.com/formbricks/formbricks",
-      "source": "GitHub Trending All",
-      "summary": "Open Source Qualtrics Alternative",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
-      "truth_score": 44,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 5,
-      "matched_verticals": [],
+      "relevance_score": 10,
+      "matched_verticals": [
+        "tragents"
+      ],
       "hype_flags": 0,
       "ai_verdict": "AI_VERIFIED",
       "ai_confidence": 8,
@@ -319,56 +218,143 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "GitHub Trending All suggests a popular open-source project, and Qualtrics is a well-known survey software with an open-source alternative likely existing"
+          "reason": "The source is a reputable publication (MIT Tech Review) and the claim is specific about the Pentagon's plans for AI companies to train on classified data."
         },
         "grok": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "The headline and summary refer to a specific, existing open-source project on GitHub called Formbricks, which is a plausible alternative to Qualtrics based on available public information."
+          "reason": "The claim is specific, attributed to a defense official, and reported by a reputable source like MIT Tech Review, making it factual and plausible within the current AI and military technology landscape."
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "title": "A Subgoal-driven Framework for Improving Long-Horizon LLM Agents",
+      "url": "https://huggingface.co/papers/2603.19685",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 43,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 0,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 7,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The headline refers to a specific research paper on Hugging Face Papers, which suggests a factual and technical topic."
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 7,
+          "reason": "The headline is plausible as a technical paper title from Hugging Face, but without a summary or verifiable details, it lacks sufficient evidence to confirm its accuracy."
+        }
+      }
+    },
+    {
+      "rank": 9,
+      "title": "WorldAgents: Can Foundation Image Models be Agents for 3D World Models?",
+      "url": "https://huggingface.co/papers/2603.19708",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 43,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 0,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 7,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "Paper on Hugging Face Papers suggests a specific, technical question about foundation image models and their potential application to 3D world models."
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 7,
+          "reason": "The headline poses a question rather than making a specific factual claim, and with no summary provided, it lacks verifiable details to assess its truthfulness."
+        }
+      }
+    },
+    {
+      "rank": 10,
+      "title": "LumosX: Relate Any Identities with Their Attributes for Personalized Video Generation",
+      "url": "https://huggingface.co/papers/2603.20192",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 43,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 0,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 6,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "Specific paper on Hugging Face Papers with a clear, technical description of LumosX's capabilities"
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 6,
+          "reason": "The headline mentions a specific AI tool on Hugging Face Papers, which is plausible in the current AI landscape, but without a summary or verifiable details, the claim lacks sufficient evidence to confirm its accuracy."
         }
       }
     }
   ],
-  "narrative_brief": "**Morning Briefing: Top 10 AI Stories**\n\nAs we dive into the latest developments in AI, here's what you need to know:\n\n1. **TradingAgents**: TauricResearch released TradingAgents, a multi-agents LLM financial trading framework on GitHub. This open-source project aims to provide a platform for researchers and developers to build and test trading agents. (Source: GitHub Trending Python)\n\nWhy it matters: This development could impact the finance industry's adoption of AI-powered trading systems.\n\n2. **NousCoder-14B**: Nous Research released an open-source coding model, NousCoder-14B, which matches or exceeds larger proprietary systems in just four days using 48 Nvidia B200 graphics cards. (Source: VentureBeat)\n\nWhy it matters: This achievement highlights the potential of open-source AI models and their ability to compete with proprietary systems.\n\n3. **dlt**: dlt-hub released an open-source Python library, data load tool (dlt), which simplifies data loading processes. (Source: GitHub Trending All)\n\nWhy it matters: This development could streamline data preparation for AI model training and deployment.\n\n4. **Claude Code Plugins**: anthropics released an official directory of high-quality Claude Code plugins on GitHub. (Source: GitHub Trending Python)\n\nWhy it matters: This move aims to standardize and improve the usability of Claude Code, a popular open-source coding model.\n\n5. **Agent S**: simular-ai released Agent S, an open agentic framework that uses computers like humans. (Source: GitHub Trending Python)\n\nWhy it matters: This development could impact the field of artificial general intelligence (AGI) and its potential applications.\n\n6. **Cowork**: Anthropic launched Cowork, a Claude Desktop agent that works in files without coding requirements. The team built this feature using Claude Code itself in approximately one week and a half. (Source: VentureBeat)\n\nWhy it matters: This release demonstrates the growing accessibility of AI-powered tools for non-technical users.\n\n7. **Open Source Clones**: opengaming released open-source clones of popular games on GitHub. (Source: GitHub Trending Python)\n\nWhy it matters: This development could democratize access to game development and potentially lead to new innovations in the field.\n\n8. **VJEPA2**: facebookresearch released PyTorch code and models for VJEPA2 self-supervised learning from video on GitHub. (Source: GitHub Trending Python)\n\nWhy it matters: This release contributes to the advancement of self-supervised learning techniques, a crucial area in AI research.\n\n9. **Pocketbase**: pocketbase released an open-source realtime backend in one file on GitHub. (Source: GitHub Trending All)\n\nWhy it matters: This development could simplify backend development and deployment for web applications.\n\n10. **Formbricks**: formbricks released an open-source Qualtrics alternative on GitHub. (Source: GitHub Trending All)\n\nWhy it matters: This release provides a potential competitor to proprietary survey tools, promoting competition in the market.\n\nNote: Cross-confirmation across multiple sources is not available for all stories due to their recent publication or limited coverage.",
+  "narrative_brief": "**Morning Briefing: Top 10 AI Stories**\n\nAs we dive into the latest developments in AI, here's a concise summary of the top 10 stories:\n\n1. **HopChain**: Researchers at Hugging Face introduced HopChain, a multi-hop data synthesis method for generalizable vision-language reasoning. This approach aims to improve performance on complex tasks by generating more diverse and relevant training data. (Source: Hugging Face Papers)\n\nWhy it matters: Improved data synthesis methods can enhance AI model performance in various applications.\n\n2. **Production-Agentic-RAG-Course**: The jamwithai GitHub repository offers a course on making websites accessible for AI agents, enabling automation of online tasks with ease. This resource provides developers with practical knowledge on creating agent-friendly interfaces. (Source: GitHub Trending Python)\n\nWhy it matters: As AI agents become more prevalent, tools like this course will help developers create more accessible and usable interfaces.\n\n3. **NotebookLM-Py**: The unofficial Python API for Google NotebookLM allows full programmatic access to the model's features, including capabilities not exposed in the web UI. This API enables developers to integrate NotebookLM into their applications using AI agents like Claude Code or Codex. (Source: GitHub Trending Python)\n\nWhy it matters: Expanded access to powerful language models like NotebookLM can accelerate innovation in various domains.\n\n4. **Servo**: The Servo project aims to provide a lightweight, high-performance alternative for embedding web technologies in applications. This effort seeks to empower developers with more efficient and flexible tools for building web-enabled software. (Source: GitHub Trending All)\n\nWhy it matters: Improved web technology integration can enhance the development experience and lead to more innovative applications.\n\n5. **Home Assistant Core**: The open-source home automation project, Home Assistant Core, prioritizes local control and privacy. This initiative promotes decentralized, user-centric solutions for smart homes. (Source: GitHub Trending Python)\n\nWhy it matters: Open-source projects like Home Assistant Core can foster innovation in the field of home automation while emphasizing user autonomy.\n\n6. **.NET Core**: The .NET team announced updates to their core framework, including new features and improvements. This release aims to enhance developer productivity and application performance. (Source: GitHub Trending All)\n\nWhy it matters: Updates to popular frameworks like .NET Core can have a significant impact on the development ecosystem.\n\n7. **Pentagon's AI Plans**: The Pentagon plans to allow AI companies to train on classified data, setting up secure environments for this purpose. This move aims to accelerate AI research and development in defense-related areas. (Source: MIT Tech Review)\n\nWhy it matters: Collaboration between government agencies and private companies can drive innovation in critical domains like national security.\n\n8. **Subgoal-Driven Framework**: Researchers introduced a subgoal-driven framework for improving long-horizon LLM agents, enabling them to tackle more complex tasks. This approach focuses on breaking down challenging objectives into manageable subgoals. (Source: Hugging Face Papers)\n\nWhy it matters: Enhanced LLM agent capabilities can lead to breakthroughs in various applications, from language translation to content generation.\n\n9. **WorldAgents**: The WorldAgents paper explores the potential of foundation image models as agents for 3D world models. This research investigates whether these models can be used to simulate and interact with complex environments. (Source: Hugging Face Papers)\n\nWhy it matters: Advancements in agent capabilities can have significant implications for fields like robotics, gaming, and simulation.\n\n10. **LumosX**: The LumosX paper presents a method for relating identities with their attributes for personalized video generation. This approach enables the creation of tailored content based on individual characteristics. (Source: Hugging Face Papers)\n\nWhy it matters: Personalized content generation can have significant applications in areas like entertainment, education, and marketing.\n\nNote: Cross-confirmation across multiple sources is not explicitly mentioned for all stories, but most are sourced from reputable institutions or publications.",
   "stats": {
-    "total_scraped": 155,
+    "total_scraped": 192,
     "passed_filter": 0,
-    "rejected": 155,
-    "avg_truth_score": 27.6,
+    "rejected": 192,
+    "avg_truth_score": 26.9,
     "categories": {
-      "general": 73,
-      "open_vs_closed": 19,
-      "tragents": 13,
-      "trscode": 15,
-      "gigaburn": 14,
-      "churn": 3,
-      "trsbench": 6,
-      "trfcast": 6,
+      "general": 101,
+      "tragents": 19,
+      "trscode": 22,
+      "open_vs_closed": 13,
+      "gigaburn": 18,
+      "trfcast": 4,
+      "trsbench": 5,
+      "churn": 7,
       "truscore": 2,
-      "gari": 4
+      "gari": 1
     },
     "sources": {
-      "GitHub Trending Python": 7,
+      "GitHub Trending Python": 14,
       "GitHub Trending All": 18,
-      "r/MachineLearning": 12,
-      "r/LocalLLaMA": 26,
-      "r/artificial": 9,
-      "r/singularity": 12,
-      "Hacker News": 10,
-      "Lobste.rs": 19,
-      "The Verge": 2,
-      "Wired": 3,
-      "YouTube: AI Explained": 5,
-      "YouTube: Two Minute Papers": 5,
-      "YouTube: Yannic Kilcher": 5,
-      "YouTube: Fireship": 2,
-      "Import AI (Jack Clark)": 5,
-      "TechCrunch": 3,
-      "VentureBeat": 7,
-      "Ars Technica": 3,
-      "MIT Tech Review": 2
+      "r/MachineLearning": 16,
+      "r/LocalLLaMA": 52,
+      "r/artificial": 18,
+      "r/singularity": 15,
+      "Hacker News": 29,
+      "Lobste.rs": 4,
+      "YouTube: Matthew Berman": 3,
+      "TechCrunch": 5,
+      "The Verge": 4,
+      "MIT Tech Review": 2,
+      "Hugging Face Papers": 12
     },
-    "sources_active": 19
+    "sources_active": 13
   },
   "filter_methodology": {
     "source_credibility_weight": "0-40 pts (Tier 1 Wire = 40, Tier 3 Community = 10-20)",
