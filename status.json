@@ -1,14 +1,14 @@
 {
-  "last_updated": "2026-03-23T04:35:03.584191",
+  "last_updated": "2026-03-23T04:48:16.603908",
   "tr2_unified": {
     "name": "Gimli \u00e2\u0080\u0094 TR2 Unified DDP",
     "enabled": true,
-    "last_run": "2026-03-23T04:35:03.584191",
+    "last_run": "2026-03-23T04:48:16.603908",
     "last_run_date": "2026-03-23",
     "status": "success",
-    "duration_seconds": 1202.8,
+    "duration_seconds": 1091.9,
     "sources_total": 40,
-    "sources_hit": 37,
+    "sources_hit": 36,
     "models_qualified": 1134,
     "top_model": "Grok 4.1 Fast",
     "top_score": 100.0,
