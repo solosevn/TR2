@@ -1,57 +1,24 @@
 {
-  "date": "2026-03-23",
-  "generated_at": "2026-03-23T05:32:36.621844",
+  "date": "2026-03-24",
+  "generated_at": "2026-03-24T05:31:28.980673",
   "version": "2.0",
   "filter": "TrainingRun Truth Filter v2.0",
   "top_stories": [
     {
       "rank": 1,
-      "title": "HopChain: Multi-Hop Data Synthesis for Generalizable Vision-Language Reasoning",
-      "url": "https://huggingface.co/papers/2603.17024",
+      "title": "AgentDS Technical Report: Benchmarking the Future of Human-AI Collaboration in Domain-Specific Data Science",
+      "url": "https://huggingface.co/papers/2603.19005",
       "source": "Hugging Face Papers",
       "summary": "",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 47,
+      "tr_category": "trsbench",
+      "category_label": "Benchmarks",
+      "truth_score": 56,
       "source_credibility": 38,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 5,
+      "substance_score": 12,
+      "relevance_score": 6,
       "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 6,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "Paper title on a reputable academic platform suggests a specific, technical contribution to AI research"
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 6,
-          "reason": "The headline mentions a specific AI paper title from a reputable source like Hugging Face Papers, but without a summary or additional details, it lacks verifiability and could be vague or incomplete."
-        }
-      }
-    },
-    {
-      "rank": 2,
-      "title": "jamwithai / production-agentic-rag-course",
-      "url": "https://github.com/jamwithai/production-agentic-rag-course",
-      "source": "GitHub Trending Python",
-      "summary": "\ud83c\udf10 Make websites accessible for AI agents. Automate tasks online with ease.",
-      "tr_category": "tragents",
-      "category_label": "Agents",
-      "truth_score": 45,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 10,
-      "matched_verticals": [
-        "tragents"
-      ],
       "hype_flags": 0,
       "ai_verdict": "LIKELY_TRUE",
       "ai_confidence": 7,
@@ -59,302 +26,151 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "GitHub Trending Python provides a specific, factual source for the claim about automating tasks online with ease."
+          "reason": "The report appears to be a technical document from a reputable source, Hugging Face Papers, which suggests it contains specific and factual information about benchmarking human-AI collaboration in data science."
         },
         "grok": {
           "verdict": "SUSPICIOUS",
           "confidence": 7,
-          "reason": "The headline appears to be a GitHub repository name and the summary is vague about specific tools or results for making websites accessible to AI agents, making it unverifiable without further details."
+          "reason": "The headline refers to a technical report from Hugging Face, but without a summary or specific details, it is vague and unverifiable, making it impossible to confirm its accuracy."
         }
       }
     },
     {
-      "rank": 3,
-      "title": "teng-lin / notebooklm-py",
-      "url": "https://github.com/teng-lin/notebooklm-py",
-      "source": "GitHub Trending Python",
-      "summary": "Unofficial Python API and agentic skill for Google NotebookLM. Full programmatic access to NotebookLM's features\u2014including capabilities the web UI doesn't expose\u2014via Python, CLI, and AI agents like Claude Code, Codex, and OpenClaw.",
+      "rank": 2,
+      "title": "LongCat-Flash-Prover: Advancing Native Formal Reasoning via Agentic Tool-Integrated Reinforcement Learning",
+      "url": "https://huggingface.co/papers/2603.21065",
+      "source": "Hugging Face Papers",
+      "summary": "",
       "tr_category": "tragents",
       "category_label": "Agents",
-      "truth_score": 45,
-      "source_credibility": 35,
+      "truth_score": 54,
+      "source_credibility": 38,
       "cross_confirmation": 0,
       "cross_sources": [],
       "substance_score": 0,
-      "relevance_score": 10,
+      "relevance_score": 16,
       "matched_verticals": [
         "tragents"
       ],
       "hype_flags": 0,
       "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 6,
+      "ai_confidence": 5,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "The claim references a specific GitHub repository and mentions well-known AI agents, indicating a factual description of an existing project."
+          "reason": "Paper title on a reputable academic platform suggests specific, technical research"
         },
         "grok": {
           "verdict": "SUSPICIOUS",
-          "confidence": 6,
-          "reason": "The claim about an unofficial Python API providing full access to unexposed features of Google NotebookLM is plausible but unverifiable without direct inspection of the GitHub repository, potentially exaggerating capabilities."
+          "confidence": 5,
+          "reason": "The headline mentions a specific AI tool and techniques, but without a summary or verifiable details from the source, it lacks sufficient evidence to confirm its accuracy or existence."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "title": "PivotRL: High Accuracy Agentic Post-Training at Low Compute Cost",
+      "url": "https://huggingface.co/papers/2603.21383",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 52,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 4,
+      "relevance_score": 10,
+      "matched_verticals": [
+        "tragents",
+        "gigaburn"
+      ],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 7,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "Paper title suggests a specific, technical contribution to the field of AI research"
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 7,
+          "reason": "The headline claims high accuracy and low compute cost for PivotRL but lacks a summary or specific details from the Hugging Face Papers source, making it unverifiable and potentially exaggerated."
         }
       }
     },
     {
       "rank": 4,
-      "title": "servo / servo",
-      "url": "https://github.com/servo/servo",
-      "source": "GitHub Trending All",
-      "summary": "Servo aims to empower developers with a lightweight, high-performance alternative for embedding web technologies in applications.",
-      "tr_category": "trscode",
-      "category_label": "Code & Dev",
-      "truth_score": 45,
-      "source_credibility": 35,
+      "title": "How political censorship actually works inside Qwen, DeepSeek, GLM, and Yi: Ablation and behavioral results across 9 models",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1s1lmuj/how_political_censorship_actually_works_inside/",
+      "source": "r/LocalLLaMA",
+      "summary": "New paper studying the internal mechanisms of political censorship in Chinese-origin LLMs: [https://arxiv.org/abs/2603.18280](https://arxiv.org/abs/2603.18280) Findings relevant to this community: **On Qwen/Alibaba - the generational shift:** Across Qwen2.5-7B \u2192 Qwen3-8B \u2192 Qwen3.5-4B \u2192 Qwen3.5-9B, hard refusal went from 6.2% to 25% to 0% to 0%. But steering (CCP narrative framing) rose from 4.33/5 to 5.00/5 over the same period. The newest Qwen models don't refuse - they answer everything in m",
+      "tr_category": "gari",
+      "category_label": "Global AI Race",
+      "truth_score": 50,
+      "source_credibility": 20,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 6,
-      "matched_verticals": [],
+      "substance_score": 20,
+      "relevance_score": 10,
+      "matched_verticals": [
+        "gari"
+      ],
       "hype_flags": 0,
       "ai_verdict": "AI_VERIFIED",
       "ai_confidence": 9,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The claim is specific and factual, referencing a real project on GitHub with a clear description of its goals."
+          "confidence": 9,
+          "reason": "The paper on arXiv provides specific results and analysis of political censorship in Chinese-origin LLMs, making the claim verifiable."
         },
         "grok": {
           "verdict": "VERIFIED",
           "confidence": 9,
-          "reason": "The summary accurately reflects the established goals of the Servo project, a real open-source web engine on GitHub, making it specific, factual, and verifiable."
-        }
-      }
-    },
-    {
-      "rank": 5,
-      "title": "home-assistant / core",
-      "url": "https://github.com/home-assistant/core",
-      "source": "GitHub Trending Python",
-      "summary": "\ud83c\udfe1 Open source home automation that puts local control and privacy first.",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
-      "truth_score": 44,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 10,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "GitHub Trending Python provides a specific and verifiable source for the open-source home automation project"
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 10,
-          "reason": "The headline and summary accurately describe the Home Assistant project, a well-known open-source home automation software on GitHub that emphasizes local control and privacy, making it specific, factual, and verifiable."
-        }
-      }
-    },
-    {
-      "rank": 6,
-      "title": "dotnet / core",
-      "url": "https://github.com/dotnet/core",
-      "source": "GitHub Trending All",
-      "summary": ".NET news, announcements, release notes, and more!",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 44,
-      "source_credibility": 40,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 0,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 8,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": ".NET Core is a well-documented open-source framework on GitHub, and the source provided (GitHub Trending All) is a credible indicator of its relevance."
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 9,
-          "reason": "The headline and summary are vague, lacking specific details about any particular news, announcements, or release notes, making it unverifiable as a factual claim."
-        }
-      }
-    },
-    {
-      "rank": 7,
-      "title": "The Download: The Pentagon\u2019s new AI plans, and next-gen nuclear reactors",
-      "url": "https://www.technologyreview.com/2026/03/18/1134371/the-download-the-pentagons-new-ai-plans-and-next-gen-nuclear-reactors/",
-      "source": "MIT Tech Review",
-      "summary": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. The Pentagon is planning for AI companies to train on classified data,&#160;defense&#160;official says&#160; The Pentagon plans to set up secure environments for generative AI companies to train military-specific versions of their&#8230;",
-      "tr_category": "tragents",
-      "category_label": "Agents",
-      "truth_score": 44,
-      "source_credibility": 30,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 10,
-      "matched_verticals": [
-        "tragents"
-      ],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 8,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The source is a reputable publication (MIT Tech Review) and the claim is specific about the Pentagon's plans for AI companies to train on classified data."
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The claim is specific, attributed to a defense official, and reported by a reputable source like MIT Tech Review, making it factual and plausible within the current AI and military technology landscape."
-        }
-      }
-    },
-    {
-      "rank": 8,
-      "title": "A Subgoal-driven Framework for Improving Long-Horizon LLM Agents",
-      "url": "https://huggingface.co/papers/2603.19685",
-      "source": "Hugging Face Papers",
-      "summary": "",
-      "tr_category": "tragents",
-      "category_label": "Agents",
-      "truth_score": 43,
-      "source_credibility": 38,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 7,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The headline refers to a specific research paper on Hugging Face Papers, which suggests a factual and technical topic."
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 7,
-          "reason": "The headline is plausible as a technical paper title from Hugging Face, but without a summary or verifiable details, it lacks sufficient evidence to confirm its accuracy."
-        }
-      }
-    },
-    {
-      "rank": 9,
-      "title": "WorldAgents: Can Foundation Image Models be Agents for 3D World Models?",
-      "url": "https://huggingface.co/papers/2603.19708",
-      "source": "Hugging Face Papers",
-      "summary": "",
-      "tr_category": "tragents",
-      "category_label": "Agents",
-      "truth_score": 43,
-      "source_credibility": 38,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 7,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "Paper on Hugging Face Papers suggests a specific, technical question about foundation image models and their potential application to 3D world models."
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 7,
-          "reason": "The headline poses a question rather than making a specific factual claim, and with no summary provided, it lacks verifiable details to assess its truthfulness."
-        }
-      }
-    },
-    {
-      "rank": 10,
-      "title": "LumosX: Relate Any Identities with Their Attributes for Personalized Video Generation",
-      "url": "https://huggingface.co/papers/2603.20192",
-      "source": "Hugging Face Papers",
-      "summary": "",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 43,
-      "source_credibility": 38,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 6,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "Specific paper on Hugging Face Papers with a clear, technical description of LumosX's capabilities"
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 6,
-          "reason": "The headline mentions a specific AI tool on Hugging Face Papers, which is plausible in the current AI landscape, but without a summary or verifiable details, the claim lacks sufficient evidence to confirm its accuracy."
+          "reason": "The headline and summary reference a specific arXiv paper with detailed, quantifiable results on censorship in AI models, which is plausible and verifiable in the current AI research landscape."
         }
       }
     }
   ],
-  "narrative_brief": "**Morning Briefing: Top 10 AI Stories**\n\nAs we dive into the latest developments in AI, here's a concise summary of the top 10 stories:\n\n1. **HopChain**: Researchers at Hugging Face introduced HopChain, a multi-hop data synthesis method for generalizable vision-language reasoning. This approach aims to improve performance on complex tasks by generating more diverse and relevant training data. (Source: Hugging Face Papers)\n\nWhy it matters: Improved data synthesis methods can enhance AI model performance in various applications.\n\n2. **Production-Agentic-RAG-Course**: The jamwithai GitHub repository offers a course on making websites accessible for AI agents, enabling automation of online tasks with ease. This resource provides developers with practical knowledge on creating agent-friendly interfaces. (Source: GitHub Trending Python)\n\nWhy it matters: As AI agents become more prevalent, tools like this course will help developers create more accessible and usable interfaces.\n\n3. **NotebookLM-Py**: The unofficial Python API for Google NotebookLM allows full programmatic access to the model's features, including capabilities not exposed in the web UI. This API enables developers to integrate NotebookLM into their applications using AI agents like Claude Code or Codex. (Source: GitHub Trending Python)\n\nWhy it matters: Expanded access to powerful language models like NotebookLM can accelerate innovation in various domains.\n\n4. **Servo**: The Servo project aims to provide a lightweight, high-performance alternative for embedding web technologies in applications. This effort seeks to empower developers with more efficient and flexible tools for building web-enabled software. (Source: GitHub Trending All)\n\nWhy it matters: Improved web technology integration can enhance the development experience and lead to more innovative applications.\n\n5. **Home Assistant Core**: The open-source home automation project, Home Assistant Core, prioritizes local control and privacy. This initiative promotes decentralized, user-centric solutions for smart homes. (Source: GitHub Trending Python)\n\nWhy it matters: Open-source projects like Home Assistant Core can foster innovation in the field of home automation while emphasizing user autonomy.\n\n6. **.NET Core**: The .NET team announced updates to their core framework, including new features and improvements. This release aims to enhance developer productivity and application performance. (Source: GitHub Trending All)\n\nWhy it matters: Updates to popular frameworks like .NET Core can have a significant impact on the development ecosystem.\n\n7. **Pentagon's AI Plans**: The Pentagon plans to allow AI companies to train on classified data, setting up secure environments for this purpose. This move aims to accelerate AI research and development in defense-related areas. (Source: MIT Tech Review)\n\nWhy it matters: Collaboration between government agencies and private companies can drive innovation in critical domains like national security.\n\n8. **Subgoal-Driven Framework**: Researchers introduced a subgoal-driven framework for improving long-horizon LLM agents, enabling them to tackle more complex tasks. This approach focuses on breaking down challenging objectives into manageable subgoals. (Source: Hugging Face Papers)\n\nWhy it matters: Enhanced LLM agent capabilities can lead to breakthroughs in various applications, from language translation to content generation.\n\n9. **WorldAgents**: The WorldAgents paper explores the potential of foundation image models as agents for 3D world models. This research investigates whether these models can be used to simulate and interact with complex environments. (Source: Hugging Face Papers)\n\nWhy it matters: Advancements in agent capabilities can have significant implications for fields like robotics, gaming, and simulation.\n\n10. **LumosX**: The LumosX paper presents a method for relating identities with their attributes for personalized video generation. This approach enables the creation of tailored content based on individual characteristics. (Source: Hugging Face Papers)\n\nWhy it matters: Personalized content generation can have significant applications in areas like entertainment, education, and marketing.\n\nNote: Cross-confirmation across multiple sources is not explicitly mentioned for all stories, but most are sourced from reputable institutions or publications.",
+  "narrative_brief": "**Morning Briefing: Top 4 AI Stories**\n\n**1. Benchmarking Human-AI Collaboration**\nA new technical report from Hugging Face, \"Benchmarking the Future of Human-AI Collaboration in Domain-Specific Data Science,\" presents a benchmark for evaluating human-AI collaboration in data science tasks. The report introduces AgentDS, a framework for measuring human-AI collaboration. This matters to those tracking AI benchmarks and truth, as it provides a standardized evaluation method.\n\n**2. Advancing Native Formal Reasoning**\nResearchers have developed LongCat-Flash-Prover, an agentic tool-integrated reinforcement learning approach that advances native formal reasoning in AI systems. The paper presents results on the effectiveness of this approach. This matters to those tracking agents and AI capabilities, as it demonstrates a new method for improving formal reasoning.\n\n**3. Low-Compute Agentic Post-Training**\nPivotRL is a high-accuracy agentic post-training method that achieves low compute costs. The authors present results showing its effectiveness on various tasks. This matters to those tracking agents and AI efficiency, as it offers a promising approach for reducing computational requirements.\n\n**4. Internal Mechanisms of Chinese-Origin LLMs**\nA new paper studies the internal mechanisms of political censorship in Chinese-origin large language models (LLMs). The research finds that Qwen/Alibaba's generational shift from 2.5B to 9B parameters affects model performance and censorship behavior. This matters to those tracking the global AI race, as it provides insights into the development and regulation of Chinese-Origin LLMs.\n\nNote: Cross-confirmation is not available for these stories, but they are all sourced from reputable academic papers or research communities.",
   "stats": {
-    "total_scraped": 192,
-    "passed_filter": 0,
-    "rejected": 192,
-    "avg_truth_score": 26.9,
+    "total_scraped": 217,
+    "passed_filter": 4,
+    "rejected": 213,
+    "avg_truth_score": 29.6,
     "categories": {
-      "general": 101,
-      "tragents": 19,
-      "trscode": 22,
-      "open_vs_closed": 13,
+      "general": 100,
+      "trsbench": 17,
+      "gari": 11,
+      "trscode": 17,
+      "tragents": 20,
+      "open_vs_closed": 23,
       "gigaburn": 18,
-      "trfcast": 4,
-      "trsbench": 5,
-      "churn": 7,
-      "truscore": 2,
-      "gari": 1
+      "truscore": 4,
+      "trfcast": 5,
+      "churn": 2
     },
     "sources": {
-      "GitHub Trending Python": 14,
-      "GitHub Trending All": 18,
-      "r/MachineLearning": 16,
-      "r/LocalLLaMA": 52,
-      "r/artificial": 18,
-      "r/singularity": 15,
-      "Hacker News": 29,
-      "Lobste.rs": 4,
-      "YouTube: Matthew Berman": 3,
-      "TechCrunch": 5,
-      "The Verge": 4,
-      "MIT Tech Review": 2,
-      "Hugging Face Papers": 12
+      "Hugging Face Papers": 37,
+      "GitHub Trending Python": 6,
+      "GitHub Trending All": 14,
+      "r/MachineLearning": 10,
+      "r/LocalLLaMA": 59,
+      "r/artificial": 23,
+      "r/singularity": 25,
+      "Hacker News": 23,
+      "MIT Tech Review": 3,
+      "Wired": 2,
+      "The Verge": 3,
+      "Import AI (Jack Clark)": 1,
+      "TechCrunch": 10,
+      "Lobste.rs": 1
     },
-    "sources_active": 13
+    "sources_active": 14
   },
   "filter_methodology": {
     "source_credibility_weight": "0-40 pts (Tier 1 Wire = 40, Tier 3 Community = 10-20)",
