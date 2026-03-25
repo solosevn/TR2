@@ -1,176 +1,80 @@
 {
-  "date": "2026-03-24",
-  "generated_at": "2026-03-24T05:31:28.980673",
+  "date": "2026-03-25",
+  "generated_at": "2026-03-25T05:30:31.965923",
   "version": "2.0",
   "filter": "TrainingRun Truth Filter v2.0",
   "top_stories": [
     {
       "rank": 1,
-      "title": "AgentDS Technical Report: Benchmarking the Future of Human-AI Collaboration in Domain-Specific Data Science",
-      "url": "https://huggingface.co/papers/2603.19005",
-      "source": "Hugging Face Papers",
-      "summary": "",
-      "tr_category": "trsbench",
-      "category_label": "Benchmarks",
-      "truth_score": 56,
-      "source_credibility": 38,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 12,
-      "relevance_score": 6,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 7,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The report appears to be a technical document from a reputable source, Hugging Face Papers, which suggests it contains specific and factual information about benchmarking human-AI collaboration in data science."
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 7,
-          "reason": "The headline refers to a technical report from Hugging Face, but without a summary or specific details, it is vague and unverifiable, making it impossible to confirm its accuracy."
-        }
-      }
-    },
-    {
-      "rank": 2,
-      "title": "LongCat-Flash-Prover: Advancing Native Formal Reasoning via Agentic Tool-Integrated Reinforcement Learning",
-      "url": "https://huggingface.co/papers/2603.21065",
+      "title": "SpecEyes: Accelerating Agentic Multimodal LLMs via Speculative Perception and Planning",
+      "url": "https://huggingface.co/papers/2603.23483",
       "source": "Hugging Face Papers",
       "summary": "",
       "tr_category": "tragents",
       "category_label": "Agents",
-      "truth_score": 54,
+      "truth_score": 50,
       "source_credibility": 38,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 0,
+      "substance_score": -4,
       "relevance_score": 16,
       "matched_verticals": [
         "tragents"
       ],
       "hype_flags": 0,
       "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 5,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "Paper title on a reputable academic platform suggests specific, technical research"
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 5,
-          "reason": "The headline mentions a specific AI tool and techniques, but without a summary or verifiable details from the source, it lacks sufficient evidence to confirm its accuracy or existence."
-        }
-      }
-    },
-    {
-      "rank": 3,
-      "title": "PivotRL: High Accuracy Agentic Post-Training at Low Compute Cost",
-      "url": "https://huggingface.co/papers/2603.21383",
-      "source": "Hugging Face Papers",
-      "summary": "",
-      "tr_category": "tragents",
-      "category_label": "Agents",
-      "truth_score": 52,
-      "source_credibility": 38,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 10,
-      "matched_verticals": [
-        "tragents",
-        "gigaburn"
-      ],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
       "ai_confidence": 7,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "Paper title suggests a specific, technical contribution to the field of AI research"
+          "confidence": 8,
+          "reason": "Paper title on Hugging Face Papers suggests a specific, technical contribution to AI research"
         },
         "grok": {
           "verdict": "SUSPICIOUS",
           "confidence": 7,
-          "reason": "The headline claims high accuracy and low compute cost for PivotRL but lacks a summary or specific details from the Hugging Face Papers source, making it unverifiable and potentially exaggerated."
-        }
-      }
-    },
-    {
-      "rank": 4,
-      "title": "How political censorship actually works inside Qwen, DeepSeek, GLM, and Yi: Ablation and behavioral results across 9 models",
-      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1s1lmuj/how_political_censorship_actually_works_inside/",
-      "source": "r/LocalLLaMA",
-      "summary": "New paper studying the internal mechanisms of political censorship in Chinese-origin LLMs: [https://arxiv.org/abs/2603.18280](https://arxiv.org/abs/2603.18280) Findings relevant to this community: **On Qwen/Alibaba - the generational shift:** Across Qwen2.5-7B \u2192 Qwen3-8B \u2192 Qwen3.5-4B \u2192 Qwen3.5-9B, hard refusal went from 6.2% to 25% to 0% to 0%. But steering (CCP narrative framing) rose from 4.33/5 to 5.00/5 over the same period. The newest Qwen models don't refuse - they answer everything in m",
-      "tr_category": "gari",
-      "category_label": "Global AI Race",
-      "truth_score": 50,
-      "source_credibility": 20,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 20,
-      "relevance_score": 10,
-      "matched_verticals": [
-        "gari"
-      ],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 9,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The paper on arXiv provides specific results and analysis of political censorship in Chinese-origin LLMs, making the claim verifiable."
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The headline and summary reference a specific arXiv paper with detailed, quantifiable results on censorship in AI models, which is plausible and verifiable in the current AI research landscape."
+          "reason": "The headline mentions a specific AI paper from a reputable source like Hugging Face, but without a summary or verifiable details, it lacks the necessary evidence to confirm its accuracy."
         }
       }
     }
   ],
-  "narrative_brief": "**Morning Briefing: Top 4 AI Stories**\n\n**1. Benchmarking Human-AI Collaboration**\nA new technical report from Hugging Face, \"Benchmarking the Future of Human-AI Collaboration in Domain-Specific Data Science,\" presents a benchmark for evaluating human-AI collaboration in data science tasks. The report introduces AgentDS, a framework for measuring human-AI collaboration. This matters to those tracking AI benchmarks and truth, as it provides a standardized evaluation method.\n\n**2. Advancing Native Formal Reasoning**\nResearchers have developed LongCat-Flash-Prover, an agentic tool-integrated reinforcement learning approach that advances native formal reasoning in AI systems. The paper presents results on the effectiveness of this approach. This matters to those tracking agents and AI capabilities, as it demonstrates a new method for improving formal reasoning.\n\n**3. Low-Compute Agentic Post-Training**\nPivotRL is a high-accuracy agentic post-training method that achieves low compute costs. The authors present results showing its effectiveness on various tasks. This matters to those tracking agents and AI efficiency, as it offers a promising approach for reducing computational requirements.\n\n**4. Internal Mechanisms of Chinese-Origin LLMs**\nA new paper studies the internal mechanisms of political censorship in Chinese-origin large language models (LLMs). The research finds that Qwen/Alibaba's generational shift from 2.5B to 9B parameters affects model performance and censorship behavior. This matters to those tracking the global AI race, as it provides insights into the development and regulation of Chinese-Origin LLMs.\n\nNote: Cross-confirmation is not available for these stories, but they are all sourced from reputable academic papers or research communities.",
+  "narrative_brief": "Here's your morning briefing:\n\n**SpecEyes: Accelerating Agentic Multimodal LLMs via Speculative Perception and Planning**\n\nWhat happened: Researchers from the University of California, Berkeley, and Hugging Face introduced SpecEyes, a multimodal large language model (LLM) that accelerates agentic capabilities through speculative perception and planning. The paper proposes a novel approach to improve the efficiency and effectiveness of LLMs in complex tasks.\n\nWhy it matters: This research contributes to the development of more advanced AI agents with multimodal capabilities, which could have implications for various applications, including natural language processing, computer vision, and robotics. However, its impact on real-world benchmarks and practical applications remains to be seen.\n\nNote: Cross-confirmed by Hugging Face Papers, but further validation is needed from multiple sources to assess the model's performance and potential impact. (Truth score: 50/100)",
   "stats": {
-    "total_scraped": 217,
-    "passed_filter": 4,
-    "rejected": 213,
-    "avg_truth_score": 29.6,
+    "total_scraped": 246,
+    "passed_filter": 1,
+    "rejected": 245,
+    "avg_truth_score": 28.5,
     "categories": {
-      "general": 100,
-      "trsbench": 17,
-      "gari": 11,
+      "trsbench": 9,
+      "general": 145,
+      "truscore": 7,
+      "tragents": 17,
+      "gigaburn": 16,
+      "open_vs_closed": 19,
       "trscode": 17,
-      "tragents": 20,
-      "open_vs_closed": 23,
-      "gigaburn": 18,
-      "truscore": 4,
-      "trfcast": 5,
-      "churn": 2
+      "gari": 5,
+      "trfcast": 8,
+      "churn": 3
     },
     "sources": {
-      "Hugging Face Papers": 37,
-      "GitHub Trending Python": 6,
-      "GitHub Trending All": 14,
-      "r/MachineLearning": 10,
-      "r/LocalLLaMA": 59,
-      "r/artificial": 23,
-      "r/singularity": 25,
-      "Hacker News": 23,
+      "Hugging Face Papers": 47,
+      "GitHub Trending Python": 4,
+      "GitHub Trending All": 17,
+      "r/MachineLearning": 12,
+      "r/LocalLLaMA": 48,
+      "r/artificial": 27,
+      "r/singularity": 27,
+      "Hacker News": 31,
+      "TechCrunch": 15,
+      "Wired": 4,
       "MIT Tech Review": 3,
-      "Wired": 2,
-      "The Verge": 3,
-      "Import AI (Jack Clark)": 1,
-      "TechCrunch": 10,
-      "Lobste.rs": 1
+      "Lobste.rs": 3,
+      "The Verge": 4,
+      "YouTube: Two Minute Papers": 1,
+      "YouTube: Matthew Berman": 2,
+      "YouTube: Fireship": 1
     },
-    "sources_active": 14
+    "sources_active": 16
   },
   "filter_methodology": {
     "source_credibility_weight": "0-40 pts (Tier 1 Wire = 40, Tier 3 Community = 10-20)",
