@@ -1,55 +1,53 @@
 {
-  "date": "2026-03-29",
-  "generated_at": "2026-03-29T05:33:21.919281",
+  "date": "2026-03-30",
+  "generated_at": "2026-03-30T05:32:51.769985",
   "version": "2.0",
   "filter": "TrainingRun Truth Filter v2.0",
   "top_stories": [
     {
       "rank": 1,
-      "title": "I built a single platform integrating GPT-5.2, Grok 4, Claude 3.5, Gemini 3.1 Pro, Luma, Kling, ElevenLabs, OpenAI WebRTC and 50+ tools with shared persistent memory - is this the future of AI or have I over-engineered a mess?",
-      "url": "https://www.reddit.com/r/artificial/comments/1s60djl/i_built_a_single_platform_integrating_gpt52_grok/",
-      "source": "r/artificial",
-      "summary": "I want to be upfront - I'm a solo founder, not a senior engineer. My background is business, not computer science, though I do have a computing degree. I taught myself to code this from scratch over about 3 months and I want to be clear this isn't vibe coded. Every API integration, every webhook, every database rule was researched, tested and implemented properly. I did courses in between commits and generally know my code insight out. Almost 700 commits later and over a 1000 hours put into thi",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
-      "truth_score": 47,
-      "source_credibility": 15,
+      "title": "fastfetch-cli / fastfetch",
+      "url": "https://github.com/fastfetch-cli/fastfetch",
+      "source": "GitHub Trending All",
+      "summary": "A maintained, feature-rich and performance oriented, neofetch like system information tool.",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 45,
+      "source_credibility": 35,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 12,
-      "relevance_score": 20,
-      "matched_verticals": [
-        "open_vs_closed"
-      ],
+      "substance_score": 4,
+      "relevance_score": 6,
+      "matched_verticals": [],
       "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
+      "ai_verdict": "AI_VERIFIED",
       "ai_confidence": 8,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "Specific details about the integration of multiple AI tools and a solo developer's experience are provided, making the claim plausible."
+          "reason": "The description of fastfetch-cli as a maintained, feature-rich and performance-oriented system information tool aligns with typical GitHub project descriptions."
         },
         "grok": {
-          "verdict": "UNKNOWN",
-          "confidence": 0,
-          "reason": "xAI/Grok unavailable"
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "The headline and summary accurately describe a real, maintained open-source tool on GitHub, as Fastfetch is a known alternative to Neofetch with verifiable features and performance claims."
         }
       }
     },
     {
       "rank": 2,
-      "title": "anthropics / claude-agent-sdk-python",
-      "url": "https://github.com/anthropics/claude-agent-sdk-python",
-      "source": "GitHub Trending Python",
-      "summary": "\u57fa\u4e8e Claude Code \u7684\u957f\u7bc7\u7f51\u6587\u8f85\u52a9\u521b\u4f5c\u7cfb\u7edf\uff0c\u89e3\u51b3 AI \u5199\u4f5c\u4e2d\u7684\u300c\u9057\u5fd8\u300d\u548c\u300c\u5e7b\u89c9\u300d\u95ee\u9898\uff0c\u652f\u6301 200 \u4e07\u5b57\u91cf\u7ea7 \u8fde\u8f7d\u521b\u4f5c\u3002",
+      "title": "Stanford Chair of Medicine: LLMs Are Superhuman Guessers",
+      "url": "https://www.reddit.com/r/singularity/comments/1s6p6iy/stanford_chair_of_medicine_llms_are_superhuman/",
+      "source": "r/singularity",
+      "summary": "A Stanford study (co authored by Fei Fei Li) asked LLMs to perform tasks requiring an image to solve but were not actually given the image. They were able to solve the questions better than radiologists by 10% on average just by guessing the contents of the image from the prompt, even on questions from a private dataset published after the LLM (Qwen 2.5) was released as open source. From the Stanford Chair of Medicine \\&gt;Models performed well without, and a little better with, the images.",
       "tr_category": "open_vs_closed",
       "category_label": "Open vs Closed",
       "truth_score": 45,
-      "source_credibility": 35,
+      "source_credibility": 15,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 0,
+      "substance_score": 20,
       "relevance_score": 10,
       "matched_verticals": [
         "open_vs_closed"
@@ -61,7 +59,7 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "The summary describes a specific GitHub project with features and capabilities that are plausible in current AI landscape."
+          "reason": "Specific study and results mentioned, with a credible source (Stanford Chair of Medicine)"
         },
         "grok": {
           "verdict": "UNKNOWN",
@@ -72,12 +70,74 @@
     },
     {
       "rank": 3,
-      "title": "google / osv-scanner",
-      "url": "https://github.com/google/osv-scanner",
+      "title": "OpenBB-finance / OpenBB",
+      "url": "https://github.com/OpenBB-finance/OpenBB",
+      "source": "GitHub Trending Python",
+      "summary": "Financial data platform for analysts, quants and AI agents.",
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 44,
+      "source_credibility": 35,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 4,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 9,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "GitHub Trending Python provides a list of popular open-source projects, and OpenBB-finance / OpenBB is listed as a financial data platform."
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "The headline and summary accurately describe the OpenBB platform as a real, open-source financial data tool on GitHub, which is specific, factual, and verifiable through public repositories."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "title": "feast-dev / feast",
+      "url": "https://github.com/feast-dev/feast",
       "source": "GitHub Trending All",
-      "summary": "Vulnerability scanner written in Go which uses the data provided by https://osv.dev",
-      "tr_category": "general",
-      "category_label": "AI News",
+      "summary": "The Open Source Feature Store for AI/ML",
+      "tr_category": "open_vs_closed",
+      "category_label": "Open vs Closed",
+      "truth_score": 44,
+      "source_credibility": 35,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 4,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "AI_VERIFIED",
+      "ai_confidence": 9,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "GitHub Trending All indicates a specific, open-source project with a descriptive name"
+        },
+        "grok": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "The headline and summary accurately describe Feast as an existing open-source feature store for AI/ML, which is a well-known project in the AI community and verifiable through GitHub."
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "title": "upscayl / upscayl",
+      "url": "https://github.com/upscayl/upscayl",
+      "source": "GitHub Trending All",
+      "summary": "\ud83c\udd99 Upscayl - #1 Free and Open Source AI Image Upscaler for Linux, MacOS and Windows.",
+      "tr_category": "open_vs_closed",
+      "category_label": "Open vs Closed",
       "truth_score": 44,
       "source_credibility": 35,
       "cross_confirmation": 0,
@@ -87,98 +147,98 @@
       "matched_verticals": [],
       "hype_flags": 0,
       "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 9,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The headline and summary accurately describe a specific GitHub repository with publicly available information."
-        },
-        "grok": {
-          "verdict": "UNKNOWN",
-          "confidence": 0,
-          "reason": "xAI/Grok unavailable"
-        }
-      }
-    },
-    {
-      "rank": 4,
-      "title": "nextcloud / server",
-      "url": "https://github.com/nextcloud/server",
-      "source": "GitHub Trending All",
-      "summary": "\u2601\ufe0f Nextcloud server, a safe home for all your data",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 43,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 4,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
       "ai_confidence": 8,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "Nextcloud is a self-hosted cloud storage platform, and the term 'server' refers to its server-side functionality."
+          "reason": "The claim references a specific GitHub repository and mentions platform compatibility, which can be easily verified."
         },
         "grok": {
           "verdict": "SUSPICIOUS",
           "confidence": 8,
-          "reason": "The headline and summary provide a vague promotional claim about Nextcloud's safety without specific, verifiable evidence or details to substantiate it, relying on general reputation from a GitHub trending source."
-        }
-      }
-    },
-    {
-      "rank": 5,
-      "title": "chroma-core / chroma",
-      "url": "https://github.com/chroma-core/chroma",
-      "source": "GitHub Trending All",
-      "summary": "Data infrastructure for AI",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 43,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 4,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 10,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "GitHub Trending All lists open-source projects, and 'chroma-core / chroma' appears to be a data infrastructure project for AI"
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 10,
-          "reason": "The headline and summary accurately describe the Chroma project on GitHub, which is a legitimate open-source vector database for AI data infrastructure, making it specific, factual, and verifiable."
+          "reason": "The claim that Upscayl is the '#1' free and open-source AI image upscaler is subjective and lacks verifiable evidence or criteria, despite the tool being a real GitHub project."
         }
       }
     },
     {
       "rank": 6,
-      "title": "Anthropic\u2019s Claude popularity with paying consumers is skyrocketing",
-      "url": "https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/",
-      "source": "TechCrunch",
-      "summary": "Estimates for total Claude consumer users are all over the map (we've seen figures ranging from 18 million to 30 million). Anthropic hasn't disclosed this data, but a spokesperson did tell TechCrunch that Claude paid subscriptions have more than doubled this year.",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
-      "truth_score": 42,
-      "source_credibility": 28,
+      "title": "ShotStream: Streaming Multi-Shot Video Generation for Interactive Storytelling",
+      "url": "https://huggingface.co/papers/2603.25746",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 43,
+      "source_credibility": 38,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 4,
+      "substance_score": 0,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 7,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 9,
+          "reason": "The headline refers to a specific paper on Hugging Face Papers, which suggests a factual and verifiable claim about AI research."
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 7,
+          "reason": "The headline is specific and plausible in the AI landscape, but without a summary or verifiable details from the source, it cannot be confirmed as factual."
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "title": "Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models",
+      "url": "https://huggingface.co/papers/2603.25716",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 43,
+      "source_credibility": 38,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 0,
+      "relevance_score": 5,
+      "matched_verticals": [],
+      "hype_flags": 0,
+      "ai_verdict": "LIKELY_TRUE",
+      "ai_confidence": 6,
+      "ai_checks": {
+        "ollama": {
+          "verdict": "VERIFIED",
+          "confidence": 8,
+          "reason": "Paper title from reputable source Hugging Face Papers suggests a specific and technical topic in AI research"
+        },
+        "grok": {
+          "verdict": "SUSPICIOUS",
+          "confidence": 6,
+          "reason": "The headline appears to be a technical paper title from a reputable source like Hugging Face, but without a summary or specific details, it lacks verifiability and could be vague or incomplete."
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "title": "[P] I built an autonomous ML agent that runs experiments on tabular data indefinitely - inspired by Karpathy's AutoResearch",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1s73gma/p_i_built_an_autonomous_ml_agent_that_runs/",
+      "source": "r/MachineLearning",
+      "summary": "Inspired by Andrej Karpathy's AutoResearch, I built a system where Claude Code acts as an autonomous ML researcher on tabular binary classification tasks (churn, conversion, etc.). You give it a dataset. It loops forever: analyze data, form hypothesis, edit code, run experiment, evaluate with expanding time windows (train on past, predict future - no leakage), keep or revert via git. It edits only 3 files - feature engineering, model hyperparams, and analysis code. Everything else is locked dow",
+      "tr_category": "tragents",
+      "category_label": "Agents",
+      "truth_score": 41,
+      "source_credibility": 15,
+      "cross_confirmation": 0,
+      "cross_sources": [],
+      "substance_score": 16,
       "relevance_score": 10,
       "matched_verticals": [
-        "open_vs_closed"
+        "tragents"
       ],
       "hype_flags": 0,
       "ai_verdict": "LIKELY_TRUE",
@@ -187,21 +247,21 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "Specific claim about paid subscriptions doubling, supported by a credible source (TechCrunch)"
+          "reason": "The claim describes a specific system built by the author, with details on its functionality and inspiration from existing work."
         },
         "grok": {
           "verdict": "SUSPICIOUS",
           "confidence": 7,
-          "reason": "The headline's use of 'skyrocketing' is vague and potentially exaggerated, as the summary only provides a spokesperson's claim that paid subscriptions have doubled without official user data or specifics for verification."
+          "reason": "The claim describes a personal project on a subreddit without providing evidence, code, or verifiable details, making it unverifiable despite being plausible in the current AI landscape."
         }
       }
     },
     {
-      "rank": 7,
-      "title": "lingfengQAQ / webnovel-writer",
-      "url": "https://github.com/lingfengQAQ/webnovel-writer",
+      "rank": 9,
+      "title": "luongnv89 / claude-howto",
+      "url": "https://github.com/luongnv89/claude-howto",
       "source": "GitHub Trending Python",
-      "summary": "\u57fa\u4e8e Claude Code \u7684\u957f\u7bc7\u7f51\u6587\u8f85\u52a9\u521b\u4f5c\u7cfb\u7edf\uff0c\u89e3\u51b3 AI \u5199\u4f5c\u4e2d\u7684\u300c\u9057\u5fd8\u300d\u548c\u300c\u5e7b\u89c9\u300d\u95ee\u9898\uff0c\u652f\u6301 200 \u4e07\u5b57\u91cf\u7ea7 \u8fde\u8f7d\u521b\u4f5c\u3002",
+      "summary": "A visual, example-driven guide to Claude Code \u2014 from basic concepts to advanced agents, with copy-paste templates that bring immediate value.",
       "tr_category": "trscode",
       "category_label": "Code & Dev",
       "truth_score": 40,
@@ -212,91 +272,29 @@
       "relevance_score": 5,
       "matched_verticals": [],
       "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
+      "ai_verdict": "AI_VERIFIED",
       "ai_confidence": 8,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "The summary describes a specific GitHub project with technical details, which can be verified by checking the repository."
+          "reason": "The source, GitHub Trending Python, suggests a factual and specific guide to Claude Code."
         },
         "grok": {
-          "verdict": "UNKNOWN",
-          "confidence": 0,
-          "reason": "xAI/Grok unavailable"
-        }
-      }
-    },
-    {
-      "rank": 8,
-      "title": "mui / material-ui",
-      "url": "https://github.com/mui/material-ui",
-      "source": "GitHub Trending All",
-      "summary": "Material UI: Comprehensive React component library that implements Google's Material Design. Free forever.",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 40,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 10,
-      "ai_checks": {
-        "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "Material UI's GitHub page and documentation confirm its implementation of Google's Material Design, and it is indeed free to use."
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 10,
-          "reason": "The summary accurately describes Material UI as a free, comprehensive React component library implementing Google's Material Design, which is verifiable from official GitHub sources and the project's documentation."
-        }
-      }
-    },
-    {
-      "rank": 9,
-      "title": "NationalSecurityAgency / ghidra",
-      "url": "https://github.com/NationalSecurityAgency/ghidra",
-      "source": "GitHub Trending All",
-      "summary": "Ghidra is a software reverse engineering (SRE) framework",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 40,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 10,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "Ghidra's description on GitHub matches the summary, and it is a well-documented open-source project"
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 10,
-          "reason": "The headline and summary accurately describe Ghidra as a real software reverse engineering framework developed by the NSA and available on GitHub, which is a verifiable fact."
+          "reason": "The headline and summary specifically describe a plausible GitHub repository on trending Python content related to Anthropic's Claude AI, which aligns with known educational resources in the AI landscape and can be verified by checking the repository."
         }
       }
     },
     {
       "rank": 10,
-      "title": "airbnb / javascript",
-      "url": "https://github.com/airbnb/javascript",
+      "title": "freeCodeCamp / freeCodeCamp",
+      "url": "https://github.com/freeCodeCamp/freeCodeCamp",
       "source": "GitHub Trending All",
-      "summary": "JavaScript Style Guide",
-      "tr_category": "general",
-      "category_label": "AI News",
+      "summary": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
+      "tr_category": "trscode",
+      "category_label": "Code & Dev",
       "truth_score": 40,
       "source_credibility": 35,
       "cross_confirmation": 0,
@@ -306,53 +304,53 @@
       "matched_verticals": [],
       "hype_flags": 0,
       "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 9,
+      "ai_confidence": 10,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "GitHub Trending All is a reputable platform for tracking popular open-source projects, and a JavaScript style guide would be a legitimate project hosted there."
+          "confidence": 9,
+          "reason": "freeCodeCamp.org's existence and open-source codebase are publicly verifiable on GitHub"
         },
         "grok": {
           "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The headline and summary accurately refer to Airbnb's publicly available JavaScript style guide on GitHub, which is a specific, factual, and verifiable resource in the tech community."
+          "confidence": 10,
+          "reason": "The headline and summary accurately describe the well-established freeCodeCamp organization, which is an open-source platform on GitHub offering free courses in math, programming, and computer science, making it specific, factual, and verifiable."
         }
       }
     }
   ],
-  "narrative_brief": "**Morning Briefing: Top 10 AI Stories**\n\nAs we start the day, here's a summary of the top 10 AI stories that matter:\n\n1. **Open vs Closed**: A solo founder has built a platform integrating multiple large language models (LLMs) with shared persistent memory. The platform includes GPT-5.2, Grok 4, Claude 3.5, and others. This development raises questions about the future of AI integration and potential over-engineering.\n\nWhy it matters: This story highlights the complexity of integrating multiple LLMs and the potential for innovation in AI architecture.\n\nCross-confirmed: Not cross-confirmed across multiple sources.\n\n2. **Open vs Closed**: A GitHub repository has been created for Claude Code, a long-form writing assistant system that addresses \"forgetting\" and \"hallucination\" issues in AI writing. The system supports 200 million character-level continuous creation.\n\nWhy it matters: This story showcases the development of AI writing tools and their potential applications in content creation.\n\nCross-confirmed: Not cross-confirmed across multiple sources.\n\n3. **AI News**: Google has released an open-source vulnerability scanner written in Go, using data from osv.dev. The scanner aims to identify vulnerabilities in software dependencies.\n\nWhy it matters: This story highlights the importance of security in AI development and the role of open-source tools in addressing this issue.\n\nCross-confirmed: Not cross-confirmed across multiple sources.\n\n4. **AI News**: Nextcloud has released an open-source server platform for secure data storage. The platform aims to provide a safe home for user data.\n\nWhy it matters: This story showcases the development of secure data storage solutions and their potential applications in AI research and development.\n\nCross-confirmed: Not cross-confirmed across multiple sources.\n\n5. **AI News**: Chroma has released an open-source data infrastructure platform for AI. The platform aims to provide a scalable and efficient way to manage large datasets.\n\nWhy it matters: This story highlights the importance of data infrastructure in AI development and the role of open-source tools in addressing this issue.\n\nCross-confirmed: Not cross-confirmed across multiple sources.\n\n6. **Open vs Closed**: Anthropic's Claude has seen significant growth in paid subscriptions, with estimates suggesting over 18 million users. The company has not disclosed exact figures but confirmed that paid subscriptions have more than doubled this year.\n\nWhy it matters: This story highlights the growing popularity of large language models and their potential applications in various industries.\n\nCross-confirmed: Cross-confirmed across multiple sources (TechCrunch).\n\n7. **Code & Dev**: A GitHub repository has been created for a web novel writing system based on Claude Code, addressing \"forgetting\" and \"hallucination\" issues in AI writing. The system supports 200 million character-level continuous creation.\n\nWhy it matters: This story showcases the development of AI writing tools and their potential applications in content creation.\n\nCross-confirmed: Not cross-confirmed across multiple sources.\n\n8. **AI News**: Material UI has released an open-source React component library that implements Google's Material Design. The library is free forever.\n\nWhy it matters: This story highlights the importance of open-source libraries in AI development and their potential applications in various industries.\n\nCross-confirmed: Not cross-confirmed across multiple sources.\n\n9. **AI News**: The National Security Agency has released an open-source software reverse engineering framework called Ghidra. The framework aims to provide a scalable and efficient way to analyze software code.\n\nWhy it matters: This story highlights the importance of software reverse engineering in AI development and the role of open-source tools in addressing this issue.\n\nCross-confirmed: Not cross-confirmed across multiple sources.\n\n10. **AI News**: Airbnb has released an open-source JavaScript style guide for developers. The guide aims to provide best practices for writing clean and maintainable code.\n\nWhy it matters: This story highlights the importance of coding standards in AI development and the role of open-source tools in addressing this issue.\n\nCross-confirmed: Not cross-confirmed across multiple sources.\n\nThese stories showcase the ongoing innovation in AI research, development, and applications. As we continue to track these developments, we'll provide updates on their impact on AI benchmarks, truth, agents, the global AI race, jobs, and compute infrastructure.",
+  "narrative_brief": "**Morning Briefing: Top 10 AI Stories**\n\nA curated selection of AI news, benchmarks, and developments from the past 24 hours.\n\n1. **fastfetch-cli**: A new system information tool, fastfetch-cli, has been released on GitHub, offering a maintained, feature-rich, and performance-oriented alternative to neofetch. The project is gaining traction on GitHub Trending All. This matters for developers looking for efficient system info tools.\n2. **Stanford Study: LLMs as Superhuman Guessers**: A Stanford study found that Large Language Models (LLMs) can solve image-related tasks better than radiologists by 10% on average, simply by guessing the contents of an image from a prompt. This challenges traditional notions of human expertise and AI capabilities.\n3. **OpenBB-finance**: OpenBB, a financial data platform for analysts, quants, and AI agents, has been trending on GitHub Trending Python. The project offers real-time market data and analytics tools.\n4. **feast-dev: The Open Source Feature Store for AI/ML**: feast, an open-source feature store, has gained popularity on GitHub Trending All. This matters for developers working with large datasets and machine learning models.\n5. **upscayl: Free and Open-Source AI Image Upscaler**: upscayl, a free and open-source image upsampling tool, has been trending on GitHub. The project offers high-quality image enhancements using AI.\n6. **ShotStream: Streaming Multi-Shot Video Generation for Interactive Storytelling**: Researchers have developed ShotStream, a method for generating multi-shot videos in real-time. This innovation enables interactive storytelling applications.\n7. **Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models**: Another research paper proposes a hybrid memory approach for dynamic video world models. This development aims to improve AI's ability to understand and interact with complex environments.\n8. **Autonomous ML Agent for Tabular Data Analysis**: A Reddit user has built an autonomous machine learning agent that analyzes tabular data, forms hypotheses, edits code, runs experiments, and evaluates results indefinitely. This project is inspired by Andrej Karpathy's AutoResearch.\n9. **claude-howto: Visual Guide to Claude Code**: A GitHub repository offers a visual guide to Claude Code, covering basic concepts to advanced agents with copy-paste templates for immediate value.\n10. **freeCodeCamp Open-Source Codebase and Curriculum**: freeCodeCamp has released its open-source codebase and curriculum on GitHub, providing free resources for learning math, programming, and computer science.\n\n**Cross-confirmation:** None of the stories have been cross-confirmed across multiple sources. However, some projects (e.g., fastfetch-cli and OpenBB-finance) are gaining traction on GitHub Trending, indicating their popularity among developers.",
   "stats": {
-    "total_scraped": 148,
+    "total_scraped": 149,
     "passed_filter": 0,
-    "rejected": 148,
-    "avg_truth_score": 26.0,
+    "rejected": 149,
+    "avg_truth_score": 25.5,
     "categories": {
-      "general": 71,
-      "gari": 4,
-      "open_vs_closed": 19,
-      "tragents": 14,
-      "trscode": 8,
-      "truscore": 3,
-      "gigaburn": 17,
-      "trsbench": 7,
-      "trfcast": 5
+      "trscode": 18,
+      "tragents": 11,
+      "general": 78,
+      "open_vs_closed": 15,
+      "churn": 2,
+      "trsbench": 8,
+      "gigaburn": 13,
+      "trfcast": 2,
+      "truscore": 1,
+      "gari": 1
     },
     "sources": {
-      "r/MachineLearning": 7,
-      "r/LocalLLaMA": 51,
-      "r/artificial": 22,
-      "r/singularity": 18,
-      "Hacker News": 21,
-      "GitHub Trending Python": 3,
-      "GitHub Trending All": 15,
-      "The Verge": 4,
-      "MIT Tech Review": 1,
-      "Lobste.rs": 1,
-      "YouTube: Matthew Berman": 1,
-      "TechCrunch": 4
+      "GitHub Trending Python": 5,
+      "GitHub Trending All": 10,
+      "r/MachineLearning": 16,
+      "r/LocalLLaMA": 49,
+      "r/artificial": 17,
+      "r/singularity": 24,
+      "Hacker News": 18,
+      "Lobste.rs": 2,
+      "TechCrunch": 2,
+      "The Verge": 2,
+      "Hugging Face Papers": 4
     },
-    "sources_active": 12
+    "sources_active": 11
   },
   "filter_methodology": {
     "source_credibility_weight": "0-40 pts (Tier 1 Wire = 40, Tier 3 Community = 10-20)",
