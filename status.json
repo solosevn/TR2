@@ -1,42 +1,42 @@
 {
-  "last_updated": "2026-03-30T04:45:28.636013",
+  "last_updated": "2026-03-31T04:32:07.206360",
   "tr2_unified": {
     "name": "Gimli \u00e2\u0080\u0094 TR2 Unified DDP",
     "enabled": true,
-    "last_run": "2026-03-30T04:45:28.636013",
-    "last_run_date": "2026-03-30",
+    "last_run": "2026-03-31T04:32:07.206360",
+    "last_run_date": "2026-03-31",
     "status": "success",
-    "duration_seconds": 923.9,
+    "duration_seconds": 1025.9,
     "sources_total": 40,
-    "sources_hit": 36,
-    "models_qualified": 1163,
-    "top_model": "grok-4.1-fast",
-    "top_score": 96.97,
+    "sources_hit": 37,
+    "models_qualified": 1188,
+    "top_model": "Grok Code Fast 1",
+    "top_score": 96.56,
     "top5": [
       {
         "rank": 1,
-        "name": "grok-4.1-fast",
-        "score": 96.97
+        "name": "Grok Code Fast 1",
+        "score": 96.56
       },
       {
         "rank": 2,
-        "name": "Qwen2-72B-Instruct",
-        "score": 96.78
+        "name": "GPT-5.3-Codex",
+        "score": 95.44
       },
       {
         "rank": 3,
-        "name": "llama-3.1-tulu-3-8b",
-        "score": 96.54
+        "name": "Gemini 3 Flash",
+        "score": 95.24
       },
       {
         "rank": 4,
-        "name": "aion-rp-llama-3.1-8b",
-        "score": 96.54
+        "name": "Gemini Flash 3",
+        "score": 95.24
       },
       {
         "rank": 5,
-        "name": "GPT-5 nano",
-        "score": 95.94
+        "name": "gemini-3-flash (thinking-minimal)",
+        "score": 95.24
       }
     ]
   }
