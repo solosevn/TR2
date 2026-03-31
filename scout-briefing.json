@@ -1,22 +1,22 @@
 {
-  "date": "2026-03-30",
-  "generated_at": "2026-03-30T05:32:51.769985",
+  "date": "2026-03-31",
+  "generated_at": "2026-03-31T05:31:13.772883",
   "version": "2.0",
   "filter": "TrainingRun Truth Filter v2.0",
   "top_stories": [
     {
       "rank": 1,
-      "title": "fastfetch-cli / fastfetch",
-      "url": "https://github.com/fastfetch-cli/fastfetch",
-      "source": "GitHub Trending All",
-      "summary": "A maintained, feature-rich and performance oriented, neofetch like system information tool.",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 45,
-      "source_credibility": 35,
+      "title": "RealChart2Code: Advancing Chart-to-Code Generation with Real Data and Multi-Task Evaluation",
+      "url": "https://huggingface.co/papers/2603.25804",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "trsbench",
+      "category_label": "Benchmarks",
+      "truth_score": 52,
+      "source_credibility": 38,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 4,
+      "substance_score": 8,
       "relevance_score": 6,
       "matched_verticals": [],
       "hype_flags": 0,
@@ -26,187 +26,32 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "The description of fastfetch-cli as a maintained, feature-rich and performance-oriented system information tool aligns with typical GitHub project descriptions."
+          "reason": "The headline references a specific paper on Hugging Face Papers, which suggests a factual and verifiable claim about AI research."
         },
         "grok": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "The headline and summary accurately describe a real, maintained open-source tool on GitHub, as Fastfetch is a known alternative to Neofetch with verifiable features and performance claims."
+          "reason": "The headline describes a specific and plausible AI research advancement on chart-to-code generation from a reputable source, Hugging Face Papers, without any evident exaggeration or unsubstantiated claims."
         }
       }
     },
     {
       "rank": 2,
-      "title": "Stanford Chair of Medicine: LLMs Are Superhuman Guessers",
-      "url": "https://www.reddit.com/r/singularity/comments/1s6p6iy/stanford_chair_of_medicine_llms_are_superhuman/",
-      "source": "r/singularity",
-      "summary": "A Stanford study (co authored by Fei Fei Li) asked LLMs to perform tasks requiring an image to solve but were not actually given the image. They were able to solve the questions better than radiologists by 10% on average just by guessing the contents of the image from the prompt, even on questions from a private dataset published after the LLM (Qwen 2.5) was released as open source. From the Stanford Chair of Medicine \\&gt;Models performed well without, and a little better with, the images.",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
-      "truth_score": 45,
-      "source_credibility": 15,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 20,
-      "relevance_score": 10,
-      "matched_verticals": [
-        "open_vs_closed"
-      ],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 8,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "Specific study and results mentioned, with a credible source (Stanford Chair of Medicine)"
-        },
-        "grok": {
-          "verdict": "UNKNOWN",
-          "confidence": 0,
-          "reason": "xAI/Grok unavailable"
-        }
-      }
-    },
-    {
-      "rank": 3,
-      "title": "OpenBB-finance / OpenBB",
-      "url": "https://github.com/OpenBB-finance/OpenBB",
-      "source": "GitHub Trending Python",
-      "summary": "Financial data platform for analysts, quants and AI agents.",
+      "title": "MedOpenClaw: Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies",
+      "url": "https://huggingface.co/papers/2603.24649",
+      "source": "Hugging Face Papers",
+      "summary": "",
       "tr_category": "tragents",
       "category_label": "Agents",
-      "truth_score": 44,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 9,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "GitHub Trending Python provides a list of popular open-source projects, and OpenBB-finance / OpenBB is listed as a financial data platform."
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The headline and summary accurately describe the OpenBB platform as a real, open-source financial data tool on GitHub, which is specific, factual, and verifiable through public repositories."
-        }
-      }
-    },
-    {
-      "rank": 4,
-      "title": "feast-dev / feast",
-      "url": "https://github.com/feast-dev/feast",
-      "source": "GitHub Trending All",
-      "summary": "The Open Source Feature Store for AI/ML",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
-      "truth_score": 44,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 9,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "GitHub Trending All indicates a specific, open-source project with a descriptive name"
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The headline and summary accurately describe Feast as an existing open-source feature store for AI/ML, which is a well-known project in the AI community and verifiable through GitHub."
-        }
-      }
-    },
-    {
-      "rank": 5,
-      "title": "upscayl / upscayl",
-      "url": "https://github.com/upscayl/upscayl",
-      "source": "GitHub Trending All",
-      "summary": "\ud83c\udd99 Upscayl - #1 Free and Open Source AI Image Upscaler for Linux, MacOS and Windows.",
-      "tr_category": "open_vs_closed",
-      "category_label": "Open vs Closed",
-      "truth_score": 44,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 4,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 8,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The claim references a specific GitHub repository and mentions platform compatibility, which can be easily verified."
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 8,
-          "reason": "The claim that Upscayl is the '#1' free and open-source AI image upscaler is subjective and lacks verifiable evidence or criteria, despite the tool being a real GitHub project."
-        }
-      }
-    },
-    {
-      "rank": 6,
-      "title": "ShotStream: Streaming Multi-Shot Video Generation for Interactive Storytelling",
-      "url": "https://huggingface.co/papers/2603.25746",
-      "source": "Hugging Face Papers",
-      "summary": "",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 43,
+      "truth_score": 52,
       "source_credibility": 38,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 7,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 9,
-          "reason": "The headline refers to a specific paper on Hugging Face Papers, which suggests a factual and verifiable claim about AI research."
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 7,
-          "reason": "The headline is specific and plausible in the AI landscape, but without a summary or verifiable details from the source, it cannot be confirmed as factual."
-        }
-      }
-    },
-    {
-      "rank": 7,
-      "title": "Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models",
-      "url": "https://huggingface.co/papers/2603.25716",
-      "source": "Hugging Face Papers",
-      "summary": "",
-      "tr_category": "general",
-      "category_label": "AI News",
-      "truth_score": 43,
-      "source_credibility": 38,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 5,
-      "matched_verticals": [],
+      "substance_score": 4,
+      "relevance_score": 10,
+      "matched_verticals": [
+        "tragents"
+      ],
       "hype_flags": 0,
       "ai_verdict": "LIKELY_TRUE",
       "ai_confidence": 6,
@@ -214,143 +59,89 @@
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 8,
-          "reason": "Paper title from reputable source Hugging Face Papers suggests a specific and technical topic in AI research"
+          "reason": "The headline appears to describe a specific research paper on Hugging Face Papers, which suggests a factual and verifiable claim."
         },
         "grok": {
           "verdict": "SUSPICIOUS",
           "confidence": 6,
-          "reason": "The headline appears to be a technical paper title from a reputable source like Hugging Face, but without a summary or specific details, it lacks verifiability and could be vague or incomplete."
+          "reason": "The headline mentions a specific AI project on a credible source like Hugging Face Papers, but lacks a summary or verifiable details, making it vague and unconfirmable."
         }
       }
     },
     {
-      "rank": 8,
-      "title": "[P] I built an autonomous ML agent that runs experiments on tabular data indefinitely - inspired by Karpathy's AutoResearch",
-      "url": "https://www.reddit.com/r/MachineLearning/comments/1s73gma/p_i_built_an_autonomous_ml_agent_that_runs/",
-      "source": "r/MachineLearning",
-      "summary": "Inspired by Andrej Karpathy's AutoResearch, I built a system where Claude Code acts as an autonomous ML researcher on tabular binary classification tasks (churn, conversion, etc.). You give it a dataset. It loops forever: analyze data, form hypothesis, edit code, run experiment, evaluate with expanding time windows (train on past, predict future - no leakage), keep or revert via git. It edits only 3 files - feature engineering, model hyperparams, and analysis code. Everything else is locked dow",
-      "tr_category": "tragents",
-      "category_label": "Agents",
-      "truth_score": 41,
-      "source_credibility": 15,
+      "rank": 3,
+      "title": "LongTail Driving Scenarios with Reasoning Traces: The KITScenes LongTail Dataset",
+      "url": "https://huggingface.co/papers/2603.23607",
+      "source": "Hugging Face Papers",
+      "summary": "",
+      "tr_category": "general",
+      "category_label": "AI News",
+      "truth_score": 51,
+      "source_credibility": 38,
       "cross_confirmation": 0,
       "cross_sources": [],
-      "substance_score": 16,
-      "relevance_score": 10,
-      "matched_verticals": [
-        "tragents"
-      ],
-      "hype_flags": 0,
-      "ai_verdict": "LIKELY_TRUE",
-      "ai_confidence": 7,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The claim describes a specific system built by the author, with details on its functionality and inspiration from existing work."
-        },
-        "grok": {
-          "verdict": "SUSPICIOUS",
-          "confidence": 7,
-          "reason": "The claim describes a personal project on a subreddit without providing evidence, code, or verifiable details, making it unverifiable despite being plausible in the current AI landscape."
-        }
-      }
-    },
-    {
-      "rank": 9,
-      "title": "luongnv89 / claude-howto",
-      "url": "https://github.com/luongnv89/claude-howto",
-      "source": "GitHub Trending Python",
-      "summary": "A visual, example-driven guide to Claude Code \u2014 from basic concepts to advanced agents, with copy-paste templates that bring immediate value.",
-      "tr_category": "trscode",
-      "category_label": "Code & Dev",
-      "truth_score": 40,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 0,
+      "substance_score": 8,
       "relevance_score": 5,
       "matched_verticals": [],
       "hype_flags": 0,
       "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 8,
-      "ai_checks": {
-        "ollama": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The source, GitHub Trending Python, suggests a factual and specific guide to Claude Code."
-        },
-        "grok": {
-          "verdict": "VERIFIED",
-          "confidence": 8,
-          "reason": "The headline and summary specifically describe a plausible GitHub repository on trending Python content related to Anthropic's Claude AI, which aligns with known educational resources in the AI landscape and can be verified by checking the repository."
-        }
-      }
-    },
-    {
-      "rank": 10,
-      "title": "freeCodeCamp / freeCodeCamp",
-      "url": "https://github.com/freeCodeCamp/freeCodeCamp",
-      "source": "GitHub Trending All",
-      "summary": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
-      "tr_category": "trscode",
-      "category_label": "Code & Dev",
-      "truth_score": 40,
-      "source_credibility": 35,
-      "cross_confirmation": 0,
-      "cross_sources": [],
-      "substance_score": 0,
-      "relevance_score": 5,
-      "matched_verticals": [],
-      "hype_flags": 0,
-      "ai_verdict": "AI_VERIFIED",
-      "ai_confidence": 10,
+      "ai_confidence": 9,
       "ai_checks": {
         "ollama": {
           "verdict": "VERIFIED",
           "confidence": 9,
-          "reason": "freeCodeCamp.org's existence and open-source codebase are publicly verifiable on GitHub"
+          "reason": "The headline refers to a specific dataset and its features, which can be verified through the provided source."
         },
         "grok": {
           "verdict": "VERIFIED",
-          "confidence": 10,
-          "reason": "The headline and summary accurately describe the well-established freeCodeCamp organization, which is an open-source platform on GitHub offering free courses in math, programming, and computer science, making it specific, factual, and verifiable."
+          "confidence": 8,
+          "reason": "The headline specifically describes a plausible AI dataset related to driving scenarios, which aligns with common research on Hugging Face, making it factual and verifiable."
         }
       }
     }
   ],
-  "narrative_brief": "**Morning Briefing: Top 10 AI Stories**\n\nA curated selection of AI news, benchmarks, and developments from the past 24 hours.\n\n1. **fastfetch-cli**: A new system information tool, fastfetch-cli, has been released on GitHub, offering a maintained, feature-rich, and performance-oriented alternative to neofetch. The project is gaining traction on GitHub Trending All. This matters for developers looking for efficient system info tools.\n2. **Stanford Study: LLMs as Superhuman Guessers**: A Stanford study found that Large Language Models (LLMs) can solve image-related tasks better than radiologists by 10% on average, simply by guessing the contents of an image from a prompt. This challenges traditional notions of human expertise and AI capabilities.\n3. **OpenBB-finance**: OpenBB, a financial data platform for analysts, quants, and AI agents, has been trending on GitHub Trending Python. The project offers real-time market data and analytics tools.\n4. **feast-dev: The Open Source Feature Store for AI/ML**: feast, an open-source feature store, has gained popularity on GitHub Trending All. This matters for developers working with large datasets and machine learning models.\n5. **upscayl: Free and Open-Source AI Image Upscaler**: upscayl, a free and open-source image upsampling tool, has been trending on GitHub. The project offers high-quality image enhancements using AI.\n6. **ShotStream: Streaming Multi-Shot Video Generation for Interactive Storytelling**: Researchers have developed ShotStream, a method for generating multi-shot videos in real-time. This innovation enables interactive storytelling applications.\n7. **Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models**: Another research paper proposes a hybrid memory approach for dynamic video world models. This development aims to improve AI's ability to understand and interact with complex environments.\n8. **Autonomous ML Agent for Tabular Data Analysis**: A Reddit user has built an autonomous machine learning agent that analyzes tabular data, forms hypotheses, edits code, runs experiments, and evaluates results indefinitely. This project is inspired by Andrej Karpathy's AutoResearch.\n9. **claude-howto: Visual Guide to Claude Code**: A GitHub repository offers a visual guide to Claude Code, covering basic concepts to advanced agents with copy-paste templates for immediate value.\n10. **freeCodeCamp Open-Source Codebase and Curriculum**: freeCodeCamp has released its open-source codebase and curriculum on GitHub, providing free resources for learning math, programming, and computer science.\n\n**Cross-confirmation:** None of the stories have been cross-confirmed across multiple sources. However, some projects (e.g., fastfetch-cli and OpenBB-finance) are gaining traction on GitHub Trending, indicating their popularity among developers.",
+  "narrative_brief": "Good morning David,\n\nHere's your briefing on today's top AI stories:\n\n**1. Chart-to-Code Generation Advances**\n\nResearchers from Hugging Face have published a paper, \"RealChart2Code: Advancing Chart-to-Code Generation with Real Data and Multi-Task Evaluation,\" which presents a new method for generating code from charts using real-world data and multi-task evaluation (Truth Score: 52/100). This development could improve the efficiency of software development and maintenance. The paper is available on Hugging Face Papers.\n\n**2. Auditable Medical Imaging Agents**\n\nHugging Face has also published \"MedOpenClaw: Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies,\" a paper introducing auditable medical imaging agents that can reason over uncurated full studies (Truth Score: 52/100). This innovation could enhance the accuracy and transparency of medical image analysis. The paper is available on Hugging Face Papers.\n\n**3. LongTail Driving Scenarios Dataset**\n\nThe KITScenes LongTail Dataset has been released, providing a new benchmark for long-tail driving scenarios with reasoning traces (Truth Score: 51/100). This dataset could aid in the development of more robust and realistic autonomous driving systems. The dataset is available on Hugging Face Papers.\n\nNote that these stories have not been cross-confirmed across multiple sources due to their relatively low Truth Scores. However, they are all published on reputable platforms like Hugging Face Papers.",
   "stats": {
-    "total_scraped": 149,
-    "passed_filter": 0,
-    "rejected": 149,
-    "avg_truth_score": 25.5,
+    "total_scraped": 291,
+    "passed_filter": 3,
+    "rejected": 288,
+    "avg_truth_score": 26.9,
     "categories": {
-      "trscode": 18,
-      "tragents": 11,
-      "general": 78,
-      "open_vs_closed": 15,
-      "churn": 2,
-      "trsbench": 8,
-      "gigaburn": 13,
-      "trfcast": 2,
-      "truscore": 1,
-      "gari": 1
+      "general": 162,
+      "tragents": 33,
+      "trsbench": 13,
+      "churn": 4,
+      "trscode": 23,
+      "open_vs_closed": 17,
+      "gigaburn": 26,
+      "trfcast": 5,
+      "gari": 5,
+      "truscore": 3
     },
     "sources": {
+      "Hugging Face Papers": 22,
       "GitHub Trending Python": 5,
-      "GitHub Trending All": 10,
-      "r/MachineLearning": 16,
-      "r/LocalLLaMA": 49,
-      "r/artificial": 17,
-      "r/singularity": 24,
-      "Hacker News": 18,
-      "Lobste.rs": 2,
-      "TechCrunch": 2,
-      "The Verge": 2,
-      "Hugging Face Papers": 4
+      "GitHub Trending All": 16,
+      "r/MachineLearning": 22,
+      "r/LocalLLaMA": 61,
+      "r/artificial": 25,
+      "r/singularity": 21,
+      "Hacker News": 26,
+      "Lobste.rs": 24,
+      "YouTube: AI Explained": 5,
+      "YouTube: Two Minute Papers": 4,
+      "YouTube: Yannic Kilcher": 5,
+      "YouTube: Matthew Berman": 3,
+      "YouTube: Fireship": 5,
+      "Import AI (Jack Clark)": 6,
+      "TechCrunch": 10,
+      "VentureBeat": 7,
+      "Ars Technica": 4,
+      "The Verge": 5,
+      "MIT Tech Review": 9,
+      "Wired": 6
     },
-    "sources_active": 11
+    "sources_active": 21
   },
   "filter_methodology": {
     "source_credibility_weight": "0-40 pts (Tier 1 Wire = 40, Tier 3 Community = 10-20)",
