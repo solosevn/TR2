@@ -1,14 +1,14 @@
 {
-  "last_updated": "2026-04-01T04:32:20.060377",
+  "last_updated": "2026-04-01T04:47:23.240667",
   "tr2_unified": {
     "name": "Gimli \u00e2\u0080\u0094 TR2 Unified DDP",
     "enabled": true,
-    "last_run": "2026-04-01T04:32:20.060377",
+    "last_run": "2026-04-01T04:47:23.240667",
     "last_run_date": "2026-04-01",
     "status": "success",
-    "duration_seconds": 1038.9,
+    "duration_seconds": 1038.5,
     "sources_total": 40,
-    "sources_hit": 37,
+    "sources_hit": 36,
     "models_qualified": 1199,
     "top_model": "Qwen2-72B-Instruct",
     "top_score": 100.0,
